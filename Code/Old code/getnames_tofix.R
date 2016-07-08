@@ -3,7 +3,7 @@
 ######## Data collected by Doug Euston-Brown, Susan Botha and Ryan Blanchard
 ##############################################################################
 ######## Compiled by Jasper Slingsby 2014
-######## Last edited: 13 June 2016
+######## Last edited: 26 June 2016
 ##############################################################################
 ######## 
 ###Steps:
@@ -108,7 +108,7 @@ syn <- read.xls ("/Users/jasper/Dropbox/Shared/Synonym cleaning/Conspectuses_alt
 spnms$Synonym[which(spnms$Original%in%syn$Alternative.Name)] <- 1
 spnms$Official[which(spnms$Original%in%syn$Taxon)] <- 1
 
-#Write out file for error checking in the Taxon Name Resolution Service etc
+#Write out file for error checking in the Taxon Name Resolution Service (http://tnrs.iplantcollaborative.org/TNRSapp.html) etc
 write.csv(spnms, "allnames.csv", row.names = F)
 
 ###Get "fixed" names and explore
