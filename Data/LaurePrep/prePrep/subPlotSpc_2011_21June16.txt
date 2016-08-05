@@ -1,0 +1,1367 @@
+big_plot	plot	sub-plot	species	regen_mode	no	max_ht	prop_cov_alive	prop_cov	new_seed
+21	21.1	21.1.1	Conyza_scabrida	s	4	100	100	20	4
+21	21.1	21.1.1	Mariscus_thunbergii	s	0	80	50	2	0
+21	21.1	21.1.1	Pennisetum_macrourum	s	1	50	10	100	0
+21	21.1	21.1.2	Pennisetum_macrourum	s	1	100	25	100	0
+21	21.2	21.2.3	Conyza_scabrida	s	0	100	100	50	0
+21	21.2	21.2.3	Pennisetum_macrourum	r	1	60	50	100	0
+21	21.2	21.2.4	Pennisetum_macrourum	r	1	60	25	100	0
+21	21.3	21.3.5	Conyza_scabrida	s	2	100	100	90	0
+21	21.3	21.3.5	Pennisetum_macrourum	r	1	60	20	100	0
+21	21.3	21.3.6	Conyza_scabrida	s	1	40	100	10	0
+21	21.3	21.3.6	Pennisetum_macrourum	r	1	60	25	100	0
+21	21.4	21.4.7	Pennisetum_macrourum	r	1	60	25	100	0
+21	21.4	21.4.7	Oxalis_sp.		1	30	100	0.1	0
+21	21.4	21.4.8	Conyza_scabrida	s	1	100	100	40	1
+21	21.4	21.4.8	Pennisetum_macrourum	r	1	80	25	100	0
+21	21.4	21.4.8	Pentaschistis_ampla		1	50	50	0.1	0
+21	21.5	21.5.9	Pennisetum_macrourum		1	50	20	100	0
+21	21.5	21.5.9	Typha_capensis	r	1	50	0	10	0
+21	21.5	21.5.10	Pennisetum_macrourum		1	50	20	100	0
+21	21.5	21.5.10	Typha_capensis		1	80	0	20	0
+21	21.6	21.6.11	Conyza_scabrida	s	1	80	100	30	0
+21	21.6	21.6.11	Pennisetum_macrourum		1	35	20	20	0
+21	21.6	21.6.11	Typha_capensis		3	200	0	75	0
+21	21.6	21.6.12	Conyza_scabrida		4	120	75	40	0
+21	21.6	21.6.12	Pennisetum_macrourum		1	70	50	100	0
+22	22.1	22.1.1	Berzelia_lanuginosa	s	30	75	100	60	0
+22	22.1	22.1.1	Metalasia_muricata	s	0	90	100	5	0
+22	22.1	22.1.1	Pteridium_aquilinum	r	20	75	5	80	0
+22	22.1	22.1.1	Schoenozipium_grassulus		10	40	50	2	0
+22	22.1	22.1.2	Berzelia_lanuginosa	s	40	120	100	70	0
+22	22.1	22.1.2	Ehrharta_rehamanii_subsp_subspicata		3	30	10	5	0
+22	22.1	22.1.2	Restio_quadratus_?	r	3	100	100	40	0
+22	22.2	22.2.3	Berzelia_lanuginosa		50	100	100	80	0
+22	22.2	22.2.3	Ehrharta_rehamanii_subsp_subspicata		5	30	20	3	0
+22	22.2	22.2.3	Erica_hirtiflora	s	1	100	100	20	1
+22	22.2	22.2.3	Schoenozipium_grassulus		10	50	100	1	0
+22	22.2	22.2.4	Berzelia_lanuginosa		30	60	100	70	0
+22	22.2	22.2.4	Ehrharta_rehamanii_subsp_subspicata		4	20	50	0.1	0
+22	22.2	22.2.4	Pennisetum_macrourum		3	80	20	40	0
+22	22.2	22.2.4	Schoenozipium_grassulus		5	50	100	2	0
+22	22.2	22.2.4	Oxalis_legume_sp.		10	1	100	0.1	0
+22	22.3	22.3.5	Berzelia_lanuginosa	s	15	80	100	40	15
+22	22.3	22.3.5	Ehrharta_rehamanii_subsp_subspicata		5	30	50	2	0
+22	22.3	22.3.5	Restio_quadratus_?	r	1	100	100	10	0
+22	22.3	22.3.5	Schoenozipium_grassulus		10	50	100	1	0
+22	22.3	22.3.5	Oxalis_legume_sp.		10	15	100	0.1	0
+22	22.3	22.3.5	Restio_sp		2	50	100	0.1	2
+22	22.3	22.3.6	Ehrharta_rehamanii_subsp_subspicata		2	20	100	0.1	0
+22	22.3	22.3.6	Imperata_cylindrica	r	4	30	50	5	0
+22	22.3	22.3.6	Schoenozipium_grassulus		1	30	100	0.1	0
+22	22.3	22.3.6	Oxalis_legume_sp.		20	10	100	0.1	0
+22	22.3	22.3.6	Restio_quadratus_?	r	2	70	50	20	0
+22	22.4	22.4.7	Berzelia_lanuginosa	s	12	80	100	50	0
+22	22.4	22.4.7	Imperata_cylindrica	r	25	20	50	75	0
+22	22.4	22.4.7	Restio_quadratus_?	r	1	100	100	10	0
+22	22.4	22.4.8	Berzelia_lanuginosa	s	75	100	100	100	0
+22	22.4	22.4.8	Ehrharta_rehamanii_subsp_subspicata	s	1	20	25	0.1	0
+22	22.4	22.4.8	Erica_hirtiflora	s	1	100	100	5	0
+22	22.4	22.4.8	Imperata_cylindrica	r	2	50	20	2	0
+22	22.4	22.4.8	Schoenozipium_grassulus		5	80	100	1	0
+22	22.5	22.5.9	Berzelia_lanuginosa	s	35	65	100	50	0
+22	22.5	22.5.9	Ehrharta_rehamanii_subsp_subspicata	s	10	20	100	2	0
+22	22.5	22.5.9	Imperata_cylindrica	r	5	20	50	5	0
+22	22.5	22.5.9	Pteridium_aquilinum	r	2	35	20	4	0
+22	22.5	22.5.9	Schoenozipium_grassulus		25	60	100	10	0
+22	22.5	22.5.10	Berzelia_lanuginosa	s	35	70	100	70	0
+22	22.5	22.5.10	Ehrharta_rehamanii_subsp_subspicata	s	2	5	10	1	0
+22	22.5	22.5.10	Pteridium_aquilinum	r	1	40	100	0.1	0
+22	22.5	22.5.10	Restio_quadratus_?	r	1	15	100	0.1	1
+22	22.5	22.5.10	Schoenozipium_grassulus		5	40	100	0.1	0
+22	22.5	22.5.10	Pentachistis_sp		1	20	100	1	0
+22	22.5	22.5.10	Oxalis_legume_sp.		3	10	100	0.1	0
+22	22.6	22.6.11	Berzelia_lanuginosa	s	40	90	100	100	0
+22	22.6	22.6.11	Ehrharta_rehamanii_subsp_subspicata	s	1	35	80	0.1	0
+22	22.6	22.6.11	Erica_hirtiflora	s	3	80	100	10	0
+22	22.6	22.6.11	Ficinia_angustifolia	s	20	30	100	10	0
+22	22.6	22.6.11	Pteridium_aquilinum	r	3	80	50	20	0
+22	22.6	22.6.11	Morea_sp		1	40	100	0.1	0
+22	22.6	22.6.12	Berzelia_lanuginosa		25	100	100	40	0
+22	22.6	22.6.12	Ehrharta_rehamanii_subsp_subspicata		2	20	50	0.1	0
+22	22.6	22.6.12	Pteridium_aquilinum		10	100	5	90	0
+22	22.6	22.6.12	Schoenozipium_grassulus		1	40	100	0.1	0
+22	22.6	22.6.12	Platycaulos_compressus		0	100	25	5	0
+23	23.1	23.1.1_	Amphithalae_ericifolia		0	35	100	1	0
+23	23.1	23.1.1_	Anexeton_laevae		4	45	100	2	4
+23	23.1	23.1.1_	Cannamois_virgata		0	30	50	1	0
+23	23.1	23.1.1_	Cullumia_setosa		7	70	75	5	7
+23	23.1	23.1.1_	Leucadendron_laureolum		7	40	100	2	0
+23	23.1	23.1.1_	Liparia_parva		2	25	100	3	0
+23	23.1	23.1.1_	Pelargonium_cucullatum		1	85	100	1	0
+23	23.1	23.1.1_	Pseudopentameris_macrantha	r	2	60	80	10	0
+23	23.1	23.1.1_	Rhus_lucida	r	1	85	100	20	0
+23	23.1	23.1.1_	Stoebe_cinerea	s	5	55	80	15	5
+23	23.1	23.1.1_	Tetraria_eximia	r	1	35	100	0.1	0
+23	23.1	23.1.1_	Thamnochortus_arenarius	s	2	15	100	0.1	0
+23	23.1	23.1.1_	Roella_amplexicaulis	s	2	80	25	5	0
+23	23.1	23.1.1_	Oxalis_sp		25	5	100	20	0
+23	23.1	23.1.1_	Othonna_quiquidentata		1	150	50	5	0
+23	23.1	23.1.1_	Aspalalthus_divaricata		0	10	100	2	0
+23	23.1	23.1.1_	Ficinia_small	s	1	10	100	0.1	1
+23	23.1	23.1.1_	Ficinia_large	s	12	25	100	5	12
+23	23.1	23.1.1_	Tracheandra_tabularis_?	s	2	20	100	0.1	2
+23	23.1	23.1.1_	Acacia_saligna	s	1	30	100	1	1
+23	23.1	23.1.1_	Chrysocoma?_	s	1	30	100	0.1	1
+23	23.1	23.1.2	Anexeton_laevae	s	3	20	100	1	3
+23	23.1	23.1.2	Cannamois_virgata	r	1	40	50	5	0
+23	23.1	23.1.2	Cullumia_setosa	s	1	15	100	0.1	1
+23	23.1	23.1.2	Diospyros_glabra	s	1	30	100	5	0
+23	23.1	23.1.2	Erica_abietina	s	1	20	100	2	1
+23	23.1	23.1.2	Erica_similis	s	2	15	100	2	2
+23	23.1	23.1.2	Mimetes_fibrifolius	r	1	200	0	100	0
+23	23.1	23.1.2	Pseudopentameris_macrantha	r	4	65	80	20	0
+23	23.1	23.1.2	Stoebe_cinerea	s	1	30	100	1	1
+23	23.1	23.1.2	Thamnochortus_arenarius	s	2	20	100	2	2
+23	23.1	23.1.2	Roella_amplexicaulis		8	35	25	5	0
+23	23.1	23.1.2	Aspalalthus_divaricata	s	1	10	100	10	1
+23	23.1	23.1.2	Ficinia_small	s	1	10	100	4	1
+23	23.1	23.1.2	Erica_muscosa	s	1	30	100	1	1
+23	23.1	23.1.2	Cassytha_ciliolata		0		100	3	0
+23	23.2	23.2.3	Alciope_tabularis	r	1	30	100	10	0
+23	23.2	23.2.3	Anexeton_laevae	s	8	50	100	2	8
+23	23.2	23.2.3	Aspalalthus_divaricata	s	1	25	100	40	1
+23	23.2	23.2.3	Bolusafra_bituminosa	s	0	15	100	1	0
+23	23.2	23.2.3	Cullumia_setosa	s	1	65	100	3	1
+23	23.2	23.2.3	Erica_abietina	s	1	60	100	2	1
+23	23.2	23.2.3	Erica_similis	s	1	40	100	2	1
+23	23.2	23.2.3	Leucadendron_laureolum	s	7	30	100	2	7
+23	23.2	23.2.3	Pseudopentameris_macrantha	r	2	100	80	70	0
+23	23.2	23.2.3	Stoebe_cinerea	s	3	65	100	10	3
+23	23.2	23.2.3	Chrysocoma?_		1	35	100	0.1	0
+23	23.2	23.2.3	Oxalis_sp		1	5	100	0.1	0
+23	23.2	23.2.3	Ficinia_small		3	10	100	0.1	0
+23	23.2	23.2.3	Ficinia_large		2	30	50	2	0
+23	23.2	23.2.3	Roella_amplexicaulis		3	55	50	2	0
+23	23.2	23.2.3	Cassytha_ciliolata		1	50	100	2	0
+23	23.2	23.2.4	Anexeton_laevae	s	3	35	100	1	3
+23	23.2	23.2.4	Anthospernum_aethiopicum	s	1	20	100	0.1	1
+23	23.2	23.2.4	Aspalalthus_divaricata		0	10	100	0.1	0
+23	23.2	23.2.4	Bolusafra_bituminosa	s	1	15	100	0.1	1
+23	23.2	23.2.4	Cullumia_setosa		0	40	100	1	0
+23	23.2	23.2.4	Erica_abietina	s	2	20	100	1	2
+23	23.2	23.2.4	Erica_similis	s	2	20	100	1	2
+23	23.2	23.2.4	Hypodiscus_aristatus	r	1	100	100	40	0
+23	23.2	23.2.4	Leucadendron_laureolum	s	1	70	100	0.1	1
+23	23.2	23.2.4	Mimetes_fibrifolius	s	1	25	100	1	1
+23	23.2	23.2.4	Pseudopentameris_macrantha	r	4	100	80	15	0
+23	23.2	23.2.4	Stoebe_cinerea	s	1	20	100	0.1	0
+23	23.2	23.2.4	Thamnochortus_arenarius	s	5	15	100	1	5
+23	23.2	23.2.4	Chrysocoma?_		1	45	100	1	0
+23	23.2	23.2.4	Oxalis_sp		4	5	100	0.1	0
+23	23.2	23.2.4	Ficinia_small		4	10	100	1	4
+23	23.2	23.2.4	Roella_amplexicaulis		12	100	50	4	12
+23	23.3	23.3.5	Aspalalthus_divaricata	s	0	10	100	1	0
+23	23.3	23.3.5	Pelargonium_cucullatum	s	0	50	100	1	0
+23	23.3	23.3.5	Cassytha_ciliolata		0	5	100	0.1	0
+23	23.3	23.3.5	Crassula_fasicularis	s	1	10	100	0.1	1
+23	23.3	23.3.5	Indigofera		1	5	100	0.1	0
+23	23.3	23.3.6	Anexeton_laevae	s	4	50	100	4	4
+23	23.3	23.3.6	Anthospernum_aethiopicum	s	1	20	100	0.1	0
+23	23.3	23.3.6	Bolusafra_bituminosa	s	1	30	100	0.1	0
+23	23.3	23.3.6	Cannamois_virgata		0	40	100	5	0
+23	23.3	23.3.6	Cullumia_setosa		2	60	100	1	2
+23	23.3	23.3.6	Erica_similis	s	2	30	100	2	2
+23	23.3	23.3.6	Erica_subcapitata	s	1	25	100	0.1	1
+23	23.3	23.3.6	Leucadendron_laureolum	s	12	50	100	4	12
+23	23.3	23.3.6	Pelargonium_cucullatum	s	1	15	100	0.1	1
+23	23.3	23.3.6	Pseudopentameris_macrantha	r	2	100	80	30	0
+23	23.3	23.3.6	Stoebe_cinerea		6	40	100	4	0
+23	23.3	23.3.6	Thamnochortus_arenarius	r	1	50	100	3	0
+23	23.3	23.3.6	Crassula_fasicularis	s	1	20	100	0.1	1
+23	23.3	23.3.6	Elegia_racemosa	r	1	130	100	50	0
+23	23.3	23.3.6	Oxalis_sp		7	5	10	1	0
+23	23.3	23.3.6	Ficinia_small		7	10	100	1	0
+23	23.3	23.3.6	Roella_amplexicaulis		4	80	50	3	0
+23	23.3	23.3.6	Roella_ciliata	s	1	20	25	1	1
+23	23.3	23.3.6	Lachenalia_sp.	s	10	5	100	0.1	10
+23	23.4	23.4.7	Anexeton_laevae	s	1	15	50	0.1	0
+23	23.4	23.4.7	Aspalalthus_capensis	s	3	30	100	2	3
+23	23.4	23.4.7	Erica_subcapitata	s	13	25	100	5	13
+23	23.4	23.4.7	Hypodiscus_aristatus	r	1	40	50	1	0
+23	23.4	23.4.7	Ischyrolepis_capensis	s	1	20	50	1	0
+23	23.4	23.4.7	Tetraria_eximia	r	8	30	60	10	0
+23	23.4	23.4.7	Thamnochortus_arenarius	s	4	10	50	0.1	4
+23	23.4	23.4.7	Crassula_fasicularis	s	1	10	100	0.1	0
+23	23.4	23.4.7	Roella_ciliata		1	25	50	0.1	0
+23	23.4	23.4.7	Struthiola_ciliata		2	30	100	0.1	0
+23	23.4	23.4.7	Aspalathus_divaricata		0	10	50	2	0
+23	23.4	23.4.7	Ficinia_large		4	20	50	0.1	0
+23	23.4	23.4.7	Acacia_saligna	s	2	30	100	1	2
+23	23.4	23.4.7	Ficinia_small		2	10	50	0.1	0
+23	23.4	23.4.7	Lobelia_cetaceae		2	20	50	0.1	0
+23	23.4	23.4.7	Erepsia_sp	s	1	30	10	0.1	0
+23	23.4	23.4.8	Anexeton_laevae	s	1	15	100	0.1	0
+23	23.4	23.4.8	Anthospernum_aethiopicum	s	15	90	100	5	15
+23	23.4	23.4.8	Cullumia_setosa	s	1	45	100	0.1	1
+23	23.4	23.4.8	Leucadendron_laureolum	s	2	55	100	3	2
+23	23.4	23.4.8	Pseudopentameris_macrantha		5	80	75	40	0
+23	23.4	23.4.8	Thamnochortus_arenarius		2	40	100	1	0
+23	23.4	23.4.8	Crassula_fasicularis		1	25	100	0.1	0
+23	23.4	23.4.8	Struthiola_ciliata		1	35	100	3	0
+23	23.4	23.4.8	Aspalathus_divaricata	s	1	10	100	1	1
+23	23.4	23.4.8	Ficinia_large		3	30	100	1	0
+23	23.4	23.4.8	Ficinia_small		2	10	100	2	0
+23	23.4	23.4.8	Oxalis_sp		1	2	100	0.1	0
+23	23.4	23.4.8	Pelargonium_cucullatum	s	1	30	100	0.1	1
+23	23.4	23.4.8	Lachenalia_sp.		10	5	100	0.1	0
+23	23.4	23.4.8	Bobania_ambigua		1	10	100	0.1	0
+23	23.4	23.4.8	Ficinia_nigrescens		2	30	50	0.1	0
+23	23.4	23.4.8	Roella_amplexicaulis	s	1	4	50	1	1
+23	23.5	23.5.9	Anexeton_laevae	s	16	40	100	10	0
+23	23.5	23.5.9	Babiana_ambigua	s	9	10	100	0.1	0
+23	23.5	23.5.9	Cullumia_setosa	s	4	35	75	2	4
+23	23.5	23.5.9	Edmondia_sesamoides	s	2	15	50	0.1	1
+23	23.5	23.5.9	Erica_similis	s	5	15	100	2	0
+23	23.5	23.5.9	Hypodiscus_aristatus	r	2	50	75	15	0
+23	23.5	23.5.9	Leucadendron_laureolum	s	1	35	100	1	1
+23	23.5	23.5.9	Stoebe_cinerea	s	2	20	100	1	0
+23	23.5	23.5.9	Thamnochortus_arenarius	s	5	10	100	1	0
+23	23.5	23.5.9	Thamnochortus_fruticosus	r	15	20	75	8	0
+23	23.5	23.5.9	Crassula_fasicularis	s	1	10	100	0.1	1
+23	23.5	23.5.9	Microdon_dubium	s	2	20	100	2	2
+23	23.5	23.5.9	Roella_ciliata	s	5	25	50	0.1	5
+23	23.5	23.5.9	Oxalis_sp		3	5	100	0.1	0
+23	23.5	23.5.9	Struthiola_ciliata		1	15	100	0.1	0
+23	23.5	23.5.9	Lobelia_cetaceae		5	15	100	0.1	0
+23	23.5	23.5.9	Treteria_sp_2		12	20	80	2	0
+23	23.5	23.5.9	Lyperia_carva	r	1	30	100	5	0
+23	23.5	23.5.9	Ficina_small		3	10	100	0.1	0
+23	23.5	23.5.9	Struthiola_dodecandra		1	15	100	0.1	0
+23	23.5	23.5.10	Anexeton_laevae	s	7	60	100	5	0
+23	23.5	23.5.10	Cullumia_setosa		1	50	100	3	0
+23	23.5	23.5.10	Erica_similis	s	1	20	100	1	1
+23	23.5	23.5.10	Ischyrolepis_cincinnata		3	30	100	1	3
+23	23.5	23.5.10	Mimetes_fibrifolius		0	200	1	75	0
+23	23.5	23.5.10	Pseudopentameris_macrantha	s	1	60	100	1	1
+23	23.5	23.5.10	Stoebe_cinerea		1	40	100	3	1
+23	23.5	23.5.10	Struthiolia_ciliata		1	30	100	1	1
+23	23.5	23.5.10	Ficina_small		8	10	100	2	8
+23	23.5	23.5.10	Aspalathus_divaricata		0	20	100	15	0
+23	23.5	23.5.10	Senecio_umbellatus	s	1	50	80	3	1
+23	23.6	23.6.11	Anexeton_laevae	s	13	40	100	5	0
+23	23.6	23.6.11	Aspalathus_divaricata	s	0	10	100	1	0
+23	23.6	23.6.11	Cannamois_virgata	r	0	40	75	1	0
+23	23.6	23.6.11	Cullumia_setosa	s	4	40	80	10	0
+23	23.6	23.6.11	Edmondia_sesamoides	s	1	20	100	0.1	0
+23	23.6	23.6.11	Erica_similis	s	10	30	100	20	0
+23	23.6	23.6.11	Erica_subcapitata	s	1	40	100	2	1
+23	23.6	23.6.11	Ischyrolepis_cincinnata		1	15	100	2	0
+23	23.6	23.6.11	Leucadendron_laureolum	s	1	30	100	0.1	1
+23	23.6	23.6.11	Pseudopentameris_macrantha	r	3	30	80	5	0
+23	23.6	23.6.11	Stoebe_cinerea	s	3	40	100	8	0
+23	23.6	23.6.11	Thamnocortus_arenarius		3	20	100	1	0
+23	23.6	23.6.11	Ficinia_nigrescens		6	20	80	4	0
+23	23.6	23.6.11	Ficinia_small	s	3	10	80	1	3
+23	23.6	23.6.11	Roella_ciliata		3	25	50	0.1	0
+23	23.6	23.6.11	Erica_sp_1		0	25	100	1	0
+23	23.6	23.6.11	Oxalis_sp		3	2	100	0.1	0
+23	23.6	23.6.11	Roella_amplexicaulis		4	60	20	2	0
+23	23.6	23.6.12	Anthospernum_aethiopicum	s	1	5	100	0.1	1
+23	23.6	23.6.12	Ischyrolepis_cincinnata		10	15	100	5	0
+23	23.6	23.6.12	Leucadendron_laureolum		1	25	100	1	1
+23	23.6	23.6.12	Pseudopentameris_macrantha		1	100	80	25	0
+23	23.6	23.6.12	Stoebe_cinerea		4	25	100	2	0
+23	23.6	23.6.12	Crassula_fasicularis		2	40	80	2	0
+23	23.6	23.6.12	Ficinia_nigrescens		1	24	100	0.1	1
+23	23.6	23.6.12	Ficinia_small		2	10	100	0.1	0
+23	23.6	23.6.12	Thesium_strictum	s	1	100	100	5	1
+23	23.6	23.6.12	Thesium_sp		1	60	100	2	0
+23	23.6	23.6.12	Lexaton_levi		4	50	100	2	0
+23	23.6	23.6.12	Erica_muscosa	s	1	35	100	1	1
+23	23.6	23.6.12	Othonna_quiquidentata		1	50	100	1	0
+25	25.1	25.1.1	Aspalathus_ericifolia	s	1	50	100	25	1
+25	25.1	25.1.1	Cassytha_ciliolata		1	50	100	10	0
+25	25.1	25.1.1	Chrysanthemoides_monolifera	s	1	65	100	20	0
+25	25.1	25.1.1	Ficinia_nigrescens	s	4	15	0	2	0
+25	25.1	25.1.1	Lampranthus_emarginatus_?_		5	40	0	10	0
+25	25.1	25.1.1	Roella_ciliata		3	50	0	20	0
+25	25.1	25.1.1	Thesium_strictum	s	1	90	100	10	0
+25	25.1	25.1.1	Stripagrostis_zeyheri	r	1	70	75	30	0
+25	25.1	25.1.1	Passerina_corymbosa	s	1	35	100	1	1
+25	25.1	25.1.2	Cassytha_ciliolata		1	25	50	40	0
+25	25.1	25.1.2	Cymbopogon_marginatus	s	1	20	25	2	1
+25	25.1	25.1.2	Euryops_abrotanifolius		1	40	50	10	0
+25	25.1	25.1.2	Lampranthus_emarginatus_?_		20	30	0	25	0
+25	25.1	25.1.2	Roella_ciliata		2	25	10	20	0
+25	25.1	25.1.2	Thesium_strictum		2	70	100	10	2
+25	25.1	25.1.2	oxalis_sp		10	5	100	1	0
+25	25.2	25.2.3	Aspalathus_chenopoda	s	3	55	60	50	3
+25	25.2	25.2.3	Aspalathus_ericifolia	s	1	45	100	20	1
+25	25.2	25.2.3	Cassytha_ciliolata		1	30	50	10	0
+25	25.2	25.2.3	Cymbopogon_marginatus	s	1	25	50	10	0
+25	25.2	25.2.3	Ficinia_nigrescens		2	25	0	3	0
+25	25.2	25.2.3	Lampranthus_emarginatus_?_		5	3	0	10	0
+25	25.2	25.2.3	Olea_capensis	r	0	65	100	5	0
+25	25.2	25.2.3	Roella_ciliata		1	25	25	1	0
+25	25.2	25.2.3	Struthiola_ciliata	s	2	55	100	5	2
+25	25.2	25.2.3	Thesium_strictum	r	0	60	100	5	0
+25	25.2	25.2.3	Tricocephalus_stipularus		0	20	100	0.1	0
+25	25.2	25.2.4	Acacia_cyclops		1	40	100	5	1
+25	25.2	25.2.4	Aspalathus_ericifolia		4	40	100	70	0
+25	25.2	25.2.4	Cassytha_ciliolata		1	40	50	30	0
+25	25.2	25.2.4	Cymbopogon_marginatus		1	50	0	3	0
+25	25.2	25.2.4	Hermannia_flamula	s	1	15	100	0.1	1
+25	25.2	25.2.4	Struthiola_ciliata	s	2	50	100	3	2
+25	25.2	25.2.4	Thesium_strictum	r	1	90	100	10	1
+25	25.2	25.2.4	oxalis_sp		7	15	100	2	0
+25	25.3	25.3.5	Aspalathus_chenopoda	s	1	70	100	50	1
+25	25.3	25.3.5	Aspalathus_ericifolia	s	2	30	100	5	2
+25	25.3	25.3.5	Cassytha_ciliolata		1	30	50	20	0
+25	25.3	25.3.5	Cymbopogon_marginatus		1	30	50	1	0
+25	25.3	25.3.5	Roella_ciliata		5	30	10	5	0
+25	25.3	25.3.5	Struthiola_ciliata		1	35	100	5	0
+25	25.3	25.3.5	Thesium_strictum	r	1	80	100	10	1
+25	25.3	25.3.5	Stripagrostis_zeyheri		0	40	50	5	0
+25	25.3	25.3.5	oxalis_pink_leaf		2	10	100	0.1	2
+25	25.3	25.3.5	Othonna_quiquidentata		1	70	50	3	1
+25	25.3	25.3.6	Acacia_cyclops		1	25	100	0.1	1
+25	25.3	25.3.6	Cymbopogon_marginatus		1	25	50	1	1
+25	25.3	25.3.6	Ehrharta_calycina		3	25	25	2	0
+25	25.3	25.3.6	Ficinia_nigrescens		10	15	15	5	0
+25	25.3	25.3.6	Lampranthus_emarginatus_?_		10	30	0	5	0
+25	25.3	25.3.6	Olea_capensis	r	1	40	100	3	0
+25	25.3	25.3.6	Pelargonium_triste		1	5	100	0.1	0
+25	25.3	25.3.6	Roella_ciliata		1	25	5	2	0
+25	25.3	25.3.6	oxalis_pink_leaf		2	5	100	0.1	0
+25	25.3	25.3.6	oxalis_thin_leaf		10	15	100	1	0
+25	25.3	25.3.6	Apiaceae_sp-adenocline		2	15	100	1	0
+25	25.3	25.3.6	Pentachistis_barbarta		1	10	5	0.1	0
+25	25.4	25.4.7	Aspalathus_chenopoda		2	50	100	45	2
+25	25.4	25.4.7	Aspalathus_ericifolia	s	5	40	100	55	5
+25	25.4	25.4.7	Cassytha_ciliolata		1	40	50	30	0
+25	25.4	25.4.7	Euphorbia_erythrina	s	1	30	100	0.1	1
+25	25.4	25.4.7	Ficinia_nigrescens		1	25	50	5	1
+25	25.4	25.4.7	Lampranthus_emarginatus_?_		1	25	50	1	0
+25	25.4	25.4.7	Roella_ciliata		1	35	0	2	0
+25	25.4	25.4.7	Thesium_strictum		0	100	100	15	0
+25	25.4	25.4.7	oxalis_thin_leaf		1	5	100	0.1	0
+25	25.4	25.4.8	Acacia_cyclops		1	50	100	1	1
+25	25.4	25.4.8	Aspalathus_chenopoda		0	60	50	40	0
+25	25.4	25.4.8	Aspalathus_ericifolia		3	35	100	10	0
+25	25.4	25.4.8	Cassytha_ciliolata		1	40	50	50	0
+25	25.4	25.4.8	Euryops_abrotanifolius		2	50	100	10	2
+25	25.4	25.4.8	Lampranthus_emarginatus_?_		5	30	0	5	0
+25	25.4	25.4.8	Roella_ciliata		2	30	0	3	0
+25	25.4	25.4.8	Struthiola_ciliata		1	40	100	5	1
+25	25.4	25.4.8	oxalis_thin_leaf		3	10	100	0.1	0
+25	25.5	25.5.9	Cassytha_ciliolata		1	30	50	30	0
+25	25.5	25.5.9	Cymbopogon_marginatus		1	30	50	3	0
+25	25.5	25.5.9	Hermannia_flamula		0	10	100	0.1	0
+25	25.5	25.5.9	Thesium_strictum		3	90	100	10	3
+25	25.5	25.5.9	Ischyrolepus_capensis		1	50	100	0.1	0
+25	25.5	25.5.10	Aspalathus_ericifolia		1	30	100	10	0
+25	25.5	25.5.10	Euryops_abrotanifolius		4	20	100	0.1	0
+25	25.5	25.5.10	Ficinia_nigrescens		1	15	50	0.1	0
+25	25.5	25.5.10	Lampranthus_emarginatus_?_		10	25	0	5	0
+25	25.5	25.5.10	Roella_ciliata		10	20	0	15	0
+25	25.5	25.5.10	Stipagrostis_zeyheri	s	1	40	10	10	1
+25	25.5	25.5.10	Struthiola_ciliata		6	35	100	15	0
+25	25.5	25.5.10	Thesium_strictum	s	2	50	50	10	0
+25	25.5	25.5.10	Ischyrolepus_capensis		1	15	50	1	1
+25	25.5	25.5.10	oxalis_pink_leaf		20	10	100	1	0
+25	25.6	25.6.11	Cassytha_ciliolata		1	30	50	10	0
+25	25.6	25.6.11	Chrysanthemoides_monolifera	s	1	75	100	20	1
+25	25.6	25.6.11	Euphorbia_erythrina	s	1	20	100	0.1	1
+25	25.6	25.6.11	Ficinia_nigrescens		10	20	10	10	0
+25	25.6	25.6.11	Hermannia_flamula		2	10	100	0.1	0
+25	25.6	25.6.11	Stipagrostis_zeyheri		1	50	10	25	0
+25	25.6	25.6.11	Thesium_strictum		2	80	100	25	0
+25	25.6	25.6.11	Stipagrostis_zeyheri	s	1	25	100	0.1	1
+25	25.6	25.6.11	Androcimbium_ucomoides		1	10	100	0.1	0
+25	25.6	25.6.11	Crassula_fasicularis		1	25	0	0.1	0
+25	25.6	25.6.12	Aspalathus_chenopoda	s	1	45	100	40	1
+25	25.6	25.6.12	Cassytha_cilliolata		1	25	50	20	0
+25	25.6	25.6.12	Euryops_abrotanifolius	s	6	45	100	8	6
+25	25.6	25.6.12	Hermannia_flamula		2	25	100	1	0
+25	25.6	25.6.12	Lampranthus_emarginatus_?_		10	25	0	10	0
+25	25.6	25.6.12	Roella_ciliata		2	20	0	10	0
+25	25.6	25.6.12	Struthiola_ciliata		1	40	100	2	0
+25	25.6	25.6.12	Thesium_strictum		1	95	100	10	0
+25	25.6	25.6.12	oxalis_pink_leaf		1	10	100	0.1	0
+25	25.6	25.6.12	Elytropappus_scaber		1	30	100	10	0
+28	28.1	28.1.1	Chrysanthemoides_monolifera	s	0	80	100	5	0
+28	28.1	28.1.1	Ehrharta_ramosa	s	0	80	40	5	0
+28	28.1	28.1.1	Rhus_lucida	s	6	30	100	2	6
+28	28.1	28.1.1	Oxalis_prescaparii	s	10	10	100	1	10
+28	28.1	28.1.1	Pennecetum_clandestynum		1	60	50	10	0
+28	28.1	28.1.2	Syphia_digitata		15	10	100	0.1	15
+28	28.1	28.1.2	Watsonia_barbonica		6	40	100	1	6
+28	28.1	28.1.2	Oxalis_sp._3		4	5	100	3	4
+28	28.1	28.1.2	Tritoniopsis_triticea	r	1	40	50	1	0
+28	28.1	28.1.2	Thamnochortus_fruticosus	s	2	15	100	0.1	2
+28	28.1	28.1.2	Passerina_corymbosa		2	15	100	0.1	2
+28	28.1	28.1.2	Macrostylis_villosa	r	1	30	100	5	0
+28	28.1	28.1.2	Ischyrolepis_capensis		3	50	100	5	0
+28	28.1	28.1.2	Ficina_nigrescens		2	30	50	2	0
+28	28.1	28.1.2	Aspalathus_ericifolia	s	1	35	100	0.1	1
+28	28.2	28.2.3	Briza_maxima	s	10	10	100	0.1	0
+28	28.2	28.2.3	Ehrharta_ramosa	s	2	60	10	5	0
+28	28.2	28.2.3	Merxmuellera_stricta	r	2	20	50	5	0
+28	28.2	28.2.3	Merxmuellera_stricta	s	2	15	50	1	2
+28	28.2	28.2.3	Passerina_corymbosa	s	1	30	100	1	0
+28	28.2	28.2.3	Pentaschistis_airoides	s	25	3	100	0.1	0
+28	28.2	28.2.3	Morea_sp	s	4	10	100	0.1	0
+28	28.2	28.2.3	Oxalis_prescaparii		2	10	100	2	0
+28	28.2	28.2.3	Watsonia_barbonica		2	20	100	1	0
+28	28.2	28.2.4	Acacia_saligna		4	30	100	2	0
+28	28.2	28.2.4	Aspalathus_ericifolia		3	30	80	25	0
+28	28.2	28.2.4	Cullumia_setosa		2	50	50	10	2
+28	28.2	28.2.4	Ehrharta_ramosa		4	70	50	10	0
+28	28.2	28.2.4	Erica_similis		1	20	100	1	0
+28	28.2	28.2.4	Ficina_nigrescens		3	30	50	2	0
+28	28.2	28.2.4	Merxmuellera_stricta		1	40	50	2	0
+28	28.2	28.2.4	Metalasia_muricata		3	40	100	10	3
+28	28.2	28.2.4	Passerina_corymbosa	s	3	20	100	0.1	3
+28	28.2	28.2.4	Oxalis_prescaparii		2	10	100	0.1	0
+28	28.2	28.2.4	Rhus_lucida	r	1	40	100	2	0
+28	28.2	28.2.4	Sythia_digitata	s	10	5	100	1	10
+28	28.2	28.2.4	Thesium_strictum		1	80	60	2	1
+28	28.2	28.2.4	Pelargonium_cuculatum	s	2	50	100	2	2
+28	28.3	28.3.5	Acacia_saligna		1	85	100	5	1
+28	28.3	28.3.5	Aspalathus_ericifolia	s	6	80	50	25	6
+28	28.3	28.3.5	Ischyrolepis_capensis	s	1	20	100	0.1	1
+28	28.3	28.3.5	Pentaschistis_airoides	s	25	10	10	2	0
+28	28.3	28.3.5	Watsonia_barbonica	s	4	30	50	0.1	4
+28	28.3	28.3.5	Watsonia_barbonica	r	1	100	30	20	0
+28	28.3	28.3.5	Holothrix_villosa		2	1	100	0.1	0
+28	28.3	28.3.5	Oxalis_prescaparii		1	10	100	0.1	0
+28	28.3	28.3.6	Ehrharta_ramosa		6	120	50	80	0
+28	28.3	28.3.6	Rhus_tomentosa		1	95	50	10	0
+28	28.4	28.4.7	Ehrharta_ramosa		3	100	50	60	0
+28	28.4	28.4.7	Ficina_nigrescens		5	25	50	10	0
+28	28.4	28.4.8	Acacia_saligna		1	40	100	1	1
+28	28.4	28.4.8	Aspalathus_ericifolia		1	60	100	3	0
+28	28.4	28.4.8	Clifortia_filifolia	s	2	35	100	1	2
+28	28.4	28.4.8	Cullumia_setosa		1	40	100	2	1
+28	28.4	28.4.8	Ehrharta_ramosa		4	70	25	40	0
+28	28.4	28.4.8	Ficina_nigrescens		2	30	0	1	0
+28	28.4	28.4.8	Ischyrolepis_capensis	r	1	55	100	3	0
+28	28.4	28.4.8	Metalasia_muricata	s	1	25	100	0.1	1
+28	28.4	28.4.8	Passerina_corymbosa	s	1	20	100	0.1	1
+28	28.4	28.4.8	Thamnochortus_fruticosus		3	40	50	5	0
+28	28.4	28.4.8	Watsonia_barbonica	r	1	70	25	20	0
+28	28.4	28.4.8	Oxalis_sp._4		10	2	100	2	0
+28	28.4	28.4.8	Thesium_strictum		2	100	100	3	0
+28	28.5	28.5.9	Cullumia_setosa	s	2	30	100	3	2
+28	28.5	28.5.9	Ehrharta_ramosa		5	70	60	75	0
+28	28.5	28.5.9	Ficina_nigrescens	s	4	15	50	0.1	4
+28	28.5	28.5.9	Passerina_corymbosa	s	1	10	100	0.1	1
+28	28.5	28.5.9	Pseudopentameris_macrantha	r	1	100	70	40	0
+28	28.5	28.5.9	Holothrix_villosa		2	1	100	0.1	0
+28	28.5	28.5.9	Ischyrolepis_galdindiana		0	50	100	2	0
+28	28.5	28.5.10	Aspalathus_ericifolia		2	40	70	5	0
+28	28.5	28.5.10	Ehrharta_ramosa		2	50	50	5	0
+28	28.5	28.5.10	Ficina_nigrescens		1	20	5	2	0
+28	28.5	28.5.10	Ischyrolepis_capensis		0	70	100	10	0
+28	28.5	28.5.10	Metalasia_muricata		2	20	100	1	2
+28	28.5	28.5.10	Passerina_corymbosa		1	30	100	0.1	0
+28	28.5	28.5.10	Thamnochortus_fruticosus	r	1	40	80	15	0
+28	28.5	28.5.10	Wachendorfia_paniculata		4	20	100	0.1	0
+28	28.5	28.5.10	Watsonia_barbonica		1	20	100	0.1	0
+28	28.5	28.5.10	Oxalis_sp_4		6	5	100	1	0
+28	28.6	28.6.11	Ehrharta_ramosa		5	35	60	80	0
+28	28.6	28.6.11	Phylica_imberbis	s	1	15	100	0.1	0
+28	28.6	28.6.11	Tritoniopsis_triticea		1	30	100	0.1	0
+28	28.6	28.6.11	Watsonia_barbonica		1	15	100	0.1	0
+28	28.6	28.6.12	Ehrharta_ramosa	s	10	60	80	90	10
+28	28.6	28.6.12	Ficina_nigrescens		5	10	10	3	0
+28	28.6	28.6.12	Ischyrolepis_capensis	s	1	15	100	0.1	1
+28	28.6	28.6.12	Oxalis_sp_4		10	2	100	0.1	0
+28	28.6	28.6.12	Tritreria_sp_1		1	20	100	0.1	0
+30	30.1	30.1.1	Amphithalea_ericifolia	r	4	45	100	10	3
+30	30.1	30.1.1	Anexeton_laevae	s	2	25	100	0.1	0
+30	30.1	30.1.1	Aristea_africana	r	1	20	100	2	0
+30	30.1	30.1.1	Clutia_alarternoides	r	2	15	100	0.1	2
+30	30.1	30.1.1	Corymbium_africanum		2	20	100	1	0
+30	30.1	30.1.1	Corymbium_glabrum		1	25	80	1	0
+30	30.1	30.1.1	Elegia_stipularis	s	3	20	100	2	3
+30	30.1	30.1.1	Erepsia_sp1		1	25	100	1	0
+30	30.1	30.1.1	Erica_similis	s	12	15	100	10	12
+30	30.1	30.1.1	Erica_subcapitata		5	20	100	1	0
+30	30.1	30.1.1	Ficinia_bulbosa		1	5	50	0.1	1
+30	30.1	30.1.1	Ischyrolepis_capensis	r	1	40	50	4	0
+30	30.1	30.1.1	Ischyrolepis_tenuissima		15	15	100	10	0
+30	30.1	30.1.1	Metalasia_muricata		1	40	100	0.1	1
+30	30.1	30.1.1	Serruria_villosa		1	15	100	0.1	1
+30	30.1	30.1.1	Thamnochortus_fruticosus	r	3	10	100	0.1	0
+30	30.1	30.1.1	Thamnochortus_gracilus		2	60	100	5	0
+30	30.1	30.1.1	Cannomois_vargata		10	60	75	20	0
+30	30.1	30.1.1	Roella_cilliata		7	20	50	2	7
+30	30.1	30.1.1	Lobelia_setacea		1	15	100	2	0
+30	30.1	30.1.1	Crassula_fasicularis		2	25	100	0.1	2
+30	30.1	30.1.1	Oxalis_sp		2	5	100	0.1	0
+30	30.1	30.1.1	Osteopermum_sp		3	15	100	0.1	3
+30	30.1	30.1.1	Mesem_sp_1		1	25	100	1	0
+30	30.1	30.1.1	Aspalathus_capensis		1	20	100	0.1	0
+30	30.1	30.1.2	Cullumia_setosa		15	30	60	4	0
+30	30.1	30.1.2	Elegia_stipularis		5	40	70	20	0
+30	30.1	30.1.2	Elytropappus_scaber		2	25	100	1	2
+30	30.1	30.1.2	Erepsia_sp1		3	25	80	2	0
+30	30.1	30.1.2	Erica_similis		15	20	100	15	15
+30	30.1	30.1.2	Euryops_abrotanifolius		6	15	100	1	0
+30	30.1	30.1.2	Ischyrolepis_capensis		1	40	50	5	0
+30	30.1	30.1.2	Ischyrolepis_tenuissima		1	10	100	0.1	0
+30	30.1	30.1.2	Leucadendron_laureolum		3	45	100	10	3
+30	30.1	30.1.2	Metalasia_muricata		1	15	100	0.1	1
+30	30.1	30.1.2	Serruria_villosa		15	50	100	5	0
+30	30.1	30.1.2	Roella_cilliata		15	15	25	5	15
+30	30.1	30.1.2	Lobelia_setacea		1	15	50	3	1
+30	30.1	30.1.2	Oxalis_sp		4	5	100	0.1	0
+30	30.1	30.1.2	Osteopermum_sp		1	15	100	1	0
+30	30.1	30.1.2	Mesem_sp_1		1	20	0	0.1	0
+30	30.1	30.1.2	Thesium_strictum		2	55	100	5	2
+30	30.1	30.1.2	Indogofera_glomerata	r	1	10	50	5	0
+30	30.2	30.2.3	Agathosma_capensis	s	1	20	100	0.1	1
+30	30.2	30.2.3	Agathosma_capensis	r	1	20	100	2	0
+30	30.2	30.2.3	Anexeton_laevae	s	2	30	100	0.1	2
+30	30.2	30.2.3	Cullumia_setosa		3	50	75	5	0
+30	30.2	30.2.3	Diosma_oppisitifolia	s	1	10	100	7	1
+30	30.2	30.2.3	Elytropappus_scaber	s	3	30	100	7	3
+30	30.2	30.2.3	Ischyrolepis_tenuissima	r	3	20	100	15	0
+30	30.2	30.2.3	Liparia_parva		1	20	100	1	1
+30	30.2	30.2.3	Rhus_lucida		1	50	100	50	0
+30	30.2	30.2.3	Serruria_villosa		1	30	100	0.1	0
+30	30.2	30.2.3	Thamnochortus_gracilus	r	1	30	100	1	0
+30	30.2	30.2.3	Trachryandra_tabulare		1	25	100	0.1	0
+30	30.2	30.2.3	Panamosis_virgata	r	7	50	80	10	0
+30	30.2	30.2.3	Coella_cilliata		5	30	70	4	0
+30	30.2	30.2.3	Crassula_fasicularis		1	30	0	0.1	1
+30	30.2	30.2.3	Oxalis_sp_5		5	5	100	0.1	0
+30	30.2	30.2.3	Gladiolus_revifolius		1	30	0	0.1	0
+30	30.2	30.2.3	Ficinia_sp		2	20	50	0.1	2
+30	30.2	30.2.3	Ficinia_deusta		1	20	50	1	0
+30	30.2	30.2.3	Gazania_crebsiana	s	2	10	100	0.1	0
+30	30.2	30.2.3	Tretrerria_salvatica		1	130	100	1	0
+30	30.2	30.2.4	Cannomois_vargata		2	45	50	3	0
+30	30.2	30.2.4	Cullumia_setosa		9	30	80	10	0
+30	30.2	30.2.4	Elegia_stipularis	r	1	50	100	5	0
+30	30.2	30.2.4	Elegia_stipularis	s	4	15	100	5	0
+30	30.2	30.2.4	Elytropappus_scaber		2	15	100	1	0
+30	30.2	30.2.4	Erica_similis		8	15	100	4	8
+30	30.2	30.2.4	Gnidia_juniperifolia	r	0	20	100	0.1	0
+30	30.2	30.2.4	Ischyrolepis_capensis		1	30	100	1	0
+30	30.2	30.2.4	Ischyrolepis_tenuissima		2	10	50	4	0
+30	30.2	30.2.4	Pseudopentameris_macrantha		1	40	80	2	0
+30	30.2	30.2.4	Roella_amplexicaulis_		4	30	50	0.1	0
+30	30.2	30.2.4	Selago_luxurians		2	10	100	1	2
+30	30.2	30.2.4	Serruria_villosa		4	25	100	1	0
+30	30.2	30.2.4	Thamnochortus_fruticosus		1	20	8	2	0
+30	30.2	30.2.4	Ficinia_sp		4	25	60	1	0
+30	30.2	30.2.4	Pseudoselagus_spoedo		2	30	0	0.1	0
+30	30.2	30.2.4	Mesem_sp_1		3	30	100	0.1	0
+30	30.2	30.2.4	Polygala		6	20	100	1	0
+30	30.2	30.2.4	Lobelia_setacea		1	10	100	0.1	1
+30	30.3	30.3.5	Agathosma_ciliaris	s	3	10	100	0.1	3
+30	30.3	30.3.5	Amphithalea_ericifolia	r	1	15	100	1	0
+30	30.3	30.3.5	Anexeton_laevae	s	1	10	100	0.1	1
+30	30.3	30.3.5	Aspalathus_liguilobia	s	2	35	100	20	0
+30	30.3	30.3.5	Cannomois_vargata	r	3	60	75	3	0
+30	30.3	30.3.5	Elytropappus_scaber	s	0	25	100	5	0
+30	30.3	30.3.5	Erica_similis		3	15	100	2	0
+30	30.3	30.3.5	Gnidia_juniperifolia		1	10	100	0.1	1
+30	30.3	30.3.5	Ischyrolepis_capensis		2	30	80	5	0
+30	30.3	30.3.5	Thamnochortus_fruticosus		1	40	100	1	0
+30	30.3	30.3.5	Ficicnia_sp		2	20	50	1	0
+30	30.3	30.3.5	Polygala		1	20	100	0.1	0
+30	30.3	30.3.5	Roella_cilliata		2	20	100	1	0
+30	30.3	30.3.5	Amphithalea_ericifolia		3	20	100	1	0
+30	30.3	30.3.6	Aspalathus_liguilobia		1	20	100	1	0
+30	30.3	30.3.6	Elegia_stipularis	s	1	50	100	1	1
+30	30.3	30.3.6	Erica_similis		1	15	100	0.1	0
+30	30.3	30.3.6	Erica_subcapitata		2	15	100	0.1	0
+30	30.3	30.3.6	Erica_subcapitata		2	15	100	0.1	0
+30	30.3	30.3.6	Euphorbia_erythrina		1	15	100	0.1	0
+30	30.3	30.3.6	Leucadendron_laureolum		1	50	100	2	0
+30	30.3	30.3.6	Roella_amplexicaulis_		5	60	50	5	0
+30	30.3	30.3.6	Serruria_villosa		3	35	100	3	0
+30	30.3	30.3.6	Cannomois_vargata		3	60	70	10	0
+30	30.3	30.3.6	Thamnochortus_arenarius		5	50	80	15	0
+30	30.3	30.3.6	Lobelia_setacea		2	40	100	5	0
+30	30.3	30.3.6	Crassula_fasicularis		2	15	100	0.1	0
+30	30.3	30.3.6	Polygala		1	20	100	0.1	0
+30	30.3	30.3.6	oxlis_sp2		3	10	100	0.1	0
+30	30.3	30.3.6	oxalis_sp_1		10	5	100	0.1	0
+30	30.3	30.3.6	ficinia_sp		4	10	80	1	0
+30	30.3	30.3.6	Mesem_sp_1		1	15		1	0
+30	30.4	30.4.7	Agathosma_ciliaris		1	15	100	0.1	1
+30	30.4	30.4.7	Anexeton_laevae		11	20	100	3	0
+30	30.4	30.4.7	Anthspermum_aethiopicum	s	2	20	100	0.1	2
+30	30.4	30.4.7	Elytropappus_scaber		7	20	100	4	0
+30	30.4	30.4.7	Erepsia_sp1		1	35	100	0.1	0
+30	30.4	30.4.7	Erica_cerinthoides	r	1	25	100	1	0
+30	30.4	30.4.7	Erica_subcapitata		2	10	100	1	0
+30	30.4	30.4.7	Euryops_abrotanifolius		14	40	100	5	0
+30	30.4	30.4.7	Ficinia_bulbosa		4	10	50	0.1	0
+30	30.4	30.4.7	Pseudopentameris_macrantha	r	3	60	50	10	0
+30	30.4	30.4.7	Roella_amplexicaulis_		4	60	50	5	0
+30	30.4	30.4.7	Tritoniopsis_triticea	s	1	5	100	0.1	0
+30	30.4	30.4.7	Oxalis_sp2_		10	10	100	2	0
+30	30.4	30.4.7	Thamnochortus_arenarius		3	60	75	10	0
+30	30.4	30.4.7	Mesem_sp_1		2	30	100	1	0
+30	30.4	30.4.7	Aplocartha_flinata		1	0.5	100	0.1	0
+30	30.4	30.4.7	oxalis_sp1		4	5	100	0.1	0
+30	30.4	30.4.7	Holothrix_villosa_______		2	2	100	0.1	0
+30	30.4	30.4.7	Ficinia_sp_1		2	15	50	1	0
+30	30.4	30.4.7	Erica_plukeneti	s	1	20	100	0.1	1
+30	30.4	30.4.7	Erica_corifolia		1	35	100	1	0
+30	30.4	30.4.7	Polygala		1	20	100	0.1	0
+30	30.4	30.4.8	Clutia_alarternoides	r	1	20	100	3	0
+30	30.4	30.4.8	Cullumia_setosa		3	35	60	10	0
+30	30.4	30.4.8	Elegia_stipularis	s	3	30	50	4	3
+30	30.4	30.4.8	Erica_similis		3	15	100	0.1	3
+30	30.4	30.4.8	Erica_subcapitata		1	40	100	1	1
+30	30.4	30.4.8	Ischyrolepis_capensis	r	1	30	100	1	0
+30	30.4	30.4.8	Leucadendron_laureolum	s	1	30	100	1	1
+30	30.4	30.4.8	Passerina_corymbosa	s	1	25	100	0.1	1
+30	30.4	30.4.8	Phylica_imberbis	s	1	15	100	0.1	1
+30	30.4	30.4.8	Pseudopentameris_macrantha		4	35	50	10	0
+30	30.4	30.4.8	Roella_amplexicaulis_		1	30	50	0.1	0
+30	30.4	30.4.8	Selago_luxurians	s	2	20	100	1	2
+30	30.4	30.4.8	Oxalis_sp1		4	5	100	0.1	0
+30	30.4	30.4.8	Ficinia_sp1		2	15	50	1	2
+30	30.4	30.4.8	Polygala		2	15	100	0.1	0
+30	30.4	30.4.8	Roella_cilliata	s	3	30	50	1	3
+30	30.4	30.4.8	Tritoniopsis_sp	r	1	25	100	2	0
+30	30.4	30.4.8	Edmondia_sessimoides		1	20	0	0.1	0
+30	30.4	30.4.8	Tretrerria_salvatica		2	15	100	1	2
+30	30.4	30.4.8	Lobelia_setacea		0	10	100	0.1	0
+30	30.5	30.5.9	Centella_tridentata	s	1	5	100	0.1	1
+30	30.5	30.5.9	Diosma_oppisitifolia		1	10	100	0.1	1
+30	30.5	30.5.9	Elegia_stipularis		1	20	100	0.1	0
+30	30.5	30.5.9	Elytropappus_scaber	s	3	25	100	2	3
+30	30.5	30.5.9	Erica_similis		1	15	100	1	1
+30	30.5	30.5.9	Erica_subcapitata		2	30	100	1	0
+30	30.5	30.5.9	Euryops_abrotanifolius		8	40	100	6	0
+30	30.5	30.5.9	Olea_capensis	r	1	45	100	3	0
+30	30.5	30.5.9	Passerina_corymbosa	s	1	10	100	0.1	1
+30	30.5	30.5.9	Roella_amplexicaulis_	s	1	40	50	1	1
+30	30.5	30.5.9	Serruria_villosa	s	1	40	100	2	1
+30	30.5	30.5.9	Thamnochortus_fruticosus	r	7	20	50	10	0
+30	30.5	30.5.9	Thamnochorus_gracilus		4	30	50	5	0
+30	30.5	30.5.9	Tribolium_uniolae		4	35	80	2	0
+30	30.5	30.5.9	Mesem_sp_1		5	20	80	4	0
+30	30.5	30.5.9	Trycocephalus_	r	1	20	80	4	0
+30	30.5	30.5.9	oxalis_sp1	s	6	5	100	1	6
+30	30.5	30.5.9	Montinia	r	2	35	100	3	0
+30	30.5	30.5.9	Vicaria_carva	r	1	30	100	3	0
+30	30.5	30.5.9	Physcia_digitata?		10	5	100	0.1	0
+30	30.5	30.5.9	Holothrix_villosa_______		1	5	100	0.1	0
+30	30.5	30.5.9	Phycinia_bulbosa		1	10	100	0.1	0
+30	30.5	30.5.9	Ehrharta_calicina		1	20	100	0.1	0
+30	30.5	30.5.10	Cannomois_vargata	r	4	40	50	4	0
+30	30.5	30.5.10	Elegia_stipularis		2	25	25	5	0
+30	30.5	30.5.10	Elytropappus_scaber	s	1	5	100	0.1	1
+30	30.5	30.5.10	Ficinia_bulbosa		1	15	100	0.1	0
+30	30.5	30.5.10	Metalasia_muricata	s	1	15	100	0.1	1
+30	30.5	30.5.10	Selago_luxurians	s	1	20	100	0.1	1
+30	30.5	30.5.10	Serruria_villosa		9	35	100	5	0
+30	30.5	30.5.10	Thamnochortus_gracilus		4	10	100	4	0
+30	30.5	30.5.10	Trachryandra_sp	r	1	10	100	0.1	0
+30	30.5	30.5.10	Oxalis_sp1		1	5	100	0.1	0
+30	30.5	30.5.10	Cyclopia_sp	r	1	30	100	10	0
+30	30.5	30.5.10	Lobelia_setacea	s	3	10	100	3	1
+30	30.5	30.5.10	Crassula_fasicularis		1	5	100	1	0
+30	30.6	30.6.11	Agathosma_ciliaris	r	2	20	100	3	0
+30	30.6	30.6.11	Amphithalea_ericifolia	s	2	10	100	0.1	2
+30	30.6	30.6.11	Cannomois_virgata	r	2	40	50	3	0
+30	30.6	30.6.11	Clutia_alarternoides		1	20	100	1	0
+30	30.6	30.6.11	Cullumia_setosa		1	25	100	2	0
+30	30.6	30.6.11	Elegia_stipularis		1	30	100	2	0
+30	30.6	30.6.11	Elytropappus_scaber	s	2	15	100	2	2
+30	30.6	30.6.11	Erica_similis	s	2	15	100	1	2
+30	30.6	30.6.11	Erica_subcapitata		3	20	100	2	0
+30	30.6	30.6.11	Petalacta_coronata	s	1	20	100	2	1
+30	30.6	30.6.11	Phylica_imberbis	r	4	30	100	3	0
+30	30.6	30.6.11	Pseudopentameris_macrantha		3	50	80	25	0
+30	30.6	30.6.11	Roella_amplexicaulis_	s	2	50	25	4	2
+30	30.6	30.6.11	Selago_luxurians	s	1	30	100	2	1
+30	30.6	30.6.11	Serruria_villosa	s	2	15	100	0.1	2
+30	30.6	30.6.11	Thamnochortus_gracilus	r	5	25	75	5	0
+30	30.6	30.6.11	Tritoniopsis_triticea		1	10	100	0.1	1
+30	30.6	30.6.11	Roella_cilliata		2	30	80	2	0
+30	30.6	30.6.11	Crassula_fasicularis		1	10	100	0.1	1
+30	30.6	30.6.11	Oxalis_sp_2	s	4	5	100	0.1	4
+30	30.6	30.6.11	Adenandra_sp	r	1	15	100	1	0
+30	30.6	30.6.11	Mesem_sp_1		2	20	100	0.1	0
+30	30.6	30.6.12	Ischyrolepis_capensis		1	25	10	3	0
+30	30.6	30.6.12	Montinia_caryphyllaceae		1	15	50	1	1
+30	30.6	30.6.12	Thamnochortus_gracilus		5	20	20	10	0
+30	30.6	30.6.12	Oxalis_sp1		10	5	100	1	0
+30	30.6	30.6.12	Babiana_ambigua		3	10	100	0.1	0
+30	30.6	30.6.12	Romulae_larvae		10	20	100	1	0.1
+30	30.6	30.6.12	Euphorbia_turbirosa		5	5	100	1	0
+30	30.6	30.6.12	Bulbania_sp1		1	5	100	0.1	0
+30	30.6	30.6.12	Restio_sp	r	3	25	25	20	0
+39	39.1	39.1.1	Anexeton_laevae	s	8	30	100	3	0
+39	39.1	39.1.1	Crassula_fasicularis	s	3	10	50	0.1	0
+39	39.1	39.1.1	Cullumia_setosa	s	3	55	100	2	0
+39	39.1	39.1.1	Erica_muscosa	s	1	20	100	1	1
+39	39.1	39.1.1	Erica_subcapitata	s	1	5	100	0.1	1
+39	39.1	39.1.1	Ficinia_bulbosa	r	2	20	100	1	0
+39	39.1	39.1.1	Ischyrolepis_capensis	s	1	55	100	7	0
+39	39.1	39.1.1	Leucadendron_laureolum	s	7	45	100	4	7
+39	39.1	39.1.1	Passerina_corymbosa	s	3	20	100	0.1	3
+39	39.1	39.1.1	Pseudopentameris_macrantha	r	4	80	50	50	0
+39	39.1	39.1.1	Stoebe_cinerea	s	8	40	100	15	8
+39	39.1	39.1.1	Roella_cilliata		2	30	10	2	2
+39	39.1	39.1.1	Ficinia_indica?		2	20	25	1	0
+39	39.1	39.1.2	Leucadendron_laureolum	s	2	35	100	6	2
+39	39.1	39.1.2	Metalasia_muricata	s	1	25	100	0.1	1
+39	39.1	39.1.2	Passerina_corymbosa	s	3	30	100	10	3
+39	39.1	39.1.2	Tribolium_uniolae	s	1	35	0	20	0
+39	39.1	39.1.2	Roella_amplexicaulis		1	30	0	2	0
+39	39.1	39.1.2	Cliffortia_atrata		0	25	0	2	0
+39	39.1	39.1.2	Cliffortia_tripinoides		0	35	100	2	0
+39	39.1	39.1.2	Oxalis_perperea		6	1	100	1	0
+39	39.1	39.1.2	Thesium_strictum		1	60	50	2	0
+39	39.2	39.2.3	Anexeton_laevae	s	2	50	100	3	0
+39	39.2	39.2.3	Aspalathus_capensis	s	5	50	100	10	5
+39	39.2	39.2.3	Babiana_ambigua	s?	1	10	100	0.1	0
+39	39.2	39.2.3	Ficinia_bulbosa	r	5	20	50	5	0
+39	39.2	39.2.3	Ischyrolepis_capensis	s	1	40	80	4	1
+39	39.2	39.2.3	Leucadendron_laureolum	s	7	25	100	3	7
+39	39.2	39.2.3	Metalasia_muricata	s	2	35	100	4	2
+39	39.2	39.2.3	Pelargonium_cucullatum	s	1	80	50	2	0
+39	39.2	39.2.3	Stoebe_cinerea	s	5	50	100	30	0
+39	39.2	39.2.3	Tritoniopsis_antholyza	r	1	30	100	0.1	0
+39	39.2	39.2.3	Thesium_strictum		1	60	25	1	0
+39	39.2	39.2.3	Oxalis_perperea		5	2	0.1	100	0
+39	39.2	39.2.4	Anexeton_laevae	s	5	45	100	5	5
+39	39.2	39.2.4	Aspalathus_capensis	s	1	35	100	3	0
+39	39.2	39.2.4	Cullumia_setosa	s	3	40	70	5	0
+39	39.2	39.2.4	Elytropappus_scaber	s	1	35	100	5	1
+39	39.2	39.2.4	Erica_muscosa	s	1	10	100	0.1	1
+39	39.2	39.2.4	Ficinia_bulbosa	r	2	5	50	0.1	2
+39	39.2	39.2.4	Leucadendron_laureolum	s	1	35	100	1	1
+39	39.2	39.2.4	Pelargonium_cucullatum	s	1	55	100	1	1
+39	39.2	39.2.4	Stoebe_cinerea	s	2	55	100	6	2
+39	39.3	39.3.5	Aspalathus_capensis	s	1	45	100	2	1
+39	39.3	39.3.5	Ficinia_bulbosa	r	2	10	50	1	0
+39	39.3	39.3.5	Leucadendron_laureolum	s	0	45	100	2	0
+39	39.3	39.3.5	Pentaschistis_airoides	s	10	5	100	0.1	10
+39	39.3	39.3.5	Stoebe_cinerea	s	1	20	100	5	1
+39	39.3	39.3.5	Tribolium_uniolae	s	2	15	100	1	2
+39	39.3	39.3.6	Aspalathus_capensis	s	2	50	100	20	0
+39	39.3	39.3.6	Cullumia_setosa	s	4	45	100	20	0
+39	39.3	39.3.6	Ficinia_bulbosa	r	4	10	50	5	0
+39	39.3	39.3.6	Ischyrolepis_capensis	s	1	35	100	10	1
+39	39.3	39.3.6	Leucadendron_laureolum	s	2	35	100	2	2
+39	39.3	39.3.6	Metalasia_muricata	s	3	45	100	5	3
+39	39.3	39.3.6	Pelargonium_cucullatum	s	2	70	100	2	2
+39	39.3	39.3.6	Pelargonium_triste	s	2	10	100	0.1	0
+39	39.3	39.3.6	Mesem_sp		1	30	100	2	1
+39	39.3	39.3.6	Carpobrotus_edulis		1	10	100	1	1
+39	39.3	39.3.6	Watsonia_borbonira		7	10	100	1	7
+39	39.3	39.3.6	Oxalis_perperea		5	2	100	0.1	0
+39	39.3	39.3.6	Thesium_strictum		2	65	100	1	0
+39	39.4	39.4.7	Cliffortia_atrata	s	3	25	100	3	3
+39	39.4	39.4.7	Cullumia_setosa	s	10	35	60	30	0
+39	39.4	39.4.7	Elegia_stipularis	s	2	40	100	4	2
+39	39.4	39.4.7	Erica_muscosa	s	1	20	100	2	1
+39	39.4	39.4.7	Ficinia_bulbosa	r	3	5	25	2	0
+39	39.4	39.4.7	Ischyrolepis_capensis	s	2	50	75	15	0
+39	39.4	39.4.7	Leucadendron_laureolum	s	3	40	100	4	3
+39	39.4	39.4.7	Passerina_corymbosa	s	4	30	100	1	4
+39	39.4	39.4.7	Tetraria_sylvatica	s	3	20	60	3	3
+39	39.4	39.4.7	Tritoniopsis_antholyza	r	1	30	100	0.1	1
+39	39.4	39.4.7	Bulb_sp		1	10	100	0.1	0
+39	39.4	39.4.7	Metalasia_brevifolia		1	7	100	1	1
+39	39.4	39.4.8	Anexeton_laevae	s	1	30	100	0.1	1
+39	39.4	39.4.8	Cullumia_setosa	s	0	30	50	2	0
+39	39.4	39.4.8	Elytropappus_scaber	s	0	30	100	8	0
+39	39.4	39.4.8	Ficinia_bulbosa	r	1	10	20	1	0
+39	39.4	39.4.8	Leucadendron_laureolum	s	1	25	100	0.1	1
+39	39.4	39.4.8	Metalasia_muricata	s	1	30	100	5	1
+39	39.4	39.4.8	Passerina_corymbosa	s	1	40	100	2	1
+39	39.4	39.4.8	Thamnocortus_areanarius		4.8?				
+39	39.5	39.5.9	Aspalathus_capensis	s	1	35	100	1	1
+39	39.5	39.5.9	Babiana_ambigua	s	5	10	100	1	0
+39	39.5	39.5.9	Cullumia_setosa	s	10	40	50	30	0
+39	39.5	39.5.9	Erica_muscosa	s	2	10	100	0.1	2
+39	39.5	39.5.9	Erica_subcapitata	s	1	15	100	0.1	1
+39	39.5	39.5.9	Ficinia_bulbosa	r	5	10	25	4	0
+39	39.5	39.5.9	Ischyrolepis_capensis	s	4	30	80	10	2?
+39	39.5	39.5.9	Leucadendron_laureolum	s	1	40	100	2	1
+39	39.5	39.5.9	Passerina_corymbosa	s	2	20	100	0.1	2
+39	39.5	39.5.9	Tetraria_sylvatica	s	1	15	60	0.1	1
+39	39.5	39.5.9	Tribolium_uniolae	s	4	20	10	2	4
+39	39.5	39.5.9	Thamnocortus_areanarius		1	60	100	10	1
+39	39.5	39.5.9	Thesium_strictum		1	70	100	4	1
+39	39.5	39.5.9	Bulb_sp		1	10	100	4	1
+39	39.5	39.5.9	Adenandra_villosa		2	10	100	0.1	2
+39	39.5	39.5.10	Aspalathus_capensis	s	3	40	100	10	0
+39	39.5	39.5.10	Crassula_fasicularis	s	2	10	100	0.1	2
+39	39.5	39.5.10	Ischyrolepis_capensis	s	1	20	50	10	1
+39	39.5	39.5.10	Leucadendron_laureolum	s	12	25	100	18	12
+39	39.5	39.5.10	Metalasia_muricata	s	1	15	50	0.1	0
+39	39.5	39.5.10	Stoebe_cinerea	s	2	30	100	5	0
+39	39.5	39.5.10	Tetraria_sylvatica	s	4	15	0	4	0
+39	39.5	39.5.10	Thamnocortus_areanarius		3	60	60	10	0
+39	39.5	39.5.10	Roella_amplexicaulis		1	35	5	2	1
+39	39.5	39.5.10	Oxalis_perperea		3	1	100	0.1	0
+39	39.5	39.5.10	Straethiolia_cilleata		1	40	100	2	1
+39	39.5	39.5.10	Metalasia_brevifolia		1	25	100	0.1	1
+39	39.5	39.5.10	Tretraria_eximia		1	20	0	2	0
+39	39.5	39.5.10	Roella_cilliata		2	20	5	1	0
+39	39.6	39.6.11	Babiana_ambigua	s	1	10	100	0.1	0
+39	39.6	39.6.11	Cliffortia_polygonifolia	s	1	20	100	0.1	1
+39	39.6	39.6.11	Cliffortia_ruscifolia		0	50	100	1	0
+39	39.6	39.6.11	Cullumia_setosa	s	10	40	75	20	10
+39	39.6	39.6.11	Elegia_stipularis	s	1	25	0	1	0
+39	39.6	39.6.11	Erica_subcapitata	s	2	10	100	0.1	2
+39	39.6	39.6.11	Ficinia_bulbosa	r	2	10	20	2	0
+39	39.6	39.6.11	Ischyrolepis_capensis	s	1	40	60	5	0
+39	39.6	39.6.11	Passerina_corymbosa	s	6	30	100	15	0
+39	39.6	39.6.11	Tribolium_uniolae	s	2	15	5	4	0
+39	39.6	39.6.11	Struthiola_cilliata		2	35	100	4	2
+39	39.6	39.6.11	Metalasia_brevifolia		1	35	100	1	1
+39	39.6	39.6.11	Oxalis_perperea		3	1	100	0.1	0
+39	39.6	39.6.12	Cliffortia_ruscifolia		2	25	100	3	2
+39	39.6	39.6.12	Ficinia_bulbosa		1	10	10	5	0
+39	39.6	39.6.12	Ischyrolepis_capensis		0	5	60	2	0
+39	39.6	39.6.12	Leucadendron_laureolum		1	35	100	2	1
+39	39.6	39.6.12	Passerina_corymbosa		1	20	100	0.1	1
+39	39.6	39.6.12	Pelargonium_cucullatum		2	85	100	4	0
+39	39.6	39.6.12	Stoebe_cinerea		1	40	100	5	1
+39	39.6	39.6.12	Tribolium_uniolae		7	35	50	5	7
+40	40.1	40.1.1	Anexeton_laevae		1	25	50	0.1	0
+40	40.1	40.1.1	Babiana_ambigua	r	4	10	100	0.1	0
+40	40.1	40.1.1	Cannamois_virgata	r	1	35	50	1	0
+40	40.1	40.1.1	Cullumia_setosa		6	30	50	1	0
+40	40.1	40.1.1	Edmondia_sesamoides	s	5	30	100	0.1	0
+40	40.1	40.1.1	Erica_muscosa		3	20	100	1	0
+40	40.1	40.1.1	Ficinia_bulbosa	r	1	10	50	1	0
+40	40.1	40.1.1	Ischyrolepis_capensis	r	4	50	70	8	0
+40	40.1	40.1.1	Leucadendron_laureolum	s	5	20	100	1	0
+40	40.1	40.1.1	Metalasia_brevifolia	s	1	25	100	1	1
+40	40.1	40.1.1	Metalasia_compacta	s	3	40	100	1	3
+40	40.1	40.1.1	Struthiola_ciliata	s	3	30	100	1	0
+40	40.1	40.1.1	Thamnochortus_gracilus	r	1	20	50	1	0
+40	40.1	40.1.1	Tretrerius_sylvaticum		3	15	50	1	0
+40	40.1	40.1.1	Roella_ampleoricorus						
+40	40.1	40.1.1	Asphalathus_devoricata		1	10	100	2	1
+40	40.1	40.1.1	Euphorbia_tuberosa		2	5	100	0.1	0
+40	40.1	40.1.1	Thesium_strictum		1	45	100	0.1	0
+40	40.1	40.1.2	Adenandra_villosa	s	2	10	100	0.1	2
+40	40.1	40.1.2	Babiana_ambigua	r	4	10	100	0.1	0
+40	40.1	40.1.2	Cannamois_virgata	r	1	35	50	2	0
+40	40.1	40.1.2	Crassula_fasicularis	s	1	5	100	0.1	1
+40	40.1	40.1.2	Edmondia_sesamoides	s	3	50	50	3	0
+40	40.1	40.1.2	Ischyrolepis_capensis	r	2	40	60	10	0
+40	40.1	40.1.2	Leucadendron_laureolum	s	4	30	100	2	0
+40	40.1	40.1.2	Leucadendron_salignum		0	30	100	5	0
+40	40.1	40.1.2	Metalasia_brevifolia	s	1	20	100	2	1
+40	40.1	40.1.2	Pelargonium_triste	r	1	5	100	0.1	0
+40	40.1	40.1.2	Roella_ciliata	s	1	15	25	0.1	0
+40	40.1	40.1.2	Struthiola_ciliata	s	1	20	50	0.1	1
+40	40.1	40.1.2	Thamnochortus_gracilus	r	2	25	60	2	0
+40	40.1	40.1.2	Oxalis_sp5		3	5	100	0.1	0
+40	40.1	40.1.2	Tretrerius_sylvaticum		2	20	10	2	0
+40	40.1	40.1.2	Triboliun_unioli		1	50	5	2	0
+40	40.1	40.1.2	Helichrysum_sp						
+40	40.2	40.2.3	Adenandra_villosa	s					
+40	40.2	40.2.3	Anexeton_laevae		2	30	100	0.1	0
+40	40.2	40.2.3	Cannamois_virgata	r	4	40	50	4	0
+40	40.2	40.2.3	Edmondia_sesamoides	s	1	25	100	0.1	1
+40	40.2	40.2.3	Ficinia_bulbosa	r	5	10	10	1	0
+40	40.2	40.2.3	Gnidia_juniperifolia	s	1	15	100	0.1	0
+40	40.2	40.2.3	Hypodiscus_aristatus	r	1	50	80	2	0
+40	40.2	40.2.3	Ischyrolepis_tenuissima	r	5	10	50	5	0
+40	40.2	40.2.3	Macrostylis_villosa	s	1	10	100	0.1	0
+40	40.2	40.2.3	Metalasia_compacta	s	4	45	100	1	0
+40	40.2	40.2.3	Stoebe_cinerea	s	1	35	100	5	1
+40	40.2	40.2.3	Tetraria_compar	r	1	60	50	10	0
+40	40.2	40.2.3	Tetraria_eximia		0	40	75	0.1	0
+40	40.2	40.2.3	Roella_amplexicorus		2	25	25	0.1	2
+40	40.2	40.2.3	Thamnochortus_areanaruis		1	45	80	5	0
+40	40.2	40.2.3	Tritreria_sylvatica		3	30	50	2	0
+40	40.2	40.2.3	Adenandra_sp1		5	25	100	1	0
+40	40.2	40.2.3	Lobelia_cetacea		2	15	50	3	0
+40	40.2	40.2.3	Roella_sp1		5	10	25	2	0
+40	40.2	40.2.3	Myraltea_sp2		2	5	100	0.1	0
+40	40.2	40.2.3	Thesium_sp1		1	5	25	0.1	0
+40	40.2	40.2.3	Roella_sp2		2	15	50	1	0
+40	40.2	40.2.3	Edenandra_sp1		2	20	100	0.1	0
+40	40.2	40.2.3	Selago_luxurii		4	15	100	1	0
+40	40.2	40.2.3	Oxalis_sp4		2	1	100	0.1	0
+40	40.2	40.2.4	Aspalathus_capensis	s	1	30	100	2	1
+40	40.2	40.2.4	Babiana_ambigua	r	3	7	100	0.1	0
+40	40.2	40.2.4	Crassula_fasicularis	s	1	10	80	0.1	0
+40	40.2	40.2.4	Cullumia_setosa		0	20	100	1	0
+40	40.2	40.2.4	Diastella_divericata	s	0	30	100	2	0
+40	40.2	40.2.4	Edmondia_sesamoides	s	3	20	80	1	0
+40	40.2	40.2.4	Erica_subcapitata	s	1	20	100	1	0
+40	40.2	40.2.4	Ischyrolepis_capensis	r	1	20	50	0.1	0
+40	40.2	40.2.4	Ischyrolepis_tenuissima	r	10	15	50	10	0
+40	40.2	40.2.4	Metalasia_brevifolia	s	1	20	100	0.1	1
+40	40.2	40.2.4	Metalasia_compacta	s	3	30	100	1	0
+40	40.2	40.2.4	Roella_ciliata	s	2	20	25	1	0
+40	40.2	40.2.4	Struthiola_ciliata	s	3	25	100	2	0
+40	40.2	40.2.4	Lobelia_cetacea		4	15	10	3	0
+40	40.2	40.2.4	Roella_sp1		4	10	25	2	3
+40	40.2	40.2.4	Roella_sp2		11	20	25	5	11
+40	40.2	40.2.4	Currumbrium_glabrum		1	25	25	2	0
+40	40.2	40.2.4	Mesem_sp		1	15	50	1	1
+40	40.2	40.2.4	Romelae_sp		7	10	50	1	0
+40	40.3	40.3.5	Anexeton_laevae		1	25	100	0.1	0
+40	40.3	40.3.5	Aspalathus_capensis	s	1	30	100	3	0
+40	40.3	40.3.5	Babiana_ambigua	r	6	10	100	1	0
+40	40.3	40.3.5	Cullumia_setosa		6	35	75	7	0
+40	40.3	40.3.5	Diastella_divericata	s	1	20	100	1	0
+40	40.3	40.3.5	Edmondia_sesamoides	s	1	30	0	0.1	1
+40	40.3	40.3.5	Metalasia_brevifolia	s	2	10	100	1	0
+40	40.3	40.3.5	Metalasia_muricata	s	4	30	100	1	0
+40	40.3	40.3.5	Struthiola_ciliata	s	5	25	100	2	5
+40	40.3	40.3.5	Oxalis_sp		2	10	100	1	0
+40	40.3	40.3.5	Roella_amplexicorus		1	30	10	0.1	1
+40	40.3	40.3.5	Wildenovia		4	30	50	5	0
+40	40.3	40.3.5	Lobelia_cetacea		5	15	5	10	5
+40	40.3	40.3.5	Thamnochortus_areanaruis/lucins		4	60	90	10	0
+40	40.3	40.3.5	Tretreria_sylvaticum		7	15	50	2	7
+40	40.3	40.3.5	Mulraltea_vanbergii		3	12	50	0.1	0
+40	40.3	40.3.5	Roella_sp		1	10	50	1	0
+40	40.3	40.3.5	Oxalis_sp5		3	1	100	0.1	0
+40	40.3	40.3.5	Mesem_sp2		2	10	100	0.1	2
+40	40.3	40.3.6	Anexeton_laevae		4	15	50	0.1	0
+40	40.3	40.3.6	Edmondia_sesamoides	s	7	20	75	2	0
+40	40.3	40.3.6	Erica_similis	s	1	15	100	1	0
+40	40.3	40.3.6	Ischyrolepis_capensis	r	3	35	75	5	0
+40	40.3	40.3.6	Leucadendron_laureolum	s	1	30	100	1	1
+40	40.3	40.3.6	Metalaisa_compacta	s	1	40	100	0.1	1
+40	40.3	40.3.6	Roella_ciliata	s	2	25	20	0.1	0
+40	40.3	40.3.6	Stoebe_cinerea	s	1	25	100	1	0
+40	40.3	40.3.6	Wildenovia		5	40	75	20	0
+40	40.3	40.3.6	Lobelia_cetacea		3	15	10	4	3
+40	40.3	40.3.6	Thamnochortus_areanarius/lucins		1	65	80	5	0
+40	40.3	40.3.6	Tretreria_sylvaticum		7	15	25	2	7
+40	40.3	40.3.6	Roella_sp		2	10	5	2	0
+40	40.3	40.3.6	Mulraltea_sp1		1	5	100	0.1	1
+40	40.3	40.3.6	Osteospernum_polyganoides		4	20	70	2	4
+40	40.3	40.3.6	Orsinia_pennelucea		2	20	100	1	2
+40	40.3	40.3.6	Thesium_sp_		1	20	100	0.1	0
+40	40.3	40.3.6	Metalasia_sp	_	3	10	100	1	3
+40	40.3	40.3.6	Roella_sp		8	18	25	2	8
+40	40.4	40.4.7	Anexeton_laevae		6	20	2	2	0
+40	40.4	40.4.7	Babiana_ambigua	r	2	5	100	0.1	0
+40	40.4	40.4.7	Diastella_divericata	s	1	20	100	0.1	0
+40	40.4	40.4.7	Diosma_oppisitifolia		1	10	100	0.1	1
+40	40.4	40.4.7	Disparago_laxifolia		1	10	2	100	1
+40	40.4	40.4.7	Edmondia_sesamoides	s	5	30	100	1	5
+40	40.4	40.4.7	Erica_corifolia	s	2	30	100	0.1	2
+40	40.4	40.4.7	Erica_subcapitata	s	1	15	100	0.1	0
+40	40.4	40.4.7	Ficinia_bulbosa	r	2	10	50	2	0
+40	40.4	40.4.7	Metalasia_brevifolia	s	1	15	100	1	1
+40	40.4	40.4.7	Metalasia_compacta	s	5	45	100	0.1	5
+40	40.4	40.4.7	Roella_ciliata	s	1	25	20	0.1	1
+40	40.4	40.4.7	Wildenovia_glomerata		10	40	50	25	0
+40	40.4	40.4.7	Trachyandra_sp	r	1	25	100	0.1	0
+40	40.4	40.4.7	Murlatea_sp1		3	10	100	1	3
+40	40.4	40.4.7	Osteospernum_polyganoides		5	20	70	1	0
+40	40.4	40.4.7	Tretreria_sylvaticum		8	15	50	2	0
+40	40.4	40.4.7	Thesium_sp		4	10	10	2	4
+40	40.4	40.4.7	Tretreria_sp1		1	20	70	0.1	0
+40	40.4	40.4.7	Roella_sp		7	15	50	1	0
+40	40.4	40.4.7	Erepsia_sp1		1	20	100	0.1	0
+40	40.4	40.4.7	Roella_sp		5	10	20	2	0
+40	40.4	40.4.8	Babiana_ambigua	r	4	10	100	1	0
+40	40.4	40.4.8	Ficinia_deusta	r	1	25	80	2	0
+40	40.4	40.4.8	Ischyrolepis_capensis	r	5	35	50	4	0
+40	40.4	40.4.8	Ischyrolepis_tenuissima	r	25	15	25	25	0
+40	40.4	40.4.8	Pelargonium_triste	r	3	5	100	1	0
+40	40.4	40.4.8	Roella_ciliata	s	2	25	20	1	2
+40	40.4	40.4.8	Struthiola_ciliata	s	2	30	100	4	2
+40	40.4	40.4.8	Willdenovia_glomerata		5	40	50	5	0
+40	40.4	40.4.8	Wastonia_borbonica	s	1	25	20	2	0
+40	40.4	40.4.8	Osteospernum_polyganoides		1	30	100	1	1
+40	40.4	40.4.8	Thesium_strictum		1	15	100	1	1
+40	40.4	40.4.8	Muraltea_thumbergii		8				
+40	40.5	40.5.9	Anexeton_laevae		1	25	100	0.1	0
+40	40.5	40.5.9	Aspalathus_divericata		0	5	100	5	0
+40	40.5	40.5.9	Cullumia_setosa		9	30	100	20	0
+40	40.5	40.5.9	Diosma_oppisitifolia		4	5	100	0.1	4
+40	40.5	40.5.9	Elegia_stipularis		7	30	100	20	7
+40	40.5	40.5.9	Ficinia_bulbosa	r	4	10	60	1	0
+40	40.5	40.5.9	Metalasia_compacta	s	2	50	100	2	2
+40	40.5	40.5.9	Pelargonium_cuculatum	r	1	50	100	2	0
+40	40.5	40.5.9	Stoebe_cinerea	s	1	30	100	1	1
+40	40.5	40.5.9	Struthiola_ciliata	s	6	30	100	3	0
+40	40.5	40.5.9	Willdenovia_glomerata		7	40	75	15	0
+40	40.5	40.5.9	Roella_sp		15	20	50	2	0
+40	40.5	40.5.9	Muraltea_thumbergii		2	10	100	1	0
+40	40.5	40.5.10	Babiana_ambigua	r	2	5	100	0.1	0
+40	40.5	40.5.10	Crassula_fasicularis	s	1	10	10	0.1	0
+40	40.5	40.5.10	Cullumia_setosa		2	25	100	5	0
+40	40.5	40.5.10	Diastella_divericata	s	1	10	100	0.1	0
+40	40.5	40.5.10	Ischyrolepis_capensis	r	4	35	25	10	0
+40	40.5	40.5.10	Ischyrolepis_tenuissima	r	25	15	50	20	0
+40	40.5	40.5.10	Metalasia_brevifolia	s	1	30	100	3	1
+40	40.5	40.5.10	Roella_ciliata	s	2	20	20	1	2
+40	40.5	40.5.10	Wildenowia_glomerata		2	30	50	3	0
+40	40.5	40.5.10	Euphorbia_scuberosa		6	5	100	2	0
+40	40.5	40.5.10	Pelargnium_triste		2	10	100	1	0
+40	40.5	40.5.10	Romulya_plava		3	15	100	0.1	0
+40	40.5	40.5.10	Orchid_sp		6	1	100	0.1	0
+40	40.6	40.6.11	Adenandra_villosa	s	1	15	100	0.1	1
+40	40.6	40.6.11	Agathosma_sp	s	1	12	100	0.1	0
+40	40.6	40.6.11	Babiana_ambigua	r	2	5	100	0.1	0
+40	40.6	40.6.11	Cullumia_setosa		1	35	100	2	1
+40	40.6	40.6.11	Diosma_oppisitifolia		1	25	100	3	0
+40	40.6	40.6.11	Hypodiscus_wildenowia	r	4	30	80	10	0
+40	40.6	40.6.11	Ischyrolepis_capensis	r	8	45	75	10	0
+40	40.6	40.6.11	Ischyrolepis_tenuissima	r	3	10	100	5	0
+40	40.6	40.6.11	Metalasia_brevifolia	s	2	35	100	2	2
+40	40.6	40.6.11	Pelargonium_longifolium	r	1	5	10	0.1	1
+40	40.6	40.6.11	Thamnochortus_gracilus	r	2	25	100	0.1	2
+40	40.6	40.6.11	Willdenovia_glomerata		4	40	60	3	0
+40	40.6	40.6.11	Osteospernum_polyganoides		1	20	25	3	0
+40	40.6	40.6.11	Meraltea_thumbergii		2	10	100	1	2
+40	40.6	40.6.11	Orchid_sp		1	1	100	0.1	0
+40	40.6	40.6.11	Pelargonium_sp		1	2	100	0.1	0
+40	40.6	40.6.11	Tretreria_salvatica		1	15	100	1	0
+40	40.6	40.6.12	Crassula_fasicularis	s	1	15	100	0.1	1
+40	40.6	40.6.12	Cullumia_setosa		8	30	80	10	0
+40	40.6	40.6.12	Diastella_divericata	s	1	25	100	5	1
+40	40.6	40.6.12	Elegia_stipularis		3	30	100	3	3
+40	40.6	40.6.12	Ficinia_bulbosa	r	9	5	60	0.1	0
+40	40.6	40.6.12	Ischyrolepis_capensis	r	3	35	75	4	0
+40	40.6	40.6.12	Leucadendron_laureolum	s	2	30	100	2	2
+40	40.6	40.6.12	Metalasia_brevifolia	s	10	20	100	5	10
+40	40.6	40.6.12	Metalasia_compacta	s	2	30	100	1	0
+40	40.6	40.6.12	Roella_ciliata	s	1	25	50	0.1	1
+40	40.6	40.6.12	Struthiola_ciliata	s	4	35	100	2	4
+40	40.6	40.6.12	Tetraria_eximia		1				
+40	40.6	40.6.12	Thamnochortus_gracilus	r	1	10	100	0.1	1
+40	40.6	40.6.12	Willdenovia_glomerata		3	30	75	1	0
+40	40.6	40.6.12	Romulya_plava		2	10	100	0.1	0
+40	40.6	40.6.12	Speudopentamerus_mecrantha		0	60	100	2	0
+41	41.1	41.1.1	Briza_maxima		25	5	100	1	0
+41	41.1	41.1.1	Ehrharta_calycina		1	15	100	1	0
+41	41.1	41.1.1	Metalasia_muricata	s	1	18	100	1	1
+41	41.1	41.1.1	Pentaschistis_airodes	s	5	10	100	1	5
+41	41.1	41.1.1	Cliffortia_atrata	s	1	15	100	0.1	1
+41	41.1	41.1.1	Bulb_sp1		1	10	100	0.1	0
+41	41.1	41.1.1	Bulb_sp2		1	10	100	0.1	0
+41	41.1	41.1.2	Cliffortia_falcata		0	65	100	10	0
+41	41.1	41.1.2	Ficinia_bulbosa	s	1	15	50	0.1	1
+41	41.1	41.1.2	Metalasia_muricata		0	45	100	5	0
+41	41.1	41.1.2	Pentaschistis_airodes		5	10	100	1	0
+41	41.1	41.1.2	Senecio_elegans		25	5	100	5	0
+41	41.1	41.1.2	Struthiola_ciliata		1	30	100	2	1
+41	41.1	41.1.2	Thamnochortus_fruticosus	r	1	50	80	25	0
+41	41.1	41.1.2	Tribolium_uniolae	s	1	30	100	1	1
+41	41.1	41.1.2	Watsonia_barbonica	s	1	30	100	0.1	1
+41	41.1	41.1.2	Acacia_saligna		1	80	100	2	1
+41	41.1	41.1.2	Helichrysum_sp	s	25	3	100	2	25
+41	41.1	41.1.2	Bulb_sp_3		1	10	100	1	0
+41	41.2	41.2.3	Cliffortia_falcata		0	70	100	25	0
+41	41.2	41.2.3	Metalasia_muricata		0	75	100	20	0
+41	41.2	41.2.3	Pentaschistis_airodes	s	20	10	100	1	20
+41	41.2	41.2.3	Senecio_elegans	s	3	10	100	0.1	3
+41	41.2	41.2.3	Tribolium_uniolae		3	30	50	3	0
+41	41.2	41.2.3	Watsonia_barbonica	s	3	100	100	0.1	3
+41	41.2	41.2.3	Watsonia_barbonica	r	0	100	50	5	0
+41	41.2	41.2.3	Helichrysum_sp		25	2	100	0.1	0
+41	41.2	41.2.4	Metalasia_muricata		0	120	50	40	0
+41	41.2	41.2.4	Muraltia_demissa	r	1	20	100	35	0
+41	41.2	41.2.4	Thamnochortus_fruticosus	r	1	40	80	35	0
+41	41.2	41.2.4	Trichocephalus_stipularis	s	1	20	100	2	1
+41	41.2	41.2.4	Ischyrolepis_capensis	s	0	40	100	0.1	0
+41	41.3	41.3.5	Ficinia_nigrescens	s	7	35	100	5	7
+41	41.3	41.3.5	Metalasia_muricata	s	1	40	100	5	0
+41	41.3	41.3.5	Pentaschistis_airodes	s	10	10	100	1	10
+41	41.3	41.3.5	Senecio_elegans	s	5	5	100	0.1	0
+41	41.3	41.3.5	Ehrharta_ramosa	s	5	60	100	10	5
+41	41.3	41.3.5	Passerina_corymbosa		0	150	100	50	0
+41	41.3	41.3.5	Oxalis_sp		2	2	100	0.1	0
+41	41.3	41.3.5	Lobelia_pinifolia		0	50	100	0.1	0
+41	41.3	41.3.5	Gladiolus_brevifolius	s	1	30	100	0.1	1
+41	41.3	41.3.6	Ficinia_bulbosa		1	15	50	1	1
+41	41.3	41.3.6	Ficinia_nigrescens		3	30	100	5	3
+41	41.3	41.3.6	Pentaschistis_airodes		5	5	100	0.1	5
+41	41.3	41.3.6	Senecio_elegans		10	5	100	0.1	10
+41	41.3	41.3.6	Oxalis_sp		1	1	100	0.1	0
+41	41.3	41.3.6	Wildenovia_glomerata	r	1	90	80	70	0
+41	41.3	41.3.6	Passerina_corymbosa	s	8	170	100	50	7
+41	41.4	41.4.7	Chrysanthemoides_monolifera	s	2	60	100	10	2
+41	41.4	41.4.7	Holothix_villosa	s	1	1	100	0.1	1
+41	41.4	41.4.7	Hypochoeris_radicata	s	25	1	100	2	25
+41	41.4	41.4.7	Pelargonium_capitatum		1	5	100	0.1	1
+41	41.4	41.4.7	Pentaschistis_airodes	s	10	10	100	2	10
+41	41.4	41.4.7	Tribolium_uniolae	s	4	30	75	4	4
+41	41.4	41.4.7	Urcinia_paeliaceae		20	5	100	2	0
+41	41.4	41.4.7	Citirium_phycorni		11	10	100	1	0
+41	41.4	41.4.7	Helichrysum_sp	s	25	2	100	1	25
+41	41.4	41.4.8	Ficinia_bulbosa		1	10	10	1	0
+41	41.4	41.4.8	Holothix_villosa		1	1	100	0.1	1
+41	41.4	41.4.8	Metalasia_muricata		0	100	100	20	0
+41	41.4	41.4.8	Pentaschistis_airodes		10	20	100	2	10
+41	41.4	41.4.8	Rhus_lucida		0	160	100	80	0
+41	41.4	41.4.8	Tribolium_uniolae		2	10	100	0.1	2
+41	41.4	41.4.8	Oxalis_thin_leaf		8	10	100	2	0
+41	41.4	41.4.8	Lachendorphia_paniculata	s	8	10	100	2	8
+41	41.4	41.4.8	Oxalis_sp	s	5	2	100	1	5
+41	41.5	41.5.9	Holothix_villosa		1	2	100	0.1	1
+41	41.5	41.5.9	Metalasia_muricata		0	80	100	10	0
+41	41.5	41.5.9	Wachendorphia_paniculata		1	30	100	1	0
+41	41.5	41.5.9	Morea_sp		1	30	100	0.1	1
+41	41.5	41.5.9	Acacia_saligna		2	160	100	10	0
+41	41.5	41.5.9	Passerina_corymbosa		1	70	100	5	1
+41	41.5	41.5.10	Briza_maxima	s	5	5	100	0.1	5
+41	41.5	41.5.10	Cliffortia_falcata	s	2	40	100	20	2
+41	41.5	41.5.10	Ficinia_bulbosa		6	15	75	5	6
+41	41.5	41.5.10	Helichrysum_indicum		50	2	100	5	0
+41	41.5	41.5.10	Pentaschistis_airodes	s	25	5	100	1	25
+41	41.5	41.5.10	Senecio_elegans	s	20	5	100	2	20
+41	41.5	41.5.10	Tribolium_uniolae		5	20	10	5	0
+41	41.5	41.5.10	Wachendorphia_paniculata		2	15	100	1	2
+41	41.5	41.5.10	Morea_sp	s	1	20	100	2	1
+41	41.5	41.5.10	Acacia_saligna	s	1	20	100	2	1
+41	41.5	41.5.10	Passerina_corymbosa	s	1	25	100	0.1	1
+41	41.5	41.5.10	Ficinia_deusta	s	1	25	50	3	1
+41	41.5	41.5.10	Ischyrolepis_capensis	s	1	20	100	3	1
+41	41.5	41.5.10	Urcinia_paeliaceae	s	7	10	100	1	7
+41	41.6	41.6.11	Helichrysum_indicum	s	50	2	100	2	50
+41	41.6	41.6.11	Pentaschistis_airodes	s	50	5	100	5	50
+41	41.6	41.6.11	Wachendorphia_paniculata	s	1	20	100	0.1	1
+41	41.6	41.6.11	Othonna_quiquidentata	s	1	70	50	5	1
+41	41.6	41.6.11	Cliffortia_filifolia	s	1	20	100	2	1
+41	41.6	41.6.11	Morea_sp	s	4	20	100	0.1	4
+41	41.6	41.6.11	Tracheandra_sp		2	20	100	0.1	2
+41	41.6	41.6.12	Ficinia_bulbosa		2	10	25	1	2
+41	41.6	41.6.12	Metalasia_muricata	s	1	50	100	5	1
+41	41.6	41.6.12	Tribolium_uniolae	s	7	20	50	5	7
+41	41.6	41.6.12	Wachendorphia_paniculata	s	1	10	100	0.1	1
+41	41.6	41.6.12	Asparagus_compactus		0	50	100	1	0
+48	48.1	48.1.1	Acacia_saligna	s	5	20	100	2	5
+48	48.1	48.1.1	Annersorhiza_hirsuta	s	1	0.5	100	0.1	1
+48	48.1	48.1.1	Anthospermum_aethiopicum	s	48	40	100	1	0
+48	48.1	48.1.1	Aristea_spiralus		1	20	50	1	0
+48	48.1	48.1.1	Erica_dicora	s	10	35	100	4	10
+48	48.1	48.1.1	Montinia_caryophyllacea		1	30	25	1	1
+48	48.1	48.1.1	Othonna_quiquidentata		2	30	50	1	0
+48	48.1	48.1.1	Phylica_imberbis		1	30	100	1	0
+48	48.1	48.1.1	Tritoniopsis_triticea		1	30	100	1	0
+48	48.1	48.1.1	Watsonia_borbonica	b	37	90	50	20	30
+48	48.1	48.1.1	Ficinia_tinusima	b	15	10	25	4	15
+48	48.1	48.1.1	Asparagus_sp	r	1	30	100	10	0
+48	48.1	48.1.1	Aspalathus_ericifolia	s	3	30	100	3	0
+48	48.1	48.1.1	Lachenalia_sp		4	5	100	0.1	0
+48	48.1	48.1.1	Holothirx_villosa	s	1	0.5	100	0.1	0
+48	48.1	48.1.1	Oxalis_sp	s	3	0.5	100	0.1	0
+48	48.1	48.1.1	Chrysanthemoides	s	1	40	75	1	0
+48	48.1	48.1.2	Erica_dicora	s	12	20	90	5	12
+48	48.1	48.1.2	Ficinia_deusta	r	1	20	50	2	0
+48	48.1	48.1.2	Ischyrolepis_capensis		5	15	85	1	0
+48	48.1	48.1.2	Othonna_quiquidentata		6	150	0	10	0
+48	48.1	48.1.2	Passerina_corymbosa	s	1	10	100	0.1	1
+48	48.1	48.1.2	Struthiola_dodecandra	s	11	60	50	15	11
+48	48.1	48.1.2	Watsonia_borbonica	s	3	10	100	0.1	3
+48	48.1	48.1.2	Ficinia_tinusima		7	10	25	2	0
+48	48.1	48.1.2	Holothirx_villosa		1	0.5	100	0.1	1
+48	48.1	48.1.2	Oxalis_sp		12	0.5	100	1	0
+48	48.1	48.1.2	Lachenalia_sp		15	0.5	100	1	0
+48	48.2	48.2.3	Anthospermum_aethiopicum	s	10	30	100	2	10
+48	48.2	48.2.3	Passerina_corymbosa		1	200	80	100	0
+48	48.2	48.2.3	Watsonia_borbonica		6	30	50	2	0
+48	48.2	48.2.3	Lachenalia_sp	s	1	0.5	100	0.1	1
+48	48.2	48.2.3	Agathulpus_dubia		1	30	100	0.1	0
+48	48.2	48.2.4	Acacia_saligna	s	1	5	100	0.1	1
+48	48.2	48.2.4	Aspalathus_ericifolia	s	3	40	100	25	3
+48	48.2	48.2.4	Asparagus_compactus		1	50	100	20	0
+48	48.2	48.2.4	Cyanella_hyacinthoides	s	1	2	100	0.1	1
+48	48.2	48.2.4	Erica_dicora		1	20	100	0.1	0
+48	48.2	48.2.4	Ficinia_nigrescens		3	30	50	4	0
+48	48.2	48.2.4	Othonna_quiquidentata		3	120	50	10	0
+48	48.2	48.2.4	Thesium_funale	s	1	40	100	0.1	1
+48	48.2	48.2.4	Vygie_sp		2	10	100	1	0
+48	48.2	48.2.4	Wachendorfia_paniculata	s	2	5	100	0.1	2
+48	48.2	48.2.4	Watsonia_borbonica	s	3	30	100	0.1	3
+48	48.2	48.2.4	Lachenalia_sp	s	4	0.5	100	0.1	4
+48	48.2	48.2.4	Oxalis_sp		5	0.5	100	0.1	5
+48	48.2	48.2.4	Holothirx_villosa		2	0.5	100	0.1	0
+48	48.3	48.3.5	Acacia_saligna		0		1		
+48	48.3	48.3.5	Anthospermum_aethiopicum		10	75	100	10	0
+48	48.3	48.3.5	Aspalathus_ericifolia		2	35	100	10	0
+48	48.3	48.3.5	Elytropappus_scaber		3	30	100	5	0
+48	48.3	48.3.5	Erica_diosma	s	20	30	100	15	20
+48	48.3	48.3.5	Ficinia_tenuifolia	s	5	10	25	1	5
+48	48.3	48.3.5	Hypodiscus_wildenowia		1	20	90	2	0
+48	48.3	48.3.5	Othonna_quiquidentata		2	60	0		
+48	48.3	48.3.5	Passerina_corymbosa	s	5	10	100	0.1	5
+48	48.3	48.3.5	Watsonia_borbonica	s	3	30	100	0.1	3
+48	48.3	48.3.5	Oxalis_sp		5	0.5	100	0.1	0
+48	48.3	48.3.5	Lachenalia_sp		2	2	100	0.1	0
+48	48.3	48.3.6	Othonna_quiquidentata		1	100	50	5	0
+48	48.3	48.3.6	Passerina_corymbosa	s	4	20	100	1	4
+48	48.3	48.3.6	Thesium_funale	s	2	30	50	2	2
+48	48.3	48.3.6	Tribolium_uniole		11	20	30	3	0
+48	48.3	48.3.6	Watsonia_borbonica	r	2	100	50	5	0
+48	48.3	48.3.6	Watsonia_borbonica	s	9	40	80	1	9
+48	48.3	48.3.6	Oxalis_sp		1	1	100	0.1	0
+48	48.3	48.3.6	Lachenalia_sp		1	2	100	0.1	0
+48	48.3	48.3.6	Cypha_digitata	s	4	30	100	1	4
+48	48.4	48.4.7	Acacia_saligna	s	3	30	100	2	3
+48	48.4	48.4.7	Aspalathus_ericifolia		10	40	75	20	0
+48	48.4	48.4.7	Merxmulera_rufa		1	30	50	1	0
+48	48.4	48.4.7	Othonna_quiquidentata		2	100	50	2	0
+48	48.4	48.4.7	Passerina_corymbosa		3	20	100	1	0
+48	48.4	48.4.7	Tribolium_uniole		5	10	25	0.1	0
+48	48.4	48.4.7	Vygie_sp		2	10	75	2	0
+48	48.4	48.4.7	Watsonia_borbonica	r	4	100	50	5	0
+48	48.4	48.4.7	Watsonia_borbonica	s	12	10	100	0.1	12
+48	48.4	48.4.7	Oxalis_sp	s	10	0.5	100	1	10
+48	48.4	48.4.8	Cyanella_hyacinthoides		1	0.5	100	0.1	0
+48	48.4	48.4.8	Ficinia_nigrescens		1	20	50	0.1	0
+48	48.4	48.4.8	Ischyrolepis_capensis		7	30	80	10	0
+48	48.4	48.4.8	Metalasia_muricata		4	70	100	40	0
+48	48.4	48.4.8	Passerina_corymbosa	s	2	20	80	2	0
+48	48.4	48.4.8	Thesium_funale		1	30	50	0.1	0
+48	48.4	48.4.8	Vygie_sp		1	10	100	0.1	0
+48	48.4	48.4.8	Wachendorfia_paniculata		3	20	100	0.1	0
+48	48.4	48.4.8	Oxalis_sp		10	0.5	100	0.1	0
+48	48.4	48.4.8	Aspalathus_ericifolia		1	40	50	5	0
+48	48.4	48.4.8	Holothirx_villosa	s	2	0.5	100	0.1	2
+48	48.4	48.4.8	Lachenalia_sp		2	0.5	100	0.1	0
+48	48.5	48.5.9	Casmanthe_aethiopica	s	5	30	100	0.1	0
+48	48.5	48.5.9	Osyris_compressa		0	150	100	50	0
+48	48.5	48.5.9	Rhus_tomentosa	r	0	150	100	50	0
+48	48.5	48.5.9	Tribolium_uniole		2	20	50	1	0
+48	48.5	48.5.9	Watsonia_borbonica	s	11	40	100	1	11
+48	48.5	48.5.9	Disa_braceata	r	8	5	100	1	0
+48	48.5	48.5.10	Acacia_saligna		2	10	100	0.1	0
+48	48.5	48.5.10	Cliffortia_filifolia		2	40	100	2	0
+48	48.5	48.5.10	Elytropappus_scaber		3	20	100	2	0
+48	48.5	48.5.10	Erica_plukenetii		2	40	100	2	0
+48	48.5	48.5.10	Ficinia_oligantha		2	5	50	0.1	0
+48	48.5	48.5.10	Ischyrolepis_capensis	s	3	10	50	0.1	3
+48	48.5	48.5.10	Metalasia_muricata		2	40	100	3	0
+48	48.5	48.5.10	Othonna_quiquidentata		6	100	10	5	0
+48	48.5	48.5.10	Passerina_corymbosa		8	15	100	1	0
+48	48.5	48.5.10	Rhus_rosmarinifolia		2	30	100	1	0
+48	48.5	48.5.10	Watsonia_borbonica	s	4	40	100	0.1	0
+48	48.5	48.5.10	Aspalathus_ericifolia		17	40	90	20	0
+48	48.5	48.5.10	Lachenalia_sp		10	0.5	100	1	0
+48	48.5	48.5.10	Holothirx_villosa		5	0.5	100	0.1	0
+48	48.5	48.5.10	Oxalis_sp		12	0.5	100	0.1	0
+48	48.6	48.6.11	Acacia_saligna	s	4	60	100	2	0
+48	48.6	48.6.11	Anthospermum_aethiopicum	s	1	70	100	1	1
+48	48.6	48.6.11	Aspalathus_ericifolia		1	50	100	5	0
+48	48.6	48.6.11	Erica_plukenetii	s	5	30	100	0.1	5
+48	48.6	48.6.11	Ficinia_tenuifolia		4	10	75	1	0
+48	48.6	48.6.11	Metalasia_muricata		3	40	100	3	0
+48	48.6	48.6.11	Othonna_quiquidentata		4	150	50	20	0
+48	48.6	48.6.11	Passerina_corymbosa	s	4	20	100	1	4
+48	48.6	48.6.11	Struthiola_dodecandra		3	50	100	1	0
+48	48.6	48.6.11	Tribolium_uniole		4	30	50	1	0
+48	48.6	48.6.11	Aspalathus_divericata		0	10	100	5	0
+48	48.6	48.6.11	Lachenalia_sp		2	0.5	100	0.1	0
+48	48.6	48.6.11	Oxalis_sp		4	0.5	100	0.1	0
+48	48.6	48.6.11	Chorysa_coma		1	50	100	2	0
+48	48.6	48.6.12	Anthospermum_aethiopicum		5	40	100	5	0
+48	48.6	48.6.12	Elytropappus_scaber		2	20	100	3	0
+48	48.6	48.6.12	Ficinia_tenuifolia		1	10	20	0.1	0
+48	48.6	48.6.12	Metalasia_muricata	s	1	30	100	0.1	0
+48	48.6	48.6.12	Passerina_corymbosa		3	30	100	0.1	0
+48	48.6	48.6.12	Thesium_funale		2	30	25	1	0
+48	48.6	48.6.12	Tribolium_uniole		15	30	25	3	0
+48	48.6	48.6.12	Watsonia_borbonica		7	30	100	1	0
+48	48.6	48.6.12	Lachenalia_sp		8	0.5	100	0.1	0
+48	48.6	48.6.12	Protea_nitida		0	150	100		0
+48	48.6	48.6.12	Holothirx_villosa		1	0.5	100	0.1	0
+52	52.1	52.1.1	Aspalathus_chenopoda		0	150	100	40	0
+52	52.1	52.1.1	Cassine_perugua	r	0	80	100	5	0
+52	52.1	52.1.1	Cullumia_setosa		0	80	100	0.1	0
+52	52.1	52.1.1	Ficinia_oligantha		5	20	50	20	0
+52	52.1	52.1.1	Helichrysum_dasyanthum	s	1	55	100	20	1
+52	52.1	52.1.1	Othonna_quiquidentata		1	80	10	0.1	0
+52	52.1	52.1.1	Helichrysum_pangurifolium	s	2	20	100	5	2
+52	52.1	52.1.2	Acacia_saligna	s	4	150	100	60	4
+52	52.1	52.1.2	Ficinia_secunda	s	5	25	10	10	5
+52	52.1	52.1.2	Pentaschistis_airodes		3	10	5	0.1	0
+52	52.1	52.1.2	Rhus_laevigata	s	1	40	100	2	1
+52	52.1	52.1.2	Oxalis_sp_pink_		1	10	100	0.1	0
+52	52.1	52.1.2	Oxalis_sp_2_thin_leaf		1	10	100	0.1	0
+52	52.1	52.1.2	Ficinia_nigrescens		1	30	5	10	0
+52	52.2	52.2.3	Acacia_saligna		0	150	100	2	0
+52	52.2	52.2.3	Aspalathus_chenopoda		1	120	100	50	0
+52	52.2	52.2.3	Elytropappus_scaber		0	30	100	2	0
+52	52.2	52.2.3	Ficinia_oligantha		2	20	50	5	0
+52	52.2	52.2.3	Helminthia_membranaceae		1	100	25	25	0
+52	52.2	52.2.3	Metalasia_muricata	s	1	130	100	20	1
+52	52.2	52.2.3	Othonna_quiquidentata		1	100	50	20	0
+52	52.2	52.2.3	Phylica_plumosa	s	1	100	100	2	1
+52	52.2	52.2.3	Stoebe_cynerea	s	1	20	100	0.1	1
+52	52.2	52.2.4	Aspalathus_chenopoda	s	1	180	100	100	1
+52	52.2	52.2.4	Cullumia_setosa	s	1	40	50	10	1
+52	52.2	52.2.4	Ficinia_oligantha		1	15	100	1	0
+52	52.2	52.2.4	Helmunthia_membranaceae	s	1	100	80	25	1
+52	52.2	52.2.4	Phylica_sp		2	50	100	5	2
+52	52.2	52.2.4	Oxalis_sp1		10	15	100	5	0
+52	52.2	52.2.4	Oxalis_sp_2_thin_leaf		10	10	100	2	0
+52	52.2	52.2.4	Tetragonia_fruticosa		1	20	100	5	0
+52	52.3	52.3.5	Aspalathus_chenopoda		0	140	100	25	0
+52	52.3	52.3.5	Cassine_perugua	r	0	150	100	25	0
+52	52.3	52.3.5	Cullumia_setosa		0	40	100	2	0
+52	52.3	52.3.5	Ficinia_secunda		2	20	10	10	0
+52	52.3	52.3.5	Metalasia_muricata	s	1	40	100	5	1
+52	52.3	52.3.5	Othonna_quiquidentata		0	150	25	40	0
+52	52.3	52.3.5	Pentaschistis_barbata		4	30	20	10	0
+52	52.3	52.3.5	Rhus_tomentosa		1	130	100	20	0
+52	52.3	52.3.5	Phylica_sp	s	2	50	100	5	2
+52	52.3	52.3.5	Phylica_plumosa		0	50	100	1	0
+52	52.3	52.3.5	Hermannia_sp		1	55	100	2	0
+52	52.3	52.3.5	Elmuntia		1	50	25	5	0
+52	52.3	52.3.5	Oxalis_sp_1		5	10	100	1	0
+52	52.3	52.3.6	Acacia_saligna		2	90	100	10	0
+52	52.3	52.3.6	Aspalathus_chenopoda	s	1	100	100	25	1
+52	52.3	52.3.6	Cullumia_setosa	s	1	50	100	30	1
+52	52.3	52.3.6	Ficinia_secunda		3	20	50	5	0
+52	52.3	52.3.6	Helichrysum_dasyanthum		0	55	100	10	0
+52	52.3	52.3.6	Metalasia_muricata		1	80	100	20	0
+52	52.3	52.3.6	Olea_exasperata		1	40	100	20	0
+52	52.3	52.3.6	Othonna_quiquidentata		0	130	20	50	0
+52	52.3	52.3.6	Passerina_corymbosa		1	65	100	2	0
+52	52.3	52.3.6	Hermannia_sp		1	55	100	2	0
+52	52.3	52.3.6	Elmuntia		1	50	25	5	0
+52	52.3	52.3.6	Oxalis_sp1		5	10	100	1	0
+52	52.4	52.4.7	Aspalathus_chenopoda		1	120	100	100	0
+52	52.4	52.4.7	Metalasia_muricata	s	2	80	100	2	2
+52	52.4	52.4.7	Olea_exasperata		3	50	100	30	0
+52	52.4	52.4.7	Ehrharta_calacina		2	20	50	5	0
+52	52.4	52.4.7	Phylica_sp		1	35	100	2	0
+52	52.4	52.4.8	Tarchonanthus_camphoratus		0	300	100	10	0
+52	52.4	52.4.8	Oxalis_sp_2_		3	5	100	0.1	0
+52	52.4	52.4.8	Aspalathus_chenopoda		0	200	100	40	0
+52	52.4	52.4.8	Cullumia_setosa		0	70	100	5	0
+52	52.4	52.4.8	Helichrysum_dasyanthum		1	75	100	30	0
+52	52.4	52.4.8	Pentachistis_barbata		1	70	50	2	0
+52	52.5	52.5.9	Aspalathus_chenopoda	s	1	120	100	80	1
+52	52.5	52.5.9	Cassine_perugua	r	1	75	100	75	0
+52	52.5	52.5.9	Ficinia_secunda		1	30	10	1	0
+52	52.5	52.5.9	Osyris_compressa		0	100	100	10	0
+52	52.5	52.5.9	Othonna_quiquidentata		1	100	2	10	0
+52	52.5	52.5.9	Pelargonium_triste		1	10	100	1	0
+52	52.5	52.5.9	Phylica_sp_1		1	40	100	1	0
+52	52.5	52.5.9	Oxalis_sp_2		1	10	100	0.1	0
+52	52.5	52.5.9	Ehrharta_calacina		1	50	50	0.1	0
+52	52.5	52.5.10	Acacia_saligna	s	1	20	100	5	1
+52	52.5	52.5.10	Aspalathus_chenopoda		2	140	100	100	0
+52	52.5	52.5.10	Ficinia_secunda		1	20	10	0.1	0
+52	52.5	52.5.10	Passerina_corymbosa	s	1	50	100	0.1	1
+52	52.5	52.5.10	Pentachistis_airoides		1	20	100	0.1	0
+52	52.5	52.5.10	Oxalis_sp_2		10	15	100	2	0
+52	52.5	52.5.10	Oxalis_sp_1		10	10	100	2	0
+52	52.6	52.6.11	Aspalathus_chenopoda		3	100	100	100	0
+52	52.6	52.6.11	Babiana_ambigua		10	15	100	2	0
+52	52.6	52.6.11	Helichrysum_dasyanthum		1	40	100	30	0
+52	52.6	52.6.11	Ischyrolepis_capensis	s	1	20	100	0.1	1
+52	52.6	52.6.11	Metalasia_muricata		2	20	100	1	0
+52	52.6	52.6.11	Olea_exasperata	s	1	50	100	0.1	1
+52	52.6	52.6.11	Passerina_corymbosa	s	1	25	100	0.1	1
+52	52.6	52.6.11	Pentaschistis_airodes		1	10	100	0.1	0
+52	52.6	52.6.11	Pentaschistis_barbata		1	40	50	5	0
+52	52.6	52.6.11	Crassula_fasicularis_		1	10	100	0.1	0
+52	52.6	52.6.11	Hermannia_sp		0	10	100	1	0
+52	52.6	52.6.11	Oxalis_sp1		10	10	100	1	0
+52	52.6	52.6.11	Oxalis_sp2		1	10	100	0.1	0

@@ -1,0 +1,26 @@
+Notes for synonym checking
+
+1) Names from all datasets were extracted, combined, “uniqued”, sorted alphabetically to create one list and run through the Taxon Name Resolution Service (http://tnrs.iplantcollaborative.org/)
+
+2) Where the name was perfectly matched (TNRS_Overall_score = 1) the TNRS_Accepted_name was used, unless the species does not occur in the Cape (i.e. the name recorded was wrong, but matched another accepted species name).
+
+3) Where full species names with collection numbers were recorded they were assigned the full species name (i.e. TNRS_Accepted_name)
+
+4) Where genus names with collection numbers were recorded the “Original” name (i.e. Genus + collection number) was retained as it may allow discerning the species from other indeed species in the same genus.
+
+5) Where genus name and a good descriptor were given - e.g. Pentameris tiny flower the “Original” name was kept.
+
+6) Where genus names were given without species or collection number they were lumped to genus.
+
+7) Names were checked for spelling and occurrence on the Cape Peninsula using http://redlist.sanbi.org/, http://posa.sanbi.org/ and a species list for the Cape Peninsula obtained from Tony Rebelo.
+
+Check throughout: 
+Morea - Moraea
+Pentaschistis - Pentameris (make them all Pentaschistis?)
+Satirium - Satyrium
+Bolusafra - Fagelia
+Peucedanum - Notobubon
+Stoebe - Seriphium
+Rhus - Searsia
+Robsonodendron maritimum - Cassine maritima (check which is correct)
+

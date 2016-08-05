@@ -1,0 +1,16 @@
+CMNT_Code	Community
+1	Ericaceous Fynbos
+2	Mesic Mesotrophic Proteoid Fynbos
+3	Mesic Oligotrophic Proteoid Fynbos
+4	Milkwood Thicket
+5	Riparian Scrub Fynbos
+6	Thicket Forest
+7	Transitional Renosterveld
+8	Undifferentiated Cliff Community
+9	Upland Restioid Fynbos
+10	Wet Mesotrophic Proteoid Fynbos
+11	Wet Oligotrophic Proteoid Fynbos
+12	Wet Restioid Fynbos
+80	Need to Find Out
+80	Unknown
+81	N/A

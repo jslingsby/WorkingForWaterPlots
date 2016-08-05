@@ -1,0 +1,343 @@
+PropRich <- round(RichTC/RichAll*100)
+data.frame(RichAll=RichAll, RichTC=RichTC, PropRich=PropRich)
+temp <- data.frame(RichAll=RichAll, RichTC=RichTC, PropRich=PropRich)
+temp[order(temp[,3]),]
+temp[order(temp[,1]),]
+plot(PropRich ~ RichAll, data=temp)
+plot(PropRich ~ RichAll, data=temp, main="10x10 sites 2002", ylab="Prop species in Cont Traits")
+plot(PropRich ~ RichAll, data=temp, main="10x10 sites 2002", ylab="Prop species in Cont Traits", xlab="Site richness")
+TEMP <- paste("PlotSpc_20", c(02, 08, 11, 14), "_12July16.txt", sep="")
+TEMP
+TEMP <- paste("PlotSpc_20", c("02", "08", "11", "14"), "_12July16.txt", sep="")
+TEMP
+par(mfrow=c(2,2))#
+YY <- c("02", "08", "11", "14")#
+TEMP <- paste("PlotSpc_20", YY, "_12July16.txt", sep="")#
+#
+for(i in 1:4){#
+	tdat <- read.delim(TEMP[i])#
+	RichAll <- rowSums(tdat)#
+	RichTC <- rowSums(tdat[, which(names(tdat) %in% cont)])#
+	PropRich <- round(RichTC/RichAll*100)#
+	temp <- data.frame(RichAll=RichAll, RichTC=RichTC, PropRich=PropRich)#
+	temp[order(temp[,1]),]#
+	plot(PropRich ~ RichAll, data=temp, main=paste("10x10 sites 20", YY[i], sep=""), ylab="Prop species in Cont Traits", xlab="Site richness")#
+}
+par(mfrow=c(2,2))#
+YY <- c("02", "08", "11", "14")#
+TEMP <- paste("subPlotSpc_20", YY, "_PropCover_21June16.txtt", sep="")
+i
+tdat <- read.delim(TEMP[i])
+tdat
+RichAll <- rowSums(tdat)
+RichTC <- rowSums(tdat[, which(names(tdat) %in% cont)])
+RichAll
+RichTC <- rowSums(tdat[, which(names(tdat) %in% cont)])
+PropRich <- round(RichTC/RichAll*100)
+temp <- data.frame(RichAll=RichAll, RichTC=RichTC, PropRich=PropRich)
+temp
+par(mfrow=c(2,2))#
+YY <- c("02", "08", "11", "14")#
+TEMP <- paste("subPlotSpc_20", YY, "_PropCover_21June16.txtt", sep="")#
+for(i in 1:4){#
+	tdat <- read.delim(TEMP[i])#
+	RichAll <- rowSums(tdat)#
+	RichTC <- rowSums(tdat[, which(names(tdat) %in% cont)])#
+	PropRich <- round(RichTC/RichAll*100)#
+	temp <- data.frame(RichAll=RichAll, RichTC=RichTC, PropRich=PropRich)#
+	temp[order(temp[,1]),]#
+	plot(PropRich ~ RichAll, data=temp, main=paste("1x1 sites 20", YY[i], sep=""), ylab="Prop Cover in Cont Traits", xlab="Site total cover")#
+}
+par(mfrow=c(2,2))#
+YY <- c("02", "08", "11", "14")#
+TEMP <- paste("subPlotSpc_20", YY, "_PropCover_21June16.txt", sep="")#
+for(i in 1:4){#
+	tdat <- read.delim(TEMP[i])#
+	RichAll <- rowSums(tdat)#
+	RichTC <- rowSums(tdat[, which(names(tdat) %in% cont)])#
+	PropRich <- round(RichTC/RichAll*100)#
+	temp <- data.frame(RichAll=RichAll, RichTC=RichTC, PropRich=PropRich)#
+	temp[order(temp[,1]),]#
+	plot(PropRich ~ RichAll, data=temp, main=paste("1x1 sites 20", YY[i], sep=""), ylab="Prop Cover in Cont Traits", xlab="Site total cover")#
+}
+par(mfrow=c(2,2))#
+YY <- c("02", "08", "11", "14")#
+TEMP <- paste("subPlotSpc_20", YY, "_PropCover_12July16.txt", sep="")#
+for(i in 1:4){#
+	tdat <- read.delim(TEMP[i])#
+	RichAll <- rowSums(tdat)#
+	RichTC <- rowSums(tdat[, which(names(tdat) %in% cont)])#
+	PropRich <- round(RichTC/RichAll*100)#
+	temp <- data.frame(RichAll=RichAll, RichTC=RichTC, PropRich=PropRich)#
+	temp[order(temp[,1]),]#
+	plot(PropRich ~ RichAll, data=temp, main=paste("1x1 sites 20", YY[i], sep=""), ylab="Prop Cover in Cont Traits", xlab="Site total cover")#
+}
+load("List_Community_MPD_MFD_and_PhyTraitDistMat_14July16")
+load("~/Desktop/Dropbox/Travail_SA/3.ComEcol/CapeCommunities/Data/Results/List_Community_MPD_MFD_and_PhyTraitDistMat_14July16")
+l.com.yy
+]])
+names(l.com.yy[[1]])
+names(l.com.yy)  # "2002" "2008" "2011" "2014"
+names(l.com.yy[[1]]) # "COM" ; "l.com.phy" ;  "l.phly" ; "l.com.trait" ; "l.trait.dist"
+head(l.com.yy$"2002"$COM)
+#........#
+p02 <- read.delim("PlotSpc_2002_21June16.txt")#
+p08 <- read.delim("PlotSpc_2008_21June16.txt")#
+p11 <- read.delim("PlotSpc_2011_21June16.txt")#
+p14 <- read.delim("PlotSpc_2014_21June16.txt")
+p02 <- read.delim("PlotSpc_2002_12July16.txt")#
+p08 <- read.delim("PlotSpc_2008_12July16.txt")#
+p11 <- read.delim("PlotSpc_2011_12July16.txt")#
+p14 <- read.delim("PlotSpc_2014_12July16.txt")
+head(p02)
+YY <- c("2002", "2008", "2011", "2014")
+yy=YY[1]
+yy
+if(yy=="2002") tempP <- p02 ; if(yy=="2008") tempP <- p08#
+	if(yy=="2011") tempP <- p11 ; if(yy=="2014") tempP <- p14#
+	COM <- data.frame(sitID=row.names(tempP), year=yy, rich=rowSums(tempP), nbInv=rowSums(tempP[,names(tempP) %in% II]))
+COM
+temp <- data.frame(sitID=row.names(p02), p02)
+temp[1:5, 1:10]
+temp[1:10, 1:10]
+substring(temp$sitID, 2, 10)
+strsplit(substring(temp$sitID, 2, 10), "_")
+unlist(strsplit(substring(temp$sitID, 2, 10), "_"))
+matrix(unlist(strsplit(substring(temp$sitID, 2, 10), "_")), ncol=2)
+matrix(unlist(strsplit(substring(temp$sitID, 2, 10), "_")), ncol=2, byrow=T)
+temp <- data.frame(sitID=row.names(p02), p02)
+sitid <- matrix(unlist(strsplit(substring(temp$sitID, 2, 10), "_")), ncol=2, byrow=T)
+sitid <- data.frame(matrix(unlist(strsplit(substring(temp$sitID, 2, 10), "_")), ncol=2, byrow=T))
+head(sitid)
+names(sitid) <- c("LocID", "PlotID")
+temp <- data.frame(sitID=temp$sitID, sitid, p02)
+temp[1:10, 1:10]
+PP <- sapply(unique(temp$LocID), function(x) colSums(temp[temp$LocID==x,c(2, 4:ncol(temp))]))
+temp$LocID
+temp$LocID <- as.numeric(as.character(temp$LocID))
+PP <- sapply(unique(temp$LocID), function(x) colSums(temp[temp$LocID==x,c(2, 4:ncol(temp))]))
+PP
+PP <- t(sapply(unique(temp$LocID), function(x) colSums(temp[temp$LocID==x,c(2, 4:ncol(temp))])))
+head(PP)
+Rich <- apply(PP[,2:ncol(PP)], 1, function(x) sum(x>0))
+Rich
+plot(Rich)
+hist(Rich)
+hist(Rich, breaks=10)
+hist(Rich, breaks=20)
+hist(Rich, breaks=50)
+COL
+hist(Rich, breaks=50, col="#a6cee3")
+hist(Rich, breaks=50, col="#1f78b4")
+yy
+if(yy=="2002") tempP <- p02 ; if(yy=="2008") tempP <- p08#
+	if(yy=="2011") tempP <- p11 ; if(yy=="2014") tempP <- p14
+yy="2008"
+if(yy=="2002") tempP <- p02 ; if(yy=="2008") tempP <- p08
+temp <- data.frame(sitID=row.names(tempP), tempP)
+row.names(tempP)
+data.frame(matrix(unlist(strsplit(temp$sitID, ".")), ncol=2, byrow=T))
+temp$sitID
+temp <- data.frame(sitID=row.names(tempP), tempP)
+data.frame(matrix(unlist(strsplit(temp$sitID, ".")), ncol=2, byrow=T))
+temp <- data.frame(sitID=as.character(row.names(tempP)), tempP)
+data.frame(matrix(unlist(strsplit(temp$sitID, ".")), ncol=2, byrow=T))
+temp$sitID
+as.character(row.names(tempP))
+temp <- data.frame(sitID=as.character(row.names(tempP)), tempP)
+temp$sitID
+temp$sitID <- as.character(temp$sitID)
+data.frame(matrix(unlist(strsplit(temp$sitID, ".")), ncol=2, byrow=T))
+strsplit(temp$sitID, ".")
+temp$sitID
+strsplit(temp$sitID, ".")
+nchar(temp$sitID)-2
+substring(temp$sitID, 1, nchar(temp$sitID)-2 )
+tsid <- as.character(temp$sitID)
+sitid <- data.frame(LID=substring(tsid, 1, nchar(tsid)-2), PID=substring(tsid, nchar(tsid)-1, 20))
+sitid
+data.frame(LID=substring(tsid, 1, nchar(tsid)-2), PID=substring(tsid, nchar(tsid), 20))
+sitid <- data.frame(LID=substring(tsid, 1, nchar(tsid)-2), PID=substring(tsid, nchar(tsid), 20))
+if(yy=="2008"){	sitid <- data.frame(LID=substring(tsid, 1, nchar(tsid)-2), PID=substring(tsid, nchar(tsid), 20)) }
+names(sitid) <- c("LocID", "PlotID")
+temp <- data.frame(sitID=temp$sitID, sitid, tempP)
+temp$LocID <- as.numeric(as.character(temp$LocID))
+PP <- t(sapply(unique(temp$LocID), function(x) colSums(temp[temp$LocID==x,c(2, 4:ncol(temp))])))
+PP
+Rich <- apply(PP[,2:ncol(PP)], 1, function(x) sum(x>0))
+hist(Rich, breaks=50, col="#1f78b4")
+l.SumPlot <- list()
+l.SumPlot$yy <- t(sapply(unique(temp$LocID), function(x) colSums(temp[temp$LocID==x,c(2, 4:ncol(temp))])))
+l.SumPlot <- list()
+l.SumPlot$yy <- t(sapply(unique(temp$LocID), function(x) colSums(temp[temp$LocID==x,c(2, 4:ncol(temp))])))
+l.SumPlot[yy] <- t(sapply(unique(temp$LocID), function(x) colSums(temp[temp$LocID==x,c(2, 4:ncol(temp))])))
+l.SumPlot[[yy]] <- t(sapply(unique(temp$LocID), function(x) colSums(temp[temp$LocID==x,c(2, 4:ncol(temp))])))
+names(l.SumPlot)
+yy <- "2011"
+temp <- data.frame(sitID=row.names(tempP), tempP)#
+	tsid <- as.character(temp$sitID)
+tsid
+y="2014"
+yy="2014"
+if(yy=="2014") tempP <- p14#
+	temp <- data.frame(sitID=row.names(tempP), tempP)#
+	tsid <- as.character(temp$sitID)
+tsid
+yy <- "2011"
+if(yy=="2011") tempP <- p11 ; if(yy=="2014") tempP <- p14#
+	temp <- data.frame(sitID=row.names(tempP), tempP)#
+	tsid <- as.character(temp$sitID)
+tsid
+YY <- c("2002", "2008", "2011", "2014")#
+l.SumPlot <- list()#
+for(yy in YY) {#
+	if(yy=="2002") tempP <- p02 ; if(yy=="2008") tempP <- p08#
+	if(yy=="2011") tempP <- p11 ; if(yy=="2014") tempP <- p14#
+	temp <- data.frame(sitID=row.names(tempP), tempP)#
+	tsid <- as.character(temp$sitID)#
+	if(yy=="2002"){	sitid <- data.frame(matrix(unlist(strsplit(substring(temp$sitID, 2, 10), "_")), ncol=2, byrow=T)) #
+		} else { sitid <- data.frame(LID=substring(tsid, 1, nchar(tsid)-2), PID=substring(tsid, nchar(tsid), 20)) }#
+	names(sitid) <- c("LocID", "PlotID")#
+	temp <- data.frame(sitID=temp$sitID, sitid, tempP)#
+	temp$LocID <- as.numeric(as.character(temp$LocID))#
+	l.SumPlot[[yy]] <- t(sapply(unique(temp$LocID), function(x) colSums(temp[temp$LocID==x,c(2, 4:ncol(temp))])))#
+}
+Rich <- lapply(l.SumPlot, function(y) apply(y[,2:ncol(y)], 1, function(x) sum(x>0)))
+Rich
+Rich <- lapply(l.SumPlot, function(y) apply(y[,2:ncol(y)], 1, function(x) sum(x>0)))
+unlist(Rich)
+unlist(Rich, use.names=F)
+sapply(names(Rich), function(x) cbind(year=x, rich=Rich[[x]]))
+l.SumPlot
+head(l.SumPlot[[1]])
+sapply(names(Rich), function(x) cbind(year=x, LocID=l.SumPlot[[x]], rich=Rich[[x]]))
+sapply(names(Rich), function(x) cbind(year=x, LocID=l.SumPlot[[x]]$LocID, rich=Rich[[x]]))
+sapply(names(Rich), function(x) cbind(year=x, LocID=l.SumPlot[[x]][,"LocID"], rich=Rich[[x]]))
+do.call(rbind, sapply(names(Rich), function(x) cbind(year=x, LocID=l.SumPlot[[x]][,"LocID"], rich=Rich[[x]])))
+allRich <- do.call(rbind, sapply(names(Rich), function(x) cbind(year=x, LocID=l.SumPlot[[x]][,"LocID"], rich=Rich[[x]])))
+allRich
+for(i in 1:3) allRich[,i] <- as.numeric(allRich[,i])
+head(allRich)
+for(i in 1:3) allRich[,i] <- as.numeric(allRich[,i])
+head(allRich)
+allRich <- as.data.frame(do.call(rbind, sapply(names(Rich), function(x) cbind(year=x, LocID=l.SumPlot[[x]][,"LocID"], rich=Rich[[x]]))))
+for(i in 1:3) allRich[,i] <- as.numeric(allRich[,i])
+head(allRich)
+allRich <- as.data.frame(do.call(rbind, sapply(names(Rich), function(x) cbind(year=x, LocID=l.SumPlot[[x]][,"LocID"], rich=Rich[[x]]))))
+head(allRich)
+str(allRich)
+head(allRich)
+for(i in 1:3) allRich[,i] <- as.numeric(allRich[,i])
+head(allRich)
+s4 <- names(table(allRich$LocID)[table(allRich$LocID)==4])
+s4
+com4 <- allC[which(allRich$LocID %in% s4),]
+length(unique(com4$LocID)) # 55
+com4 <- allC[which(allRich$LocID %in% s4),]
+length(unique(com4$LocID)) # 55
+s4 <- names(table(allRich$LocID)[table(allRich$LocID)==4])
+com4 <- allC[which(allRich$LocID %in% s4),]
+com4 <- allRich[which(allRich$LocID %in% s4),]
+length(unique(com4$LocID)) # 55
+dim(com4)  # 220
+p1 <- ggplot(com4, aes(x=year, y=rich, colour=sitID, group=sitID)) + geom_line(show.legend=F)
+p1
+p1 <- ggplot(com4, aes(x=year, y=rich, colour=LocID, group=LocID)) + geom_line(show.legend=F)
+p1
+p2 <- ggplot(allRich, aes(x=year, y=rich, colour=LocID, group=LocID)) + geom_line(show.legend=F)
+multiplot(p1, p2, cols=2)
+allRich <- as.data.frame(do.call(rbind, sapply(names(Rich), function(x) cbind(year=x, LocID=l.SumPlot[[x]][,"LocID"], rich=Rich[[x]]))))
+for(i in 1:3) allRich[,i] <- as.numeric(as.character(allRich[,i]))
+head(allRich)
+s4 <- names(table(allRich$LocID)[table(allRich$LocID)==4])#
+com4 <- allRich[which(allRich$LocID %in% s4),]#
+length(unique(com4$LocID)) # 55#
+dim(com4)  # 16#
+#
+p1 <- ggplot(com4, aes(x=year, y=rich, colour=LocID, group=LocID)) + geom_line(show.legend=F)#
+p2 <- ggplot(allRich, aes(x=year, y=rich, colour=LocID, group=LocID)) + geom_line(show.legend=F)#
+multiplot(p1, p2, cols=2)
+head(l.SumPlot[[1]])
+sp02_Abun <- read.delim("subPlotSpc_2002_NbIndiv_21June16.txt")
+#........#
+sp02_Abun <- read.delim("subPlotSpc_2002_NbIndiv_12July16.txt")#
+sp02_Cov <- read.delim("subPlotSpc_2002_PropCover_12July16.txt")#
+#
+sp08_Abun <- read.delim("subPlotSpc_2008_NbIndiv_12July16.txt")#
+sp08_Cov <- read.delim("subPlotSpc_2008_PropCover_12July16.txt")#
+#
+sp11_Abun <- read.delim("subPlotSpc_2011_NbIndiv_12July16.txt")#
+sp11_Cov <- read.delim("subPlotSpc_2011_PropCover_12July16.txt")#
+#
+sp14_Abun <- read.delim("subPlotSpc_2014_NbIndiv_12July16.txt")#
+sp14_Cov <- read.delim("subPlotSpc_2014_PropCover_12July16.txt")
+sp02_Abun[1:10, 1:10] ; sp02_Cov[1:10, 1:10]
+tid <- row.names(sp02_Abun)
+tid
+substring(tid, 2, 3)
+lapply(strsplit(substring(tid, 2, 3), "_"), function(x) x[[1]])
+unlist(lapply(strsplit(substring(tid, 2, 3), "_"), function(x) x[[1]]))
+sp02_Abun$PlotID <- unlist(lapply(strsplit(substring(tid, 2, 3), "_"), function(x) x[[1]]))
+head(sp02_Abun)
+Rsp02 <- t(sapply(unique(sp02_Abun$PlotID), function(x) colSums(sp02_Abun[sp02_Abun$PlotID==x,])))
+unlist(lapply(strsplit(substring(tid, 2, 3), "_"), function(x) x[[1]]))
+sp02_Abun$PlotID <- as.numeric(unlist(lapply(strsplit(substring(tid, 2, 3), "_"), function(x) x[[1]])))
+head(sp02_Abun)
+Rsp02 <- t(sapply(unique(sp02_Abun$PlotID), function(x) colSums(sp02_Abun[sp02_Abun$PlotID==x,])))
+head(Rsp02)
+temp <- lapply(Rsp02$PlotID, function(x) Rsp02[Rsp02$PlotID==x, 1:(ncol(Rsp02)-1)])
+Rsp02 <- as.data.frame(t(sapply(unique(sp02_Abun$PlotID), function(x) colSums(sp02_Abun[sp02_Abun$PlotID==x,]))))
+head(Rsp02)
+temp <- lapply(Rsp02$PlotID, function(x) Rsp02[Rsp02$PlotID==x, 1:(ncol(Rsp02)-1)])
+temp
+lapply(temp, function(y) names(y[y>0]))
+lapply(temp, function(y) names(y[y>0,]))
+lapply(temp, function(y) names(y)[y>0,])
+lapply(temp, function(y) names(y)[y>0])
+temp2 <- lapply(temp, function(y) names(y)[y>0])
+head(allRich)
+allRich
+l.SumPlot
+head(l.SumPlot[[1]])
+temp2
+temp
+head(Rsp02)
+head(sp02_Abun)
+head(sp02_Abun, 10)
+head(l.SumPlot[[1]])
+temp3 <- lapply(l.SumPlot[[1]]$LocID, function(x) l.SumPlot[[1]][l.SumPlot[[1]]$LocID ==x, 2:ncol(l.SumPlot[[1]])])
+temp3 <- lapply(l.SumPlot[[1]][,"LocID"], function(x) l.SumPlot[[1]][l.SumPlot[[1]][,"LocID"]==x, 2:ncol(l.SumPlot[[1]])])
+temp3
+temp4 <- lapply(temp, function(y) names(y)[y>0])
+temp4
+temp3
+melt(l.SumPlot)
+head(melt(l.SumPlot))
+head(melt(l.SumPlot[[1]]), id.vars=c("LocID"))
+head(melt(l.SumPlot[[1]]))
+head(melt(l.SumPlot[[1]]))
+head(melt(l.SumPlot[[1]]), names(l.SumPlot[[1]]))
+head(melt(l.SumPlot[[1]]), id.vars=names(l.SumPlot[[1]]))
+head(melt(l.SumPlot[[1]]), id=1)
+head(melt(l.SumPlot[[1]]), id=2)
+head(melt(l.SumPlot[[1]]), id=2:ncol(l.SumPlot[[1]]))
+head(melt(l.SumPlot[[1]]), id.vars =2:ncol(l.SumPlot[[1]]))
+head(melt(l.SumPlot[[1]]), measure.vars =2:ncol(l.SumPlot[[1]]))
+head(melt(l.SumPlot[[1]]), measure.vars=1:ncol(l.SumPlot[[1]]))
+head(melt(l.SumPlot[[1]]), measure.vars=ncol(l.SumPlot[[1]]))
+head(melt(l.SumPlot[[1]]))
+l.SumPlot[[1]]
+head(melt(l.SumPlot[[1]]), id="LocID")
+head(melt(l.SumPlot[[1]], id="LocID"))
+names(l.SumPlot[[1]])
+colnames(l.SumPlot[[1]])
+head(melt(l.SumPlot[[1]], id="LocID"))
+head(melt(l.SumPlot[[1]], id="LocID"), 100)
+class(l.SumPlot[[1]])
+head(melt(as.data.frame(l.SumPlot[[1]]), id="LocID"), 100)
+head(Rsp02)
+SPP <- melt(Rsp02, id="PlotID")
+PP <- melt(as.data.frame(l.SumPlot[[1]]), id="LocID")
+head(SPP)
+head(PP)
+MPSP <- merge(SPP, PP, by.x="PlotID", by.y="LocID")

@@ -1,0 +1,27 @@
+NTNL_VGTN_Code	National Vegetation Type
+1	Atlantic Sand Fynbos
+2	Beach
+3	Boland Granite Fynbos
+4	Cape Estuarine Salt Marshes
+5	Cape Flats Dune Strandveld - False Bay
+6	Cape Flats Dune Strandveld - West Coast
+7	Cape Flats Sand Fynbos
+8	Cape Lowlands Freshwater Wetlands
+9	Cape Winelands Shale Fynbos
+10	Elgin Shale Fynbos
+11	Hangklip Sand Fynbos
+12	Kogelberg Sandstone Fynbos
+13	Lourensford Alluvium Fynbos
+14	North Peninsula Granite Fynbos
+15	Peninsula Sandstone Fynbos
+16	Peninsula Shale Fynbos
+17	Peninsula Shale Renosterveld
+18	Reclaimed
+19	South Peninsula Granite Fynbos
+20	Southern Afrotemperate Forest
+21	Swartland Alluvium Fynbos
+22	Swartland Alluvium Renosterveld
+23	Swartland Granite Renosterveld
+24	Swartland Shale Renosterveld
+25	Swartland Silcrete Renosterveld
+26	Western Shaleband Vegetation

@@ -1,0 +1,47 @@
+Last update: 22 July 2016
+
+List of all files
+
+***********************************
+(1) SPECIES LIST 
+***********************************
+
+synonyms_fixing_notes.txt	--> Note from Jasper on synonymy fixing issues
+
+allnames_old.csv		--> Final??? checking of the names with the web tool (TNRS) by Jasper
+
+trns_results.txt		--> results from the web tool (TNRS)
+TTS_Peninsula_list_based_on_A&S_for_Jasper.xls --> cape peninsula species list as received from Tony Rebelo
+
+Cape Peninsula SpeciesList Synonyms.xls 	--> cape peninsula species list with IUCN status and alternative names as matched with http://posa.sanbi.org/tools.php
+
+***********************************
+(2) ENVIRONMENTAL DATA
+***********************************
+
+FireIndices.xls			--> mass and diameter of species after fire in each site (WHEN???)
+
+plot_treatment.xlsx		--> site treatment (soil type + vegetation type + invasion)
+
+plot_treatments_6July16.txt --> site environmental conditions
+plot_treatments_6July16_MetaData.csv  --> Legend code for plot_treatments_6July16.txt
+
+***********************************
+(3) COMMUNITY DATA
+***********************************
+plots.xls					--> community data for 2002
+sub_plots.xls				--> subplot data for 2002
+
+meta data file 2008.xls			--> all data on the plots for 2008 (community data + mortality + treatment)
+
+Veg data 2011.xlsx			--> all data on the plots for 2011
+
+SAEON_2014_15_revisedAugust2015.xls 	--> community data for 2014/2015
+
+***********************************
+(4) TRAIT DATA
+***********************************
+plants.xls					--> categorical trait data
+
+
+
