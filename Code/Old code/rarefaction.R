@@ -26,17 +26,17 @@ library(MCMCglmm)
 ###Get data
 #Get plot treatment info
 
-treat<-read.xls("/Users/jasper/Documents/Dell/Jasper/Databases/Working for Water Peninsula plots/plot_treatments.xlsx", sheet=1, stringsAsFactors=FALSE)
+treat<-read.xls("/Users/jasper/Documents/Databases/Working for Water Peninsula plots/plot_treatments.xlsx", sheet=1, stringsAsFactors=FALSE)
 ndvi=read.csv("/Users/jasper/Dropbox/SAEON/Projects/Cape Peninsula/WFW plots/plotNDVI.csv", stringsAsFactors=F)
 
 #treat<-read.csv("/Users/jasper/Dropbox/SAEON/Projects/Cape Peninsula/WFW plots/plotNDVI.csv", stringsAsFactors=F)
 #treat=treat[,c(5:8,26:28,32:34,4)]
 
 #Get plant trait info
-trait<-read.xls("/Users/jasper/Documents/Dell/Jasper/Databases/Working for Water Peninsula plots/Resampling Cape Peninsula/2002 Survey_Euston-Brown and Botha/Report/plants.xls", sheet=1, stringsAsFactors=FALSE)
+trait<-read.xls("/Users/jasper/Documents/Databases/Working for Water Peninsula plots/Resampling Cape Peninsula/2002 Survey_Euston-Brown and Botha/Report/plants.xls", sheet=1, stringsAsFactors=FALSE)
 
 #Get 1x1m subplot floristic data
-dat2<-read.xls("/Users/jasper/Documents/Dell/Jasper/Databases/Working for Water Peninsula plots/Resampling Cape Peninsula/2008 Resurvey_Blanchard and Euston-Brown/2008 Resurvey data/1x1m 2000 plot data.xlsx", sheet=1, pattern="plot", stringsAsFactors=FALSE)
+dat2<-read.xls("/Users/jasper/Documents/Databases/Working for Water Peninsula plots/Resampling Cape Peninsula/2008 Resurvey_Blanchard and Euston-Brown/2008 Resurvey data/1x1m 2000 plot data.xlsx", sheet=1, pattern="plot", stringsAsFactors=FALSE)
 
 ###Clean, fix and sort data [and fix funny values (non-numeric and non-integer)]
 dat2<-dat2[,c(1,2,5,3)]
@@ -49,7 +49,7 @@ dat2[which(dat2[,3]==""),3]<-1
 dat2[which(dat2[,3]=="s"),3]<-1
 dat2[,3]<-as.numeric(dat2[,3])
 
-dat8<-read.xls("/Users/jasper/Documents/Dell/Jasper/Databases/Working for Water Peninsula plots/Resampling Cape Peninsula/2008 Resurvey_Blanchard and Euston-Brown/2008 Resurvey data/meta data files 2008.xlsx", sheet=6, stringsAsFactors=FALSE)
+dat8<-read.xls("/Users/jasper/Documents/Databases/Working for Water Peninsula plots/Resampling Cape Peninsula/2008 Resurvey_Blanchard and Euston-Brown/2008 Resurvey data/meta data files 2008.xlsx", sheet=6, stringsAsFactors=FALSE)
 dat8<-dat8[,c(2,4,7,5)]
 dat8[which(dat8[,3]=="0.100000000000000"),3]<-1
 dat8[which(dat8[,3]==""),3]<-1
