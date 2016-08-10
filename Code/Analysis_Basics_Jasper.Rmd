@@ -12,7 +12,7 @@ suppressPackageStartupMessages(library(vegan))
 suppressWarnings(suppressPackageStartupMessages(library(ggplot2)))
 suppressPackageStartupMessages(library(MCMCglmm))
 
-if (Sys.getenv("USER")=="jasper"){setwd("/Users/jasper/Dropbox/Shared/CapeCommunities")}
+#if (Sys.getenv("USER")=="jasper"){setwd("/Users/jasper/Dropbox/Shared/CapeCommunities")}
 
 dt <- "12July16"
 
