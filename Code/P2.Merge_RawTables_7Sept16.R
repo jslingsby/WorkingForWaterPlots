@@ -6,7 +6,7 @@ library(gdata)
 
 
 if (Sys.getenv("USER")=="jasper") {setwd("/Users/jasper/Dropbox/Shared/CapeCommunities/Data/Raw/")}
-if (Sys.getenv("USER")=="diversitalp") {setwd("~/Desktop/Dropbox/Travail_SA/3.ComEcol/CapeCommunities/Data/LaurePrep")}
+if (Sys.getenv("USER")=="diversitalp") {setwd("~/Desktop/Dropbox/GIT/2016_CapeCom/Data/LaurePrep/")}
 
 
 ###################################
@@ -29,17 +29,18 @@ if (Sys.getenv("USER")=="diversitalp") {setwd("~/Desktop/Dropbox/Travail_SA/3.Co
 #------------------------------------------------
 # Get plot treatment info
 #------------------------------------------------
-treat <- read.delim("plot_treatments_21June16.txt")
+treat <- read.table("plot_treatments_4Aug16.txt", stringsAsFactors=F, header=T)
 head(treat)
-dim(treat) # 52 5
+str(treat)
+dim(treat) # 51 33
 
 
 #------------------------------------------------
 # Get TRAIT data from 2002 survey
 #------------------------------------------------
-t02 <- read.delim("Trait_2002_21June16.txt")
+t02 <- read.delim("Trait_2002_1Aug16.txt", stringsAsFactors=F)
 head(t02)
-dim(t02) # 823 15
+dim(t02) # 823 11
 str(t02)
 summary(t02)
 
@@ -50,71 +51,114 @@ summary(t02)
 
 # 2002 
 #........
-# p02_1 <- read.delim("prePrep/PlotSpc_2002_1_21June16.txt")
-# p02_2 <- read.delim("prePrep/PlotSpc_2002_2_21June16.txt")
+p02_1 <- read.delim("prePrep/PlotSpc_2002_1_21June16.txt", stringsAsFactors=F)
+p02_2 <- read.delim("prePrep/PlotSpc_2002_2_21June16.txt", stringsAsFactors=F)
 
-# p02 <- merge(p02_1, p02_2, by="spcID", all=T)
-# p02 <- p02[,c(1:2, 255, 3:254, 256:315)]
-# head(p02)
+p02 <- merge(p02_1, p02_2, by="spcID", all=T)
+p02 <- p02[,c(1:2, 255, 3:254, 256:315)]
+p02 <- p02[order(p02$spcID),]
+head(p02)
+str(p02)
 
-# p02$spcID <- as.character(p02$spcID)
-# p02 <- p02[order(p02$spcID),]
-# write.table(p02, file="PlotSpc_2002_21June16.txt", row.names=F, sep="\t", quote=)
-p02 <- read.delim("PlotSpc_2002_21June16.txt")
+# change weird quantities into numeric
+unique(unlist(p02[,4:ncol(p02)]))  # "1" "0" NA  "."
+for(i in 4:ncol(p02)){
+  p02[,i] <- ifelse(is.na(p02[,i]), 0, p02[,i])
+  if( is.character(p02[,i]) ) as.numeric(p02[,i] <- ifelse(p02[,i]==".", 0, p02[,i]))
+  print(i) }
+sum(as.numeric(unlist(p02[,4:ncol(p02)]))) # 6784
+
+# organize it as the other matrices
+row.names(p02) <- p02$spcID
+p02s <- t(p02[,4:ncol(p02)])
+row.names(p02s) <- substring(row.names(p02s), 2, 10)
+head(p02s)
+str(p02s)
+dim(p02s) # 312 828
+
+write.table(p02, file="PlotSpc_2002_RawSpcID_7Sept16.txt", row.names=F, sep="\t", quote=)
+p02 <- read.delim("PlotSpc_2002_RawSpcID_7Sept16.txt", stringsAsFactors=F)
 p02[1:10, 1:10]
 
 
 # 2008 
 #........
-# p08 <- read.delim("prePrep/PlotSpc_2008_21June16.txt")
-# head(p08)
+p08 <- read.delim("prePrep/PlotSpc_2008_21June16.txt", stringsAsFactors=F)
+head(p08)
+str(p08)
+sum(unique(p08[,3:5])[,3])  # 2809
 
-# up <- sort(as.character(unique(p08$plot)))
-# usp <- sort(as.character(unique(p08$species)))
-# p08s <- matrix(NA, nrow=length(up), ncol=length(usp), dimnames=list(up, usp))
-# for(i in up) { 
-	# for(j in usp) { 
-		# p08s[i, j] <- ifelse(length(p08[which(p08$plot==i & p08$species==j), "value"])>0, 1, 0)	
-		# } ;	print(i) }
-# write.table(p08s, file="PlotSpc_2008_21June16.txt", quote=F, sep="\t")
-p08 <- read.delim("PlotSpc_2008_21June16.txt")
+up <- sort(unique(p08$plot))
+usp <- sort(unique(p08$species))
+p08s <- matrix(0, nrow=length(up), ncol=length(usp), dimnames=list(up, usp))
+for(i in up) { 
+	for(j in usp) { 
+		if(nrow(p08[which(p08$plot==i & p08$species==j),])>0) p08s[as.character(i), j] <- 1	} ;	print(i) }
+
+p08s <- as.data.frame(p08s)
+head(p08s)
+str(p08s)
+dim(p08s)  # 263 812
+unique(unlist(p08s)) # 0, 1
+sum(as.numeric(unlist(p08s))) # 2809
+
+write.table(p08s, file="PlotSpc_2008_RawSpcID_7Sept16.txt", quote=F, sep="\t")
+p08 <- read.delim("PlotSpc_2008_RawSpcID_7Sept16.txt", stringsAsFactors=F)
 p08[1:10, 1:10]
 
 
 # 2011 
 #........
-# p11 <- read.delim("prePrep/PlotSpc_2011_21June16.txt")
-# head(p11)
+p11 <- read.delim("prePrep/PlotSpc_2011_21June16.txt", stringsAsFactors=F)
+head(p11)
+str(p11)
+p11$value <- 1
+sum(unique(p11)[,"value"])  # 651
 
-# up <- sort(as.character(unique(p11$plot)))
-# usp <- sort(as.character(unique(p11$species)))
-# p11s <- matrix(NA, nrow=length(up), ncol=length(usp), dimnames=list(up, usp))
-# for(i in up) { 
-	# for(j in usp) { 
-		# p11s[i, j] <- ifelse(length(p11[which(p11$plot==i & p11$species==j), 1])>0, 1, 0)	
-		# } ;	print(i) }
-# write.table(p11s, file="PlotSpc_2011_21June16.txt", quote=F, sep="\t")
-p11 <- read.delim("PlotSpc_2011_21June16.txt")
+up <- sort(unique(p11$plot))
+usp <- sort(unique(p11$species))
+p11s <- matrix(0, nrow=length(up), ncol=length(usp), dimnames=list(up, usp))
+for(i in up) { 
+	for(j in usp) {
+	  if(nrow(p11[which(p11$plot==i & p11$species==j),])>0) p11s[as.character(i), j] <- 1	} ;	print(i) }
+
+p11s <- as.data.frame(p11s)
+head(p11s)
+str(p11s)
+dim(p11s)  # 62 381
+unique(unlist(p11s)) # 0, 1
+sum(as.numeric(unlist(p11s))) # 651
+
+write.table(p11s, file="PlotSpc_2011_RawSpcID_7Sept16.txt", quote=F, sep="\t")
+p11 <- read.delim("PlotSpc_2011_RawSpcID_7Sept16.txt", stringsAsFactors=F)
 p11[1:10, 1:10]
 
 
 # 2014 
 #........
-# p14 <- read.delim("prePrep/PlotSpc_2014_21June16.txt")
-# p14$spcID <- paste(p14$Genus, p14$Species, sep="_")
-# p14 <- p14[,c(1, 5)]
-# head(p14)
+p14 <- read.delim("prePrep/PlotSpc_2014_21June16.txt", stringsAsFactors=F)
+p14$spcID <- paste(p14$Genus, p14$Species, sep="_")
+p14 <- p14[,c(1, 5)]
+head(p14)
+p14$value <- 1
+sum(unique(p14)[,"value"])  # 1314
 
-# up <- sort(as.character(unique(p14$Plot)))
-# usp <- sort(as.character(unique(p14$spcID)))
-# p14s <- matrix(NA, nrow=length(up), ncol=length(usp), dimnames=list(up, usp))
-# for(i in up) { 
-	# for(j in usp) { 
-		# p14s[i, j] <- ifelse(length(p14[which(p14$Plot==i & p14$spcID==j), 1])>0, 1, 0)	
-		# } ;	print(i) }
-# sort(rowSums(p14s))	; sort(colSums(p14s))		
-# write.table(p14s, file="PlotSpc_2014_21June16.txt", quote=F, sep="\t")
-p14 <- read.delim("PlotSpc_2014_21June16.txt")
+up <- sort(unique(p14$Plot))
+usp <- sort(unique(p14$spcID))
+p14s <- matrix(0, nrow=length(up), ncol=length(usp), dimnames=list(up, usp))
+for(i in up) { 
+	for(j in usp) { 
+	  if(nrow(p14[which(p14$Plot==i & p14$spcID==j),])>0) p14s[as.character(i), j] <- 1	} ;	print(i) }
+
+p14s <- as.data.frame(p14s)
+head(p14s)
+str(p14s)
+dim(p14s)  # 141  476
+unique(unlist(p14s)) # 0, 1
+sum(as.numeric(unlist(p14s))) # 1314
+
+write.table(p14s, file="PlotSpc_2014_RawSpcID_7Sept16.txt", quote=F, sep="\t")
+p14 <- read.delim("PlotSpc_2014_RawSpcID_7Sept16.txt", stringsAsFactors=F)
 p14[1:10, 1:10]
 
 
@@ -164,7 +208,8 @@ p14[1:10, 1:10]
 sp02_Reg <- read.delim("subPlotSpc_2002_Regeneration_21June16.txt")
 sp02_Abun <- read.delim("subPlotSpc_2002_NbIndiv_21June16.txt")
 sp02_Cov <- read.delim("subPlotSpc_2002_PropCover_21June16.txt")
- sp02_Reg[1:10, 1:10] ; sp02_Abun[1:10, 1:10] ; sp02_Cov[1:10, 1:10]
+
+sp02_Reg[1:10, 1:10] ; sp02_Abun[1:10, 1:10] ; sp02_Cov[1:10, 1:10]
 
 
 
