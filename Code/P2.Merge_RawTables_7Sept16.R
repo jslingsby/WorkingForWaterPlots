@@ -320,7 +320,7 @@ str(sp08)
 dim(sp08) # 4513 11
 
 
-sum(unique(sp08[,c(2:3, 9)])$prop_cov, na.rm=T) # 39323.8 [just used for further checking]
+sum(unique(sp08[,c(3:4, 9)])$prop_cov, na.rm=T) # 44726.5 [just used for further checking]
 unique(sp08$no)
 unique(sp08$prop_cov)
 
@@ -338,22 +338,18 @@ for(i in up) {
 	for(j in usp) { 
 		NN <- sp08[which(sp08$plot==i & sp08$species==j), "no"]
 		CC <- sp08[which(sp08$plot==i & sp08$species==j), "prop_cov"]
-		if(length(NN)>0) p08N[i, j] <- sum(as.numeric(as.character(NN)))
-		if(length(CC)>0) p08C[i, j] <- sum(as.numeric(as.character(CC)))
+		if(length(NN)>0) p08N[i, j] <- max(as.numeric(as.character(NN)))  # [if multiple values are entered, take the max]
+		if(length(CC)>0) p08C[i, j] <- max(as.numeric(as.character(CC)))  # [if multiple values are entered, take the max]
   } ;	print(i) }
 
 p08N[1:5, 1:5]
 p08C[1:5, 1:5]
 dim(p08N) # 527  595
 dim(na.omit(p08N)) # 526  595
-sort(rowSums(apply(p08N, 1, is.na))) # there is a NA for "Rhus_lucida"
-
-#### TO FINISH TOMORROW!!!
-
 dim(p08C) # 527  595
 
-sum(p08N, na.rm=T) # 14489.1 
-sum(p08C, na.rm=T) # 44728.7 
+sum(p08N) # 14460.1 
+sum(p08C) # 44608.7 
 
 
 #=====================================================================
@@ -369,52 +365,110 @@ sp08_Cov <- read.delim("subPlotSpc_2008_PropCover_RawSpcID_7Sept16.txt", strings
 ######################################################################
 # 2011
 ######################################################################
-# sp11 <- read.delim("prePrep/subPlotSpc_2011_21June16.txt")
-# head(sp11)
 
-# up <- sort(as.character(unique(sp11$sub.plot)))
-# usp <- sort(as.character(unique(sp11$species)))
-# p11N <- p11C <- matrix(NA, nrow=length(up), ncol=length(usp), dimnames=list(up, usp))
-# for(i in up) { 
-	# for(j in usp) { 
-		# NN <- sp11[which(sp11$sub.plot==i & sp11$species==j), "no"]
-		# CC <- sp11[which(sp11$sub.plot==i & sp11$species==j), "prop_cov"]
-		# p11N[i, j] <- ifelse(length(NN)>0, NN, 0)	
-		# p11C[i, j] <- ifelse(length(CC)>0, CC, 0)	
-		# } ;	print(i) }
-# sort(rowSums(p11N))	; sort(colSums(p11N))		
-# sort(rowSums(p11C))	; sort(colSums(p11C))		
-# write.table(p11N, file="subPlotSpc_2011_NbIndiv_21June16.txt", quote=F, sep="\t")
-# write.table(p11C, file="subPlotSpc_2011_PropCover_21June16.txt", quote=F, sep="\t")
-sp11_Abun <- read.delim("subPlotSpc_2011_NbIndiv_21June16.txt")
-sp11_Cov <- read.delim("subPlotSpc_2011_PropCover_21June16.txt")
-sp11_Abun[1:10, 1:10]
-sp11_Cov[1:10, 1:10]
+#=====================================================================
+# Load the data
+#=====================================================================
+sp11 <- read.delim("prePrep/subPlotSpc_2011_21June16.txt", stringsAsFactors=F)
+head(sp11)
+str(sp11)
+dim(sp11) # 1366 10
+
+sum(unique(sp11[,c(3:4, 9)])$prop_cov, na.rm=T) # 10246.1 [just used for further checking]
+unique(sp11$no)
+unique(sp11$prop_cov)
+
+#=====================================================================
+# Make 2 different tables for the 2 different types of data
+#=====================================================================
+sp11$no <- ifelse(nchar(sp11$no)==0, 0, sp11$no)
+sp11$no <- ifelse(sp11$no=="4.8?", 5, sp11$no)
+sp11$prop_cov <- ifelse(is.na(sp11$prop_cov), 0, sp11$prop_cov)
+
+up <- sort(unique(sp11$sub.plot))
+usp <- sort(unique(sp11$species))
+p11N <- p11C <- matrix(0, nrow=length(up), ncol=length(usp), dimnames=list(up, usp))
+for(i in up) { 
+  for(j in usp) { 
+    NN <- sp11[which(sp11$sub.plot==i & sp11$species==j), "no"]
+    CC <- sp11[which(sp11$sub.plot==i & sp11$species==j), "prop_cov"]
+    if(length(NN)>0) p11N[i, j] <- max(as.numeric(as.character(NN)))  # [if multiple values are entered, take the max]
+    if(length(CC)>0) p11C[i, j] <- max(as.numeric(as.character(CC)))  # [if multiple values are entered, take the max]
+  } ;	print(i) }
+
+p11N[1:5, 1:5]
+p11C[1:5, 1:5]
+dim(p11N) # 131  354
+dim(na.omit(p11N)) # 131 354
+dim(p11C) # 131 354
+
+sum(p11N) # 4822 
+sum(p11C) # 10242.6 
+
+#=====================================================================
+# Save it
+#=====================================================================
+write.table(p11N, file="subPlotSpc_2011_NbIndiv_RawSpcID_7Sept16.txt", quote=F, sep="\t")
+write.table(p11C, file="subPlotSpc_2011_PropCover_RawSpcID_7Sept16.txt", quote=F, sep="\t")
+
+sp11_Abun <- read.delim("subPlotSpc_2011_NbIndiv_RawSpcID_7Sept16.txt", stringsAsFactors=F)
+sp11_Cov <- read.delim("subPlotSpc_2011_PropCover_RawSpcID_7Sept16.txt", stringsAsFactors=F)
+sp11_Abun[1:30, 1:4]
+sp11_Cov[1:30, 1:4]
 
 ######################################################################
 # 2014
 ######################################################################
-# sp14 <- read.delim("prePrep/subPlotSpc_2014_21June16.txt")
-# sp14$spcID <- paste(sp14$Genus, sp14$species, sep="_")
-# sp14$plot <- paste(sp14$Site.plot, sp14$Subplot, sep=".")
-# head(sp14)
 
-# up <- sort(as.character(unique(sp14$plot)))
-# usp <- sort(as.character(unique(sp14$spcID)))
-# p14N <- p14C <- matrix(NA, nrow=length(up), ncol=length(usp), dimnames=list(up, usp))
-# for(i in up) { 
-	# for(j in usp) { 
-		# NN <- sp14[which(sp14$plot==i & sp14$spcID==j), "no"]
-		# CC <- sp14[which(sp14$plot==i & sp14$spcID==j), "prop_cov"]
-		# p14N[i, j] <- ifelse(length(NN)>0, NN, 0)	
-		# p14C[i, j] <- ifelse(length(CC)>0, CC, 0)	
-		# } ;	print(i) }
-# sort(rowSums(p14N))	; sort(colSums(p14N))		
-# sort(rowSums(p14C))	; sort(colSums(p14C))		
-# write.table(p14N, file="subPlotSpc_2014_NbIndiv_21June16.txt", quote=F, sep="\t")
-# write.table(p14C, file="subPlotSpc_2014_PropCover_21June16.txt", quote=F, sep="\t")
-sp14_Abun <- read.delim("subPlotSpc_2014_NbIndiv_21June16.txt")
-sp14_Cov <- read.delim("subPlotSpc_2014_PropCover_21June16.txt")
+#=====================================================================
+# Load the data
+#=====================================================================
+sp14 <- read.delim("prePrep/subPlotSpc_2014_21June16.txt", stringsAsFactors=F)
+sp14$spcID <- paste(sp14$Genus, sp14$species, sep="_")
+sp14$plot <- paste(sp14$Site.plot, sp14$Subplot, sep=".")
+head(sp14)
+str(sp14)
+dim(sp14) # 2684   12
+
+sum(unique(sp14[,c(10:12)])$prop_cov, na.rm=T) # 36131.4 [just used for further checking]
+unique(sp14$no)
+unique(sp14$prop_cov)
+
+#=====================================================================
+# Make 2 different tables for the 2 different types of data
+#=====================================================================
+sp14$no <- ifelse(is.na(sp14$no), 0, sp14$no)
+sp14$prop_cov <- ifelse(is.na(sp14$prop_cov), 0, sp14$prop_cov)
+
+up <- sort(unique(sp14$plot))
+usp <- sort(unique(sp14$spcID))
+p14N <- p14C <- matrix(0, nrow=length(up), ncol=length(usp), dimnames=list(up, usp))
+for(i in up) { 
+  for(j in usp) { 
+    NN <- sp14[which(sp14$plot==i & sp14$spcID==j), "no"]
+    CC <- sp14[which(sp14$plot==i & sp14$spcID==j), "prop_cov"]
+    if(length(NN)>0) p14N[i, j] <- max(as.numeric(as.character(NN)))  # [if multiple values are entered, take the max]
+    if(length(CC)>0) p14C[i, j] <- max(as.numeric(as.character(CC)))  # [if multiple values are entered, take the max]
+  } ;	print(i) }
+
+p14N[1:5, 1:5]
+p14C[1:5, 1:5]
+dim(p14N) # 139  420
+dim(na.omit(p14N)) # 139  420
+dim(p14C) # 139  420
+
+sum(p14N) # 5080 
+sum(p14C) # 36093.9 
+
+#=====================================================================
+# Save it
+#=====================================================================
+write.table(p14N, file="subPlotSpc_2014_NbIndiv_RawSpcID_7Sept16.txt", quote=F, sep="\t")
+write.table(p14C, file="subPlotSpc_2014_PropCover_RawSpcID_7Sept16.txt", quote=F, sep="\t")
+
+sp14_Abun <- read.delim("subPlotSpc_2014_NbIndiv_RawSpcID_7Sept16.txt", stringsAsFactors=F)
+sp14_Cov <- read.delim("subPlotSpc_2014_PropCover_RawSpcID_7Sept16.txt", stringsAsFactors=F)
+
 sp14_Abun[1:10, 1:10]
 sp14_Cov[1:10, 1:10]
 
