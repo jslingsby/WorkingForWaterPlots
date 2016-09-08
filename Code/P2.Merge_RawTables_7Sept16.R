@@ -79,8 +79,8 @@ head(p02s)
 str(p02s)
 dim(p02s) # 312 828
 
-write.table(p02s, file="PlotSpc_2002_RawSpcID_7Sept16.txt", row.names=T, sep="\t", quote=)
-p02 <- read.delim("PlotSpc_2002_RawSpcID_7Sept16.txt", stringsAsFactors=F)
+write.table(p02s, file="Plot_x_spc_RawSpcID/PlotSpc_2002_RawSpcID_7Sept16.txt", row.names=T, sep="\t", quote=)
+p02 <- read.delim("Plot_x_spc_RawSpcID/PlotSpc_2002_RawSpcID_7Sept16.txt", stringsAsFactors=F)
 p02[1:10, 1:10]
 
 
@@ -106,8 +106,8 @@ dim(p08s)  # 263 812
 unique(unlist(p08s)) # 0, 1
 sum(as.numeric(unlist(p08s))) # 2809
 
-write.table(p08s, file="PlotSpc_2008_RawSpcID_7Sept16.txt", quote=F, sep="\t")
-p08 <- read.delim("PlotSpc_2008_RawSpcID_7Sept16.txt", stringsAsFactors=F)
+write.table(p08s, file="Plot_x_spc_RawSpcID/PlotSpc_2008_RawSpcID_7Sept16.txt", quote=F, sep="\t")
+p08 <- read.delim("Plot_x_spc_RawSpcID/PlotSpc_2008_RawSpcID_7Sept16.txt", stringsAsFactors=F)
 p08[1:10, 1:10]
 
 
@@ -134,8 +134,8 @@ dim(p11s)  # 62 381
 unique(unlist(p11s)) # 0, 1
 sum(as.numeric(unlist(p11s))) # 651
 
-write.table(p11s, file="PlotSpc_2011_RawSpcID_7Sept16.txt", quote=F, sep="\t")
-p11 <- read.delim("PlotSpc_2011_RawSpcID_7Sept16.txt", stringsAsFactors=F)
+write.table(p11s, file="Plot_x_spc_RawSpcID/PlotSpc_2011_RawSpcID_7Sept16.txt", quote=F, sep="\t")
+p11 <- read.delim("Plot_x_spc_RawSpcID/PlotSpc_2011_RawSpcID_7Sept16.txt", stringsAsFactors=F)
 p11[1:10, 1:10]
 
 
@@ -163,8 +163,8 @@ dim(p14s)  # 141  476
 unique(unlist(p14s)) # 0, 1
 sum(as.numeric(unlist(p14s))) # 1314
 
-write.table(p14s, file="PlotSpc_2014_RawSpcID_7Sept16.txt", quote=F, sep="\t")
-p14 <- read.delim("PlotSpc_2014_RawSpcID_7Sept16.txt", stringsAsFactors=F)
+write.table(p14s, file="Plot_x_spc_RawSpcID/PlotSpc_2014_RawSpcID_7Sept16.txt", quote=F, sep="\t")
+p14 <- read.delim("Plot_x_spc_RawSpcID/PlotSpc_2014_RawSpcID_7Sept16.txt", stringsAsFactors=F)
 p14[1:10, 1:10]
 
 
@@ -297,10 +297,10 @@ sum(unlist(sp02_Cov_2))  # 27302.5 cover prop in total
 #=====================================================================
 # Save it
 #=====================================================================
-write.table(sp02_Abun_2, file="subPlotSpc_2002_NbIndiv_RawSpcID_7Sept16.txt", quote=F, sep="\t", row.names=T)
-write.table(sp02_Cov_2, file="subPlotSpc_2002_PropCover_RawSpcID_7Sept16.txt", quote=F, sep="\t", row.names=T)
-sp02_Abun <- read.delim("subPlotSpc_2002_NbIndiv_RawSpcID_7Sept16.txt", stringsAsFactors=F)
-sp02_Cov <- read.delim("subPlotSpc_2002_PropCover_RawSpcID_7Sept16.txt", stringsAsFactors=F)
+write.table(sp02_Abun_2, file="Plot_x_spc_RawSpcID/subPlotSpc_2002_NbIndiv_RawSpcID_7Sept16.txt", quote=F, sep="\t", row.names=T)
+write.table(sp02_Cov_2, file="Plot_x_spc_RawSpcID/subPlotSpc_2002_PropCover_RawSpcID_7Sept16.txt", quote=F, sep="\t", row.names=T)
+sp02_Abun <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2002_NbIndiv_RawSpcID_7Sept16.txt", stringsAsFactors=F)
+sp02_Cov <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2002_PropCover_RawSpcID_7Sept16.txt", stringsAsFactors=F)
 
 sp02_Abun[1:10, 1:10] 
 sp02_Cov[1:10, 1:10]
@@ -321,14 +321,15 @@ dim(sp08) # 4513 11
 
 
 sum(unique(sp08[,c(3:4, 9)])$prop_cov, na.rm=T) # 44726.5 [just used for further checking]
-unique(sp08$no)
-unique(sp08$prop_cov)
+sort(unique(sp08$no))
+sort(unique(sp08$prop_cov))
 
 #=====================================================================
 # Make 2 different tables for the 2 different types of data
 #=====================================================================
 sp08$no <- ifelse(nchar(sp08$no)==0, 0, sp08$no)
 sp08$no <- ifelse(sp08$no=="a", 0, sp08$no)
+sp08$no <- ifelse(sp08$no=="0.1", 1, sp08$no)
 sp08$prop_cov <- ifelse(is.na(sp08$prop_cov), 0, sp08$prop_cov)
 
 up <- sort(unique(sp08$plot))
@@ -348,18 +349,18 @@ dim(p08N) # 527  595
 dim(na.omit(p08N)) # 526  595
 dim(p08C) # 527  595
 
-sum(p08N) # 14460.1 
+sum(p08N) # 14461 
 sum(p08C) # 44608.7 
 
 
 #=====================================================================
 # Save it
 #=====================================================================
-write.table(p08N, file="subPlotSpc_2008_NbIndiv_RawSpcID_7Sept16.txt", quote=F, sep="\t")
-write.table(p08C, file="subPlotSpc_2008_PropCover_RawSpcID_7Sept16.txt", quote=F, sep="\t")
+write.table(p08N, file="Plot_x_spc_RawSpcID/subPlotSpc_2008_NbIndiv_RawSpcID_7Sept16.txt", quote=F, sep="\t")
+write.table(p08C, file="Plot_x_spc_RawSpcID/subPlotSpc_2008_PropCover_RawSpcID_7Sept16.txt", quote=F, sep="\t")
 
-sp08_Abun <- read.delim("subPlotSpc_2008_NbIndiv_RawSpcID_7Sept16.txt", stringsAsFactors=F)
-sp08_Cov <- read.delim("subPlotSpc_2008_PropCover_RawSpcID_7Sept16.txt", stringsAsFactors=F)
+sp08_Abun <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2008_NbIndiv_RawSpcID_7Sept16.txt", stringsAsFactors=F)
+sp08_Cov <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2008_PropCover_RawSpcID_7Sept16.txt", stringsAsFactors=F)
 
 
 ######################################################################
@@ -408,11 +409,11 @@ sum(p11C) # 10242.6
 #=====================================================================
 # Save it
 #=====================================================================
-write.table(p11N, file="subPlotSpc_2011_NbIndiv_RawSpcID_7Sept16.txt", quote=F, sep="\t")
-write.table(p11C, file="subPlotSpc_2011_PropCover_RawSpcID_7Sept16.txt", quote=F, sep="\t")
+write.table(p11N, file="Plot_x_spc_RawSpcID/subPlotSpc_2011_NbIndiv_RawSpcID_7Sept16.txt", quote=F, sep="\t")
+write.table(p11C, file="Plot_x_spc_RawSpcID/subPlotSpc_2011_PropCover_RawSpcID_7Sept16.txt", quote=F, sep="\t")
 
-sp11_Abun <- read.delim("subPlotSpc_2011_NbIndiv_RawSpcID_7Sept16.txt", stringsAsFactors=F)
-sp11_Cov <- read.delim("subPlotSpc_2011_PropCover_RawSpcID_7Sept16.txt", stringsAsFactors=F)
+sp11_Abun <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2011_NbIndiv_RawSpcID_7Sept16.txt", stringsAsFactors=F)
+sp11_Cov <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2011_PropCover_RawSpcID_7Sept16.txt", stringsAsFactors=F)
 sp11_Abun[1:30, 1:4]
 sp11_Cov[1:30, 1:4]
 
@@ -463,11 +464,11 @@ sum(p14C) # 36093.9
 #=====================================================================
 # Save it
 #=====================================================================
-write.table(p14N, file="subPlotSpc_2014_NbIndiv_RawSpcID_7Sept16.txt", quote=F, sep="\t")
-write.table(p14C, file="subPlotSpc_2014_PropCover_RawSpcID_7Sept16.txt", quote=F, sep="\t")
+write.table(p14N, file="Plot_x_spc_RawSpcID/subPlotSpc_2014_NbIndiv_RawSpcID_7Sept16.txt", quote=F, sep="\t")
+write.table(p14C, file="Plot_x_spc_RawSpcID/subPlotSpc_2014_PropCover_RawSpcID_7Sept16.txt", quote=F, sep="\t")
 
-sp14_Abun <- read.delim("subPlotSpc_2014_NbIndiv_RawSpcID_7Sept16.txt", stringsAsFactors=F)
-sp14_Cov <- read.delim("subPlotSpc_2014_PropCover_RawSpcID_7Sept16.txt", stringsAsFactors=F)
+sp14_Abun <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2014_NbIndiv_RawSpcID_7Sept16.txt", stringsAsFactors=F)
+sp14_Cov <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2014_PropCover_RawSpcID_7Sept16.txt", stringsAsFactors=F)
 
 sp14_Abun[1:10, 1:10]
 sp14_Cov[1:10, 1:10]
