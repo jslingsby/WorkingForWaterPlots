@@ -18,30 +18,28 @@ if (Sys.getenv("USER")=="diversitalp") {setwd("~/Desktop/Dropbox/GIT/2016_CapeCo
 #------------------------------------------------
 # Get plot treatment info
 #------------------------------------------------
-treat <- read.delim("plot_treatments_21June16.txt")
+treat <- read.table("plot_treatments_4Aug16.txt", header=T, stringsAsFactors = F)
 head(treat)
-dim(treat) # 52 5
-
+dim(treat) # 51  33
+str(treat)
 
 #------------------------------------------------
 # Get TRAIT data from 2002 survey
 #------------------------------------------------
-t02 <- read.delim("Trait_2002_21June16.txt")
+t02 <- read.delim("Trait_2002_1Aug16.txt", stringsAsFactors = F)
 head(t02)
-dim(t02) # 823 15
+dim(t02) # 823 11
 str(t02)
-summary(t02)
-
 
 #------------------------------------------------
 # Get the species x site data : 10 x 10m
 #------------------------------------------------
 # 2002 / 2008 / 2011 / 2014
 #........
-p02 <- read.delim("old/PlotSpc_2002_21June16.txt")
-p08 <- read.delim("old/PlotSpc_2008_21June16.txt")
-p11 <- read.delim("old/PlotSpc_2011_21June16.txt")
-p14 <- read.delim("old/PlotSpc_2014_21June16.txt")
+p02 <- read.delim("Plot_x_spc_RawSpcID/PlotSpc_2002_RawSpcID_7Sept16.txt")
+p08 <- read.delim("Plot_x_spc_RawSpcID/PlotSpc_2008_RawSpcID_7Sept16.txt")
+p11 <- read.delim("Plot_x_spc_RawSpcID/PlotSpc_2011_RawSpcID_7Sept16.txt")
+p14 <- read.delim("Plot_x_spc_RawSpcID/PlotSpc_2014_RawSpcID_7Sept16.txt")
 
 p02[1:10, 1:10]
 p08[1:10, 1:10]
@@ -54,17 +52,17 @@ p14[1:10, 1:10]
 #------------------------------------------------
 # 2002 / 2008 / 2011 / 2014
 #........
-sp02_Abun <- read.delim("old/subPlotSpc_2002_NbIndiv_21June16.txt")
-sp02_Cov <- read.delim("old/subPlotSpc_2002_PropCover_21June16.txt")
+sp02_Abun <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2002_NbIndiv_RawSpcID_7Sept16.txt")
+sp02_Cov <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2002_PropCover_RawSpcID_7Sept16.txt")
 
-sp08_Abun <- read.delim("old/subPlotSpc_2008_NbIndiv_21June16.txt")
-sp08_Cov <- read.delim("old/subPlotSpc_2008_PropCover_21June16.txt")
+sp08_Abun <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2008_NbIndiv_RawSpcID_7Sept16.txt")
+sp08_Cov <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2008_PropCover_RawSpcID_7Sept16.txt")
 
-sp11_Abun <- read.delim("old/subPlotSpc_2011_NbIndiv_21June16.txt")
-sp11_Cov <- read.delim("old/subPlotSpc_2011_PropCover_21June16.txt")
+sp11_Abun <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2011_NbIndiv_RawSpcID_7Sept16.txt")
+sp11_Cov <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2011_PropCover_RawSpcID_7Sept16.txt")
 
-sp14_Abun <- read.delim("old/subPlotSpc_2014_NbIndiv_21June16.txt")
-sp14_Cov <- read.delim("old/subPlotSpc_2014_PropCover_21June16.txt")
+sp14_Abun <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2014_NbIndiv_RawSpcID_7Sept16.txt")
+sp14_Cov <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2014_PropCover_RawSpcID_7Sept16.txt")
 
 sp02_Abun[1:10, 1:10] ; sp02_Cov[1:10, 1:10]
 sp08_Abun[1:10, 1:10] ; sp08_Cov[1:10, 1:10]
@@ -75,7 +73,7 @@ sp14_Abun[1:10, 1:10] ; sp14_Cov[1:10, 1:10]
 #------------------------------------------------
 # Get the species list with correspondance Old vs New names
 #------------------------------------------------
-# synJ <- read.csv("~/Desktop/Dropbox/Travail_SA/3.ComEcol/CapeCommunities/Data/Raw/allnames_old.csv")
+# synJ <- read.csv("~/Desktop/Dropbox/GIT/2016_CapeCom/Data/Raw/allnames_old.csv")
 # synJ2 <- synJ[,c("Best_source", as.character(unique(synJ$Best_source)))]
 # for(i in names(synJ2)) synJ2[,i] <- as.character(synJ2[,i])
 # synJ2$Final <- sapply(1:nrow(synJ2), function(x) synJ2[x, synJ2[x, "Best_source"]])
@@ -83,18 +81,23 @@ sp14_Abun[1:10, 1:10] ; sp14_Cov[1:10, 1:10]
 # dim(synJ2) # 2124
 # write.table(synJ2[,c("Original", "Final")], file="Synonym_List_29July16.txt", sep="\t", quote=F, row.names=F)
 
-syn <- read.delim("Synonym_List_29July16.txt")
+#############
+#############
+###          WARNING: WAIT TO HAVE THE FINAL CORRECT SPECIES NAMES FROM THE BOTANIST!
+#############
+#############
+
+
+syn <- read.delim("Synonym_List_29July16.txt", stringsAsFactors = F)
 dim(syn) # 2124
 dim(unique(syn)) # 2124
 
-head(syn, 200)
-
+head(syn, 20)
 
 names(syn) <- c("ini", "fin")
-for(i in 1:2) syn[,i] <- as.character(syn[,i])
 syn <- unique(syn)
 row.names(syn) <- syn$ini
-head(syn)
+head(syn, 30)
 
 
 ######################################################################
