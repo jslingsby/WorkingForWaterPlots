@@ -1,11 +1,15 @@
-Last update: 22 July 2016
+Last update: 04 Oct 2016
 
 List of all files
 
 ***********************************
+***********************************
 (1) SPECIES LIST 
 ***********************************
+***********************************
 
+Synonym Issues/Fixes in folder «spcID_and_synonyms»
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 synonyms_fixing_notes.txt	--> Note from Jasper on synonymy fixing issues
 
 allnames_old.csv		--> Final??? checking of the names with the web tool (TNRS) by Jasper
@@ -15,33 +19,52 @@ TTS_Peninsula_list_based_on_A&S_for_Jasper.xls --> cape peninsula species list a
 
 Cape Peninsula SpeciesList Synonyms.xls 	--> cape peninsula species list with IUCN status and alternative names as matched with http://posa.sanbi.org/tools.php
 
+Copy of Synonyms_for_Doug_WfW_5Sep2016 (2) 	--> Doug's comments on the synonym issues
+specimen id's					--> Correspondance table for some missing names (received by email in Sept 2016)
+
+
+Alien species lists:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+List_Alien_CapeCom_13July16.txt	--> list alien species extracted from the community data
+
+List_Alien_iSPOT_13July16.txt		—-> List alien species extracted from iSPOT
+
+List_Alien_SAPIA_13July16.txt		--> List alien species extracted from SAPIA
+
+
+***********************************
 ***********************************
 (2) ENVIRONMENTAL DATA
+***********************************
 ***********************************
 
 FireIndices.xls			--> mass and diameter of species after fire in each site (WHEN???)
 
 plot_treatment.xlsx		--> site treatment (soil type + vegetation type + invasion)
 
-plot_treatments_6July16.txt --> site environmental conditions
+plot_treatments_6July16.txt 	--> site environmental conditions
 plot_treatments_6July16_MetaData.csv  --> Legend code for plot_treatments_6July16.txt
 
 ***********************************
+***********************************
 (3) COMMUNITY DATA
 ***********************************
-plots.xls					--> community data for 2002
+***********************************
+plots.xls				--> community data for 2002
 sub_plots.xls				--> subplot data for 2002
 
-meta data file 2008.xls			--> all data on the plots for 2008 (community data + mortality + treatment)
+meta data file 2008.xls		--> all data on the plots for 2008 (community data + mortality + treatment)
 
 Veg data 2011.xlsx			--> all data on the plots for 2011
 
 SAEON_2014_15_revisedAugust2015.xls 	--> community data for 2014/2015
 
 ***********************************
+***********************************
 (4) TRAIT DATA
 ***********************************
-plants.xls					--> categorical trait data
+***********************************
+plants.xls				--> categorical trait data
 
 
 
