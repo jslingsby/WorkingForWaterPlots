@@ -6,7 +6,7 @@ library(gdata)
 
 
 if (Sys.getenv("USER")=="jasper") {setwd("/Users/jasper/Dropbox/Shared/CapeCommunities/Data/Raw/")}
-if (Sys.getenv("USER")=="diversitalp") {setwd("~/Desktop/Dropbox/GIT/2016_CapeCom/Data/LaurePrep/")}
+if (Sys.getenv("USER")=="Laure") {setwd("~/Dropbox/GIT/2016_CapeCom/Data/LaurePrep/")}
 
 
 ######################################################################
@@ -36,15 +36,17 @@ str(t02)
 #------------------------------------------------
 # 2002 / 2008 / 2011 / 2014
 #........
-p02 <- read.delim("Plot_x_spc_RawSpcID/PlotSpc_2002_RawSpcID_7Sept16.txt")
-p08 <- read.delim("Plot_x_spc_RawSpcID/PlotSpc_2008_RawSpcID_7Sept16.txt")
-p11 <- read.delim("Plot_x_spc_RawSpcID/PlotSpc_2011_RawSpcID_7Sept16.txt")
-p14 <- read.delim("Plot_x_spc_RawSpcID/PlotSpc_2014_RawSpcID_7Sept16.txt")
+p02 <- read.delim("Plot_x_spc_RawSpcID/PlotSpc_2002_RawSpcID_7Sept16.txt", stringsAsFactors = F)
+p08 <- read.delim("Plot_x_spc_RawSpcID/PlotSpc_2008_RawSpcID_7Sept16.txt", stringsAsFactors = F)
+p11 <- read.delim("Plot_x_spc_RawSpcID/PlotSpc_2011_RawSpcID_7Sept16.txt", stringsAsFactors = F)
+p14 <- read.delim("Plot_x_spc_RawSpcID/PlotSpc_2014_RawSpcID_7Sept16.txt", stringsAsFactors = F)
 
 p02[1:10, 1:10]
 p08[1:10, 1:10]
 p11[1:10, 1:10]
 p14[1:10, 1:10]
+
+class(unlist(p02)) ; class(unlist(p08)) ; class(unlist(p11)) ; class(unlist(p14))
 
 
 #------------------------------------------------
@@ -52,22 +54,24 @@ p14[1:10, 1:10]
 #------------------------------------------------
 # 2002 / 2008 / 2011 / 2014
 #........
-sp02_Abun <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2002_NbIndiv_RawSpcID_7Sept16.txt")
-sp02_Cov <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2002_PropCover_RawSpcID_7Sept16.txt")
+sp02_Abun <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2002_NbIndiv_RawSpcID_7Sept16.txt", stringsAsFactors = F)
+sp02_Cov <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2002_PropCover_RawSpcID_7Sept16.txt", stringsAsFactors = F)
 
-sp08_Abun <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2008_NbIndiv_RawSpcID_7Sept16.txt")
-sp08_Cov <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2008_PropCover_RawSpcID_7Sept16.txt")
+sp08_Abun <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2008_NbIndiv_RawSpcID_7Sept16.txt", stringsAsFactors = F)
+sp08_Cov <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2008_PropCover_RawSpcID_7Sept16.txt", stringsAsFactors = F)
 
-sp11_Abun <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2011_NbIndiv_RawSpcID_7Sept16.txt")
-sp11_Cov <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2011_PropCover_RawSpcID_7Sept16.txt")
+sp11_Abun <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2011_NbIndiv_RawSpcID_7Sept16.txt", stringsAsFactors = F)
+sp11_Cov <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2011_PropCover_RawSpcID_7Sept16.txt", stringsAsFactors = F)
 
-sp14_Abun <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2014_NbIndiv_RawSpcID_7Sept16.txt")
-sp14_Cov <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2014_PropCover_RawSpcID_7Sept16.txt")
+sp14_Abun <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2014_NbIndiv_RawSpcID_7Sept16.txt", stringsAsFactors = F)
+sp14_Cov <- read.delim("Plot_x_spc_RawSpcID/subPlotSpc_2014_PropCover_RawSpcID_7Sept16.txt", stringsAsFactors = F)
 
 sp02_Abun[1:10, 1:10] ; sp02_Cov[1:10, 1:10]
 sp08_Abun[1:10, 1:10] ; sp08_Cov[1:10, 1:10]
 sp11_Abun[1:10, 1:10] ; sp11_Cov[1:10, 1:10]
 sp14_Abun[1:10, 1:10] ; sp14_Cov[1:10, 1:10]
+
+class(unlist(sp02_Abun)) ; class(unlist(sp08_Abun)) ; class(unlist(sp11_Abun)) ; class(unlist(sp14_Abun))
 
 
 #------------------------------------------------
@@ -81,22 +85,22 @@ sp14_Abun[1:10, 1:10] ; sp14_Cov[1:10, 1:10]
 # dim(synJ2) # 2124
 # write.table(synJ2[,c("Original", "Final")], file="Synonym_List_29July16.txt", sep="\t", quote=F, row.names=F)
 
-#############
-#############
-###          WARNING: WAIT TO HAVE THE FINAL CORRECT SPECIES NAMES FROM THE BOTANIST!
-#############
-#############
-
+# Then I manually added/corrected species names + integrated Doug's last suggestions + check Doug's suggestions on TNRS
+# The new corrected file is "Synonym_List_LaureProposition_UpdateWithDougComments4Oct16.xls"
 
 syn <- read.delim("Synonym_List_29July16.txt", stringsAsFactors = F)
-dim(syn) # 2124
+syn <- read.xls("Synonym_List_LaureProposition_UpdateWithDougComments4Oct16.xls", stringsAsFactors = F)
+dim(syn) # 2124  5
 dim(unique(syn)) # 2124
-
 head(syn, 20)
 
+# Summarize all modifications
+syn$Final2 <- ifelse(is.na(syn$Doug_suggestion), syn$Laure_Proposition, syn$Doug_suggestion)
+syn[!is.na(syn$TNRS_resultsOnDougSuggestions), "Final2"] <- syn[!is.na(syn$TNRS_resultsOnDougSuggestions), "TNRS_resultsOnDougSuggestions"]
+
+syn <- syn[, c("Original", "Final2")]
 names(syn) <- c("ini", "fin")
 syn <- unique(syn)
-row.names(syn) <- syn$ini
 head(syn, 30)
 
 
