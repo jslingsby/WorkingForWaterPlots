@@ -189,13 +189,13 @@ dim(p02n2)  # 312 sites  813 species
 range(p02n2)
 sort(colSums(p02n2))
 
+# Remove species without presences
+p02n3 <- p02n2[,which(colSums(p02n2)>0)]
+p02n3[1:10, 1:10]
+dim(p02n3)  # 312 sites  801 species
+
 # Save it
-write.table(p02n2, file="PlotSpc_2002_5Oct16.txt", sep="\t", quote=F)
-
-
-#####################
-### TO BE CONTINUED
-#####################
+write.table(p02n3, file="PlotSpc_2002_5Oct16.txt", sep="\t", quote=F)
 
 
 
@@ -210,26 +210,47 @@ length(old) # 812
 length(unique(old)) # 812
 
 # Check that all species are in the list
-length(old[old %in% syn$ini]) # 788
+length(old[old %in% syn$ini]) # 711
 out <- old[!old %in% syn$ini]
+out <- sapply(strsplit(out, "7."), function(x) ifelse(length(x)>1, paste(x[1], x[2], sep="7/"), x))
 
-out2 <- substring(out, 1, nchar(out)-1)
+out2 <- out[!out %in% syn$ini]
+out2 <- substring(out2, 1, nchar(out2)-1)
+out2[out2=="Acrosanthes_2007/"] <- "Acrosanthes_2007/179"
+out2[out2=="Cassine_maritima._robsonodendro"] <- "Cassine_maritima"
+out2[out2=="Erica_cf_imbricata_200"] <- "Erica_imbricata"
+out2[out2=="Erica_sp_2007/"] <- "Erica_sp"
+out2[out2=="Erica_sp1_2007/"] <- "Erica_sp1"
+out2[out2=="Eucalyptus_.blue_gum"] <- "Eucalyptus_blue_gum"
+out2[out2=="Gladiolus_spp_20"] <- "Gladiolus_spp"
+out2[out2=="Tetraria_sp_2007/"] <- "Tetraria_sp"
+out2[out2=="Thesium_sp_2007/"] <- "Thesium_sp"
 out2[!out2 %in% syn$ini]
+
 out2
 
 # adapt them to the correspondance list
 old_corr <- old
+old_corr[!old_corr %in% syn$ini] <- out
 old_corr[!old_corr %in% syn$ini] <- out2
 length(old_corr[old_corr %in% syn$ini]) # 812
 
 # replace the species names by the correct ones
-new <- syn[old_corr,"fin"]
-length(new)  # 812
-COR <- cbind(oldID=old, oldCORR=old_corr, newID=new)
+COR <- cbind(oldID=old, oldCORR=old_corr)
+COR <- merge(COR, syn, by.x="oldCORR", by.y="ini")
+head(COR)
+dim(COR) # 812
+
+COR[!(row.names(COR) %in% row.names(na.omit(COR))), ] # 0
 
 p08n <- p08
-names(p08n) <- COR[order(COR[,1]), "newID"]
-dim(p08n) # 263   812
+TempNam <- names(p08n)
+for(i in names(p08n)) { 
+  TempNam[TempNam==i] <- COR[which(COR$oldID==i), "fin"] 
+  print(paste(i, "-->", COR[which(COR$oldID==i), "fin"] ))
+} 
+names(p08n) <- TempNam
+dim(p08n) # 263  812
 p08n[1:10, 1:10]
 
 # resume the duplicates
@@ -239,49 +260,73 @@ dim(p08n1) #   812  264
 
 dupli <- unique(as.character(p08n1$spcID[duplicated(p08n1$spcID)]))
 for(i in dupli) { 
-	t.row <- row.names(p08n1[which(p08n1==i),])
-	remp <- as.numeric(apply(p08n1[t.row, 2:ncol(p08n1)], 2, max)) 
-	for(j in t.row) p08n1[j, 2:ncol(p08n1)] <- remp ; print(i)
+  t.row <- row.names(p08n1[which(p08n1==i),])
+  remp <- as.numeric(apply(p08n1[t.row, 2:ncol(p08n1)], 2, max)) 
+  for(j in t.row) p08n1[j, 2:ncol(p08n1)] <- remp ; print(i)
 }
 p08n1 <- unique(p08n1)
-dim(p08n1) #   683  264
+dim(p08n1) #   711  264
 p08n1[1:10, 1:10]
 
 row.names(p08n1) <- p08n1$spcID 
 p08n2 <- as.data.frame(t(p08n1[,2:ncol(p08n1)]))
-p08n2 <- apply(p08n2[,1:ncol(p08n2)], 1:2, function(x) ifelse(is.na(x), 0, x))
-p08n2 <- as.data.frame(p08n2)
+class(p08n2)
+str(p08n2)
+unique(unlist(p08n2)) # 0  1
 
 for(i in 1:ncol(p08n2)) p08n2[,i] <- as.numeric(as.character(p08n2[,i]))
 
 # Final checks
 p08n2[1:10, 1:10]
-dim(p08n2)  # 263 sites  683 species
+dim(p08n2)  # 263 sites  711 species
 
 range(p08n2)
 sort(colSums(p08n2))
-unique(unlist(p08n2))
+
+# Remove species without presences
+p08n3 <- p08n2[,which(colSums(p08n2)>0)]
+p08n3[1:10, 1:10]
+dim(p08n3)  # 263 sites  711 species
+
+# homogenize the rownames
+row.names(p08n3) <- gsub(".", "_", row.names(p08n3), fixed=T)
 
 # Save it
-write.table(p08n2, file="PlotSpc_2008_12July16.txt", sep="\t", quote=F)
+write.table(p08n3, file="PlotSpc_2008_5Oct16.txt", sep="\t", quote=F)
+
 
 
 #********************************************************************
 # 2011
 #********************************************************************
 p11[1:10, 1:10]
-dim(p11) # 62  381
+dim(p11) # 62   381
 
 old <- names(p11)
 length(old) # 381
 length(unique(old)) # 381
 
 # Check that all species are in the list
-length(old[old %in% syn$ini]) # 367
+length(old[old %in% syn$ini]) # 351
 out <- old[!old %in% syn$ini]
 
 out2 <- substring(out, 1, nchar(out)-1)
+out2 <- gsub(".", "", out2, fixed=T)
+out2[out2=="Chrysocoma_"] <- "Chrysocoma_?"
+out2[out2=="Cyperus_denudatus__trangular_stemmed_sedge"] <- "Cyperus_denudatus_?_trangular_stemmed_sedge"
+out2[out2=="Lampranthus_emarginatus_"] <- "Lampranthus_emarginatus"
+out2[out2=="Lechnalia"] <- "Lechnalia?"
+out2[out2=="Pillia_sp"] <- "Pillia_sp?"
+out2[out2=="Restio_quadratus_"] <- "Restio_quadratus"
+out2[out2=="Spoedoselagus"] <- "Spoedoselagus??"
+out2[out2=="Syncarpha_sp_spiciosisima"] <- "Syncarpha_sp_spiciosisima?"
+out2[out2=="Thamnochortis_lucinsorenariu"] <- "Thamnochortis_lucins/orenarius"
+out2[out2=="Tracheandra_tabularus_"] <- "Tracheandra_tabularus_?"
+out2[out2=="Trachyandra_sp1_diff_from_above"] <- "Trachyandra_sp1_diff_from_above?"
+out2[out2=="Tretraria_sen"] <- "Tretraria_sen...?"
+out2[out2=="Wildenovia_lannamois"] <- "Wildenovia_lannamois?"
 out2[!out2 %in% syn$ini]
+
 out2
 
 # adapt them to the correspondance list
@@ -290,13 +335,20 @@ old_corr[!old_corr %in% syn$ini] <- out2
 length(old_corr[old_corr %in% syn$ini]) # 381
 
 # replace the species names by the correct ones
-new <- syn[old_corr,"fin"]
-length(new)  # 381
-COR <- cbind(oldID=old, oldCORR=old_corr, newID=new)
+COR <- cbind(oldID=old, oldCORR=old_corr)
+COR <- merge(COR, syn, by.x="oldCORR", by.y="ini")
 head(COR)
+dim(COR) # 381
+
+COR[!(row.names(COR) %in% row.names(na.omit(COR))), ] # 0
 
 p11n <- p11
-names(p11n) <- COR[order(COR[,1]), "newID"]
+TempNam <- names(p11n)
+for(i in names(p11n)) { 
+  TempNam[TempNam==i] <- COR[which(COR$oldID==i), "fin"] 
+  print(paste(i, "-->", COR[which(COR$oldID==i), "fin"] ))
+} 
+names(p11n) <- TempNam
 dim(p11n) # 62  381
 p11n[1:10, 1:10]
 
@@ -307,32 +359,39 @@ dim(p11n1) #   381  63
 
 dupli <- unique(as.character(p11n1$spcID[duplicated(p11n1$spcID)]))
 for(i in dupli) { 
-	t.row <- row.names(p11n1[which(p11n1==i),])
-	remp <- as.numeric(apply(p11n1[t.row, 2:ncol(p11n1)], 2, max)) 
-	for(j in t.row) p11n1[j, 2:ncol(p11n1)] <- remp ; print(i)
+  t.row <- row.names(p11n1[which(p11n1==i),])
+  remp <- as.numeric(apply(p11n1[t.row, 2:ncol(p11n1)], 2, max)) 
+  for(j in t.row) p11n1[j, 2:ncol(p11n1)] <- remp ; print(i)
 }
 p11n1 <- unique(p11n1)
-dim(p11n1) #   272  63
+dim(p11n1) #   289  63
 p11n1[1:10, 1:10]
 
 row.names(p11n1) <- p11n1$spcID 
 p11n2 <- as.data.frame(t(p11n1[,2:ncol(p11n1)]))
-p11n2 <- apply(p11n2, 1:2, function(x) ifelse(is.na(x), 0, x))
-p11n2 <- as.data.frame(p11n2)
+class(p11n2)
+str(p11n2)
+unique(unlist(p11n2)) # 0  1
 
 for(i in 1:ncol(p11n2)) p11n2[,i] <- as.numeric(as.character(p11n2[,i]))
 
 # Final checks
 p11n2[1:10, 1:10]
-dim(p11n2)  # 62 sites  272 species
+dim(p11n2)  # 62 sites  289 species
 
 range(p11n2)
 sort(colSums(p11n2))
-sort(rowSums(p11n2))
-unique(unlist(p11n2))
+
+# Remove species without presences
+p11n3 <- p11n2[,which(colSums(p11n2)>0)]
+p11n3[1:10, 1:10]
+dim(p11n3)  # 62 sites  289 species
+
+# homogenize the rownames
+row.names(p11n3) <- gsub(".", "_", row.names(p11n3), fixed=T)
 
 # Save it
-write.table(p11n2, file="PlotSpc_2011_12July16.txt", sep="\t", quote=F)
+write.table(p11n3, file="PlotSpc_2011_5Oct16.txt", sep="\t", quote=F)
 
 
 
@@ -351,7 +410,9 @@ length(old[old %in% syn$ini]) # 467
 out <- old[!old %in% syn$ini]
 
 out2 <- substring(out, 1, nchar(out)-1)
+out2 <- gsub(".", "", out2, fixed=T)
 out2[!out2 %in% syn$ini]
+
 out2
 
 # adapt them to the correspondance list
@@ -360,13 +421,20 @@ old_corr[!old_corr %in% syn$ini] <- out2
 length(old_corr[old_corr %in% syn$ini]) # 476
 
 # replace the species names by the correct ones
-new <- syn[old_corr,"fin"]
-length(new)  # 476
-COR <- cbind(oldID=old, oldCORR=old_corr, newID=new)
-tail(COR)
+COR <- cbind(oldID=old, oldCORR=old_corr)
+COR <- merge(COR, syn, by.x="oldCORR", by.y="ini")
+head(COR)
+dim(COR) # 476
+
+COR[!(row.names(COR) %in% row.names(na.omit(COR))), ] # 0
 
 p14n <- p14
-names(p14n) <- COR[order(COR[,1]), "newID"]
+TempNam <- names(p14n)
+for(i in names(p14n)) { 
+  TempNam[TempNam==i] <- COR[which(COR$oldID==i), "fin"] 
+  print(paste(i, "-->", COR[which(COR$oldID==i), "fin"] ))
+} 
+names(p14n) <- TempNam
 dim(p14n) # 141  476
 p14n[1:10, 1:10]
 
@@ -377,32 +445,38 @@ dim(p14n1) #   476  142
 
 dupli <- unique(as.character(p14n1$spcID[duplicated(p14n1$spcID)]))
 for(i in dupli) { 
-	t.row <- row.names(p14n1[which(p14n1==i),])
-	remp <- as.numeric(apply(p14n1[t.row, 2:ncol(p14n1)], 2, max)) 
-	for(j in t.row) p14n1[j, 2:ncol(p14n1)] <- remp ; print(i)
+  t.row <- row.names(p14n1[which(p14n1==i),])
+  remp <- as.numeric(apply(p14n1[t.row, 2:ncol(p14n1)], 2, max)) 
+  for(j in t.row) p14n1[j, 2:ncol(p14n1)] <- remp ; print(i)
 }
 p14n1 <- unique(p14n1)
-dim(p14n1) #   445 142
+dim(p14n1) #   440  142
 p14n1[1:10, 1:10]
 
 row.names(p14n1) <- p14n1$spcID 
 p14n2 <- as.data.frame(t(p14n1[,2:ncol(p14n1)]))
-p14n2 <- apply(p14n2, 1:2, function(x) ifelse(is.na(x), 0, x))
-p14n2 <- as.data.frame(p14n2)
+class(p14n2)
+str(p14n2)
+unique(unlist(p14n2)) # 0  1
 
 for(i in 1:ncol(p14n2)) p14n2[,i] <- as.numeric(as.character(p14n2[,i]))
 
 # Final checks
 p14n2[1:10, 1:10]
-dim(p14n2)  # 141 sites  445 species
+dim(p14n2)  # 141 sites  440 species
 
 range(p14n2)
 sort(colSums(p14n2))
-sort(rowSums(p14n2))
-unique(unlist(p14n2))
+
+# Remove species without presences
+p14n3 <- p14n2[,which(colSums(p14n2)>0)]
+# homogenize the rownames
+row.names(p14n3) <- gsub(".", "_", row.names(p14n3), fixed=T)
+p14n3[1:10, 1:10]
+dim(p14n3)  # 141 sites  440 species
 
 # Save it
-write.table(p14n2, file="PlotSpc_2014_12July16.txt", sep="\t", quote=F)
+write.table(p14n3, file="PlotSpc_2014_5Oct16.txt", sep="\t", quote=F)
 
 
 
@@ -420,23 +494,37 @@ write.table(p14n2, file="PlotSpc_2014_12July16.txt", sep="\t", quote=F)
 sp02_Abun[1:10, 1:10] 
 sp02_Cov[1:10, 1:10]
 
-dim(sp02_Abun) # 829  625
-dim(sp02_Cov)  # 829  625
+dim(sp02_Abun) # 624  824
+dim(sp02_Cov)  # 624  824
 
-
-old <- as.character(sp02_Abun$spcID)
-length(old) # 829
+old <- names(sp02_Abun)
+length(old) # 824
 length(unique(old)) # 824
 
-dd <- old[duplicated(old)]
-sp02_Abun[which(sp02_Abun$spcID %in% dd),]
+dd <- old[duplicated(old)] # 0
 
 # Check that all species are in the list
-length(old[old %in% syn$ini]) # 809
+length(old[old %in% syn$ini]) # 793
 out <- old[!old %in% syn$ini]
-out2 <- substring(out, 1, nchar(out)-3)
-out2
+
+out2 <- gsub("_NA", "", out)
+out2 <- gsub(".", "", out2, fixed=T)
+out2[out2=="Aspalathus_greygreen"] <- "Aspalathus_grey_green"
+out2[out2=="Aspalathus_long"] <- "Aspalathus_long_peduncle"
+out2[out2=="Aspalathus_retroflexa"] <- "Aspalathus_retroflexa_ssp._retroflexa"
+out2[out2=="Ehrharta_rupestris"] <- "Ehrharta_rupestris_ssp_tricostata"
+out2[out2=="Epilobium_tetragonium"] <- "Epilobium_tetragonum"
+out2[out2=="Felicia_tenella"] <- "Felicia_tenella_ssp._Tenella"
+out2[out2=="Monopsis_debilis"] <- "Monopsis_debilis_var_depressa"
+out2[out2=="Olea_europaea"] <- "Olea_europea"
+out2[out2=="Trifolium_angustifolia"] <- "Trifolium_angustifolium"
+
 out2[!out2 %in% syn$ini]
+
+############
+#### to be continued
+############
+
 
 # adapt them to the correspondance list
 old_corr <- old
