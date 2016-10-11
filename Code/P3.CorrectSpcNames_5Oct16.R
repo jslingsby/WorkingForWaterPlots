@@ -665,6 +665,11 @@ sp02_Cn3 <- sp02_Cn3[,which(colSums(sp02_Cn3)>0)]
 row.names(sp02_An3) <- gsub("p", "", row.names(sp02_An3), fixed=T)
 row.names(sp02_Cn3) <- gsub("p", "", row.names(sp02_Cn3), fixed=T)
 
+pc <- data.frame(num=paste(rep(1:52, each=12), paste(rep(1:6, each=2), 1:12, sep="_"), sep="_"), 
+                 row.names = paste(rep(1:52, each=12), letters[1:12], sep="_"))
+row.names(sp02_An3) <- as.character(pc[row.names(sp02_An3),1])
+row.names(sp02_Cn3) <- as.character(pc[row.names(sp02_Cn3),1])
+
 sp02_An3[1:10, 1:10]
 sp02_Cn3[1:10, 1:10]
 dim(sp02_An3)  # 624 sites  597 species
@@ -677,7 +682,8 @@ rowSums(sp02_Cn3)[rowSums(sp02_Cn3)==0]
 # Save it
 write.table(sp02_An3, file="subPlotSpc_2002_NbIndiv_5Oct16.txt", sep="\t", quote=F)
 write.table(sp02_Cn3, file="subPlotSpc_2002_PropCover_5Oct16.txt", sep="\t", quote=F)
-
+# sp02_An3 <- read.delim("subPlotSpc_2002_NbIndiv_5Oct16.txt", stringsAsFactors = F)
+# sp02_Cn3 <- read.delim("subPlotSpc_2002_PropCover_5Oct16.txt", stringsAsFactors = F)
 
 #********************************************************************
 #********************************************************************
@@ -689,11 +695,6 @@ sp08_Cov[1:10, 1:10]
 
 dim(sp08_Abun) # 527  595
 dim(sp08_Cov)  # 527  595
-
-#####
-## TO BE CONTINUED
-####
-
 
 old <- names(sp08_Abun)
 length(old) # 595
@@ -766,63 +767,54 @@ sort(as.numeric(as.character(unique(unlist(sp08_An2))))) # 0-90
 
 for(i in 1:ncol(sp08_An2)) sp08_An2[,i] <- as.numeric(as.character(sp08_An2[,i]))
 
-
-
-#####
-## TO BE CONTINUED VERY WEIRD THAT THE SITE ID DONT MATCH ANY MORE!!!
-# NEED TO CHECK THAT TOMORROW!!!
-####
-
-
-
 # Final checks
 sp08_An2[1:10, 1:10]
 dim(sp08_An2)  # 527 sites  543 species
-range(sp08_An2)
+range(sp08_An2) # 0  90
 sort(colSums(sp08_An2))
 
 #====================
 # COVER DATA
 #====================
 
-sp02_Cn <- sp02_Cov
-TempNam <- names(sp02_Cn)
-for(i in names(sp02_Cn)) { 
+sp08_Cn <- sp08_Cov
+TempNam <- names(sp08_Cn)
+for(i in names(sp08_Cn)) { 
   TempNam[TempNam==i] <- COR[which(COR$oldID==i), "fin"] 
   print(paste(i, "-->", COR[which(COR$oldID==i), "fin"] ))
 } 
-names(sp02_Cn) <- TempNam
-dim(sp02_Cn) # 624  824
-sp02_Cn[1:10, 1:10]
+names(sp08_Cn) <- TempNam
+dim(sp08_Cn) # 527  595
+sp08_Cn[1:10, 1:10]
 
 # resume the duplicates
-sp02_Cn1 <- as.data.frame(cbind(spcID=names(sp02_Cn), t(sp02_Cn)), row.names=1:length(sp02_Cn))
-sp02_Cn1[1:10, 1:10]
-dim(sp02_Cn1) #   824 625
+sp08_Cn1 <- as.data.frame(cbind(spcID=names(sp08_Cn), t(sp08_Cn)), row.names=1:length(sp08_Cn))
+sp08_Cn1[1:10, 1:10]
+dim(sp08_Cn1) #   528  595
 
-dupli <- unique(as.character(sp02_Cn1$spcID[duplicated(sp02_Cn1$spcID)]))
+dupli <- unique(as.character(sp08_Cn1$spcID[duplicated(sp08_Cn1$spcID)]))
 for(i in dupli) { 
-  t.row <- row.names(sp02_Cn1[which(sp02_Cn1==i),])
-  remp <- as.numeric(apply(sp02_Cn1[t.row, 2:ncol(sp02_Cn1)], 2, max)) 
-  for(j in t.row) sp02_Cn1[j, 2:ncol(sp02_Cn1)] <- remp ; print(i)
+  t.row <- row.names(sp08_Cn1[which(sp08_Cn1==i),])
+  remp <- as.numeric(apply(sp08_Cn1[t.row, 2:ncol(sp08_Cn1)], 2, max)) 
+  for(j in t.row) sp08_Cn1[j, 2:ncol(sp08_Cn1)] <- remp ; print(i)
 }
-sp02_Cn1 <- unique(sp02_Cn1)
-dim(sp02_Cn1) #   813  625
-sp02_Cn1[1:10, 1:10]
+sp08_Cn1 <- unique(sp08_Cn1)
+dim(sp08_Cn1) #   595  528
+sp08_Cn1[1:10, 1:10]
 
-row.names(sp02_Cn1) <- sp02_Cn1$spcID 
-sp02_Cn2 <- as.data.frame(t(sp02_Cn1[,2:ncol(sp02_Cn1)]))
-class(sp02_Cn2)
-str(sp02_Cn2)
-sort(as.numeric(as.character(unique(unlist(sp02_Cn2))))) # 0-95.0
+row.names(sp08_Cn1) <- sp08_Cn1$spcID 
+sp08_Cn2 <- as.data.frame(t(sp08_Cn1[,2:ncol(sp08_Cn1)]))
+class(sp08_Cn2)
+str(sp08_Cn2)
+sort(as.numeric(as.character(unique(unlist(sp08_Cn2))))) # 0-100
 
-for(i in 1:ncol(sp02_Cn2)) sp02_Cn2[,i] <- as.numeric(as.character(sp02_Cn2[,i]))
+for(i in 1:ncol(sp08_Cn2)) sp08_Cn2[,i] <- as.numeric(as.character(sp08_Cn2[,i]))
 
 # Final checks
-sp02_Cn2[1:10, 1:10]
-dim(sp02_Cn2)  # 624 sites  813 species
-range(sp02_Cn2)
-sort(colSums(sp02_Cn2))
+sp08_Cn2[1:10, 1:10]
+dim(sp08_Cn2)  # 527 sites  595 species
+range(sp08_Cn2)  # 0 100
+sort(colSums(sp08_Cn2))
 
 
 #====================
@@ -833,17 +825,17 @@ sort(colSums(sp02_Cn2))
 # WE WILL GIVE THEM AN ABUNDANCE OF 0.1
 
 # Check species presences in each site
-sp02_An3 <- data.frame(PlotID=row.names(sp02_An2), sp02_An2)
-tt1 <- melt(sp02_An3, id="PlotID")
+sp08_An3 <- data.frame(PlotID=row.names(sp08_An2), sp08_An2)
+tt1 <- melt(sp08_An3, id="PlotID")
 tt1 <- tt1[which(tt1$value>0),][,1:2]
 tt1 <- unique(tt1[order(tt1$PlotID),])
-head(tt1) ; dim(tt1) # 6162  2
+head(tt1) ; dim(tt1) # 4066  2
 
-sp02_Cn3 <- data.frame(PlotID=row.names(sp02_Cn2), sp02_Cn2)
-tt2 <- melt(sp02_Cn3, id="PlotID")
+sp08_Cn3 <- data.frame(PlotID=row.names(sp08_Cn2), sp08_Cn2)
+tt2 <- melt(sp08_Cn3, id="PlotID")
 tt2 <- tt2[which(tt2$value>0),][,1:2]
 tt2 <- unique(tt2[order(tt2$PlotID),])
-head(tt2) ; dim(tt2)  # 6244  2
+head(tt2) ; dim(tt2)  # 4440  2
 
 tt1$comb <- paste(tt1[,1], tt1[,2], sep="_")
 tt2$comb <- paste(tt2[,1], tt2[,2], sep="_")
@@ -854,178 +846,33 @@ TT2 <- tt2[!tt2$comb %in% tt1$comb,]
 for(i in 1:3) { TT1[,i] <- as.character(TT1[,i]) ; TT2[,i] <- as.character(TT2[,i]) }
 
 # attribute an abundance of 0.1 to missing species abundances
-for(i in 1:nrow(TT2)){ sp02_An3[TT2[i,"PlotID"], TT2[i, "variable"]] <- 0.1 ; print(i) }
-for(i in 1:nrow(TT1)){ sp02_Cn3[TT1[i,"PlotID"], TT1[i, "variable"]] <- 0.1 ; print(i) }
+for(i in 1:nrow(TT2)){ sp08_An3[TT2[i,"PlotID"], TT2[i, "variable"]] <- 0.1 ; print(i) }
+for(i in 1:nrow(TT1)){ sp08_Cn3[TT1[i,"PlotID"], TT1[i, "variable"]] <- 0.1 ; print(i) }
 
 # Remove species without presences
-sp02_An3 <- sp02_An3[,-grep("PlotID", names(sp02_An3))]
-sp02_Cn3 <- sp02_Cn3[,-grep("PlotID", names(sp02_Cn3))]
+sp08_An3 <- sp08_An3[,-grep("PlotID", names(sp08_An3))]
+sp08_Cn3 <- sp08_Cn3[,-grep("PlotID", names(sp08_Cn3))]
 
-sp02_An3 <- sp02_An3[,which(colSums(sp02_An3)>0)]
-sp02_Cn3 <- sp02_Cn3[,which(colSums(sp02_Cn3)>0)]
+sp08_An3 <- sp08_An3[,which(colSums(sp08_An3)>0)]
+sp08_Cn3 <- sp08_Cn3[,which(colSums(sp08_Cn3)>0)]
+
 
 # homogenize the rownames
-row.names(sp02_An3) <- gsub("p", "", row.names(sp02_An3), fixed=T)
-row.names(sp02_Cn3) <- gsub("p", "", row.names(sp02_Cn3), fixed=T)
+row.names(sp08_An3) <- gsub(".", "_", row.names(sp08_An3), fixed=T)
+row.names(sp08_Cn3) <- gsub(".", "_", row.names(sp08_Cn3), fixed=T)
 
-sp02_An3[1:10, 1:10]
-sp02_Cn3[1:10, 1:10]
-dim(sp02_An3)  # 624 sites  597 species
-dim(sp02_Cn3)  # 624 sites  597 species
-hist(rowSums(sp02_An3))  
-hist(rowSums(sp02_Cn3))
-rowSums(sp02_An3)[rowSums(sp02_An3)==0]
-rowSums(sp02_Cn3)[rowSums(sp02_Cn3)==0]
-
-# Save it
-write.table(sp02_An3, file="subPlotSpc_2002_NbIndiv_5Oct16.txt", sep="\t", quote=F)
-write.table(sp02_Cn3, file="subPlotSpc_2002_PropCover_5Oct16.txt", sep="\t", quote=F)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-sp08_Abun[1:10, 1:10] 
-sp08_Cov[1:10, 1:10]
-
-dim(sp08_Abun) # 527  595
-dim(sp08_Cov)  # 527  595
-
-
-old <- names(sp08_Abun)
-length(old) # 595
-length(unique(old)) # 595
-
-# Check that all species are in the list
-length(old[old %in% syn$ini]) # 574
-out <- old[!old %in% syn$ini]
-out
-
-out2 <- substring(out, 1, nchar(out)-1)
-out2[!out2 %in% syn$ini]
-out2
-
-# adapt them to the correspondance list
-old_corr <- old
-old_corr[!old_corr %in% syn$ini] <- out2
-length(old_corr[old_corr %in% syn$ini]) # 595
-
-# replace the species names by the correct ones
-new <- syn[old_corr,"fin"]
-length(new)  # 595
-COR <- cbind(oldID=old, oldCORR=old_corr, newID=new)
-head(COR)
-
-#====================
-# ABUNDANCE DATA
-#====================
-sp08_An <- sp08_Abun
-names(sp08_An) <- COR[order(COR[,1]), "newID"]
-dim(sp08_An) # 527  595 
-sp08_An[1:10, 1:10]
-
-# TRANSFORM THE '*' into '0'
-sp08_An <- apply(sp08_An, 1:2, function(x) ifelse(x %in% c("*", "+"), 0, x))
-for(i in 1:ncol(sp08_An)) sp08_An[,i] <- as.numeric(as.character(sp08_An[,i]))
-sp08_An[1:10, 1:10]
-
-# resume the duplicates
-sp08_An1 <- as.data.frame(cbind(spcID=colnames(sp08_An), t(sp08_An)), row.names=1:length(sp08_An))
-for(i in 2:ncol(sp08_An1)) sp08_An1[,i] <- as.numeric(as.character(sp08_An1[,i]))
-sp08_An1[1:10, 1:10]
-dim(sp08_An1) #   595  528
-
-dupli <- unique(as.character(sp08_An1$spcID[duplicated(sp08_An1$spcID)]))
-for(i in dupli) { 
-	t.row <- row.names(sp08_An1[which(sp08_An1==i),])
-	remp <- colSums(sp08_An1[t.row, 2:ncol(sp08_An1)], na.rm=T)
-	for(j in t.row) sp08_An1[j, 2:ncol(sp08_An1)] <- remp ; print(i)
-}
-sp08_An1 <- unique(sp08_An1)
-dim(sp08_An1) #   516  528
-sp08_An1[1:10, 1:10]
-
-row.names(sp08_An1) <- sp08_An1$spcID 
-sp08_An2 <- as.data.frame(t(sp08_An1[,2:ncol(sp08_An1)]))
-sp08_An2 <- apply(sp08_An2[,1:ncol(sp08_An2)], 1:2, function(x) ifelse(is.na(x), 0, x))
-sp08_An2 <- as.data.frame(sp08_An2)
-
-for(i in 1:ncol(sp08_An2)) sp08_An2[,i] <- as.numeric(as.character(sp08_An2[,i]))
-
-# Final checks
-sp08_An2[1:10, 1:10]
-dim(sp08_An2)  # 527 sites  516 species
-
-range(sp08_An2)
-sort(colSums(sp08_An2))
-unique(unlist(sp08_An2))
+sp08_An3[1:10, 1:10]
+sp08_Cn3[1:10, 1:10]
+dim(sp08_An3)  # 527 sites  543 species
+dim(sp08_Cn3)  # 527 sites  543 species
+hist(rowSums(sp08_An3))  
+hist(rowSums(sp08_Cn3))
+rowSums(sp08_An3)[rowSums(sp08_An3)==0]
+rowSums(sp08_Cn3)[rowSums(sp08_Cn3)==0]
 
 # Save it
-write.table(sp08_An2, file="subPlotSpc_2008_NbIndiv_12July16.txt", sep="\t", quote=F)
-
-
-#====================
-# COVER DATA
-#====================
-sp08_Cn <- sp08_Cov
-names(sp08_Cn) <- COR[order(COR[,1]), "newID"]
-dim(sp08_Cn) # 527  595 
-sp08_Cn[1:10, 1:10]
-
-# TRANSFORM THE '*' into '0'
-sp08_Cn <- apply(sp08_Cn, 1:2, function(x) ifelse(x %in% c("*", "+"), 0, x))
-for(i in 1:ncol(sp08_Cn)) sp08_Cn[,i] <- as.numeric(as.character(sp08_Cn[,i]))
-sp08_Cn[1:10, 1:10]
-
-# resume the duplicates
-sp08_Cn1 <- as.data.frame(cbind(spcID=colnames(sp08_Cn), t(sp08_Cn)), row.names=1:length(sp08_Cn))
-for(i in 2:ncol(sp08_Cn1)) sp08_Cn1[,i] <- as.numeric(as.character(sp08_Cn1[,i]))
-sp08_Cn1[1:10, 1:10]
-dim(sp08_Cn1) #   595  528
-
-dupli <- unique(as.character(sp08_Cn1$spcID[duplicated(sp08_Cn1$spcID)]))
-for(i in dupli) { 
-	t.row <- row.names(sp08_Cn1[which(sp08_Cn1==i),])
-	remp <- colSums(sp08_Cn1[t.row, 2:ncol(sp08_Cn1)], na.rm=T)
-	for(j in t.row) sp08_Cn1[j, 2:ncol(sp08_Cn1)] <- remp ; print(i)
-}
-sp08_Cn1 <- unique(sp08_Cn1)
-dim(sp08_Cn1) #   516  528
-sp08_Cn1[1:10, 1:10]
-
-row.names(sp08_Cn1) <- sp08_Cn1$spcID 
-sp08_Cn2 <- as.data.frame(t(sp08_Cn1[,2:ncol(sp08_Cn1)]))
-sp08_Cn2 <- apply(sp08_Cn2[,1:ncol(sp08_Cn2)], 1:2, function(x) ifelse(is.na(x), 0, x))
-sp08_Cn2 <- as.data.frame(sp08_Cn2)
-
-for(i in 1:ncol(sp08_Cn2)) sp08_Cn2[,i] <- as.numeric(as.character(sp08_Cn2[,i]))
-
-# Final checks
-sp08_Cn2[1:10, 1:10]
-dim(sp08_Cn2)  # 527 sites  516 species
-
-range(sp08_Cn2)
-sort(colSums(sp08_Cn2))
-unique(unlist(sp08_Cn2))
-
-# Save it
-write.table(sp08_Cn2, file="subPlotSpc_2008_PropCover_12July16.txt", sep="\t", quote=F)
-
+write.table(sp08_An3, file="subPlotSpc_2008_NbIndiv_5Oct16.txt", sep="\t", quote=F)
+write.table(sp08_Cn3, file="subPlotSpc_2008_PropCover_5Oct16.txt", sep="\t", quote=F)
 
 
 #********************************************************************
@@ -1036,127 +883,189 @@ write.table(sp08_Cn2, file="subPlotSpc_2008_PropCover_12July16.txt", sep="\t", q
 sp11_Abun[1:10, 1:10] 
 sp11_Cov[1:10, 1:10]
 
-dim(sp11_Abun) # 131 354
-dim(sp11_Cov)  # 131 354
+dim(sp11_Abun) # 131  354
+dim(sp11_Cov)  # 131  354
 
 old <- names(sp11_Abun)
 length(old) # 354
 length(unique(old)) # 354
 
+dd <- old[duplicated(old)] # 0
+
 # Check that all species are in the list
-length(old[old %in% syn$ini]) # 344
+length(old[old %in% syn$ini]) # 338
 out <- old[!old %in% syn$ini]
-out
 
 out2 <- substring(out, 1, nchar(out)-1)
+out2 <- gsub(".", "", out2, fixed=T)
+out2[out2=="Chrysocoma"] <- "Chrysocoma_?"
+out2[out2=="Holothrix_villosa______"] <- "Holothirx_villosa"
+out2[out2=="Lampranthus_emarginatus_"] <- "Lampranthus_emarginatus"
+out2[out2=="Physcia_digitata"] <- "Physcia_digitata?"
+out2[out2=="Restio_quadratus_"] <- "Restio_quadratus"
+out2[out2=="Thamnochortus_areanariuslucin"] <- "Thamnochortis_lucins/orenarius"
+out2[out2=="Thamnochortus_areanaruislucin"] <- "Thamnochortis_lucins/orenarius"
+out2[out2=="Tracheandra_tabularis_"] <- "Tracheandra_tabularus_?"
 out2[!out2 %in% syn$ini]
 out2
 
 # adapt them to the correspondance list
 old_corr <- old
+old_corr[!old_corr %in% syn$ini] <- out
 old_corr[!old_corr %in% syn$ini] <- out2
 length(old_corr[old_corr %in% syn$ini]) # 354
 
 # replace the species names by the correct ones
-new <- syn[old_corr,"fin"]
-length(new)  # 354
-COR <- cbind(oldID=old, oldCORR=old_corr, newID=new)
+COR <- cbind(oldID=old, oldCORR=old_corr)
+COR <- merge(COR, syn, by.x="oldCORR", by.y="ini")
 head(COR)
+dim(COR) # 354
+
+COR[!(row.names(COR) %in% row.names(na.omit(COR))), ] # 0
 
 #====================
 # ABUNDANCE DATA
 #====================
+
 sp11_An <- sp11_Abun
-names(sp11_An) <- COR[order(COR[,1]), "newID"]
+TempNam <- names(sp11_An)
+for(i in names(sp11_An)) { 
+  TempNam[TempNam==i] <- COR[which(COR$oldID==i), "fin"] 
+  print(paste(i, "-->", COR[which(COR$oldID==i), "fin"] ))
+} 
+names(sp11_An) <- TempNam
 dim(sp11_An) # 131  354
 sp11_An[1:10, 1:10]
 
-# TRANSFORM THE '*' into '0'
-sp11_An <- apply(sp11_An, 1:2, function(x) ifelse(x %in% c("*", "+"), 0, x))
-for(i in 1:ncol(sp11_An)) sp11_An[,i] <- as.numeric(as.character(sp11_An[,i]))
-sp11_An[1:10, 1:10]
-
 # resume the duplicates
-sp11_An1 <- as.data.frame(cbind(spcID=colnames(sp11_An), t(sp11_An)), row.names=1:length(sp11_An))
-for(i in 2:ncol(sp11_An1)) sp11_An1[,i] <- as.numeric(as.character(sp11_An1[,i]))
+sp11_An1 <- as.data.frame(cbind(spcID=names(sp11_An), t(sp11_An)), row.names=1:length(sp11_An))
 sp11_An1[1:10, 1:10]
 dim(sp11_An1) #   354 132
 
 dupli <- unique(as.character(sp11_An1$spcID[duplicated(sp11_An1$spcID)]))
 for(i in dupli) { 
-	t.row <- row.names(sp11_An1[which(sp11_An1==i),])
-	remp <- colSums(sp11_An1[t.row, 2:ncol(sp11_An1)], na.rm=T)
-	for(j in t.row) sp11_An1[j, 2:ncol(sp11_An1)] <- remp ; print(i)
+  t.row <- row.names(sp11_An1[which(sp11_An1==i),])
+  remp <- as.numeric(apply(sp11_An1[t.row, 2:ncol(sp11_An1)], 2, max)) 
+  for(j in t.row) sp11_An1[j, 2:ncol(sp11_An1)] <- remp ; print(i)
 }
 sp11_An1 <- unique(sp11_An1)
-dim(sp11_An1) #   236  132
+dim(sp11_An1) #   252  132
 sp11_An1[1:10, 1:10]
 
 row.names(sp11_An1) <- sp11_An1$spcID 
 sp11_An2 <- as.data.frame(t(sp11_An1[,2:ncol(sp11_An1)]))
-sp11_An2 <- apply(sp11_An2[,1:ncol(sp11_An2)], 1:2, function(x) ifelse(is.na(x), 0, x))
-sp11_An2 <- as.data.frame(sp11_An2)
+class(sp11_An2)
+str(sp11_An2)
+sort(as.numeric(as.character(unique(unlist(sp11_An2))))) # 0-75
 
 for(i in 1:ncol(sp11_An2)) sp11_An2[,i] <- as.numeric(as.character(sp11_An2[,i]))
 
 # Final checks
 sp11_An2[1:10, 1:10]
-dim(sp11_An2)  # 131 sites  236 species
-
-range(sp11_An2)
+dim(sp11_An2)  # 131 sites  252 species
+range(sp11_An2) # 0  75
 sort(colSums(sp11_An2))
-unique(unlist(sp11_An2))
-
-# Save it
-write.table(sp11_An2, file="subPlotSpc_2011_NbIndiv_12July16.txt", sep="\t", quote=F)
-
 
 #====================
 # COVER DATA
 #====================
+
 sp11_Cn <- sp11_Cov
-names(sp11_Cn) <- COR[order(COR[,1]), "newID"]
+TempNam <- names(sp11_Cn)
+for(i in names(sp11_Cn)) { 
+  TempNam[TempNam==i] <- COR[which(COR$oldID==i), "fin"] 
+  print(paste(i, "-->", COR[which(COR$oldID==i), "fin"] ))
+} 
+names(sp11_Cn) <- TempNam
 dim(sp11_Cn) # 131  354
 sp11_Cn[1:10, 1:10]
 
-# TRANSFORM THE '*' into '0'
-sp11_Cn <- apply(sp11_Cn, 1:2, function(x) ifelse(x %in% c("*", "+"), 0, x))
-for(i in 1:ncol(sp11_Cn)) sp11_Cn[,i] <- as.numeric(as.character(sp11_Cn[,i]))
-sp11_Cn[1:10, 1:10]
-
 # resume the duplicates
-sp11_Cn1 <- as.data.frame(cbind(spcID=colnames(sp11_Cn), t(sp11_Cn)), row.names=1:length(sp11_Cn))
-for(i in 2:ncol(sp11_Cn1)) sp11_Cn1[,i] <- as.numeric(as.character(sp11_Cn1[,i]))
+sp11_Cn1 <- as.data.frame(cbind(spcID=names(sp11_Cn), t(sp11_Cn)), row.names=1:length(sp11_Cn))
 sp11_Cn1[1:10, 1:10]
-dim(sp11_Cn1) #   354 132
+dim(sp11_Cn1) #   354  132
 
 dupli <- unique(as.character(sp11_Cn1$spcID[duplicated(sp11_Cn1$spcID)]))
 for(i in dupli) { 
-	t.row <- row.names(sp11_Cn1[which(sp11_Cn1==i),])
-	remp <- colSums(sp11_Cn1[t.row, 2:ncol(sp11_Cn1)], na.rm=T)
-	for(j in t.row) sp11_Cn1[j, 2:ncol(sp11_Cn1)] <- remp ; print(i)
+  t.row <- row.names(sp11_Cn1[which(sp11_Cn1==i),])
+  remp <- as.numeric(apply(sp11_Cn1[t.row, 2:ncol(sp11_Cn1)], 2, max)) 
+  for(j in t.row) sp11_Cn1[j, 2:ncol(sp11_Cn1)] <- remp ; print(i)
 }
 sp11_Cn1 <- unique(sp11_Cn1)
-dim(sp11_Cn1) #   236   132
+dim(sp11_Cn1) #   252  132
 sp11_Cn1[1:10, 1:10]
 
 row.names(sp11_Cn1) <- sp11_Cn1$spcID 
 sp11_Cn2 <- as.data.frame(t(sp11_Cn1[,2:ncol(sp11_Cn1)]))
-sp11_Cn2 <- apply(sp11_Cn2[,1:ncol(sp11_Cn2)], 1:2, function(x) ifelse(is.na(x), 0, x))
-sp11_Cn2 <- as.data.frame(sp11_Cn2)
+class(sp11_Cn2)
+str(sp11_Cn2)
+sort(as.numeric(as.character(unique(unlist(sp11_Cn2))))) # 0-100
 
 for(i in 1:ncol(sp11_Cn2)) sp11_Cn2[,i] <- as.numeric(as.character(sp11_Cn2[,i]))
 
 # Final checks
 sp11_Cn2[1:10, 1:10]
-dim(sp11_Cn2)  # 131 sites  236 species
-
-range(sp11_Cn2)
+dim(sp11_Cn2)  # 131 sites  252 species
+range(sp11_Cn2)  # 0 100
 sort(colSums(sp11_Cn2))
-unique(unlist(sp11_Cn2))
+
+
+#====================
+# HOMOGENEIZE THE ABUNDANCE AND COVER DATA
+#====================
+
+# WARNING, SPECIES WITH 0 ABUNDANCES BUT COVER > 0 ARE SHADING THE PLOT BUT THEIR ROOT IS OUTSIDE
+# WE WILL GIVE THEM AN ABUNDANCE OF 0.1
+
+# Check species presences in each site
+sp11_An3 <- data.frame(PlotID=row.names(sp11_An2), sp11_An2)
+tt1 <- melt(sp11_An3, id="PlotID")
+tt1 <- tt1[which(tt1$value>0),][,1:2]
+tt1 <- unique(tt1[order(tt1$PlotID),])
+head(tt1) ; dim(tt1) # 1267  2
+
+sp11_Cn3 <- data.frame(PlotID=row.names(sp11_Cn2), sp11_Cn2)
+tt2 <- melt(sp11_Cn3, id="PlotID")
+tt2 <- tt2[which(tt2$value>0),][,1:2]
+tt2 <- unique(tt2[order(tt2$PlotID),])
+head(tt2) ; dim(tt2)  # 1343  2
+
+tt1$comb <- paste(tt1[,1], tt1[,2], sep="_")
+tt2$comb <- paste(tt2[,1], tt2[,2], sep="_")
+head(tt1) ; head(tt2)
+
+TT1 <- tt1[!tt1$comb %in% tt2$comb,]
+TT2 <- tt2[!tt2$comb %in% tt1$comb,]
+for(i in 1:3) { TT1[,i] <- as.character(TT1[,i]) ; TT2[,i] <- as.character(TT2[,i]) }
+
+# attribute an abundance of 0.1 to missing species abundances
+for(i in 1:nrow(TT2)){ sp11_An3[TT2[i,"PlotID"], TT2[i, "variable"]] <- 0.1 ; print(i) }
+for(i in 1:nrow(TT1)){ sp11_Cn3[TT1[i,"PlotID"], TT1[i, "variable"]] <- 0.1 ; print(i) }
+
+# Remove species without presences
+sp11_An3 <- sp11_An3[,-grep("PlotID", names(sp11_An3))]
+sp11_Cn3 <- sp11_Cn3[,-grep("PlotID", names(sp11_Cn3))]
+
+sp11_An3 <- sp11_An3[,which(colSums(sp11_An3)>0)]
+sp11_Cn3 <- sp11_Cn3[,which(colSums(sp11_Cn3)>0)]
+
+
+# homogenize the rownames
+row.names(sp11_An3) <- gsub(".", "_", gsub("_", "", row.names(sp11_An3)), fixed=T)
+row.names(sp11_Cn3) <- gsub(".", "_", gsub("_", "", row.names(sp11_Cn3)), fixed=T)
+
+sp11_An3[1:10, 1:10]
+sp11_Cn3[1:10, 1:10]
+dim(sp11_An3)  # 131 sites  251 species
+dim(sp11_Cn3)  # 131 sites  251 species
+hist(rowSums(sp11_An3))  
+hist(rowSums(sp11_Cn3))
+rowSums(sp11_An3)[rowSums(sp11_An3)==0]
+rowSums(sp11_Cn3)[rowSums(sp11_Cn3)==0]
 
 # Save it
-write.table(sp11_Cn2, file="subPlotSpc_2011_PropCover_12July16.txt", sep="\t", quote=F)
+write.table(sp11_An3, file="subPlotSpc_2011_NbIndiv_5Oct16.txt", sep="\t", quote=F)
+write.table(sp11_Cn3, file="subPlotSpc_2011_PropCover_5Oct16.txt", sep="\t", quote=F)
 
 
 
@@ -1165,6 +1074,7 @@ write.table(sp11_Cn2, file="subPlotSpc_2011_PropCover_12July16.txt", sep="\t", q
 # 2014
 #********************************************************************
 #********************************************************************
+
 sp14_Abun[1:10, 1:10] 
 sp14_Cov[1:10, 1:10]
 
@@ -1175,218 +1085,177 @@ old <- names(sp14_Abun)
 length(old) # 420
 length(unique(old)) # 420
 
-# Check that all species are in the list
-length(old[old %in% syn$ini]) # 388
-out <- old[!old %in% syn$ini]
-out
+dd <- old[duplicated(old)] # 0
 
-out2 <- unlist(lapply(strsplit(out, "_"), function(x) paste(x[1], x[2], sep="_")))
+# Check that all species are in the list
+length(old[old %in% syn$ini]) # 384
+out <- old[!old %in% syn$ini]
+
+out2 <- gsub(".", "", out, fixed=T)
+out2[out2=="Moss_"] <- "Moss_spp"
+out2[out2=="Passerina_paleacea_"] <- "Passerina_paleacea_dead"
 out2[!out2 %in% syn$ini]
 out2
 
 # adapt them to the correspondance list
 old_corr <- old
+old_corr[!old_corr %in% syn$ini] <- out
 old_corr[!old_corr %in% syn$ini] <- out2
 length(old_corr[old_corr %in% syn$ini]) # 420
 
 # replace the species names by the correct ones
-new <- syn[old_corr,"fin"]
-length(new)  # 420
-COR <- cbind(oldID=old, oldCORR=old_corr, newID=new)
+COR <- cbind(oldID=old, oldCORR=old_corr)
+COR <- merge(COR, syn, by.x="oldCORR", by.y="ini")
 head(COR)
+dim(COR) # 422
+
+COR[!(row.names(COR) %in% row.names(na.omit(COR))), ] # 0
 
 #====================
 # ABUNDANCE DATA
 #====================
+
 sp14_An <- sp14_Abun
-names(sp14_An) <- COR[order(COR[,1]), "newID"]
+TempNam <- names(sp14_An)
+for(i in names(sp14_An)) { 
+  TempNam[TempNam==i] <- COR[which(COR$oldID==i), "fin"] [1]
+  print(paste(i, "-->", COR[which(COR$oldID==i), "fin"] ))
+} 
+names(sp14_An) <- TempNam
 dim(sp14_An) # 319  420
 sp14_An[1:10, 1:10]
 
-# TRANSFORM THE '*' into '0'
-sp14_An <- apply(sp14_An, 1:2, function(x) ifelse(x %in% c("*", "+"), 0, x))
-for(i in 1:ncol(sp14_An)) sp14_An[,i] <- as.numeric(as.character(sp14_An[,i]))
-sp14_An[1:10, 1:10]
-
 # resume the duplicates
-sp14_An1 <- as.data.frame(cbind(spcID=colnames(sp14_An), t(sp14_An)), row.names=1:length(sp14_An))
-for(i in 2:ncol(sp14_An1)) sp14_An1[,i] <- as.numeric(as.character(sp14_An1[,i]))
+sp14_An1 <- as.data.frame(cbind(spcID=names(sp14_An), t(sp14_An)), row.names=1:length(sp14_An))
 sp14_An1[1:10, 1:10]
-dim(sp14_An1) #   420  320
+dim(sp14_An1) #   420 320
 
 dupli <- unique(as.character(sp14_An1$spcID[duplicated(sp14_An1$spcID)]))
 for(i in dupli) { 
-	t.row <- row.names(sp14_An1[which(sp14_An1==i),])
-	remp <- colSums(sp14_An1[t.row, 2:ncol(sp14_An1)], na.rm=T)
-	for(j in t.row) sp14_An1[j, 2:ncol(sp14_An1)] <- remp ; print(i)
+  t.row <- row.names(sp14_An1[which(sp14_An1==i),])
+  remp <- as.numeric(apply(sp14_An1[t.row, 2:ncol(sp14_An1)], 2, max)) 
+  for(j in t.row) sp14_An1[j, 2:ncol(sp14_An1)] <- remp ; print(i)
 }
 sp14_An1 <- unique(sp14_An1)
-dim(sp14_An1) #   351  320
+dim(sp14_An1) #   346  320
 sp14_An1[1:10, 1:10]
 
 row.names(sp14_An1) <- sp14_An1$spcID 
 sp14_An2 <- as.data.frame(t(sp14_An1[,2:ncol(sp14_An1)]))
-sp14_An2 <- apply(sp14_An2[,1:ncol(sp14_An2)], 1:2, function(x) ifelse(is.na(x), 0, x))
-sp14_An2 <- as.data.frame(sp14_An2)
+class(sp14_An2)
+str(sp14_An2)
+sort(as.numeric(as.character(unique(unlist(sp14_An2))))) # 0-150
 
 for(i in 1:ncol(sp14_An2)) sp14_An2[,i] <- as.numeric(as.character(sp14_An2[,i]))
 
 # Final checks
 sp14_An2[1:10, 1:10]
-dim(sp14_An2)  # 319 sites  351 species
-
-range(sp14_An2)
+dim(sp14_An2)  # 319 sites  346 species
+range(sp14_An2) # 0  150
 sort(colSums(sp14_An2))
-unique(unlist(sp14_An2))
-
-# Save it
-write.table(sp14_An2, file="subPlotSpc_2014_NbIndiv_12July16.txt", sep="\t", quote=F)
-
 
 #====================
 # COVER DATA
 #====================
+
 sp14_Cn <- sp14_Cov
-names(sp14_Cn) <- COR[order(COR[,1]), "newID"]
+TempNam <- names(sp14_Cn)
+for(i in names(sp14_Cn)) { 
+  TempNam[TempNam==i] <- COR[which(COR$oldID==i), "fin"] [1]
+  print(paste(i, "-->", COR[which(COR$oldID==i), "fin"] ))
+} 
+names(sp14_Cn) <- TempNam
 dim(sp14_Cn) # 319  420
 sp14_Cn[1:10, 1:10]
 
-# TRANSFORM THE '*' into '0'
-sp14_Cn <- apply(sp14_Cn, 1:2, function(x) ifelse(x %in% c("*", "+"), 0, x))
-for(i in 1:ncol(sp14_Cn)) sp14_Cn[,i] <- as.numeric(as.character(sp14_Cn[,i]))
-sp14_Cn[1:10, 1:10]
-
 # resume the duplicates
-sp14_Cn1 <- as.data.frame(cbind(spcID=colnames(sp14_Cn), t(sp14_Cn)), row.names=1:length(sp14_Cn))
-for(i in 2:ncol(sp14_Cn1)) sp14_Cn1[,i] <- as.numeric(as.character(sp14_Cn1[,i]))
+sp14_Cn1 <- as.data.frame(cbind(spcID=names(sp14_Cn), t(sp14_Cn)), row.names=1:length(sp14_Cn))
 sp14_Cn1[1:10, 1:10]
 dim(sp14_Cn1) #   420  320
 
 dupli <- unique(as.character(sp14_Cn1$spcID[duplicated(sp14_Cn1$spcID)]))
 for(i in dupli) { 
-	t.row <- row.names(sp14_Cn1[which(sp14_Cn1==i),])
-	remp <- colSums(sp14_Cn1[t.row, 2:ncol(sp14_Cn1)], na.rm=T)
-	for(j in t.row) sp14_Cn1[j, 2:ncol(sp14_Cn1)] <- remp ; print(i)
+  t.row <- row.names(sp14_Cn1[which(sp14_Cn1==i),])
+  remp <- as.numeric(apply(sp14_Cn1[t.row, 2:ncol(sp14_Cn1)], 2, max)) 
+  for(j in t.row) sp14_Cn1[j, 2:ncol(sp14_Cn1)] <- remp ; print(i)
 }
 sp14_Cn1 <- unique(sp14_Cn1)
-dim(sp14_Cn1) #   351  320
+dim(sp14_Cn1) #   346  320
 sp14_Cn1[1:10, 1:10]
 
 row.names(sp14_Cn1) <- sp14_Cn1$spcID 
 sp14_Cn2 <- as.data.frame(t(sp14_Cn1[,2:ncol(sp14_Cn1)]))
-sp14_Cn2 <- apply(sp14_Cn2[,1:ncol(sp14_Cn2)], 1:2, function(x) ifelse(is.na(x), 0, x))
-sp14_Cn2 <- as.data.frame(sp14_Cn2)
+class(sp14_Cn2)
+str(sp14_Cn2)
+sort(as.numeric(as.character(unique(unlist(sp14_Cn2))))) # 0-110
 
 for(i in 1:ncol(sp14_Cn2)) sp14_Cn2[,i] <- as.numeric(as.character(sp14_Cn2[,i]))
 
 # Final checks
 sp14_Cn2[1:10, 1:10]
-dim(sp14_Cn2)  # 131 sites  236 species
-
-range(sp14_Cn2)
+dim(sp14_Cn2)  # 319 sites  346 species
+range(sp14_Cn2)  # 0 110
 sort(colSums(sp14_Cn2))
-unique(unlist(sp14_Cn2))
+
+
+#====================
+# HOMOGENEIZE THE ABUNDANCE AND COVER DATA
+#====================
+
+# WARNING, SPECIES WITH 0 ABUNDANCES BUT COVER > 0 ARE SHADING THE PLOT BUT THEIR ROOT IS OUTSIDE
+# WE WILL GIVE THEM AN ABUNDANCE OF 0.1
+
+# Check species presences in each site
+sp14_An3 <- data.frame(PlotID=row.names(sp14_An2), sp14_An2)
+tt1 <- melt(sp14_An3, id="PlotID")
+tt1 <- tt1[which(tt1$value>0),][,1:2]
+tt1 <- unique(tt1[order(tt1$PlotID),])
+head(tt1) ; dim(tt1) # 2208  2
+
+sp14_Cn3 <- data.frame(PlotID=row.names(sp14_Cn2), sp14_Cn2)
+tt2 <- melt(sp14_Cn3, id="PlotID")
+tt2 <- tt2[which(tt2$value>0),][,1:2]
+tt2 <- unique(tt2[order(tt2$PlotID),])
+head(tt2) ; dim(tt2)  # 2658  2
+
+tt1$comb <- paste(tt1[,1], tt1[,2], sep="_")
+tt2$comb <- paste(tt2[,1], tt2[,2], sep="_")
+head(tt1) ; head(tt2)
+
+TT1 <- tt1[!tt1$comb %in% tt2$comb,]
+TT2 <- tt2[!tt2$comb %in% tt1$comb,]
+for(i in 1:3) { TT1[,i] <- as.character(TT1[,i]) ; TT2[,i] <- as.character(TT2[,i]) }
+
+# attribute an abundance of 0.1 to missing species abundances
+for(i in 1:nrow(TT2)){ sp14_An3[TT2[i,"PlotID"], TT2[i, "variable"]] <- 0.1 ; print(i) }
+for(i in 1:nrow(TT1)){ sp14_Cn3[TT1[i,"PlotID"], TT1[i, "variable"]] <- 0.1 ; print(i) }
+
+# Remove species without presences
+sp14_An3 <- sp14_An3[,-grep("PlotID", names(sp14_An3))]
+sp14_Cn3 <- sp14_Cn3[,-grep("PlotID", names(sp14_Cn3))]
+
+sp14_An3 <- sp14_An3[,which(colSums(sp14_An3)>0)]
+sp14_Cn3 <- sp14_Cn3[,which(colSums(sp14_Cn3)>0)]
+
+# homogenize the rownames
+pc <- data.frame(num=paste(rep(1:52, each=12), paste(rep(1:6, each=2), 1:12, sep="_"), sep="_"), 
+                 row.names = paste(rep(1:52, each=12), paste(rep(1:6, each=2), LETTERS[1:12], sep="."), sep="."))
+row.names(pc)[row.names(pc)=="18.6.K"] <- "18.5.K"
+row.names(pc)[row.names(pc)=="34.5.J"] <- "34.4.J"
+row.names(sp14_An3) <- as.character(pc[row.names(sp14_An3),1])
+row.names(sp14_Cn3) <- as.character(pc[row.names(sp14_Cn3),1])
+
+sp14_An3[1:10, 1:10]
+sp14_Cn3[1:10, 1:10]
+dim(sp14_An3)  # 319 sites  346 species
+dim(sp14_Cn3)  # 319 sites  346 species
+hist(rowSums(sp14_An3))  
+hist(rowSums(sp14_Cn3))
+rowSums(sp14_An3)[rowSums(sp14_An3)==0]
+rowSums(sp14_Cn3)[rowSums(sp14_Cn3)==0]
 
 # Save it
-write.table(sp14_Cn2, file="subPlotSpc_2014_PropCover_12July16.txt", sep="\t", quote=F)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+write.table(sp14_An3, file="subPlotSpc_2014_NbIndiv_5Oct16.txt", sep="\t", quote=F)
+write.table(sp14_Cn3, file="subPlotSpc_2014_PropCover_5Oct16.txt", sep="\t", quote=F)
 
 
