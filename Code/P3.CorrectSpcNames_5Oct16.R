@@ -104,6 +104,55 @@ syn <- unique(syn)
 head(syn, 30)
 
 
+
+
+
+######################################################################
+######################################################################
+# Check and change spc names on the TRAIT data
+######################################################################
+######################################################################
+head(tr)
+dim(tr) # 823  11
+
+# Correct the trait  data with the synonymy list
+#...........................................
+old <- tr$SpcID
+length(old) # 823
+length(unique(old)) # 823
+
+length(old[old %in% syn$ini]) # 798
+out <- old[!old %in% syn$ini]
+out <- gsub("-", ".", out, fixed = T)
+out <- gsub("(", "", out, fixed = T)
+out <- gsub(")", "", out, fixed = T)
+out2 <- out[!out %in% syn$ini]
+out2 <- substring(out2, 1, nchar(out2)-1)
+out2[!out2 %in% syn$ini]
+
+old_corr <- old
+old_corr[!old_corr %in% syn$ini] <- out
+old_corr[!old_corr %in% syn$ini] <- out2
+length(old_corr[old_corr %in% syn$ini]) # 823
+
+# replace the species names by the correct ones
+COR <- cbind(oldID=old, oldCORR=old_corr)
+COR <- merge(COR, syn, by.x="oldCORR", by.y="ini")
+head(COR)
+dim(COR) # 823
+
+COR[!(row.names(COR) %in% row.names(na.omit(COR))), ] # 0
+
+tr2 <- merge(COR, tr, by.x = "oldID", by.y="SpcID")
+tr2 <- tr2[, 3:ncol(tr2),]
+names(tr2)[1] <- "SpcID"
+head(tr2)
+dim(tr)  # 823
+dim(tr2) # 823
+
+write.table(tr2, file="Trait_2002_13Oct16.txt", quote=F, row.names=F, sep="\t")
+
+
 ######################################################################
 ######################################################################
 # Check and change spc names on the PLOT data
