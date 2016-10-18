@@ -32,7 +32,6 @@ Hakea_gibbosa
 Hakea_sericea
 Helichrysum_indicum
 Hibiscus_trionum
-Hyparrhenia_hirta
 Hypochoeris_radicata
 Juncus_bufonius
 Lactuca_serriola
@@ -61,7 +60,6 @@ Polycarpon_tetraphyllum
 Polygonum_aviculare
 Polypogon_monspeliensis
 Populus_canescens
-Protea_neriifolia
 Raphanus_raphanistrum
 Rapistrum_rugosum
 Senecio_pterophorus
@@ -80,4 +78,3 @@ Trifolium_angustifolia
 Trifolium_angustifolium
 Trifolium_campestre
 Vicia_hirsuta
-Virgilia_oroboides
