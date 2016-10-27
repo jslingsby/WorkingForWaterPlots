@@ -1,7 +1,7 @@
 ---
 title: "Cape Peninsula Working for Water plots"
 author: "Jasper Slingsby"
-date: "10 August 2016"
+date: "27 October 2016"
 output: html_document
 ---
 
@@ -12,14 +12,14 @@ suppressPackageStartupMessages(library(vegan))
 suppressWarnings(suppressPackageStartupMessages(library(ggplot2)))
 suppressPackageStartupMessages(library(MCMCglmm))
 
-#if (Sys.getenv("USER")=="jasper"){setwd("/Users/jasper/Dropbox/Shared/CapeCommunities")}
+if (Sys.getenv("USER")=="jasper"){setwd("/Users/jasper/GIT/WorkingForWaterPlots")}
 
-dt <- "12July16"
+dt <- "5Oct16"
 
 ### Get data
 
 ##Treatment data
-trt <- read.table("Data/LaurePrep/plot_treatments_21June16.txt", header=T)
+trt <- read.table("Data/LaurePrep/plot_treatments_4Aug16.txt", header=T)
 
 ##Sub-plot data (1x1m)
 sp02 <- read.table(paste("Data/LaurePrep/subPlotSpc_2002_NbIndiv_", dt, ".txt", sep=""), stringsAsFactors = F)
@@ -27,20 +27,20 @@ sp08 <- read.table(paste("Data/LaurePrep/subPlotSpc_2008_NbIndiv_", dt, ".txt", 
 sp11 <- read.table(paste("Data/LaurePrep/subPlotSpc_2011_NbIndiv_", dt, ".txt", sep=""), stringsAsFactors = F)
 sp14 <- read.table(paste("Data/LaurePrep/subPlotSpc_2014_NbIndiv_", dt, ".txt", sep=""), stringsAsFactors = F)
 
-#Fix error?
-sp02$Wahlenbergia_tenella[which(sp02$Wahlenbergia_tenella==.5)] <- 5
+##Fix error?
+#sp02$Wahlenbergia_tenella[which(sp02$Wahlenbergia_tenella==.5)] <- 5
 
-#Fix rownames
-r2 <- rownames(sp02)
-r8 <- rownames(sp08)
-r11 <- rownames(sp11)
-r14 <- rownames(sp14)
+##Fix rownames
+#r2 <- rownames(sp02)
+#r8 <- rownames(sp08)
+#r11 <- rownames(sp11)
+#r14 <- rownames(sp14)
 
-r2 <- gsub("p", "", r2)
-rownames(sp02) <- sapply(r2, function(x) {paste(strsplit(x, split = "_")[[1]][1], which(letters==strsplit(x, split = "_")[[1]][2]), sep="_")})
-rownames(sp08) <- sapply(r8, function(x) {paste(strsplit(x, split = "\\.")[[1]][1], strsplit(x, split = "\\.")[[1]][3], sep="_")})
-rownames(sp11) <- sapply(r11, function(x) {paste(strsplit(x, split = "\\.")[[1]][1], strsplit(x, split = "\\.")[[1]][3], sep="_")})
-rownames(sp14) <- sapply(r14, function(x) {paste(strsplit(x, split = "\\.")[[1]][1], which(LETTERS==strsplit(x, split = "\\.")[[1]][3]), sep="_")})
+#r2 <- gsub("p", "", r2)
+#rownames(sp02) <- sapply(r2, function(x) {paste(strsplit(x, split = "_")[[1]][1], #which(letters==strsplit(x, split = "_")[[1]][2]), sep="_")})
+#rownames(sp08) <- sapply(r8, function(x) {paste(strsplit(x, split = "\\.")[[1]][1], #strsplit(x, split = "\\.")[[1]][3], sep="_")})
+#rownames(sp11) <- sapply(r11, function(x) {paste(strsplit(x, split = "\\.")[[1]][1], #strsplit(x, split = "\\.")[[1]][3], sep="_")})
+#rownames(sp14) <- sapply(r14, function(x) {paste(strsplit(x, split = "\\.")[[1]][1], which(LETTERS==strsplit(x, split = "\\.")[[1]][3]), sep="_")})
 
 alien <- read.table("Data/LaurePrep/Exotic_species_list_CapeCom_13July16.txt", header=T)
 
@@ -54,12 +54,13 @@ sp08 <- sp08[,-which(colnames(sp08)%in%alien[,1])]
 sp11 <- sp11[,-which(colnames(sp11)%in%alien[,1])]
 sp14 <- sp14[,-which(colnames(sp14)%in%alien[,1])]
 
-## Create dataframe of rarified "richness", etc
+## Create dataframe of rarified "richness", species density, etc
 spd2<-rowSums(decostand(sp02,"pa"))
 spd8<-rowSums(decostand(sp08,"pa"))
 spd11<-rowSums(decostand(sp11,"pa"))
 spd14<-rowSums(decostand(sp14,"pa"))
 
+#Trim to subplots with 5 or more individuals
 sp02_5 <- sp02[which(spd2>5),]
 sp02_5 <- sp02_5[,which(colSums(sp02_5)>0)]
 sp08_5 <- sp08[which(spd8>5),]
@@ -69,10 +70,10 @@ sp11_5 <- sp11_5[,which(colSums(sp11_5)>0)]
 sp14_5 <- sp14[which(spd14>5),]
 sp14_5 <- sp14_5[,which(colSums(sp14_5)>0)]
 
-spr2_5 <- rarefy(sp02_5,4)
-spr8_5 <- rarefy(sp08_5,4)
-spr11_5 <- rarefy(sp11_5,4)
-spr14_5 <- rarefy(sp14_5,4)
+spr2_5 <- rarefy(ceiling(sp02_5),4)
+spr8_5 <- rarefy(ceiling(sp08_5),4)
+spr11_5 <- rarefy(ceiling(sp11_5),4)
+spr14_5 <- rarefy(ceiling(sp14_5),4)
 
 spd2_5 <- rowSums(decostand(sp02_5,"pa"))
 spd8_5 <- rowSums(decostand(sp08_5,"pa"))
@@ -97,7 +98,7 @@ dat$Site <- as.factor(sapply(as.character(dat$Subplot), function(x) {strsplit(x,
 dat <- merge(dat, trt)
 
 dat$Year <- as.factor(dat$Year)
-dat$Aliens <- relevel(dat$Aliens, "No_Aliens")
+dat$Aliens <- relevel(dat$Aliens, "No Aliens")
 
 ###
 
@@ -118,6 +119,7 @@ dat$Aliens <- relevel(dat$Aliens, "No_Aliens")
 ```
 
 Let's have a look at the structure of the dataset:
+(Note that I've trimmed this to subplots with >5 individuals only so that we can rarefy for richness etc)
 
 ```{r, echo=FALSE}
 summary(dat)
@@ -163,7 +165,7 @@ Run MCMCglmm model based on a poisson distribution with subplot as a fixed effec
 
 <br>
 
-```{r, echo=F}
+```{r, echo=T}
 prior<-list(R=list(V=1, nu=0.002), G=list(G1=list(V=1, nu=0.002)))
 
 MCmod1=MCMCglmm(Species_density ~ Aliens + Year, random=~Subplot, data=dat, family="poisson", prior=prior, verbose=FALSE, pr=TRUE)
@@ -177,7 +179,7 @@ Run MCMCglmm model based on a gaussian distribution with subplot as a fixed effe
 
 <br>
 
-```{r, echo=F}
+```{r, echo=T}
 prior<-list(R=list(V=1, nu=0.002), G=list(G1=list(V=1, nu=0.002)))
 
 MCmod1=MCMCglmm(Species_richness ~ Aliens + Year, random=~Subplot, data=dat, family="gaussian", prior=prior, verbose=FALSE, pr=TRUE)
@@ -187,7 +189,7 @@ summary(MCmod1)
 
 <br>
 
-Notice that both analyses show impacts in invaded and cleared sites, but the key difference is that species density is lower in each year relative to 2002, while species richness is actually higher with each year relative to 2002!
+Notice that both analyses show similar impacts in invaded sites, but the key difference is that species density is lower in each year relative to 2002, while species richness is actually higher with each year relative to 2002, and species richness shows no negative impact in cleared sites! In other words, aliens reduce in the number of individuals in cleared sites, but the number of species is still similar. We still need to check if the species or functional composition has changed though...
 
 <br>
 
@@ -223,8 +225,42 @@ summary(MCmod1)
 
 <br>
 
-Same story...
+Interesting... even invaded sites are no longer significant...
+
+***
+
+Let's look at the species richness trajectories for each subplot
 
 <br>
 
+```{r, echo=FALSE}
 
+p1 <- ggplot(dat, aes(x=Year, y=Species_richness, colour=Aliens, group=Subplot)) + geom_line() + facet_wrap(~ Site)
+
+p1
+
+```
+
+<br>
+
+Weirdly seems like most are increasing, but unrelated to alien treatment? Perhaps there is less dominance by one or a few species as the plots get older? In Fynbos it is common that some species recruit en masse and drastically decline in numbers through time (i.e. r-selected) while others have fewer recruits with higher survival (i.e. K-selected). We should look at some eveness metrics...
+
+***
+
+And species density?
+
+<br>
+
+```{r, echo=FALSE}
+
+p1 <- ggplot(dat, aes(x=Year, y=Species_density, colour=Aliens, group=Subplot)) + geom_line() + facet_wrap(~ Site)
+
+p1
+
+```
+
+<br>
+
+As you would expect. Fewer species as plots get older...
+
+<br>

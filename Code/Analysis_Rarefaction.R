@@ -83,3 +83,6 @@ dat <- data.frame(
   Species_density = c(spd2_5, spd8_5, spd11_5, spd14_5),
   Species_richness = c(spr2_5, spr8_5, spr11_5, spr14_5)
   )
+
+
+
