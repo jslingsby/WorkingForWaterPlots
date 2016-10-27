@@ -278,7 +278,21 @@ length(invINtrai) # 61
 missInv <- II[!II %in% tr$SpcID]
 length(missInv) # 10
 
-write.table(c(missSpc, missInv) , file="Species_to_add_to_QuantitativeTraits.txt", sep="\t", row.names=F, quote=F)
+# Remove the species not determined at the species level
+allMiss <- c(missSpc, missInv)
+sapply(strsplit(allMiss, "_"), function(x) {
+            ifelse((x[[2]] %in% paste("sp", 1:50, sep="")) & length(x)>1, NA, paste(x[[1]], x[[2]], sep="_")) } )
+
+lam <- strsplit(allMiss, "_")
+resAM <- vector()
+for(i in 1:length(lam)) {
+  x <- lam[[i]]
+  if(length(x)>1) resAM[i] <- ifelse((x[[2]] %in% paste("sp", 1:50, sep="")), NA, paste(x[[1]], x[[2]], sep="_"))
+  print(lam[[i]])
+}
+resAM <- na.omit(unlist(resAM))
+resAM <- unique(sort(resAM))
+write.table(resAM , file="Species_to_add_to_QuantitativeTraits.txt", sep="\t", row.names=F, quote=F)
 
 
 # Check the traits available
