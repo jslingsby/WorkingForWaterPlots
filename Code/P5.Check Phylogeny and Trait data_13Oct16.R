@@ -294,6 +294,20 @@ resAM <- na.omit(unlist(resAM))
 resAM <- unique(sort(resAM))
 write.table(resAM , file="Species_to_add_to_QuantitativeTraits.txt", sep="\t", row.names=F, quote=F)
 
+# prepare a table for Doug with all the trait data  + the missing species
+head(tr)
+missS <- data.frame(tr[resAM,])
+missS$SpcID <- resAM
+head(missS)
+
+allTS <- rbind(tr, missS)
+dim(allTS) # 1086
+dim(missS) # 263
+dim(tr)    # 823
+allTS <- unique(allTS[order(allTS$SpcID),])
+allTS$Alien <- ifelse(allTS$SpcID %in% inv, 1, NA)
+head(allTS)
+write.table(allTS, file="Quantitative_traits_to_check_and_fill_27Oct16.txt", quote=F, row.names = F, sep="\t")
 
 # Check the traits available
 #...........................................
