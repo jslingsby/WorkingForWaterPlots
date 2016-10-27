@@ -3,12 +3,15 @@
 
 
 
+
 library(ape)
 library(ggplot2)
 library(picante)
 library(cluster)
 library(grDevices)
 library(diveRsity)
+library(reshape2)
+library(gdata)
 
 
 if (Sys.getenv("USER")=="jasper") {setwd("/Users/jasper/Dropbox/Shared/CapeCommunities/Data/Raw/")}
@@ -17,55 +20,225 @@ if (Sys.getenv("USER")=="Laure") {setwd("~/Dropbox/GIT/2016_CapeCom/Data/LaurePr
 
 ########################################################
 ########################################################
+# Load the community data
+########################################################
+########################################################
+
+#------------------------------------------------
+# Get the species x site data : 1 x 1m
+#------------------------------------------------
+# 2002 / 2008 / 2011 / 2014
+#........
+sp02_Abun <- read.delim("subPlotSpc_2002_NbIndiv_5Oct16.txt")
+sp02_Cov <- read.delim("subPlotSpc_2002_PropCover_5Oct16.txt")
+
+sp08_Abun <- read.delim("subPlotSpc_2008_NbIndiv_5Oct16.txt")
+sp08_Cov <- read.delim("subPlotSpc_2008_PropCover_5Oct16.txt")
+
+sp11_Abun <- read.delim("subPlotSpc_2011_NbIndiv_5Oct16.txt")
+sp11_Cov <- read.delim("subPlotSpc_2011_PropCover_5Oct16.txt")
+
+sp14_Abun <- read.delim("subPlotSpc_2014_NbIndiv_5Oct16.txt")
+sp14_Cov <- read.delim("subPlotSpc_2014_PropCover_5Oct16.txt")
+
+sp02_Abun[1:10, 1:10] ; sp02_Cov[1:10, 1:10]
+sp08_Abun[1:10, 1:10] ; sp08_Cov[1:10, 1:10]
+sp11_Abun[1:10, 1:10] ; sp11_Cov[1:10, 1:10]
+sp14_Abun[1:10, 1:10] ; sp14_Cov[1:10, 1:10]
+
+lspc_sp <- sort(unique(c(names(sp02_Abun), names(sp08_Abun), 
+                    names(sp11_Abun), names(sp14_Abun))))
+length(lspc_sp)  # 973
+
+#------------------------------------------------
+# Get the species x site data : 10 x 10m
+#------------------------------------------------
+# 2002 / 2008 / 2011 / 2014
+#........
+p02 <- read.delim("PlotSpc_2002_5Oct16.txt")
+p08 <- read.delim("PlotSpc_2008_5Oct16.txt")
+p11 <- read.delim("PlotSpc_2011_5Oct16.txt")
+p14 <- read.delim("PlotSpc_2014_5Oct16.txt")
+
+p02[1:10, 1:10] ; p08[1:10, 1:10]
+p11[1:10, 1:10] ; p14[1:10, 1:10]
+
+lspc_p <- sort(unique(c(names(p02), names(p08), names(p11), names(p14))))
+length(lspc_p)  # 1224
+
+########################################################
+########################################################
+# Check if the sup-plot data matches the plot one ---> NOT QUITE!!!!
+########################################################
+########################################################
+
+# 2002
+#........
+p02$LocID <- sapply(strsplit(row.names(p02), "_"), function(x) x[[1]])
+m02 <- unique(melt(p02, id="LocID", value.name="PlotPres"))
+m02$comb <- paste(m02$LocID, m02$variable, sep="__")
+head(m02)
+
+sp02_Abun$LocID <- sapply(strsplit(row.names(sp02_Abun), "_"), function(x) x[[1]])
+m02s <- unique(melt(sp02_Abun, id="LocID", value.name="SubPlotPres"))
+m02s$comb <- paste(m02s$LocID, m02s$variable, sep="__")
+head(m02s)
+
+# merge data and resume duplicates
+M02 <- merge(m02, m02s[,c(3:4)], by="comb")
+M02s <- unique(M02[which(M02$PlotPres>0 | M02$SubPlotPres>0),])
+for(x in unique(M02s$comb)) {
+  M02s[M02s$comb == x,"SubPlotPres"] <- sum(M02s[M02s$comb == x,"SubPlotPres"])
+  M02s[M02s$comb == x,"PlotPres"] <- max(M02s[M02s$comb == x,"PlotPres"])
+}
+M02s <- unique(M02s)
+head(M02s, 100)
+
+M02ss <- M02s[which(M02s$PlotPres==0),]
+dim(M02ss)  # 902  5
+head(M02ss, 100)
+
+# check
+p02[row.names(p02) %in% paste(1, 1:6, sep="_"), "Aspalathus_ericifolia"]
+sp02_Abun[1:12, "Aspalathus_ericifolia"]
+
+write.table(M02ss, file="Spc_inSubplot_NOTinplot_2002.txt", quote=F, row.names = F, sep="\t")
+
+
+# 2008
+#........
+p08$LocID <- sapply(strsplit(row.names(p08), "_"), function(x) x[[1]])
+m08 <- unique(melt(p08, id="LocID", value.name="PlotPres"))
+m08$comb <- paste(m08$LocID, m08$variable, sep="__")
+head(m08)
+
+sp08_Abun$LocID <- sapply(strsplit(row.names(sp08_Abun), "_"), function(x) x[[1]])
+m08s <- unique(melt(sp08_Abun, id="LocID", value.name="SubPlotPres"))
+m08s$comb <- paste(m08s$LocID, m08s$variable, sep="__")
+head(m08s)
+
+# merge data and resume duplicates
+M08 <- merge(m08, m08s[,c(3:4)], by="comb")
+M08s <- unique(M08[which(M08$PlotPres>0 | M08$SubPlotPres>0),])
+for(x in unique(M08s$comb)) {
+  M08s[M08s$comb == x,"SubPlotPres"] <- sum(M08s[M08s$comb == x,"SubPlotPres"])
+  M08s[M08s$comb == x,"PlotPres"] <- max(M08s[M08s$comb == x,"PlotPres"])
+}
+M08s <- unique(M08s)
+head(M08s, 100)
+
+M08ss <- M08s[which(M08s$PlotPres==0),]
+dim(M08ss)  # 98  5
+
+# check
+p08[row.names(p08) %in% paste(1, 1:6, sep="_"), "Tetraria_eximia"]
+sp08_Abun[1:12, "Tetraria_eximia"]
+
+write.table(M08ss, file="Spc_inSubplot_NOTinplot_2008.txt", quote=F, row.names = F, sep="\t")
+
+# 2011
+#........
+p11$LocID <- sapply(strsplit(row.names(p11), "_"), function(x) x[[1]])
+m11 <- unique(melt(p11, id="LocID", value.name="PlotPres"))
+m11$comb <- paste(m11$LocID, m11$variable, sep="__")
+head(m11)
+
+sp11_Abun$LocID <- sapply(strsplit(row.names(sp11_Abun), "_"), function(x) x[[1]])
+m11s <- unique(melt(sp11_Abun, id="LocID", value.name="SubPlotPres"))
+m11s$comb <- paste(m11s$LocID, m11s$variable, sep="__")
+head(m11s)
+
+# merge data and resume duplicates
+M11 <- merge(m11, m11s[,c(3:4)], by="comb")
+M11s <- unique(M11[which(M11$PlotPres>0 | M11$SubPlotPres>0),])
+for(x in unique(M11s$comb)) {
+  M11s[M11s$comb == x,"SubPlotPres"] <- sum(M11s[M11s$comb == x,"SubPlotPres"])
+  M11s[M11s$comb == x,"PlotPres"] <- max(M11s[M11s$comb == x,"PlotPres"])
+}
+M11s <- unique(M11s)
+head(M11s, 100)
+
+M11ss <- M11s[which(M11s$PlotPres==0),]
+dim(M11ss)  # 69  5
+
+# check
+p11[row.names(p11) %in% paste(41, 1:6, sep="_"), "Helichrysum_indicum"]
+sp11_Abun[97:108, "Helichrysum_indicum"]
+
+write.table(M11ss, file="Spc_inSubplot_NOTinplot_2011.txt", quote=F, row.names = F, sep="\t")
+
+# 2014
+#........
+p14$LocID <- sapply(strsplit(row.names(p14), "_"), function(x) x[[1]])
+m14 <- unique(melt(p14, id="LocID", value.name="PlotPres"))
+m14$comb <- paste(m14$LocID, m14$variable, sep="__")
+head(m14)
+
+sp14_Abun$LocID <- sapply(strsplit(row.names(sp14_Abun), "_"), function(x) x[[1]])
+m14s <- unique(melt(sp14_Abun, id="LocID", value.name="SubPlotPres"))
+m14s$comb <- paste(m14s$LocID, m14s$variable, sep="__")
+head(m14s)
+
+# merge data and resume duplicates
+M14 <- merge(m14, m14s[,c(3:4)], by="comb")
+M14s <- M14[which(M14$PlotPres>0 | M14$SubPlotPres>0),]
+for(x in unique(M14s$comb)) {
+  M14s[M14s$comb == x,"SubPlotPres"] <- sum(M14s[M14s$comb == x,"SubPlotPres"])
+  M14s[M14s$comb == x,"PlotPres"] <- max(M14s[M14s$comb == x,"PlotPres"])
+}
+M14s <- unique(M14s)
+head(M14s, 100)
+
+M14ss <- M14s[which(M14s$PlotPres==0),]
+dim(M14ss)  # 119  5
+head(M14ss, 100)
+
+# check
+p14[row.names(p14) %in% paste(18, 1:6, sep="_"), "Crassula_glomerata"]
+sp14_Abun[25:36, "Crassula_glomerata"]
+
+write.table(M14ss, file="Spc_inSubplot_NOTinplot_2014.txt", quote=F, row.names = F, sep="\t")
+
+
+
+########################################################
+########################################################
 # Check the phylogenies
 ########################################################
 ########################################################
 
-# Load species list
-#.............................
-spc <- read.delim("All_species_list_CapeCom_13July16.txt")
-spc[,1] <- as.character(spc[,1])
-
-spc$Genus <- unlist(lapply(strsplit(spc[,1], "_"), function(x) x[1]))
-
-GEN <- unique(spc$Genus) 
-length(GEN)  # 360
-
-# Load phylogeny published by Hinchliff et al 2014 POne
-#.............................
-hind <- read.tree("~/Desktop/Dropbox/Travail WSL/1.MetaAnalyse/Datasets/Phylogeny/Angiosperm/Hinchliff et al 2014 POne/Hinchliff_chronogram_test.tre")
-hind
-
-ComINphy <- GEN[GEN %in% hind$tip.label]
-length(ComINphy) # 347 --> REALLY GOOD
-
-
 # Load the phylogeny of Zanne 2014 et al Sci
 #.............................
-load("~/Desktop/Dropbox/Travail WSL/1.MetaAnalyse/Datasets/Phylogeny/Angiosperm/Zanne et al 2014 Sci/Angios_genus") # 
+load("~/Dropbox/Travail WSL/1.MetaAnalyse/Datasets/Phylogeny/Angiosperm/Zanne et al 2014 Sci/Angios_genus") # 
 zan <- Angios_genus
+zan
 
-ComINphy2 <- GEN[GEN %in% zan$tip.label]
-length(ComINphy2) # 324
+# Extract the genera
+head(lspc_p)
+head(lspc_sp)
+
+lgen_p <- unique(sapply(strsplit(lspc_p, "_"), function(x) x[1]))
+lgen_sp <- unique(sapply(strsplit(lspc_sp, "_"), function(x) x[1]))
+
+length(lgen_p)  # 388
+length(lgen_sp)  # 331
+
+lgen_pP <- lgen_p[lgen_p %in% zan$tip.label]
+length(lgen_pP) # 329 / 388  = 85%
+
+lgen_spP <- lgen_sp[lgen_sp %in% zan$tip.label]
+length(lgen_spP) # 283 / 331  = 86%
 
 # to fix: 
-GEN[!(GEN %in% zan$tip.label)]
+lgen_p[!(lgen_p %in% zan$tip.label)]
+lgen_sp[!(lgen_sp %in% zan$tip.label)]
 
-
-# Load the phylogeny of Forest et al 2007 Nat
-#.............................
-fors <- read.tree("~/Desktop/Dropbox/Travail_SA/3.ComEcol/CapeCommunities/Papers/Forest et al. tree/Foresttree.phy") # 
-fors
-
-ComINphy3 <- GEN[GEN %in% fors$tip.label]
-length(ComINphy2) # 260
-
+ugen <- unique(lgen_p[!(lgen_p %in% zan$tip.label)], lgen_sp[!(lgen_sp %in% zan$tip.label)])
+write.table(ugen, file="Species_to_add_to_Zanne_phylogeny.txt", quote=F, row.names=F, sep="\t")
 
 # Look at it
 #.............................
-phylo <- drop.tip(hind, hind$tip.label[!hind$tip.label %in% GEN])
-phylo <- drop.tip(zan, zan$tip.label[!zan$tip.label %in% GEN])
-phylo <- drop.tip(fors, fors$tip.label[!fors$tip.label %in% GEN])
+phylo <- drop.tip(zan, zan$tip.label[!zan$tip.label %in% lgen_p])
 plot(phylo, "f", cex=0.5)
 
 
@@ -74,41 +247,44 @@ plot(phylo, "f", cex=0.5)
 # Check the qualitative traits
 ########################################################
 ########################################################
-tr <- read.delim("Trait_2002_1Aug16.txt")
-tr$SpcID <- as.character(tr$SpcID)
+tr <- read.delim("Trait_2002_13Oct16.txt", stringsAsFactors = F)
 head(tr)
 dim(tr) # 823  11
 
 # check the coverage from our species list
 #...........................................
-SP <- unique(spc$spcID)
-length(SP) # 954
+lspc_pT <- lspc_p[lspc_p %in% tr$SpcID]
+lspc_spT <- lspc_sp[lspc_sp %in% tr$SpcID]
 
-spcINtrai <- SP[SP %in% tr$SpcID]
-length(spcINtrai) # 596
+length(lspc_pT) # 768 / 1224 = 63%
+length(lspc_spT) # 652 / 973 = 67%
 
-missSpc <- SP[!SP %in% tr$SpcID]
-length(missSpc) # 358
+allspcT <- unique(c(lspc_p, lspc_sp))
 
-write.table(missSpc, file="/Users/diversitalp/Desktop/Dropbox/Travail_SA/3.ComEcol/CapeCommunities/SpeciesWithMissingQualitativeTraits_1Aug16.txt", sep="\t", row.names=F, quote=F)
+missSpc <- allspcT[!allspcT %in% tr$SpcID]
+length(missSpc) # 550
+
 
 # check the invasive species too
 #...........................................
-inv <- read.delim("Exotic_species_list_CapeCom_13July16.txt")
-II <- as.character(unique(inv$spcID))
-length(II) # 82
+inv <- unique(read.delim("Exotic_species_list_SA_13July16.txt", stringsAsFactors = F)[,1])
+
+II <- inv[inv %in% allspcT]
+length(II) # 71
 
 invINtrai <- II[II %in% tr$SpcID]
-length(invINtrai) # 62
+length(invINtrai) # 61
 
 missInv <- II[!II %in% tr$SpcID]
-length(missInv) # 20
+length(missInv) # 10
+
+write.table(c(missSpc, missInv) , file="Species_to_add_to_QuantitativeTraits.txt", sep="\t", row.names=F, quote=F)
 
 
 # Check the traits available
 #...........................................
-trC <- tr[which(tr$SpcID %in% SP),]
-dim(trC) # 596  11
+trC <- tr[which(tr$SpcID %in% allspcT),]
+dim(trC) # 799  11
 trC$InvNat <- ifelse(trC$SpcID %in% II, 1, 0)
 head(trC)
 
@@ -139,19 +315,18 @@ trC[which(trC$InvNat==1 & trC$distribution %in% c("re", "o")), "SpcID"]
 
 ########################################################
 ########################################################
-# Check the quantitative traits
+# Check the quantitative traits  ##### TO CONTIBUE CHECK FROM HERE !!!!!!!!!!!!!
 ########################################################
 ########################################################
 
-cont <- as.character(read.delim("~/Desktop/Dropbox/Travail_SA/3.ComEcol/CapeCommunities/Data/spp_matched_to_quantitative_trait_data.txt")[,1])
-
+cont <- as.character(read.delim("/Users/Laure/Dropbox/Travail_SA/3.ComEcol/CapeCommunities/Data/spp_matched_to_quantitative_trait_data.txt")[,1])
 head(cont)
 length(cont) # 364
 
 # Look at prop cover by these species
 par(mfrow=c(2,2))
 YY <- c("02", "08", "11", "14")
-TEMP <- paste("PlotSpc_20", YY, "_12July16.txt", sep="")
+TEMP <- paste("PlotSpc_20", YY, "_5Oct16.txt", sep="")
 for(i in 1:4){
 	tdat <- read.delim(TEMP[i])
 	RichAll <- rowSums(tdat)
@@ -164,7 +339,7 @@ for(i in 1:4){
 
 par(mfrow=c(2,2))
 YY <- c("02", "08", "11", "14")
-TEMP <- paste("subPlotSpc_20", YY, "_PropCover_12July16.txt", sep="")
+TEMP <- paste("subPlotSpc_20", YY, "_PropCover_5Oct16.txt", sep="")
 for(i in 1:4){
 	tdat <- read.delim(TEMP[i])
 	RichAll <- rowSums(tdat)
@@ -191,10 +366,6 @@ for(i in 1:4){
 #------------------------------------------------
 # 2002 / 2008 / 2011 / 2014
 #........
-p02 <- read.delim("PlotSpc_2002_12July16.txt")
-p08 <- read.delim("PlotSpc_2008_12July16.txt")
-p11 <- read.delim("PlotSpc_2011_12July16.txt")
-p14 <- read.delim("PlotSpc_2014_12July16.txt")
 
 # Small test
 
@@ -347,20 +518,6 @@ multiplot(p1, p2, p5, p6, cols=2)
 #------------------------------------------------
 # Get the species x site data : 1 x 1m
 #------------------------------------------------
-# 2002 / 2008 / 2011 / 2014
-#........
-sp02_Abun <- read.delim("subPlotSpc_2002_NbIndiv_12July16.txt")
-sp02_Cov <- read.delim("subPlotSpc_2002_PropCover_12July16.txt")
-
-sp08_Abun <- read.delim("subPlotSpc_2008_NbIndiv_12July16.txt")
-sp08_Cov <- read.delim("subPlotSpc_2008_PropCover_12July16.txt")
-
-sp11_Abun <- read.delim("subPlotSpc_2011_NbIndiv_12July16.txt")
-sp11_Cov <- read.delim("subPlotSpc_2011_PropCover_12July16.txt")
-
-sp14_Abun <- read.delim("subPlotSpc_2014_NbIndiv_12July16.txt")
-sp14_Cov <- read.delim("subPlotSpc_2014_PropCover_12July16.txt")
-
 sp02_Abun[1:10, 1:10] ; sp02_Cov[1:10, 1:10]
 sp08_Abun[1:10, 1:10] ; sp08_Cov[1:10, 1:10]
 sp11_Abun[1:10, 1:10] ; sp11_Cov[1:10, 1:10]

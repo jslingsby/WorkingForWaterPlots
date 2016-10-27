@@ -344,7 +344,6 @@ Holcus_lanatus
 Hordeum_murinum
 Hordeum_vulgare
 Hylocereus_undatus
-Hyparrhenia_hirta
 Hypericum_lalandii
 Hypericum_perforatum
 Hypochaeris_glabra
@@ -584,7 +583,6 @@ Protea_compacta
 Protea_eximia
 Protea_laurifolia
 Protea_magnifica
-Protea_neriifolia
 Protea_susannae
 Prunus_armeniaca
 Prunus_cerasoides
@@ -766,7 +764,6 @@ Vicia_villosa
 Vinca_major
 Viola_arvensis
 Viola_tricolor
-Virgilia_oroboides
 Vitis_vinifera
 Vulpia_bromoides
 Vulpia_fasciculata

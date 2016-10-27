@@ -1,0 +1,24 @@
+Last update: 4 Oct 2016
+
+List of the steps used to resolve the synonym errors and issues
+
+1) Jasper compiled all species names (from community data, trait data, cape peninsula 
+	species list)
+
+2) Jasper used the webservice TNRS to remove typos
+
+3) Doug checked remaining uncertain species id ("Data/Raw/spcID_and_synonyms/Copy of 
+	Synonyms_for_Doug_WfW_5Sep2016 (2)")
+
+4) Doug found a file with some specie name correspondances ("Data/Raw/spcID_and_synonyms/
+	specimen id's")
+
+5) Laure used Jasper's results to create a file allowing the correspondance between 
+	original names and best solution for synonymy resolving ("Data/LaurePrep/Synonym_List
+	_LaureProposition_29July16.xls")
+
+6) Laure updated her previous file with Doug's suggestions and correspondances from the 
+	newly found file ("Data/LaurePrep/Synonym_List_LaureProposition_UpdateWithDoug
+	Comments4Oct16")
+	
+	
