@@ -1,5 +1,5 @@
 Creation:	Laure - 10 Aug 2016
-Last update: 	Laure - 10 Aug 2016
+Last update: 	Laure - 24 Jan 2017
 
 
 ##########################################################################################
@@ -97,13 +97,16 @@ OUTPUTS:
 
 
 # ========================================================
-# ============================  P3.CorrectSpcNames_29July16
+# ============================  P3.CorrectSpcNames_24Jan17
 # ======================================================== (LG)
 
 AIM:
 
 - Correct synonymy issues & assemble duplicated names (typically by summing their abundances per sites)
 - Convert abundance symbols into numbers: "." and "*" and "+" and "NA" —> 0
+
+NOTES: 
+- "Pelargonium undulatum" does not occur on the peninsula but has been recorded in 13 sites. Doug wrote on the 16 Nov 2016: "could be P. elongatum or P. cucullatum, but checking data sheets mostly finds no pelargoniums in places where digital data has? Some weird mistake here, trying to work out out might take some time". Until we find the mistake, P. undulatum remains in the datasheets.
 
 
 INPUTS:
@@ -122,6 +125,7 @@ INPUTS:
 - LaurePrep/subPlotSpc_2014_NbIndiv_21June16
 - LaurePrep/subPlotSpc_2014_PropCover_21June16
 
+- LaurePrep/Synonym_List_LaureProposition_UpdateWithDougComments24Jan17.xls
 
 OUTPUTS:
 
@@ -138,6 +142,8 @@ OUTPUTS:
 - LaurePrep/subPlotSpc_2011_PropCover_12July16
 - LaurePrep/subPlotSpc_2014_NbIndiv_12July16
 - LaurePrep/subPlotSpc_2014_PropCover_12July16
+
+- LaurePrep/All_Trait_Quanti_26Jan17.txt
 
 
 # ========================================================
