@@ -26,10 +26,10 @@ str(treat)
 #------------------------------------------------
 # Get TRAIT data updated by Doug on the 6 Nov 2016
 #------------------------------------------------
-t02 <- read.delim("~/Dropbox/GIT/2016_CapeCom/Data/Raw/Quantitative_traits_to_check_and_fill_27Oct16_Updated_byDoug_6Nov17.txt", stringsAsFactors = F)
-head(t02)
-dim(t02) # 1072  12
-str(t02)
+# t02 <- read.delim("~/Dropbox/GIT/2016_CapeCom/Data/Raw/Quantitative_traits_to_check_and_fill_27Oct16_Updated_byDoug_6Nov17.txt", stringsAsFactors = F)
+# head(t02)
+# dim(t02) # 1072  12
+# str(t02)
 
 #------------------------------------------------
 # Get the species x site data : 10 x 10m
@@ -89,8 +89,8 @@ class(unlist(sp02_Abun)) ; class(unlist(sp08_Abun)) ; class(unlist(sp11_Abun)) ;
 # The new corrected file is "Synonym_List_LaureProposition_UpdateWithDougComments24Jan17.xls"
 
 syn <- read.xls("Synonym_List_LaureProposition_UpdateWithDougComments24Jan17.xls", stringsAsFactors = F)
-dim(syn) # 2129  5
-dim(unique(syn)) # 2129
+dim(syn) # 2134  5
+dim(unique(syn)) # 2134
 head(syn, 20)
 
 # Summarize all modifications
@@ -102,9 +102,8 @@ names(syn) <- c("ini", "fin")
 syn <- unique(syn)
 syn <- rbind(syn, data.frame(ini=syn$fin, fin=syn$fin))
 syn <- unique(as.data.frame(syn))
-dim(syn) # 2699 2
+dim(syn) # 2670 2
 head(syn, 30)
-
 
 
 ######################################################################
@@ -112,101 +111,105 @@ head(syn, 30)
 # Check and change spc names on the TRAIT data
 ######################################################################
 ######################################################################
+# head(t02)
+# dim(t02) # 1072  12
+# 
+# old <- t02$SpcID
+# length(unique(old)) # 1072
+# 
+# # Simplify species names when only genera are known
+# #...........................................
+# SPnum <- unlist(sapply(paste("_sp", 1:20, sep=""), function(x) grep(x, old)))
+# old[SPnum]
+# 
+# # replace the spX by sp1
+# old[SPnum] <- sapply(strsplit(old[SPnum], "_"), function(x) paste(x[1], "_sp1", sep=""))
+# old
+# t02$SpcID <- old
+# 
+# # remove duplicates
+# dim(t02) # 1072
+# dim(unique(t02)) # 1033
+# t02 <- unique(t02)
+# row.names(t02) <- 1:nrow(t02)
+# t02[which(t02$SpcID %in% t02$SpcID[duplicated(t02$SpcID)]), ]
+# t02.1 <- t02[-c(67, 794),]
+# dim(t02.1) # 1031
+# t02 <- t02.1
+# old <- t02$SpcID
+# length(unique(old)) # 1031
+# 
+# # Correct the trait  data with the synonymy list
+# #...........................................
+# length(old[old %in% syn$ini]) # 1031
+# out <- old[!old %in% syn$ini] # 0
+# COR <- merge(data.frame(oldID=old), syn, by.x="oldID", by.y="ini")
+# head(COR)
+# str(COR)
+# COR[,1] <- as.character(COR[,1])
+# dim(COR) # 1039
+# dim(unique(COR)) # 1039
+# 
+# t.dupli <- COR[,1][duplicated(COR[,1])]
+# COR[which(COR[,1] %in% t.dupli),]
+# COR2 <- COR
+# COR2 <- COR2[-which(row.names(COR2) %in% row.names(COR2[which(COR2[,1] %in% t.dupli),][!COR2[which(COR2[,1] %in% t.dupli),]$fin %in% t.dupli,])),]
+# dim(COR2) # 1031
+# 
+# tr2 <- merge(COR2, t02, by.x = "oldID", by.y="SpcID")
+# tr2 <- tr2[, 2:ncol(tr2),]
+# names(tr2)[1] <- "SpcID"
+# head(tr2)
+# dim(t02)  # 1031
+# dim(tr2) # 1031
+# 
+# # some new duplicated names because of the synonymy issue
+# tr2 <- unique(tr2)
+# dim(tr2) # 1029
+# length(unique(tr2$SpcID)) # 1002
+# tr.dupli <- tr2[which(tr2$SpcID %in% tr2$SpcID[duplicated(tr2$SpcID)]),]
+# 
+# tr.dupli$sumNA <- apply(tr.dupli, 1, function(x) sum(is.na(x)))
+# head(tr.dupli)
+# tr.dupli <- tr.dupli[which(tr.dupli$sumNA<11),]
+# tr.dupli <- tr.dupli[order(tr.dupli$SpcID),]
+# 
+# tr.dupli[which(tr.dupli$SpcID == "Chaenostoma_hispidum"),] <- tr.dupli[which(tr.dupli$SpcID == "Chaenostoma_hispidum" & tr.dupli$Growth_Form=="h"),]
+# tr.dupli[which(tr.dupli$SpcID == "Conyza_canadensis"),] <- tr.dupli[which(tr.dupli$SpcID == "Conyza_canadensis" & tr.dupli$fire.recruiters=="n"),]
+# tr.dupli[which(tr.dupli$SpcID == "Erica_curviflora"),] <- tr.dupli[which(tr.dupli$SpcID == "Erica_curviflora" & tr.dupli$plant_height=="b"),]
+# tr.dupli[which(tr.dupli$SpcID == "Fagelia_bituminosa"),] <- tr.dupli[which(tr.dupli$SpcID == "Fagelia_bituminosa" & tr.dupli$Dispersal=="p"),]
+# tr.dupli[which(tr.dupli$SpcID == "Fagelia_bituminosa"),] <- tr.dupli[which(tr.dupli$SpcID == "Fagelia_bituminosa" & tr.dupli$Dispersal=="p"),]
+# tr.dupli[which(tr.dupli$SpcID == "Ficinia_capillifolia"),] <- tr.dupli[which(tr.dupli$SpcID == "Ficinia_capillifolia" & tr.dupli$Life_span_=="p"),]
+# tr.dupli[which(tr.dupli$SpcID == "Hypochoeris_radicata"),] <- tr.dupli[which(tr.dupli$SpcID == "Hypochoeris_radicata" & tr.dupli$Life_span_=="p"),]
+# tr.dupli[which(tr.dupli$SpcID == "Liparia_parva"),] <- tr.dupli[which(tr.dupli$SpcID == "Liparia_parva" & tr.dupli$Life_span_=="p"),]
+# tr.dupli[which(tr.dupli$SpcID == "Pelargonium_cucullatum"),] <- tr.dupli[which(tr.dupli$SpcID == "Pelargonium_cucullatum" & tr.dupli$Life_span_=="p"),]
+# tr.dupli[which(tr.dupli$SpcID == "Penaea_mucronata"),] <- tr.dupli[which(tr.dupli$SpcID == "Penaea_mucronata" & tr.dupli$Growth_Form=="e"),]
+# tr.dupli[which(tr.dupli$SpcID == "Pentameris_barbata"),] <- tr.dupli[which(tr.dupli$SpcID == "Pentameris_barbata" & tr.dupli$Regeneration=="es"),]
+# tr.dupli[which(tr.dupli$SpcID == "Phylica_imberbis"),] <- tr.dupli[which(tr.dupli$SpcID == "Phylica_imberbis" & tr.dupli$Growth_Form=="e"),]
+# tr.dupli[which(tr.dupli$SpcID == "Pseudoselago_serrata"),] <- tr.dupli[which(tr.dupli$SpcID == "Pseudoselago_serrata" & tr.dupli$Life_span_=="e"),]
+# tr.dupli[which(tr.dupli$SpcID == "Searsia_glauca"),] <- tr.dupli[which(tr.dupli$SpcID == "Searsia_glauca" & tr.dupli$fire.recruiters=="n"),]
+# tr.dupli[which(tr.dupli$SpcID == "Searsia_laevigata"),] <- tr.dupli[which(tr.dupli$SpcID == "Searsia_laevigata" & tr.dupli$distribution=="re"),]
+# tr.dupli[which(tr.dupli$SpcID == "Searsia_lucida"),] <- tr.dupli[which(tr.dupli$SpcID == "Searsia_lucida" & tr.dupli$fire.recruiters=="n"),]
+# tr.dupli[which(tr.dupli$SpcID == "Searsia_rosmarinifolia"),] <- tr.dupli[which(tr.dupli$SpcID == "Searsia_rosmarinifolia" & tr.dupli$fire.recruiters=="n"),]
+# tr.dupli[which(tr.dupli$SpcID == "Searsia_tomentosa"),] <- tr.dupli[which(tr.dupli$SpcID == "Searsia_tomentosa" & tr.dupli$Seed_size=="b"),]
+# tr.dupli[which(tr.dupli$SpcID == "Selago_scabrida"),] <- tr.dupli[which(tr.dupli$SpcID == "Selago_scabrida" & tr.dupli$Growth_Form=="e"),]
+# tr.dupli[which(tr.dupli$SpcID == "Syncarpha_speciosissima"),] <- tr.dupli[which(tr.dupli$SpcID == "Syncarpha_speciosissima" & tr.dupli$Life_span_=="a"),]
+# tr.dupli[which(tr.dupli$SpcID == "Ursinia_chrysanthemoides"),] <- tr.dupli[which(tr.dupli$SpcID == "Ursinia_chrysanthemoides" & tr.dupli$Dispersal=="w"),]
+# tr.dupli[order(tr.dupli$SpcID),1:5]
+# tr.dupli <- unique(tr.dupli)
+# 
+# tr3 <- rbind(tr2[-which(tr2$SpcID %in% tr2$SpcID[duplicated(tr2$SpcID)]),], tr.dupli[,-which(names(tr.dupli)=="sumNA")])
+# dim(tr3) # 1002
+# dim(unique(tr3)) # 1002
+# length(unique(tr3$SpcID)) # 1002
+# tr3 <- tr3[order(tr3$SpcID),]
+# tail(tr3)
+# 
+# write.table(tr3, file="All_Trait_Quanti_26Jan17.txt", quote=F, row.names=F, sep="\t")
+t02 <- read.delim("All_Trait_Quanti_26Jan17.txt", stringsAsFactors = F)
 head(t02)
-dim(t02) # 1072  12
-
-old <- t02$SpcID
-length(unique(old)) # 1072
-
-# Simplify species names when only genera are known
-#...........................................
-SPnum <- unlist(sapply(paste("_sp", 1:20, sep=""), function(x) grep(x, old)))
-old[SPnum]
-
-# replace the spX by sp1
-old[SPnum] <- sapply(strsplit(old[SPnum], "_"), function(x) paste(x[1], "_sp1", sep=""))
-old
-t02$SpcID <- old
-
-# remove duplicates
-dim(t02) # 1072
-dim(unique(t02)) # 1033
-t02 <- unique(t02)
-row.names(t02) <- 1:nrow(t02)
-t02[which(t02$SpcID %in% t02$SpcID[duplicated(t02$SpcID)]), ]
-t02.1 <- t02[-c(67, 794),]
-dim(t02.1) # 1031
-t02 <- t02.1
-old <- t02$SpcID
-length(unique(old)) # 1031
-
-# Correct the trait  data with the synonymy list
-#...........................................
-length(old[old %in% syn$ini]) # 1031
-out <- old[!old %in% syn$ini] # 0
-COR <- merge(data.frame(oldID=old), syn, by.x="oldID", by.y="ini")
-head(COR)
-str(COR)
-COR[,1] <- as.character(COR[,1])
-dim(COR) # 1039
-dim(unique(COR)) # 1039
-
-t.dupli <- COR[,1][duplicated(COR[,1])]
-COR[which(COR[,1] %in% t.dupli),]
-COR2 <- COR
-COR2 <- COR2[-which(row.names(COR2) %in% row.names(COR2[which(COR2[,1] %in% t.dupli),][!COR2[which(COR2[,1] %in% t.dupli),]$fin %in% t.dupli,])),]
-dim(COR2) # 1031
-
-tr2 <- merge(COR2, t02, by.x = "oldID", by.y="SpcID")
-tr2 <- tr2[, 2:ncol(tr2),]
-names(tr2)[1] <- "SpcID"
-head(tr2)
-dim(t02)  # 1031
-dim(tr2) # 1031
-
-# some new duplicated names because of the synonymy issue
-tr2 <- unique(tr2)
-dim(tr2) # 1029
-length(unique(tr2$SpcID)) # 1002
-tr.dupli <- tr2[which(tr2$SpcID %in% tr2$SpcID[duplicated(tr2$SpcID)]),]
-
-tr.dupli$sumNA <- apply(tr.dupli, 1, function(x) sum(is.na(x)))
-head(tr.dupli)
-tr.dupli <- tr.dupli[which(tr.dupli$sumNA<11),]
-tr.dupli <- tr.dupli[order(tr.dupli$SpcID),]
-
-tr.dupli[which(tr.dupli$SpcID == "Chaenostoma_hispidum"),] <- tr.dupli[which(tr.dupli$SpcID == "Chaenostoma_hispidum" & tr.dupli$Growth_Form=="h"),]
-tr.dupli[which(tr.dupli$SpcID == "Conyza_canadensis"),] <- tr.dupli[which(tr.dupli$SpcID == "Conyza_canadensis" & tr.dupli$fire.recruiters=="n"),]
-tr.dupli[which(tr.dupli$SpcID == "Erica_curviflora"),] <- tr.dupli[which(tr.dupli$SpcID == "Erica_curviflora" & tr.dupli$plant_height=="b"),]
-tr.dupli[which(tr.dupli$SpcID == "Fagelia_bituminosa"),] <- tr.dupli[which(tr.dupli$SpcID == "Fagelia_bituminosa" & tr.dupli$Dispersal=="p"),]
-tr.dupli[which(tr.dupli$SpcID == "Fagelia_bituminosa"),] <- tr.dupli[which(tr.dupli$SpcID == "Fagelia_bituminosa" & tr.dupli$Dispersal=="p"),]
-tr.dupli[which(tr.dupli$SpcID == "Ficinia_capillifolia"),] <- tr.dupli[which(tr.dupli$SpcID == "Ficinia_capillifolia" & tr.dupli$Life_span_=="p"),]
-tr.dupli[which(tr.dupli$SpcID == "Hypochoeris_radicata"),] <- tr.dupli[which(tr.dupli$SpcID == "Hypochoeris_radicata" & tr.dupli$Life_span_=="p"),]
-tr.dupli[which(tr.dupli$SpcID == "Liparia_parva"),] <- tr.dupli[which(tr.dupli$SpcID == "Liparia_parva" & tr.dupli$Life_span_=="p"),]
-tr.dupli[which(tr.dupli$SpcID == "Pelargonium_cucullatum"),] <- tr.dupli[which(tr.dupli$SpcID == "Pelargonium_cucullatum" & tr.dupli$Life_span_=="p"),]
-tr.dupli[which(tr.dupli$SpcID == "Penaea_mucronata"),] <- tr.dupli[which(tr.dupli$SpcID == "Penaea_mucronata" & tr.dupli$Growth_Form=="e"),]
-tr.dupli[which(tr.dupli$SpcID == "Pentameris_barbata"),] <- tr.dupli[which(tr.dupli$SpcID == "Pentameris_barbata" & tr.dupli$Regeneration=="es"),]
-tr.dupli[which(tr.dupli$SpcID == "Phylica_imberbis"),] <- tr.dupli[which(tr.dupli$SpcID == "Phylica_imberbis" & tr.dupli$Growth_Form=="e"),]
-tr.dupli[which(tr.dupli$SpcID == "Pseudoselago_serrata"),] <- tr.dupli[which(tr.dupli$SpcID == "Pseudoselago_serrata" & tr.dupli$Life_span_=="e"),]
-tr.dupli[which(tr.dupli$SpcID == "Searsia_glauca"),] <- tr.dupli[which(tr.dupli$SpcID == "Searsia_glauca" & tr.dupli$fire.recruiters=="n"),]
-tr.dupli[which(tr.dupli$SpcID == "Searsia_laevigata"),] <- tr.dupli[which(tr.dupli$SpcID == "Searsia_laevigata" & tr.dupli$distribution=="re"),]
-tr.dupli[which(tr.dupli$SpcID == "Searsia_lucida"),] <- tr.dupli[which(tr.dupli$SpcID == "Searsia_lucida" & tr.dupli$fire.recruiters=="n"),]
-tr.dupli[which(tr.dupli$SpcID == "Searsia_rosmarinifolia"),] <- tr.dupli[which(tr.dupli$SpcID == "Searsia_rosmarinifolia" & tr.dupli$fire.recruiters=="n"),]
-tr.dupli[which(tr.dupli$SpcID == "Searsia_tomentosa"),] <- tr.dupli[which(tr.dupli$SpcID == "Searsia_tomentosa" & tr.dupli$Seed_size=="b"),]
-tr.dupli[which(tr.dupli$SpcID == "Selago_scabrida"),] <- tr.dupli[which(tr.dupli$SpcID == "Selago_scabrida" & tr.dupli$Growth_Form=="e"),]
-tr.dupli[which(tr.dupli$SpcID == "Syncarpha_speciosissima"),] <- tr.dupli[which(tr.dupli$SpcID == "Syncarpha_speciosissima" & tr.dupli$Life_span_=="a"),]
-tr.dupli[which(tr.dupli$SpcID == "Ursinia_chrysanthemoides"),] <- tr.dupli[which(tr.dupli$SpcID == "Ursinia_chrysanthemoides" & tr.dupli$Dispersal=="w"),]
-tr.dupli[order(tr.dupli$SpcID),1:5]
-tr.dupli <- unique(tr.dupli)
-
-tr3 <- rbind(tr2[-which(tr2$SpcID %in% tr2$SpcID[duplicated(tr2$SpcID)]),], tr.dupli[,-which(names(tr.dupli)=="sumNA")])
-dim(tr3) # 1002
-dim(unique(tr3)) # 1002
-length(unique(tr3$SpcID)) # 1002
-tr3 <- tr3[order(tr3$SpcID),]
-tail(tr3)
-
-write.table(tr3, file="All_Trait_Quanti_26Jan17.txt", quote=F, row.names=F, sep="\t")
+dim(t02) # 1002  12
+str(t02)
 
 
 ######################################################################
@@ -276,7 +279,7 @@ for(i in dupli) {
   for(j in t.row) p02n1[j, 2:ncol(p02n1)] <- remp ; print(i)
 }
 p02n1 <- unique(p02n1)
-dim(p02n1) #   813  313
+dim(p02n1) #   810  313
 p02n1[1:10, 1:10]
 
 row.names(p02n1) <- p02n1$spcID 
@@ -289,7 +292,7 @@ for(i in 1:ncol(p02n2)) p02n2[,i] <- as.numeric(as.character(p02n2[,i]))
 
 # Final checks
 p02n2[1:10, 1:10]
-dim(p02n2)  # 312 sites  813 species
+dim(p02n2)  # 312 sites  811 species
 
 range(p02n2)
 sort(colSums(p02n2))
@@ -297,10 +300,10 @@ sort(colSums(p02n2))
 # Remove species without presences
 p02n3 <- p02n2[,which(colSums(p02n2)>0)]
 p02n3[1:10, 1:10]
-dim(p02n3)  # 312 sites  801 species
+dim(p02n3)  # 312 sites  799 species
 
 # Save it
-write.table(p02n3, file="PlotSpc_2002_5Oct16.txt", sep="\t", quote=F)
+write.table(p02n3, file="PlotSpc_2002_2Fev17.txt", sep="\t", quote=F)
 
 
 
@@ -345,6 +348,7 @@ COR <- cbind(oldID=old, oldCORR=old_corr)
 COR <- merge(COR, syn, by.x="oldCORR", by.y="ini")
 head(COR)
 dim(COR) # 812
+dim(unique(COR)) # 812
 
 COR[!(row.names(COR) %in% row.names(na.omit(COR))), ] # 0
 
@@ -370,7 +374,7 @@ for(i in dupli) {
   for(j in t.row) p08n1[j, 2:ncol(p08n1)] <- remp ; print(i)
 }
 p08n1 <- unique(p08n1)
-dim(p08n1) #   711  264
+dim(p08n1) #   701  264
 p08n1[1:10, 1:10]
 
 row.names(p08n1) <- p08n1$spcID 
@@ -383,7 +387,7 @@ for(i in 1:ncol(p08n2)) p08n2[,i] <- as.numeric(as.character(p08n2[,i]))
 
 # Final checks
 p08n2[1:10, 1:10]
-dim(p08n2)  # 263 sites  711 species
+dim(p08n2)  # 263 sites  701 species
 
 range(p08n2)
 sort(colSums(p08n2))
@@ -391,13 +395,13 @@ sort(colSums(p08n2))
 # Remove species without presences
 p08n3 <- p08n2[,which(colSums(p08n2)>0)]
 p08n3[1:10, 1:10]
-dim(p08n3)  # 263 sites  711 species
+dim(p08n3)  # 263 sites  701 species
 
 # homogenize the rownames
 row.names(p08n3) <- gsub(".", "_", row.names(p08n3), fixed=T)
 
 # Save it
-write.table(p08n3, file="PlotSpc_2008_5Oct16.txt", sep="\t", quote=F)
+write.table(p08n3, file="PlotSpc_2008_2Fev17.txt", sep="\t", quote=F)
 
 
 
@@ -469,7 +473,7 @@ for(i in dupli) {
   for(j in t.row) p11n1[j, 2:ncol(p11n1)] <- remp ; print(i)
 }
 p11n1 <- unique(p11n1)
-dim(p11n1) #   289  63
+dim(p11n1) #   291  63
 p11n1[1:10, 1:10]
 
 row.names(p11n1) <- p11n1$spcID 
@@ -482,7 +486,7 @@ for(i in 1:ncol(p11n2)) p11n2[,i] <- as.numeric(as.character(p11n2[,i]))
 
 # Final checks
 p11n2[1:10, 1:10]
-dim(p11n2)  # 62 sites  289 species
+dim(p11n2)  # 62 sites  291 species
 
 range(p11n2)
 sort(colSums(p11n2))
@@ -490,13 +494,13 @@ sort(colSums(p11n2))
 # Remove species without presences
 p11n3 <- p11n2[,which(colSums(p11n2)>0)]
 p11n3[1:10, 1:10]
-dim(p11n3)  # 62 sites  289 species
+dim(p11n3)  # 62 sites  291 species
 
 # homogenize the rownames
 row.names(p11n3) <- gsub(".", "_", row.names(p11n3), fixed=T)
 
 # Save it
-write.table(p11n3, file="PlotSpc_2011_5Oct16.txt", sep="\t", quote=F)
+write.table(p11n3, file="PlotSpc_2011_2Fev17.txt", sep="\t", quote=F)
 
 
 
@@ -555,7 +559,7 @@ for(i in dupli) {
   for(j in t.row) p14n1[j, 2:ncol(p14n1)] <- remp ; print(i)
 }
 p14n1 <- unique(p14n1)
-dim(p14n1) #   440  142
+dim(p14n1) #   436  142
 p14n1[1:10, 1:10]
 
 row.names(p14n1) <- p14n1$spcID 
@@ -568,7 +572,7 @@ for(i in 1:ncol(p14n2)) p14n2[,i] <- as.numeric(as.character(p14n2[,i]))
 
 # Final checks
 p14n2[1:10, 1:10]
-dim(p14n2)  # 141 sites  440 species
+dim(p14n2)  # 141 sites  436 species
 
 range(p14n2)
 sort(colSums(p14n2))
@@ -578,10 +582,10 @@ p14n3 <- p14n2[,which(colSums(p14n2)>0)]
 # homogenize the rownames
 row.names(p14n3) <- gsub(".", "_", row.names(p14n3), fixed=T)
 p14n3[1:10, 1:10]
-dim(p14n3)  # 141 sites  440 species
+dim(p14n3)  # 141 sites  436 species
 
 # Save it
-write.table(p14n3, file="PlotSpc_2014_5Oct16.txt", sep="\t", quote=F)
+write.table(p14n3, file="PlotSpc_2014_2Fev17.txt", sep="\t", quote=F)
 
 
 
@@ -609,7 +613,7 @@ length(unique(old)) # 824
 dd <- old[duplicated(old)] # 0
 
 # Check that all species are in the list
-length(old[old %in% syn$ini]) # 793
+length(old[old %in% syn$ini]) # 798
 out <- old[!old %in% syn$ini]
 
 out2 <- gsub("_NA", "", out)
@@ -666,7 +670,7 @@ for(i in dupli) {
   for(j in t.row) sp02_An1[j, 2:ncol(sp02_An1)] <- remp ; print(i)
 }
 sp02_An1 <- unique(sp02_An1)
-dim(sp02_An1) #   813  625
+dim(sp02_An1) #   811  625
 sp02_An1[1:10, 1:10]
 
 row.names(sp02_An1) <- sp02_An1$spcID 
@@ -679,7 +683,7 @@ for(i in 1:ncol(sp02_An2)) sp02_An2[,i] <- as.numeric(as.character(sp02_An2[,i])
 
 # Final checks
 sp02_An2[1:10, 1:10]
-dim(sp02_An2)  # 624 sites  813 species
+dim(sp02_An2)  # 624 sites  811 species
 range(sp02_An2)
 sort(colSums(sp02_An2))
 
@@ -709,7 +713,7 @@ for(i in dupli) {
   for(j in t.row) sp02_Cn1[j, 2:ncol(sp02_Cn1)] <- remp ; print(i)
 }
 sp02_Cn1 <- unique(sp02_Cn1)
-dim(sp02_Cn1) #   813  625
+dim(sp02_Cn1) #   811  625
 sp02_Cn1[1:10, 1:10]
 
 row.names(sp02_Cn1) <- sp02_Cn1$spcID 
@@ -722,7 +726,7 @@ for(i in 1:ncol(sp02_Cn2)) sp02_Cn2[,i] <- as.numeric(as.character(sp02_Cn2[,i])
 
 # Final checks
 sp02_Cn2[1:10, 1:10]
-dim(sp02_Cn2)  # 624 sites  813 species
+dim(sp02_Cn2)  # 624 sites  811 species
 range(sp02_Cn2)
 sort(colSums(sp02_Cn2))
 
@@ -777,18 +781,18 @@ row.names(sp02_Cn3) <- as.character(pc[row.names(sp02_Cn3),1])
 
 sp02_An3[1:10, 1:10]
 sp02_Cn3[1:10, 1:10]
-dim(sp02_An3)  # 624 sites  597 species
-dim(sp02_Cn3)  # 624 sites  597 species
+dim(sp02_An3)  # 624 sites  595 species
+dim(sp02_Cn3)  # 624 sites  595 species
 hist(rowSums(sp02_An3))  
 hist(rowSums(sp02_Cn3))
 rowSums(sp02_An3)[rowSums(sp02_An3)==0]
 rowSums(sp02_Cn3)[rowSums(sp02_Cn3)==0]
 
 # Save it
-write.table(sp02_An3, file="subPlotSpc_2002_NbIndiv_5Oct16.txt", sep="\t", quote=F)
-write.table(sp02_Cn3, file="subPlotSpc_2002_PropCover_5Oct16.txt", sep="\t", quote=F)
-# sp02_An3 <- read.delim("subPlotSpc_2002_NbIndiv_5Oct16.txt", stringsAsFactors = F)
-# sp02_Cn3 <- read.delim("subPlotSpc_2002_PropCover_5Oct16.txt", stringsAsFactors = F)
+write.table(sp02_An3, file="subPlotSpc_2002_NbIndiv_2Fev17.txt", sep="\t", quote=F)
+write.table(sp02_Cn3, file="subPlotSpc_2002_PropCover_2Fev17.txt", sep="\t", quote=F)
+# sp02_An3 <- read.delim("subPlotSpc_2002_NbIndiv_2Fev17.txt", stringsAsFactors = F)
+# sp02_Cn3 <- read.delim("subPlotSpc_2002_PropCover_2Fev17.txt", stringsAsFactors = F)
 
 #********************************************************************
 #********************************************************************
@@ -861,7 +865,7 @@ for(i in dupli) {
   for(j in t.row) sp08_An1[j, 2:ncol(sp08_An1)] <- remp ; print(i)
 }
 sp08_An1 <- unique(sp08_An1)
-dim(sp08_An1) #   543  528
+dim(sp08_An1) #   538  528
 sp08_An1[1:10, 1:10]
 
 row.names(sp08_An1) <- sp08_An1$spcID 
@@ -874,7 +878,7 @@ for(i in 1:ncol(sp08_An2)) sp08_An2[,i] <- as.numeric(as.character(sp08_An2[,i])
 
 # Final checks
 sp08_An2[1:10, 1:10]
-dim(sp08_An2)  # 527 sites  543 species
+dim(sp08_An2)  # 527 sites  538 species
 range(sp08_An2) # 0  90
 sort(colSums(sp08_An2))
 
@@ -904,7 +908,7 @@ for(i in dupli) {
   for(j in t.row) sp08_Cn1[j, 2:ncol(sp08_Cn1)] <- remp ; print(i)
 }
 sp08_Cn1 <- unique(sp08_Cn1)
-dim(sp08_Cn1) #   595  528
+dim(sp08_Cn1) #   538  528
 sp08_Cn1[1:10, 1:10]
 
 row.names(sp08_Cn1) <- sp08_Cn1$spcID 
@@ -917,7 +921,7 @@ for(i in 1:ncol(sp08_Cn2)) sp08_Cn2[,i] <- as.numeric(as.character(sp08_Cn2[,i])
 
 # Final checks
 sp08_Cn2[1:10, 1:10]
-dim(sp08_Cn2)  # 527 sites  595 species
+dim(sp08_Cn2)  # 527 sites  538 species
 range(sp08_Cn2)  # 0 100
 sort(colSums(sp08_Cn2))
 
@@ -934,13 +938,13 @@ sp08_An3 <- data.frame(PlotID=row.names(sp08_An2), sp08_An2)
 tt1 <- melt(sp08_An3, id="PlotID")
 tt1 <- tt1[which(tt1$value>0),][,1:2]
 tt1 <- unique(tt1[order(tt1$PlotID),])
-head(tt1) ; dim(tt1) # 4066  2
+head(tt1) ; dim(tt1) # 4065  2
 
 sp08_Cn3 <- data.frame(PlotID=row.names(sp08_Cn2), sp08_Cn2)
 tt2 <- melt(sp08_Cn3, id="PlotID")
 tt2 <- tt2[which(tt2$value>0),][,1:2]
 tt2 <- unique(tt2[order(tt2$PlotID),])
-head(tt2) ; dim(tt2)  # 4440  2
+head(tt2) ; dim(tt2)  # 4437  2
 
 tt1$comb <- paste(tt1[,1], tt1[,2], sep="_")
 tt2$comb <- paste(tt2[,1], tt2[,2], sep="_")
@@ -968,16 +972,16 @@ row.names(sp08_Cn3) <- gsub(".", "_", row.names(sp08_Cn3), fixed=T)
 
 sp08_An3[1:10, 1:10]
 sp08_Cn3[1:10, 1:10]
-dim(sp08_An3)  # 527 sites  543 species
-dim(sp08_Cn3)  # 527 sites  543 species
+dim(sp08_An3)  # 527 sites  538 species
+dim(sp08_Cn3)  # 527 sites  538 species
 hist(rowSums(sp08_An3))  
 hist(rowSums(sp08_Cn3))
 rowSums(sp08_An3)[rowSums(sp08_An3)==0]
 rowSums(sp08_Cn3)[rowSums(sp08_Cn3)==0]
 
 # Save it
-write.table(sp08_An3, file="subPlotSpc_2008_NbIndiv_5Oct16.txt", sep="\t", quote=F)
-write.table(sp08_Cn3, file="subPlotSpc_2008_PropCover_5Oct16.txt", sep="\t", quote=F)
+write.table(sp08_An3, file="subPlotSpc_2008_NbIndiv_2Fev17.txt", sep="\t", quote=F)
+write.table(sp08_Cn3, file="subPlotSpc_2008_PropCover_2Fev17.txt", sep="\t", quote=F)
 
 
 #********************************************************************
@@ -1054,7 +1058,7 @@ for(i in dupli) {
   for(j in t.row) sp11_An1[j, 2:ncol(sp11_An1)] <- remp ; print(i)
 }
 sp11_An1 <- unique(sp11_An1)
-dim(sp11_An1) #   252  132
+dim(sp11_An1) #   255  132
 sp11_An1[1:10, 1:10]
 
 row.names(sp11_An1) <- sp11_An1$spcID 
@@ -1067,7 +1071,7 @@ for(i in 1:ncol(sp11_An2)) sp11_An2[,i] <- as.numeric(as.character(sp11_An2[,i])
 
 # Final checks
 sp11_An2[1:10, 1:10]
-dim(sp11_An2)  # 131 sites  252 species
+dim(sp11_An2)  # 131 sites  255 species
 range(sp11_An2) # 0  75
 sort(colSums(sp11_An2))
 
@@ -1097,7 +1101,7 @@ for(i in dupli) {
   for(j in t.row) sp11_Cn1[j, 2:ncol(sp11_Cn1)] <- remp ; print(i)
 }
 sp11_Cn1 <- unique(sp11_Cn1)
-dim(sp11_Cn1) #   252  132
+dim(sp11_Cn1) #   255  132
 sp11_Cn1[1:10, 1:10]
 
 row.names(sp11_Cn1) <- sp11_Cn1$spcID 
@@ -1110,7 +1114,7 @@ for(i in 1:ncol(sp11_Cn2)) sp11_Cn2[,i] <- as.numeric(as.character(sp11_Cn2[,i])
 
 # Final checks
 sp11_Cn2[1:10, 1:10]
-dim(sp11_Cn2)  # 131 sites  252 species
+dim(sp11_Cn2)  # 131 sites  255 species
 range(sp11_Cn2)  # 0 100
 sort(colSums(sp11_Cn2))
 
@@ -1127,13 +1131,13 @@ sp11_An3 <- data.frame(PlotID=row.names(sp11_An2), sp11_An2)
 tt1 <- melt(sp11_An3, id="PlotID")
 tt1 <- tt1[which(tt1$value>0),][,1:2]
 tt1 <- unique(tt1[order(tt1$PlotID),])
-head(tt1) ; dim(tt1) # 1267  2
+head(tt1) ; dim(tt1) # 1268  2
 
 sp11_Cn3 <- data.frame(PlotID=row.names(sp11_Cn2), sp11_Cn2)
 tt2 <- melt(sp11_Cn3, id="PlotID")
 tt2 <- tt2[which(tt2$value>0),][,1:2]
 tt2 <- unique(tt2[order(tt2$PlotID),])
-head(tt2) ; dim(tt2)  # 1343  2
+head(tt2) ; dim(tt2)  # 1344  2
 
 tt1$comb <- paste(tt1[,1], tt1[,2], sep="_")
 tt2$comb <- paste(tt2[,1], tt2[,2], sep="_")
@@ -1161,16 +1165,16 @@ row.names(sp11_Cn3) <- gsub(".", "_", gsub("_", "", row.names(sp11_Cn3)), fixed=
 
 sp11_An3[1:10, 1:10]
 sp11_Cn3[1:10, 1:10]
-dim(sp11_An3)  # 131 sites  251 species
-dim(sp11_Cn3)  # 131 sites  251 species
+dim(sp11_An3)  # 131 sites  254 species
+dim(sp11_Cn3)  # 131 sites  254 species
 hist(rowSums(sp11_An3))  
 hist(rowSums(sp11_Cn3))
 rowSums(sp11_An3)[rowSums(sp11_An3)==0]
 rowSums(sp11_Cn3)[rowSums(sp11_Cn3)==0]
 
 # Save it
-write.table(sp11_An3, file="subPlotSpc_2011_NbIndiv_5Oct16.txt", sep="\t", quote=F)
-write.table(sp11_Cn3, file="subPlotSpc_2011_PropCover_5Oct16.txt", sep="\t", quote=F)
+write.table(sp11_An3, file="subPlotSpc_2011_NbIndiv_2Fev17.txt", sep="\t", quote=F)
+write.table(sp11_Cn3, file="subPlotSpc_2011_PropCover_2Fev17.txt", sep="\t", quote=F)
 
 
 
@@ -1212,7 +1216,7 @@ length(old_corr[old_corr %in% syn$ini]) # 420
 COR <- cbind(oldID=old, oldCORR=old_corr)
 COR <- merge(COR, syn, by.x="oldCORR", by.y="ini")
 head(COR)
-dim(COR) # 422
+dim(COR) # 420
 
 COR[!(row.names(COR) %in% row.names(na.omit(COR))), ] # 0
 
@@ -1242,7 +1246,7 @@ for(i in dupli) {
   for(j in t.row) sp14_An1[j, 2:ncol(sp14_An1)] <- remp ; print(i)
 }
 sp14_An1 <- unique(sp14_An1)
-dim(sp14_An1) #   346  320
+dim(sp14_An1) #   345  320
 sp14_An1[1:10, 1:10]
 
 row.names(sp14_An1) <- sp14_An1$spcID 
@@ -1255,7 +1259,7 @@ for(i in 1:ncol(sp14_An2)) sp14_An2[,i] <- as.numeric(as.character(sp14_An2[,i])
 
 # Final checks
 sp14_An2[1:10, 1:10]
-dim(sp14_An2)  # 319 sites  346 species
+dim(sp14_An2)  # 319 sites  345 species
 range(sp14_An2) # 0  150
 sort(colSums(sp14_An2))
 
@@ -1285,7 +1289,7 @@ for(i in dupli) {
   for(j in t.row) sp14_Cn1[j, 2:ncol(sp14_Cn1)] <- remp ; print(i)
 }
 sp14_Cn1 <- unique(sp14_Cn1)
-dim(sp14_Cn1) #   346  320
+dim(sp14_Cn1) #   345  320
 sp14_Cn1[1:10, 1:10]
 
 row.names(sp14_Cn1) <- sp14_Cn1$spcID 
@@ -1298,7 +1302,7 @@ for(i in 1:ncol(sp14_Cn2)) sp14_Cn2[,i] <- as.numeric(as.character(sp14_Cn2[,i])
 
 # Final checks
 sp14_Cn2[1:10, 1:10]
-dim(sp14_Cn2)  # 319 sites  346 species
+dim(sp14_Cn2)  # 319 sites  345 species
 range(sp14_Cn2)  # 0 110
 sort(colSums(sp14_Cn2))
 
@@ -1352,15 +1356,15 @@ row.names(sp14_Cn3) <- as.character(pc[row.names(sp14_Cn3),1])
 
 sp14_An3[1:10, 1:10]
 sp14_Cn3[1:10, 1:10]
-dim(sp14_An3)  # 319 sites  346 species
-dim(sp14_Cn3)  # 319 sites  346 species
+dim(sp14_An3)  # 319 sites  345 species
+dim(sp14_Cn3)  # 319 sites  345 species
 hist(rowSums(sp14_An3))  
 hist(rowSums(sp14_Cn3))
 rowSums(sp14_An3)[rowSums(sp14_An3)==0]
 rowSums(sp14_Cn3)[rowSums(sp14_Cn3)==0]
 
 # Save it
-write.table(sp14_An3, file="subPlotSpc_2014_NbIndiv_5Oct16.txt", sep="\t", quote=F)
-write.table(sp14_Cn3, file="subPlotSpc_2014_PropCover_5Oct16.txt", sep="\t", quote=F)
+write.table(sp14_An3, file="subPlotSpc_2014_NbIndiv_2Fev17.txt", sep="\t", quote=F)
+write.table(sp14_Cn3, file="subPlotSpc_2014_PropCover_2Fev17.txt", sep="\t", quote=F)
 
 
