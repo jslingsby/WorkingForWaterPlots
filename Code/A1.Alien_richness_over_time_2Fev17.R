@@ -4,6 +4,8 @@
 
 library(ggplot2)
 library(diveRsity)
+library(MCMCglmm)
+library(lme4)
 
 if (Sys.getenv("USER")=="jasper") {setwd("/Users/jasper/Dropbox/Shared/CapeCommunities/Data/Raw/")}
 if (Sys.getenv("USER")=="Laure") {setwd("~/Dropbox/GIT/2016_CapeCom/Data/LaurePrep/")}
@@ -159,11 +161,6 @@ plot(0,0, type="n", ylim = c(0,4), xlim = c(2002, 2014), main="alien trees", yla
 for(i in UsubpID) {  temp <- dfall_4y[which(dfall_4y$subpID %in% i),] ; cc=Treatmt[Treatmt$Site==temp$plotID[1],3]
 points(jitter(inv_t_Rich) ~ jitter(year), data=temp, type="l", col=cc, lwd=1) }
 legend("topright", legend=unique(Treatmt$Aliens), col=unique(Treatmt$col), lty=1, lwd=2)
-
-
-
-
-
 
 
 

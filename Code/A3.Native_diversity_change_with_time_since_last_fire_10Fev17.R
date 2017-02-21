@@ -8,6 +8,7 @@ library(cluster)
 library(picante)
 library(MCMCglmm)
 library(lme4)
+library(mgcv)
 
 if (Sys.getenv("USER")=="jasper") {setwd("/Users/jasper/Dropbox/Shared/CapeCommunities/Data/Raw/")}
 if (Sys.getenv("USER")=="Laure") {setwd("~/Dropbox/GIT/2016_CapeCom/Data/LaurePrep/")}
@@ -116,10 +117,15 @@ str(SiInf)
 TRAITS <- names(tr)[2:8]
 str(tr[,TRAITS])
 for(i in TRAITS) tr[,i] <- as.factor(tr[,i])
+
+# all traits
 DallF <- daisy(tr[,TRAITS], metric = "gower")
-D1 <- as.matrix(DgrowthF) ; row.names(D1) <- colnames(D1) <- tr$SpcID
+D1 <- as.matrix(DallF) ; row.names(D1) <- colnames(D1) <- tr$SpcID
 
-
+# # all traits but growth form
+# DFssGF <- daisy(tr[,TRAITS[2:length(TRAITS)]], metric = "gower")
+# D1 <- as.matrix(DFssGF) ; row.names(D1) <- colnames(D1) <- tr$SpcID
+# 
 # Get the phylogenetic distances (genus level)
 #.................................
 # to do!!!
@@ -131,7 +137,7 @@ DF <- c("sp02_Abun", "sp08_Abun", "sp11_Abun", "sp14_Abun")
 YY <- c(2002, 2008, 2011, 2014)
 
 
-# # Considering all spc ID independent (i.e. genus_sp1 = 1 species)
+# # # Considering all spc ID independent (i.e. genus_sp1 = 1 species)
 # ldf <- list()
 # for(x in 1:4){
 #   temp <- eval(parse(text=DF[x]))
@@ -186,8 +192,10 @@ YY <- c(2002, 2008, 2011, 2014)
 #   print(paste("div", x))
 # }
 # names(ldf) <- as.character(YY)
-# save(ldf, file=paste(pathRes, "Richness_FunDiversity_allTraits_allSpcIDindpdt_9Fev17", sep=""))
+# save(ldf, file=paste(pathRes, "Richness_FunDiversity_allTraits_allSpcIDindpdt_10Fev17", sep=""))
+# save(ldf, file=paste(pathRes, "Richness_FunDiversity_allTraitsBUTnotGrowthForm_allSpcIDindpdt_13Fev17", sep=""))
 load(paste(pathRes, "Richness_FunDiversity_allTraits_allSpcIDindpdt_9Fev17", sep=""))  # ldf
+load(paste(pathRes, "Richness_FunDiversity_allTraitsBUTnotGrowthForm_allSpcIDindpdt_13Fev17", sep=""))  # ldf
 names(ldf[[1]])
 head(ldf[[1]]$FunDivDF)
 head(ldf[[1]]$RichDF)
@@ -250,53 +258,111 @@ dfall$TimeSinceFire <- unlist(sapply(1:nrow(dfall), function(x) {
 
 
 # -------------------------------------------------
-# Richness  over time pet treatment
+# Richness change the time since the last fire per treatment
 # -------------------------------------------------
-# all species together
-p1 <- ggplot(dfall, aes(factor(year), allRich)) + geom_boxplot(aes(fill = factor(Aliens))) 
-p2 <- ggplot(dfall, aes(factor(year), natRich)) + geom_boxplot(aes(fill = factor(Aliens))) 
-p3 <- ggplot(dfall, aes(factor(year), invRich)) + geom_boxplot(aes(fill = factor(Aliens))) 
-multiplot(p1, p2, p3, cols=3)
+# color per sub-site ID
+#............................
+par(mfrow=c(2,3))
+for(j in c("nat_h_Rich", "nat_g_Rich", "nat_e_Rich", "nat_b_Rich", "nat_t_Rich")){
+  for(i in unique(dfall$subpID)){
+    temp <- dfall[dfall$subpID==i,] ; temp2 <- temp[order(temp$TimeSinceFire),] 
+    if(i == unique(dfall$subpID)[1]) { plot(jitter(temp2[,j]) ~ temp2$TimeSinceFire, main=j, type="l", 
+                                            ylim=c(0,15), xlim=c(0,14), col=sample(COLS, 1)) 
+    } else { points(jitter(temp2[,j]) ~ temp2$TimeSinceFire, type="l", col=sample(COLS, 1)) }
+  }
+}  
 
-# lmer
-# glmm1 <- glmer(natRich ~ Aliens + year + (1|subpID), data=dfall, family="poisson")
-               
-# MCMCglmm
+# color per treatment
+#............................
+# Natives
+par(mfrow=c(2,3))
+for(j in c("nat_h_Rich", "nat_g_Rich", "nat_e_Rich", "nat_b_Rich", "nat_t_Rich")){
+  for(i in unique(dfall$subpID)){
+    temp <- dfall[dfall$subpID==i,] ; temp2 <- temp[order(temp$TimeSinceFire),] 
+    if(i == unique(dfall$subpID)[1]) { plot(jitter(temp2[,j]) ~ temp2$TimeSinceFire, main=j, type="l", 
+        ylim=c(0,15), xlim=c(0,14), col=temp2$col[1]) 
+    } else { points(jitter(temp2[,j]) ~ temp2$TimeSinceFire, type="l", col=temp2$col[1]) }
+  }
+}  
+legend("topright", legend = unique(dfall[,26:27])[,1], col=unique(dfall[,26:27])[,2], lty=1)
+
+
+# Invasives
+par(mfrow=c(2,2))
+for(j in c("invRich", "inv_h_Rich", "inv_g_Rich", "inv_t_Rich")){
+  for(i in unique(dfall$subpID)){
+    temp <- dfall[dfall$subpID==i,] ; temp2 <- temp[order(temp$TimeSinceFire),] 
+    if(i == unique(dfall$subpID)[1]) { plot(jitter(temp2[,j]) ~ temp2$TimeSinceFire, main=j, type="l", 
+          ylab="Richness", xlab="time since fire", ylim=c(0,6), xlim=c(0,14), col=temp2$col[1]) 
+    } else { points(jitter(temp2[,j]) ~ temp2$TimeSinceFire, type="l", col=temp2$col[1]) }
+  }
+}  
+legend("topright", legend = unique(dfall[,26:27])[,1], col=unique(dfall[,26:27])[,2], lty=1)
+
+
+
+# Look at averages and sd
+#............................
+# Natives
+par(mfrow=c(2,3))
+for(j in c("nat_h_Rich", "nat_g_Rich", "nat_e_Rich", "nat_b_Rich", "nat_t_Rich")){
+  for(i in unique(dfall$Aliens)){
+      temp <- dfall[dfall$Aliens==i,] 
+      fireY <- sort(unique(temp$TimeSinceFire))
+      tMean <- sapply(fireY, function(x) mean(temp[temp$TimeSinceFire==x, j], na.rm=T))
+      tSD <- sapply(fireY, function(x) sd(temp[temp$TimeSinceFire==x, j], na.rm=T))
+      if(i==unique(dfall$Aliens)[1]) { 
+        plot(0,0, type="n", main=j, ylab="Richness", xlab="time since fire", ylim=c(0,7), xlim=c(0,14)) } 
+      points(jitter(tMean) ~ fireY, type="l", col=temp$col[1], lwd=2) 
+      polygon(c(fireY, rev(fireY)), c((tMean+tSD), rev(tMean-tSD)), col=adjustcolor(temp$col[1], .3), border = F)    }    
+} 
+legend("topright", legend = unique(dfall[,26:27])[,1], col=unique(dfall[,26:27])[,2], lty=1)
+
+
+# Invasives
+par(mfrow=c(2,2))
+for(j in c("invRich", "inv_h_Rich", "inv_g_Rich", "inv_t_Rich")){
+  for(i in unique(dfall$Aliens)){
+    temp <- dfall[dfall$Aliens==i,] 
+    fireY <- sort(unique(temp$TimeSinceFire))
+    tMean <- sapply(fireY, function(x) mean(temp[temp$TimeSinceFire==x, j], na.rm=T))
+    tSD <- sapply(fireY, function(x) sd(temp[temp$TimeSinceFire==x, j], na.rm=T))
+    if(i==unique(dfall$Aliens)[1]) { 
+      plot(0,0, type="n", main=j, ylab="Richness", xlab="time since fire", ylim=c(0,3), xlim=c(0,14)) } 
+    points(jitter(tMean) ~ fireY, type="l", col=temp$col[1], lwd=2) 
+    polygon(c(fireY, rev(fireY)), c((tMean+tSD), rev(tMean-tSD)), col=adjustcolor(temp$col[1], .3), border = F)    }    
+} 
+legend("topright", legend = unique(dfall[,26:27])[,1], col=unique(dfall[,26:27])[,2], lty=1)
+
+
+#............................
+# MCMCglmm on native richness
+#............................
 prior<-list(R=list(V=1, nu=0.002), G=list(G1=list(V=1, nu=0.002)))
-mod_rich <- MCMCglmm(natRich ~ Aliens + year, random=~subpID, data=dfall, family="poisson", 
+dfall2 <- dfall[!is.na(dfall$TimeSinceFire),]
+mod_rich <- MCMCglmm(natRich ~ Aliens + TimeSinceFire, random=~subpID, data=dfall2, family="poisson", 
                  prior=prior, verbose=F, pr=T)
 summary(mod_rich)
 plot(mod_rich)
 
 # estimate R2
-RES <- dfall$natRich-predict(mod_rich)[,1]
-1-var(RES)/var(dfall$natRich) # 0.15
+RES <- dfall2$natRich-predict(mod_rich)[,1]
+1-var(RES)/var(dfall2$natRich) # 0.16
 
-# -------------------------------------------------
-# Richness per native species type  over time per treatment
-# -------------------------------------------------
-# all species together
-p1 <- ggplot(dfall, aes(factor(year), nat_h_Rich)) + geom_boxplot(aes(fill = factor(Aliens))) 
-p2 <- ggplot(dfall, aes(factor(year), nat_g_Rich)) + geom_boxplot(aes(fill = factor(Aliens))) 
-p3 <- ggplot(dfall, aes(factor(year), nat_e_Rich)) + geom_boxplot(aes(fill = factor(Aliens))) 
-p4 <- ggplot(dfall, aes(factor(year), nat_b_Rich)) + geom_boxplot(aes(fill = factor(Aliens))) 
-p5 <- ggplot(dfall, aes(factor(year), nat_t_Rich)) + geom_boxplot(aes(fill = factor(Aliens))) 
-multiplot(p1, p2, p3, p4, p5, cols=3)
 
-# lmer
-# glmm1 <- glmer(natRich ~ Aliens + year + (1|subpID), data=dfall, family="poisson")
-
-# MCMCglmm
+#............................
+# MCMCglmm on native growth forms
+#............................
 prior<-list(R=list(V=1, nu=0.002), G=list(G1=list(V=1, nu=0.002)))
-mod_h_rich <- MCMCglmm(nat_h_Rich ~ Aliens + year, random=~subpID, data=dfall, family="poisson", 
+mod_h_rich <- MCMCglmm(nat_h_Rich ~ Aliens + TimeSinceFire, random=~subpID, data=dfall2, family="poisson", 
                      prior=prior, verbose=F, pr=T)
-mod_g_rich <- MCMCglmm(nat_g_Rich ~ Aliens + year, random=~subpID, data=dfall, family="poisson", 
+mod_g_rich <- MCMCglmm(nat_g_Rich ~ Aliens + TimeSinceFire, random=~subpID, data=dfall2, family="poisson", 
                        prior=prior, verbose=F, pr=T)
-mod_e_rich <- MCMCglmm(nat_e_Rich ~ Aliens + year, random=~subpID, data=dfall, family="poisson", 
+mod_e_rich <- MCMCglmm(nat_e_Rich ~ Aliens + TimeSinceFire, random=~subpID, data=dfall2, family="poisson", 
                        prior=prior, verbose=F, pr=T)
-mod_b_rich <- MCMCglmm(nat_b_Rich ~ Aliens + year, random=~subpID, data=dfall, family="poisson", 
+mod_b_rich <- MCMCglmm(nat_b_Rich ~ Aliens + TimeSinceFire, random=~subpID, data=dfall2, family="poisson", 
                        prior=prior, verbose=F, pr=T)
-mod_t_rich <- MCMCglmm(nat_t_Rich ~ Aliens + year, random=~subpID, data=dfall, family="poisson", 
+mod_t_rich <- MCMCglmm(nat_t_Rich ~ Aliens + TimeSinceFire, random=~subpID, data=dfall2, family="poisson", 
                        prior=prior, verbose=F, pr=T)
 summary(mod_h_rich)
 summary(mod_g_rich)
@@ -305,31 +371,106 @@ summary(mod_b_rich)
 summary(mod_t_rich)
 plot(mod_h_rich)
 
-1-var(dfall$nat_h_Rich-predict(mod_h_rich)[,1])/var(dfall$nat_h_Rich) # 0.17
-1-var(dfall$nat_g_Rich-predict(mod_g_rich)[,1])/var(dfall$nat_g_Rich) # 0.14
-1-var(dfall$nat_e_Rich-predict(mod_e_rich)[,1])/var(dfall$nat_e_Rich) # 0.13
-1-var(dfall$nat_b_Rich-predict(mod_b_rich)[,1])/var(dfall$nat_b_Rich) # 0.04
-1-var(dfall$nat_t_Rich-predict(mod_t_rich)[,1])/var(dfall$nat_t_Rich) # 0.08
+1-var(dfall2$nat_h_Rich-predict(mod_h_rich)[,1])/var(dfall2$nat_h_Rich) # 0.11
+1-var(dfall2$nat_g_Rich-predict(mod_g_rich)[,1])/var(dfall2$nat_g_Rich) # 0.15
+1-var(dfall2$nat_e_Rich-predict(mod_e_rich)[,1])/var(dfall2$nat_e_Rich) # 0.11
+1-var(dfall2$nat_b_Rich-predict(mod_b_rich)[,1])/var(dfall2$nat_b_Rich) # 0.03
+1-var(dfall2$nat_t_Rich-predict(mod_t_rich)[,1])/var(dfall2$nat_t_Rich) # 0.09
 
 
 # -------------------------------------------------
 # Functional diversity  over time pet treatment
 # -------------------------------------------------
-p4 <- ggplot(dfall, aes(factor(year), natFD)) + geom_boxplot(aes(fill = factor(Aliens))) 
-p4
+# color per treatment
+#............................
+# Natives
+par(mfrow=c(2,3))
+for(j in c("natFD", "nat_g_FD", "nat_e_FD", "nat_b_FD", "nat_t_FD")){
+  for(i in unique(dfall$subpID)){
+    temp <- dfall[dfall$subpID==i,] ; temp2 <- temp[order(temp$TimeSinceFire),] 
+    if(i == unique(dfall$subpID)[1]) plot(0, 0, main=j, type="n", ylim=c(0,1), xlim=c(0,14))  
+    if(sum(is.na(temp2[,j]))!=nrow(temp2)) {
+      points(jitter(temp2[,j]) ~ temp2$TimeSinceFire, type="l", col=temp2$col[1]) }
+  }
+}  
+legend("topright", legend = unique(dfall[,26:27])[,1], col=unique(dfall[,26:27])[,2], lty=1)
+
+
+# Invasives
+par(mfrow=c(2,2))
+for(j in c("invFD", "inv_h_FD", "inv_g_FD", "inv_t_FD")){
+  for(i in unique(dfall$subpID)){
+    temp <- dfall[dfall$subpID==i,] ; temp2 <- temp[order(temp$TimeSinceFire),] 
+    if(i == unique(dfall$subpID)[1]) plot(0, 0, main=j, type="n", ylim=c(0,1), xlim=c(0,14))  
+    if(sum(is.na(temp2[,j]))!=nrow(temp2)) {
+      points(jitter(temp2[,j]) ~ temp2$TimeSinceFire, type="l", col=temp2$col[1]) }
+  }
+}  
+legend("topright", legend = unique(dfall[,26:27])[,1], col=unique(dfall[,26:27])[,2], lty=1)
+
+
+# Look at averages and sd
+#............................
+# Natives
+par(mfrow=c(2,3))
+for(j in c("natFD", "nat_g_FD", "nat_e_FD", "nat_b_FD", "nat_t_FD")){
+  for(i in unique(dfall$Aliens)){
+    temp <- dfall[dfall$Aliens==i,] 
+    fireY <- sort(unique(temp$TimeSinceFire))
+    tMean <- sapply(fireY, function(x) mean(temp[temp$TimeSinceFire==x, j], na.rm=T))
+    tSD <- sapply(fireY, function(x) sd(temp[temp$TimeSinceFire==x, j], na.rm=T))
+    if(i==unique(dfall$Aliens)[1]) { 
+      plot(0,0, type="n", main=j, ylab="Diversity", xlab="time since fire", ylim=c(0,1), xlim=c(0,14)) } 
+    points(jitter(tMean) ~ fireY, type="l", col=temp$col[1], lwd=2) 
+    polygon(c(fireY, rev(fireY)), c((tMean+tSD), rev(tMean-tSD)), col=adjustcolor(temp$col[1], .3), border = F)    }    
+} 
+legend("topright", legend = unique(dfall[,26:27])[,1], col=unique(dfall[,26:27])[,2], lty=1)
+
 
 # Test the MCMCglmm : gaussian distribution 
-# FD ~ treatment + time + Alien|Site + 1|Site + 1|site/subplot (+ env?)
-head(dfall)
-
+#............................
 prior<-list(R=list(V=1, nu=0.002), G=list(G1=list(V=1, nu=0.002)))
-mod1 <- MCMCglmm(natFD ~ Aliens * year, random=~subpID, data=dfall, family="gaussian", 
+mod1 <- MCMCglmm(natFD ~ Aliens * TimeSinceFire, random=~subpID, data=dfall2, family="gaussian", 
                   prior=prior, verbose=F, pr=T)
 summary(mod1)
 plot(mod1)
-1-var(na.omit(dfall$natFD-predict(mod1)[,1]))/var(na.omit(dfall$natFD)) # 0.00
+1-var(na.omit(dfall2$natFD-predict(mod1)[,1]))/var(na.omit(dfall2$natFD)) # 0.01
+
+# Test the MCMCglmm : replace the NAs with 0
+dfall3 <- dfall[!is.na(dfall$TimeSinceFire),]
+dfall3$natFD <- ifelse(is.na(dfall3$natFD), 0, dfall3$natFD)
+prior<-list(R=list(V=1, nu=0.002), G=list(G1=list(V=1, nu=0.002)))
+mod1 <- MCMCglmm(natFD ~ Aliens * TimeSinceFire + Aliens:I(TimeSinceFire^2), random=~subpID, data=dfall3, family="gaussian", prior=prior, verbose=F, pr=T)
+summary(mod1)
+# plot(mod1)
+1-var(na.omit(dfall3$natFD-predict(mod1)[,1]))/var(na.omit(dfall3$natFD)) # 0.02
 
 
+# Test the gamm 
+#............................
+gam1 <- gamm(natFD ~ Aliens * TimeSinceFire, random=~subpID, data=dfall2, family="gaussian", 
+                 prior=prior, verbose=F, pr=T)
+summary(mod1)
+plot(mod1)
+1-var(na.omit(dfall2$natFD-predict(mod1)[,1]))/var(na.omit(dfall2$natFD)) # 0.01
+
+
+
+# Look at averages and sd : replace the NAs with 0
+par(mfrow=c(2,3))
+for(j in c("natFD", "nat_h_FD", "nat_g_FD", "nat_e_FD", "nat_b_FD", "nat_t_FD")){
+  for(i in unique(dfall3$Aliens)){
+    temp <- dfall3[dfall3$Aliens==i,] 
+    fireY <- sort(unique(temp$TimeSinceFire))
+    tMean <- sapply(fireY, function(x) mean(temp[temp$TimeSinceFire==x, j], na.rm=T))
+    tSD <- sapply(fireY, function(x) sd(temp[temp$TimeSinceFire==x, j], na.rm=T))
+    tMean <- ifelse(is.na(tMean), 0, tMean) ; tSD <- ifelse(is.na(tSD), 0, tSD) 
+    if(i==unique(dfall$Aliens)[1]) { 
+      plot(0,0, type="n", main=j, ylab="Richness", xlab="time since fire", ylim=c(0,1), xlim=c(0,14)) } 
+    points(jitter(tMean) ~ fireY, type="l", col=temp$col[1], lwd=2) 
+    polygon(c(fireY, rev(fireY)), c((tMean+tSD), rev(tMean-tSD)), col=adjustcolor(temp$col[1], .3), border = F)    }    
+} 
+legend("topright", legend = unique(dfall[,26:27])[,1], col=unique(dfall[,26:27])[,2], lty=1)
 
 
 # -------------------------------------------------
