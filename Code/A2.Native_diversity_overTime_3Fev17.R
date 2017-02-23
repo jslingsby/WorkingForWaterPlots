@@ -8,6 +8,7 @@ library(cluster)
 library(picante)
 library(MCMCglmm)
 library(lme4)
+library(vegan)
 
 if (Sys.getenv("USER")=="jasper") {setwd("/Users/jasper/Dropbox/Shared/CapeCommunities/Data/Raw/")}
 if (Sys.getenv("USER")=="Laure") {setwd("~/Dropbox/GIT/2016_CapeCom/Data/LaurePrep/")}
@@ -187,23 +188,62 @@ YY <- c(2002, 2008, 2011, 2014)
 # }
 # names(ldf) <- as.character(YY)
 # save(ldf, file=paste(pathRes, "Richness_FunDiversity_allTraits_allSpcIDindpdt_9Fev17", sep=""))
-load(paste(pathRes, "Richness_FunDiversity_allTraits_allSpcIDindpdt_9Fev17", sep=""))  # ldf
-names(ldf[[1]])
-head(ldf[[1]]$FunDivDF)
-head(ldf[[1]]$RichDF)
 
+
+
+# -----------------------------------------------------
+# Calculate rarefied richness
+# -----------------------------------------------------
+# # Considering all spc ID independent (i.e. genus_sp1 = 1 species)
+# ldf <- list()
+# for(x in 1:4){
+#   temp <- eval(parse(text=DF[x]))
+#   RemNam <- unlist(sapply(c("Unknown", "Weed", "Moss"), function(y) grep(y, names(temp))))
+#   temp2 <- temp[, !names(temp) %in% RemNam]
+#   temp3 <- as.data.frame(apply(temp2, 1:2, function(x) ifelse(x==0.1, 1, x)))
+#   NATnam <- names(temp3)[!names(temp3) %in% invID]    ; INVnam <- names(temp3)[colnames(temp3) %in% invID]
+#   NAT_h <- names(temp3)[names(temp3) %in% natID_herb] ; NAT_g <- names(temp3)[names(temp3) %in% natID_gram]
+#   NAT_e <- names(temp3)[names(temp3) %in% natID_eric] ; NAT_b <- names(temp3)[names(temp3) %in% natID_bulb]
+#   NAT_t <- names(temp3)[names(temp3) %in% natID_tree] ; INV_h <- names(temp3)[names(temp3) %in% invID_herb]
+#   INV_g <- names(temp3)[names(temp3) %in% invID_gram] ; INV_t <- names(temp3)[names(temp3) %in% invID_tree]
+# 
+#   RichRarfyDF <- data.frame(subpID=row.names(temp3), year=YY[x], allRich = rarefy(temp3, 4),
+#                             natRich = rarefy(temp3[, NATnam], 2), nat_h_Rich = rarefy(temp3[, NAT_h], 4),
+#                             nat_g_Rich = rarefy(temp3[, NAT_g], 4), nat_e_Rich = rarefy(temp3[, NAT_e],  4),
+#                             nat_b_Rich = rarefy(temp3[, NAT_b], 4), nat_t_Rich = rarefy(temp3[, NAT_t],  4),
+#                             invRich = rarefy(temp3[, INVnam],  4), inv_h_Rich = rarefy(temp3[, INV_h], 4),
+#                             inv_g_Rich = rarefy(temp3[, INV_g], 4), inv_t_Rich = rarefy(temp3[, INV_t], 4))
+#   ldf[[x]] <- list(spc_site=temp3, RichDF=RichRarfyDF)
+# }
+# names(ldf) <- as.character(YY)
+# save(ldf, file=paste(pathRes, "Richness_rarefied_allSpcIDindpdt_22Fev17", sep=""))
+# 
+
+
+# -----------------------------------------------------
 # merge the dataframes
+# -----------------------------------------------------
+# EITHER LOAD THE OBSERVED RICHNESS
+load(paste(pathRes, "Richness_FunDiversity_allTraits_allSpcIDindpdt_9Fev17", sep=""))  # ldf
 df1 <- merge(ldf[[1]]$RichDF, ldf[[1]]$FunDivDF, by="subpID")
 df2 <- merge(ldf[[2]]$RichDF, ldf[[2]]$FunDivDF, by="subpID")
 df3 <- merge(ldf[[3]]$RichDF, ldf[[3]]$FunDivDF, by="subpID")
 df4 <- merge(ldf[[4]]$RichDF, ldf[[4]]$FunDivDF, by="subpID")
 dfall <- do.call(rbind, list(df1, df2, df3, df4))
 dfall <- dfall[, !names(dfall)=="year.y"]
+
+# OR THE RAREFIED RICHNESS
+load(paste(pathRes, "Richness_rarefied_allSpcIDindpdt_22Fev17", sep=""))  # ldf
+dfall <- do.call(rbind, list(ldf[[1]][[2]], ldf[[2]][[2]], ldf[[3]][[2]], ldf[[4]][[2]]))
+
+# THEN CLEAN THE CHOSEN DATASET
 dfall$subpID <- as.character(dfall$subpID)
 names(dfall)[2] <- "year"
 str(dfall)
 head(dfall)
 dim(dfall) # 1601
+
+
 
 # Remove species not identified at the species level --> TO DO
 
@@ -249,13 +289,32 @@ dfall$TimeSinceFire <- unlist(sapply(1:nrow(dfall), function(x) {
                           return(ifelse(length(res)==0, NA, min(res)))  } ) )
 
 
+
 # -------------------------------------------------
-# Richness  over time pet treatment
+# reorganize the treatment levels
 # -------------------------------------------------
+head(dfall)
+dfall$Aliens2 <- factor(dfall$Aliens, levels=c("No Aliens", "Cleared", "Invaded"))
+
+# -------------------------------------------------
+# only look at the sites that burnt only once
+# -------------------------------------------------
+f2000 <- SiInf[which(SiInf$Burned_2000==1 & rowSums(SiInf[,10:15])==0), "Site"]
+dfall_f <- dfall[which(dfall$plotID %in% f2000),]
+dim(dfall_f) # 424  29
+
+# -------------------------------------------------
+# TOTAL NATIVE Richness over time pet treatment
+# -------------------------------------------------
+
+dfall$year_2 <- dfall$year^2
+dfall <- dfall[!is.na(dfall$TimeSinceFire),]
+# dfall <- dfall_f
+
 # all species together
-p1 <- ggplot(dfall, aes(factor(year), allRich)) + geom_boxplot(aes(fill = factor(Aliens))) 
-p2 <- ggplot(dfall, aes(factor(year), natRich)) + geom_boxplot(aes(fill = factor(Aliens))) 
-p3 <- ggplot(dfall, aes(factor(year), invRich)) + geom_boxplot(aes(fill = factor(Aliens))) 
+p1 <- ggplot(dfall, aes(factor(year), allRich)) + geom_boxplot(aes(fill = Aliens2)) 
+p2 <- ggplot(dfall, aes(factor(year), natRich)) + geom_boxplot(aes(fill = Aliens2)) 
+p3 <- ggplot(dfall, aes(factor(year), invRich)) + geom_boxplot(aes(fill = Aliens2)) 
 multiplot(p1, p2, p3, cols=3)
 
 # lmer
@@ -263,7 +322,7 @@ multiplot(p1, p2, p3, cols=3)
                
 # MCMCglmm
 prior<-list(R=list(V=1, nu=0.002), G=list(G1=list(V=1, nu=0.002)))
-mod_rich <- MCMCglmm(natRich ~ Aliens + year, random=~subpID, data=dfall, family="poisson", 
+mod_rich <- MCMCglmm(natRich ~ Aliens2 * TimeSinceFire, random=~subpID, data=dfall, # family="poisson", 
                  prior=prior, verbose=F, pr=T)
 summary(mod_rich)
 plot(mod_rich)
@@ -273,7 +332,7 @@ RES <- dfall$natRich-predict(mod_rich)[,1]
 1-var(RES)/var(dfall$natRich) # 0.15
 
 # -------------------------------------------------
-# Richness per native species type  over time per treatment
+# NATIVE Richness per native species type  over time per treatment
 # -------------------------------------------------
 # all species together
 p1 <- ggplot(dfall, aes(factor(year), nat_h_Rich)) + geom_boxplot(aes(fill = factor(Aliens))) 
@@ -288,22 +347,28 @@ multiplot(p1, p2, p3, p4, p5, cols=3)
 
 # MCMCglmm
 prior<-list(R=list(V=1, nu=0.002), G=list(G1=list(V=1, nu=0.002)))
-mod_h_rich <- MCMCglmm(nat_h_Rich ~ Aliens + year, random=~subpID, data=dfall, family="poisson", 
+mod_h_rich <- MCMCglmm(nat_h_Rich ~ Aliens2 * TimeSinceFire, random=~subpID, data=dfall, # family="poisson", 
                      prior=prior, verbose=F, pr=T)
-mod_g_rich <- MCMCglmm(nat_g_Rich ~ Aliens + year, random=~subpID, data=dfall, family="poisson", 
+mod_g_rich <- MCMCglmm(nat_g_Rich ~ Aliens2 * TimeSinceFire, random=~subpID, data=dfall, # family="poisson", 
                        prior=prior, verbose=F, pr=T)
-mod_e_rich <- MCMCglmm(nat_e_Rich ~ Aliens + year, random=~subpID, data=dfall, family="poisson", 
+mod_e_rich <- MCMCglmm(nat_e_Rich ~ Aliens2 * TimeSinceFire, random=~subpID, data=dfall, # family="poisson", 
                        prior=prior, verbose=F, pr=T)
-mod_b_rich <- MCMCglmm(nat_b_Rich ~ Aliens + year, random=~subpID, data=dfall, family="poisson", 
+mod_b_rich <- MCMCglmm(nat_b_Rich ~ Aliens2 * TimeSinceFire, random=~subpID, data=dfall, # family="poisson", 
                        prior=prior, verbose=F, pr=T)
-mod_t_rich <- MCMCglmm(nat_t_Rich ~ Aliens + year, random=~subpID, data=dfall, family="poisson", 
+mod_t_rich <- MCMCglmm(nat_t_Rich ~ Aliens2 * TimeSinceFire, random=~subpID, data=dfall, # family="poisson", 
                        prior=prior, verbose=F, pr=T)
+# mod_g_rich <- MCMCglmm(nat_g_Rich ~ Aliens2 + TimeSinceFire, random=~subpID, data=dfall, # family="poisson", 
+#                        prior=prior, verbose=F, pr=T)
+# mod_b_rich <- MCMCglmm(nat_b_Rich ~ Aliens2 + TimeSinceFire, random=~subpID, data=dfall, # family="poisson", 
+#                        prior=prior, verbose=F, pr=T)
+# mod_t_rich <- MCMCglmm(nat_t_Rich ~ Aliens2 + TimeSinceFire, random=~subpID, data=dfall, # family="poisson", 
+#                        prior=prior, verbose=F, pr=T)
+
 summary(mod_h_rich)
 summary(mod_g_rich)
 summary(mod_e_rich)
 summary(mod_b_rich)
 summary(mod_t_rich)
-plot(mod_h_rich)
 
 1-var(dfall$nat_h_Rich-predict(mod_h_rich)[,1])/var(dfall$nat_h_Rich) # 0.17
 1-var(dfall$nat_g_Rich-predict(mod_g_rich)[,1])/var(dfall$nat_g_Rich) # 0.14
@@ -311,6 +376,39 @@ plot(mod_h_rich)
 1-var(dfall$nat_b_Rich-predict(mod_b_rich)[,1])/var(dfall$nat_b_Rich) # 0.04
 1-var(dfall$nat_t_Rich-predict(mod_t_rich)[,1])/var(dfall$nat_t_Rich) # 0.08
 
+# -------------------------------------------------
+# TOTAL INVASIVE Richness over time pet treatment
+# -------------------------------------------------
+dfall$year_2 <- dfall$year^2
+dfall <- dfall[!is.na(dfall$TimeSinceFire),]
+head(dfall)
+dfallI <- dfall[which(dfall$Aliens=="Invaded"),] 
+# dfallI <- dfall_f[which(dfall_f$Aliens=="Invaded"),] 
+
+prior<-list(R=list(V=1, nu=0.002), G=list(G1=list(V=1, nu=0.002)))
+mod_rich <- MCMCglmm(invRich ~ TimeSinceFire, random=~subpID, data=dfallI, # family="poisson", 
+                     prior=prior, verbose=F, pr=T)
+summary(mod_rich)
+1-var(dfallI$invRich-predict(mod_rich)[,1])/var(dfallI$invRich) # 0.15
+
+# -------------------------------------------------
+# INVASIVE Richness per native species type  over time per treatment
+# -------------------------------------------------
+prior<-list(R=list(V=1, nu=0.002), G=list(G1=list(V=1, nu=0.002)))
+mod_h_rich <- MCMCglmm(inv_h_Rich ~ TimeSinceFire, random=~subpID, data=dfallI, # family="poisson", 
+                       prior=prior, verbose=F, pr=T)
+mod_g_rich <- MCMCglmm(inv_g_Rich ~ TimeSinceFire, random=~subpID, data=dfallI, #  family="poisson", 
+                       prior=prior, verbose=F, pr=T)
+mod_t_rich <- MCMCglmm(inv_t_Rich ~ TimeSinceFire, random=~subpID, data=dfallI, #  family="poisson", 
+                       prior=prior, verbose=F, pr=T)
+
+summary(mod_h_rich)
+summary(mod_g_rich)
+summary(mod_t_rich)
+
+1-var(dfallI$inv_h_Rich-predict(mod_h_rich)[,1])/var(dfallI$inv_h_Rich) # 0.17
+1-var(dfallI$inv_g_Rich-predict(mod_g_rich)[,1])/var(dfallI$inv_g_Rich) # 0.14
+1-var(dfallI$inv_t_Rich-predict(mod_t_rich)[,1])/var(dfallI$inv_t_Rich) # 0.08
 
 # -------------------------------------------------
 # Functional diversity  over time pet treatment
