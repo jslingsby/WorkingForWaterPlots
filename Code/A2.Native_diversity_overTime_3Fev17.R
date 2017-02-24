@@ -317,9 +317,6 @@ p2 <- ggplot(dfall, aes(factor(year), natRich)) + geom_boxplot(aes(fill = Aliens
 p3 <- ggplot(dfall, aes(factor(year), invRich)) + geom_boxplot(aes(fill = Aliens2)) 
 multiplot(p1, p2, p3, cols=3)
 
-# lmer
-# glmm1 <- glmer(natRich ~ Aliens + year + (1|subpID), data=dfall, family="poisson")
-               
 # MCMCglmm
 prior<-list(R=list(V=1, nu=0.002), G=list(G1=list(V=1, nu=0.002)))
 mod_rich <- MCMCglmm(natRich ~ Aliens2 * TimeSinceFire, random=~subpID, data=dfall, # family="poisson", 
@@ -331,7 +328,14 @@ plot(mod_rich)
 RES <- dfall$natRich-predict(mod_rich)[,1]
 1-var(RES)/var(dfall$natRich) # 0.15
 
-# -------------------------------------------------
+# test with invasive richness
+mod_rich <- MCMCglmm(natRich ~ Aliens2 * TimeSinceFire + inv_h_Rich + inv_g_Rich, random=~subpID, data=dfall[dfall$Aliens!="Cleared",], prior=prior, verbose=F, pr=T) #, family="poisson")
+summary(mod_rich)
+RES <- dfall[dfall$Aliens!="Cleared","natRich"]-predict(mod_rich)[,1]
+1-var(RES)/var(dfall[dfall$Aliens!="Cleared","natRich"]) # 0.13
+
+
+⁄# -------------------------------------------------
 # NATIVE Richness per native species type  over time per treatment
 # -------------------------------------------------
 # all species together
