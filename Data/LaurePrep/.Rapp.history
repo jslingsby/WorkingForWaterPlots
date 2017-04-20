@@ -1,343 +1,695 @@
-PropRich <- round(RichTC/RichAll*100)
-data.frame(RichAll=RichAll, RichTC=RichTC, PropRich=PropRich)
-temp <- data.frame(RichAll=RichAll, RichTC=RichTC, PropRich=PropRich)
-temp[order(temp[,3]),]
-temp[order(temp[,1]),]
-plot(PropRich ~ RichAll, data=temp)
-plot(PropRich ~ RichAll, data=temp, main="10x10 sites 2002", ylab="Prop species in Cont Traits")
-plot(PropRich ~ RichAll, data=temp, main="10x10 sites 2002", ylab="Prop species in Cont Traits", xlab="Site richness")
-TEMP <- paste("PlotSpc_20", c(02, 08, 11, 14), "_12July16.txt", sep="")
-TEMP
-TEMP <- paste("PlotSpc_20", c("02", "08", "11", "14"), "_12July16.txt", sep="")
-TEMP
-par(mfrow=c(2,2))#
-YY <- c("02", "08", "11", "14")#
-TEMP <- paste("PlotSpc_20", YY, "_12July16.txt", sep="")#
+plot(tt[,2] ~ tt[,"time"], col=cbPalette[2], type="l", xlab="time", ylab="Density of Species", ylim = c(0,1))
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=cbPalette[i], type="l") }
+plot(tt[,2] ~ tt[,"time"], col=cbPalette[9], type="l", xlab="time", ylab="Density of Species", ylim = c(0,1))
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=cbPalette[i], type="l") }
+plot(tt[,2] ~ tt[,"time"], col=cbPalette[1], type="l", xlab="time", ylab="Density of Species", ylim = c(0,1))
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=cbPalette[i], type="l") }
+COL <- c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a')
+COL <- c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a')#
+plot(tt[,2] ~ tt[,"time"], col=col[1], type="l", xlab="time", ylab="Density of Species", ylim = c(0,1))#
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=col[i], type="l") }
+COL <- c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a')#
+plot(tt[,2] ~ tt[,"time"], col=COL[1], type="l", xlab="time", ylab="Density of Species", ylim = c(0,1))#
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l") }
+plot(tt[,2] ~ tt[,"time"], col=COL[2], type="l", xlab="time", ylab="Density of Species", ylim = c(0,1))
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l") }
+plot(tt[,2] ~ tt[,"time"], col=COL[3], type="l", xlab="time", ylab="Density of Species", ylim = c(0,1))
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l") }
+plot(tt[,2] ~ tt[,"time"], col=COL[5], type="l", xlab="time", ylab="Density of Species", ylim = c(0,1))
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l") }
+plot(tt[,2] ~ tt[,"time"], col=COL[4], type="l", xlab="time", ylab="Density of Species", ylim = c(0,1))
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l") }
+plot(tt[,2] ~ tt[,"time"], col=COL[7], type="l", xlab="time", ylab="Density of Species", ylim = c(0,1))
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l") }
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", xlab="time", ylab="Density of Species", ylim = c(0,1))
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l") }
+plot(tt[,2] ~ tt[,"time"], col=COL[9], type="l", xlab="time", ylab="Density of Species", ylim = c(0,1))
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l") }
+plot(tt[,2] ~ tt[,"time"], col=COL[10], type="l", xlab="time", ylab="Density of Species", ylim = c(0,1))
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l") }
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", xlab="time", ylab="Density of Species", ylim = c(0,1))
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l") }
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), )
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l") }
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }
+tt <- l.all$l.timeAbund[[2]]#
 #
-for(i in 1:4){#
-	tdat <- read.delim(TEMP[i])#
-	RichAll <- rowSums(tdat)#
-	RichTC <- rowSums(tdat[, which(names(tdat) %in% cont)])#
-	PropRich <- round(RichTC/RichAll*100)#
-	temp <- data.frame(RichAll=RichAll, RichTC=RichTC, PropRich=PropRich)#
-	temp[order(temp[,1]),]#
-	plot(PropRich ~ RichAll, data=temp, main=paste("10x10 sites 20", YY[i], sep=""), ylab="Prop species in Cont Traits", xlab="Site richness")#
-}
-par(mfrow=c(2,2))#
-YY <- c("02", "08", "11", "14")#
-TEMP <- paste("subPlotSpc_20", YY, "_PropCover_21June16.txtt", sep="")
-i
-tdat <- read.delim(TEMP[i])
-tdat
-RichAll <- rowSums(tdat)
-RichTC <- rowSums(tdat[, which(names(tdat) %in% cont)])
-RichAll
-RichTC <- rowSums(tdat[, which(names(tdat) %in% cont)])
-PropRich <- round(RichTC/RichAll*100)
-temp <- data.frame(RichAll=RichAll, RichTC=RichTC, PropRich=PropRich)
-temp
-par(mfrow=c(2,2))#
-YY <- c("02", "08", "11", "14")#
-TEMP <- paste("subPlotSpc_20", YY, "_PropCover_21June16.txtt", sep="")#
-for(i in 1:4){#
-	tdat <- read.delim(TEMP[i])#
-	RichAll <- rowSums(tdat)#
-	RichTC <- rowSums(tdat[, which(names(tdat) %in% cont)])#
-	PropRich <- round(RichTC/RichAll*100)#
-	temp <- data.frame(RichAll=RichAll, RichTC=RichTC, PropRich=PropRich)#
-	temp[order(temp[,1]),]#
-	plot(PropRich ~ RichAll, data=temp, main=paste("1x1 sites 20", YY[i], sep=""), ylab="Prop Cover in Cont Traits", xlab="Site total cover")#
-}
-par(mfrow=c(2,2))#
-YY <- c("02", "08", "11", "14")#
-TEMP <- paste("subPlotSpc_20", YY, "_PropCover_21June16.txt", sep="")#
-for(i in 1:4){#
-	tdat <- read.delim(TEMP[i])#
-	RichAll <- rowSums(tdat)#
-	RichTC <- rowSums(tdat[, which(names(tdat) %in% cont)])#
-	PropRich <- round(RichTC/RichAll*100)#
-	temp <- data.frame(RichAll=RichAll, RichTC=RichTC, PropRich=PropRich)#
-	temp[order(temp[,1]),]#
-	plot(PropRich ~ RichAll, data=temp, main=paste("1x1 sites 20", YY[i], sep=""), ylab="Prop Cover in Cont Traits", xlab="Site total cover")#
-}
-par(mfrow=c(2,2))#
-YY <- c("02", "08", "11", "14")#
-TEMP <- paste("subPlotSpc_20", YY, "_PropCover_12July16.txt", sep="")#
-for(i in 1:4){#
-	tdat <- read.delim(TEMP[i])#
-	RichAll <- rowSums(tdat)#
-	RichTC <- rowSums(tdat[, which(names(tdat) %in% cont)])#
-	PropRich <- round(RichTC/RichAll*100)#
-	temp <- data.frame(RichAll=RichAll, RichTC=RichTC, PropRich=PropRich)#
-	temp[order(temp[,1]),]#
-	plot(PropRich ~ RichAll, data=temp, main=paste("1x1 sites 20", YY[i], sep=""), ylab="Prop Cover in Cont Traits", xlab="Site total cover")#
-}
-load("List_Community_MPD_MFD_and_PhyTraitDistMat_14July16")
-load("~/Desktop/Dropbox/Travail_SA/3.ComEcol/CapeCommunities/Data/Results/List_Community_MPD_MFD_and_PhyTraitDistMat_14July16")
-l.com.yy
-]])
-names(l.com.yy[[1]])
-names(l.com.yy)  # "2002" "2008" "2011" "2014"
-names(l.com.yy[[1]]) # "COM" ; "l.com.phy" ;  "l.phly" ; "l.com.trait" ; "l.trait.dist"
-head(l.com.yy$"2002"$COM)
-#........#
-p02 <- read.delim("PlotSpc_2002_21June16.txt")#
-p08 <- read.delim("PlotSpc_2008_21June16.txt")#
-p11 <- read.delim("PlotSpc_2011_21June16.txt")#
-p14 <- read.delim("PlotSpc_2014_21June16.txt")
-p02 <- read.delim("PlotSpc_2002_12July16.txt")#
-p08 <- read.delim("PlotSpc_2008_12July16.txt")#
-p11 <- read.delim("PlotSpc_2011_12July16.txt")#
-p14 <- read.delim("PlotSpc_2014_12July16.txt")
-head(p02)
-YY <- c("2002", "2008", "2011", "2014")
-yy=YY[1]
-yy
-if(yy=="2002") tempP <- p02 ; if(yy=="2008") tempP <- p08#
-	if(yy=="2011") tempP <- p11 ; if(yy=="2014") tempP <- p14#
-	COM <- data.frame(sitID=row.names(tempP), year=yy, rich=rowSums(tempP), nbInv=rowSums(tempP[,names(tempP) %in% II]))
-COM
-temp <- data.frame(sitID=row.names(p02), p02)
-temp[1:5, 1:10]
-temp[1:10, 1:10]
-substring(temp$sitID, 2, 10)
-strsplit(substring(temp$sitID, 2, 10), "_")
-unlist(strsplit(substring(temp$sitID, 2, 10), "_"))
-matrix(unlist(strsplit(substring(temp$sitID, 2, 10), "_")), ncol=2)
-matrix(unlist(strsplit(substring(temp$sitID, 2, 10), "_")), ncol=2, byrow=T)
-temp <- data.frame(sitID=row.names(p02), p02)
-sitid <- matrix(unlist(strsplit(substring(temp$sitID, 2, 10), "_")), ncol=2, byrow=T)
-sitid <- data.frame(matrix(unlist(strsplit(substring(temp$sitID, 2, 10), "_")), ncol=2, byrow=T))
-head(sitid)
-names(sitid) <- c("LocID", "PlotID")
-temp <- data.frame(sitID=temp$sitID, sitid, p02)
-temp[1:10, 1:10]
-PP <- sapply(unique(temp$LocID), function(x) colSums(temp[temp$LocID==x,c(2, 4:ncol(temp))]))
-temp$LocID
-temp$LocID <- as.numeric(as.character(temp$LocID))
-PP <- sapply(unique(temp$LocID), function(x) colSums(temp[temp$LocID==x,c(2, 4:ncol(temp))]))
-PP
-PP <- t(sapply(unique(temp$LocID), function(x) colSums(temp[temp$LocID==x,c(2, 4:ncol(temp))])))
-head(PP)
-Rich <- apply(PP[,2:ncol(PP)], 1, function(x) sum(x>0))
-Rich
-plot(Rich)
-hist(Rich)
-hist(Rich, breaks=10)
-hist(Rich, breaks=20)
-hist(Rich, breaks=50)
-COL
-hist(Rich, breaks=50, col="#a6cee3")
-hist(Rich, breaks=50, col="#1f78b4")
-yy
-if(yy=="2002") tempP <- p02 ; if(yy=="2008") tempP <- p08#
-	if(yy=="2011") tempP <- p11 ; if(yy=="2014") tempP <- p14
-yy="2008"
-if(yy=="2002") tempP <- p02 ; if(yy=="2008") tempP <- p08
-temp <- data.frame(sitID=row.names(tempP), tempP)
-row.names(tempP)
-data.frame(matrix(unlist(strsplit(temp$sitID, ".")), ncol=2, byrow=T))
-temp$sitID
-temp <- data.frame(sitID=row.names(tempP), tempP)
-data.frame(matrix(unlist(strsplit(temp$sitID, ".")), ncol=2, byrow=T))
-temp <- data.frame(sitID=as.character(row.names(tempP)), tempP)
-data.frame(matrix(unlist(strsplit(temp$sitID, ".")), ncol=2, byrow=T))
-temp$sitID
-as.character(row.names(tempP))
-temp <- data.frame(sitID=as.character(row.names(tempP)), tempP)
-temp$sitID
-temp$sitID <- as.character(temp$sitID)
-data.frame(matrix(unlist(strsplit(temp$sitID, ".")), ncol=2, byrow=T))
-strsplit(temp$sitID, ".")
-temp$sitID
-strsplit(temp$sitID, ".")
-nchar(temp$sitID)-2
-substring(temp$sitID, 1, nchar(temp$sitID)-2 )
-tsid <- as.character(temp$sitID)
-sitid <- data.frame(LID=substring(tsid, 1, nchar(tsid)-2), PID=substring(tsid, nchar(tsid)-1, 20))
-sitid
-data.frame(LID=substring(tsid, 1, nchar(tsid)-2), PID=substring(tsid, nchar(tsid), 20))
-sitid <- data.frame(LID=substring(tsid, 1, nchar(tsid)-2), PID=substring(tsid, nchar(tsid), 20))
-if(yy=="2008"){	sitid <- data.frame(LID=substring(tsid, 1, nchar(tsid)-2), PID=substring(tsid, nchar(tsid), 20)) }
-names(sitid) <- c("LocID", "PlotID")
-temp <- data.frame(sitID=temp$sitID, sitid, tempP)
-temp$LocID <- as.numeric(as.character(temp$LocID))
-PP <- t(sapply(unique(temp$LocID), function(x) colSums(temp[temp$LocID==x,c(2, 4:ncol(temp))])))
-PP
-Rich <- apply(PP[,2:ncol(PP)], 1, function(x) sum(x>0))
-hist(Rich, breaks=50, col="#1f78b4")
-l.SumPlot <- list()
-l.SumPlot$yy <- t(sapply(unique(temp$LocID), function(x) colSums(temp[temp$LocID==x,c(2, 4:ncol(temp))])))
-l.SumPlot <- list()
-l.SumPlot$yy <- t(sapply(unique(temp$LocID), function(x) colSums(temp[temp$LocID==x,c(2, 4:ncol(temp))])))
-l.SumPlot[yy] <- t(sapply(unique(temp$LocID), function(x) colSums(temp[temp$LocID==x,c(2, 4:ncol(temp))])))
-l.SumPlot[[yy]] <- t(sapply(unique(temp$LocID), function(x) colSums(temp[temp$LocID==x,c(2, 4:ncol(temp))])))
-names(l.SumPlot)
-yy <- "2011"
-temp <- data.frame(sitID=row.names(tempP), tempP)#
-	tsid <- as.character(temp$sitID)
-tsid
-y="2014"
-yy="2014"
-if(yy=="2014") tempP <- p14#
-	temp <- data.frame(sitID=row.names(tempP), tempP)#
-	tsid <- as.character(temp$sitID)
-tsid
-yy <- "2011"
-if(yy=="2011") tempP <- p11 ; if(yy=="2014") tempP <- p14#
-	temp <- data.frame(sitID=row.names(tempP), tempP)#
-	tsid <- as.character(temp$sitID)
-tsid
-YY <- c("2002", "2008", "2011", "2014")#
-l.SumPlot <- list()#
-for(yy in YY) {#
-	if(yy=="2002") tempP <- p02 ; if(yy=="2008") tempP <- p08#
-	if(yy=="2011") tempP <- p11 ; if(yy=="2014") tempP <- p14#
-	temp <- data.frame(sitID=row.names(tempP), tempP)#
-	tsid <- as.character(temp$sitID)#
-	if(yy=="2002"){	sitid <- data.frame(matrix(unlist(strsplit(substring(temp$sitID, 2, 10), "_")), ncol=2, byrow=T)) #
-		} else { sitid <- data.frame(LID=substring(tsid, 1, nchar(tsid)-2), PID=substring(tsid, nchar(tsid), 20)) }#
-	names(sitid) <- c("LocID", "PlotID")#
-	temp <- data.frame(sitID=temp$sitID, sitid, tempP)#
-	temp$LocID <- as.numeric(as.character(temp$LocID))#
-	l.SumPlot[[yy]] <- t(sapply(unique(temp$LocID), function(x) colSums(temp[temp$LocID==x,c(2, 4:ncol(temp))])))#
-}
-Rich <- lapply(l.SumPlot, function(y) apply(y[,2:ncol(y)], 1, function(x) sum(x>0)))
-Rich
-Rich <- lapply(l.SumPlot, function(y) apply(y[,2:ncol(y)], 1, function(x) sum(x>0)))
-unlist(Rich)
-unlist(Rich, use.names=F)
-sapply(names(Rich), function(x) cbind(year=x, rich=Rich[[x]]))
-l.SumPlot
-head(l.SumPlot[[1]])
-sapply(names(Rich), function(x) cbind(year=x, LocID=l.SumPlot[[x]], rich=Rich[[x]]))
-sapply(names(Rich), function(x) cbind(year=x, LocID=l.SumPlot[[x]]$LocID, rich=Rich[[x]]))
-sapply(names(Rich), function(x) cbind(year=x, LocID=l.SumPlot[[x]][,"LocID"], rich=Rich[[x]]))
-do.call(rbind, sapply(names(Rich), function(x) cbind(year=x, LocID=l.SumPlot[[x]][,"LocID"], rich=Rich[[x]])))
-allRich <- do.call(rbind, sapply(names(Rich), function(x) cbind(year=x, LocID=l.SumPlot[[x]][,"LocID"], rich=Rich[[x]])))
-allRich
-for(i in 1:3) allRich[,i] <- as.numeric(allRich[,i])
-head(allRich)
-for(i in 1:3) allRich[,i] <- as.numeric(allRich[,i])
-head(allRich)
-allRich <- as.data.frame(do.call(rbind, sapply(names(Rich), function(x) cbind(year=x, LocID=l.SumPlot[[x]][,"LocID"], rich=Rich[[x]]))))
-for(i in 1:3) allRich[,i] <- as.numeric(allRich[,i])
-head(allRich)
-allRich <- as.data.frame(do.call(rbind, sapply(names(Rich), function(x) cbind(year=x, LocID=l.SumPlot[[x]][,"LocID"], rich=Rich[[x]]))))
-head(allRich)
-str(allRich)
-head(allRich)
-for(i in 1:3) allRich[,i] <- as.numeric(allRich[,i])
-head(allRich)
-s4 <- names(table(allRich$LocID)[table(allRich$LocID)==4])
-s4
-com4 <- allC[which(allRich$LocID %in% s4),]
-length(unique(com4$LocID)) # 55
-com4 <- allC[which(allRich$LocID %in% s4),]
-length(unique(com4$LocID)) # 55
-s4 <- names(table(allRich$LocID)[table(allRich$LocID)==4])
-com4 <- allC[which(allRich$LocID %in% s4),]
-com4 <- allRich[which(allRich$LocID %in% s4),]
-length(unique(com4$LocID)) # 55
-dim(com4)  # 220
-p1 <- ggplot(com4, aes(x=year, y=rich, colour=sitID, group=sitID)) + geom_line(show.legend=F)
-p1
-p1 <- ggplot(com4, aes(x=year, y=rich, colour=LocID, group=LocID)) + geom_line(show.legend=F)
-p1
-p2 <- ggplot(allRich, aes(x=year, y=rich, colour=LocID, group=LocID)) + geom_line(show.legend=F)
-multiplot(p1, p2, cols=2)
-allRich <- as.data.frame(do.call(rbind, sapply(names(Rich), function(x) cbind(year=x, LocID=l.SumPlot[[x]][,"LocID"], rich=Rich[[x]]))))
-for(i in 1:3) allRich[,i] <- as.numeric(as.character(allRich[,i]))
-head(allRich)
-s4 <- names(table(allRich$LocID)[table(allRich$LocID)==4])#
-com4 <- allRich[which(allRich$LocID %in% s4),]#
-length(unique(com4$LocID)) # 55#
-dim(com4)  # 16#
+COL <- c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a')#
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), )#
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }
+tt <- l.all$l.timeAbund[[3]]#
 #
-p1 <- ggplot(com4, aes(x=year, y=rich, colour=LocID, group=LocID)) + geom_line(show.legend=F)#
-p2 <- ggplot(allRich, aes(x=year, y=rich, colour=LocID, group=LocID)) + geom_line(show.legend=F)#
-multiplot(p1, p2, cols=2)
-head(l.SumPlot[[1]])
-sp02_Abun <- read.delim("subPlotSpc_2002_NbIndiv_21June16.txt")
-#........#
-sp02_Abun <- read.delim("subPlotSpc_2002_NbIndiv_12July16.txt")#
-sp02_Cov <- read.delim("subPlotSpc_2002_PropCover_12July16.txt")#
+COL <- c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a')#
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), )#
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }
+tt <- l.all$l.timeAbund[[4]]#
 #
-sp08_Abun <- read.delim("subPlotSpc_2008_NbIndiv_12July16.txt")#
-sp08_Cov <- read.delim("subPlotSpc_2008_PropCover_12July16.txt")#
+COL <- c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a')#
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), )#
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }
+tt <- l.all$l.timeAbund[[5]]#
 #
-sp11_Abun <- read.delim("subPlotSpc_2011_NbIndiv_12July16.txt")#
-sp11_Cov <- read.delim("subPlotSpc_2011_PropCover_12July16.txt")#
+COL <- c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a')#
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), )#
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }
+tt <- l.all$l.timeAbund[[6]]#
 #
-sp14_Abun <- read.delim("subPlotSpc_2014_NbIndiv_12July16.txt")#
-sp14_Cov <- read.delim("subPlotSpc_2014_PropCover_12July16.txt")
-sp02_Abun[1:10, 1:10] ; sp02_Cov[1:10, 1:10]
-tid <- row.names(sp02_Abun)
-tid
-substring(tid, 2, 3)
-lapply(strsplit(substring(tid, 2, 3), "_"), function(x) x[[1]])
-unlist(lapply(strsplit(substring(tid, 2, 3), "_"), function(x) x[[1]]))
-sp02_Abun$PlotID <- unlist(lapply(strsplit(substring(tid, 2, 3), "_"), function(x) x[[1]]))
-head(sp02_Abun)
-Rsp02 <- t(sapply(unique(sp02_Abun$PlotID), function(x) colSums(sp02_Abun[sp02_Abun$PlotID==x,])))
-unlist(lapply(strsplit(substring(tid, 2, 3), "_"), function(x) x[[1]]))
-sp02_Abun$PlotID <- as.numeric(unlist(lapply(strsplit(substring(tid, 2, 3), "_"), function(x) x[[1]])))
-head(sp02_Abun)
-Rsp02 <- t(sapply(unique(sp02_Abun$PlotID), function(x) colSums(sp02_Abun[sp02_Abun$PlotID==x,])))
-head(Rsp02)
-temp <- lapply(Rsp02$PlotID, function(x) Rsp02[Rsp02$PlotID==x, 1:(ncol(Rsp02)-1)])
-Rsp02 <- as.data.frame(t(sapply(unique(sp02_Abun$PlotID), function(x) colSums(sp02_Abun[sp02_Abun$PlotID==x,]))))
-head(Rsp02)
-temp <- lapply(Rsp02$PlotID, function(x) Rsp02[Rsp02$PlotID==x, 1:(ncol(Rsp02)-1)])
-temp
-lapply(temp, function(y) names(y[y>0]))
-lapply(temp, function(y) names(y[y>0,]))
-lapply(temp, function(y) names(y)[y>0,])
-lapply(temp, function(y) names(y)[y>0])
-temp2 <- lapply(temp, function(y) names(y)[y>0])
-head(allRich)
-allRich
-l.SumPlot
-head(l.SumPlot[[1]])
-temp2
-temp
-head(Rsp02)
-head(sp02_Abun)
-head(sp02_Abun, 10)
-head(l.SumPlot[[1]])
-temp3 <- lapply(l.SumPlot[[1]]$LocID, function(x) l.SumPlot[[1]][l.SumPlot[[1]]$LocID ==x, 2:ncol(l.SumPlot[[1]])])
-temp3 <- lapply(l.SumPlot[[1]][,"LocID"], function(x) l.SumPlot[[1]][l.SumPlot[[1]][,"LocID"]==x, 2:ncol(l.SumPlot[[1]])])
-temp3
-temp4 <- lapply(temp, function(y) names(y)[y>0])
-temp4
-temp3
-melt(l.SumPlot)
-head(melt(l.SumPlot))
-head(melt(l.SumPlot[[1]]), id.vars=c("LocID"))
-head(melt(l.SumPlot[[1]]))
-head(melt(l.SumPlot[[1]]))
-head(melt(l.SumPlot[[1]]), names(l.SumPlot[[1]]))
-head(melt(l.SumPlot[[1]]), id.vars=names(l.SumPlot[[1]]))
-head(melt(l.SumPlot[[1]]), id=1)
-head(melt(l.SumPlot[[1]]), id=2)
-head(melt(l.SumPlot[[1]]), id=2:ncol(l.SumPlot[[1]]))
-head(melt(l.SumPlot[[1]]), id.vars =2:ncol(l.SumPlot[[1]]))
-head(melt(l.SumPlot[[1]]), measure.vars =2:ncol(l.SumPlot[[1]]))
-head(melt(l.SumPlot[[1]]), measure.vars=1:ncol(l.SumPlot[[1]]))
-head(melt(l.SumPlot[[1]]), measure.vars=ncol(l.SumPlot[[1]]))
-head(melt(l.SumPlot[[1]]))
-l.SumPlot[[1]]
-head(melt(l.SumPlot[[1]]), id="LocID")
-head(melt(l.SumPlot[[1]], id="LocID"))
-names(l.SumPlot[[1]])
-colnames(l.SumPlot[[1]])
-head(melt(l.SumPlot[[1]], id="LocID"))
-head(melt(l.SumPlot[[1]], id="LocID"), 100)
-class(l.SumPlot[[1]])
-head(melt(as.data.frame(l.SumPlot[[1]]), id="LocID"), 100)
-head(Rsp02)
-SPP <- melt(Rsp02, id="PlotID")
-PP <- melt(as.data.frame(l.SumPlot[[1]]), id="LocID")
-head(SPP)
-head(PP)
-MPSP <- merge(SPP, PP, by.x="PlotID", by.y="LocID")
+COL <- c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a')#
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), )#
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }
+tt <- l.all$l.timeAbund[[7]]#
+#
+COL <- c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a')#
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), )#
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }
+tt <- l.all$l.timeAbund[[8]]#
+#
+COL <- c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a')#
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), )#
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,.5), )
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }
+tt <- l.all$l.timeAbund[[9]]#
+#
+COL <- c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a')#
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,.5), )#
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }
+tt <- l.all$l.timeAbund[[10]]
+COL <- c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a')#
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,.5), )#
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), )
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), lty=1:3)
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2, lty=2:3) }
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2, lty=2) }
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), lty=1:3)
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2, lty=2) }
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2, lty=3) }
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), lty=1:3)
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2, lty=3) }
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2, lty=sample(1:3)) }
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), lty=1:3)
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2, lty=sample(1:3)) }
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), lty=1:3)
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2, lty=sample(1:3)) }
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), lty=1:3)
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2, lty=sample(1:3)) }
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }
+l.coex
+l.com.mat[[j]][[k]][[1]]
+names(l.all)
+id <- 10
+McA <- as.data.frame(l.all$l.timeAbund[[id]])  # time series of spc abundances
+f12 <- l.traits[[id]]			# functional traits
+McA$time <- 1:nrow(McA)
+McA2 <- McA[seq(1000, 2499, 15),]		# select a time period
+Dm <- as.matrix(dist(f12)) ; diag(Dm) <- NA
+McA <- as.data.frame(l.all$l.timeAbund[[id]])  # time series of spc abundances
+head(McA)
+Dm <- as.matrix(dist(l.traits[[id]])) ; diag(Dm) <- NA
+Dm <- as.matrix(dist(l.all$l.traits[[id]])) ; diag(Dm) <- NA
+mfd.rank <- apply(McA[, 2:ncol(McA)], 1, function(x) {#
+				Dw <- sapply(1:ncol(Dm), function(y) x)#
+				Dw <- (Dw>0.001)*1 ; diag(Dw) <- NA#
+				Wm <- weighted.mean(as.vector(Dm), as.vector(Dw), na.rm=T) #
+				rlits <- sapply(1:99, function(z) {#
+					NN <- 1:ncol(Dm) ; NN2 <- sample(NN)#
+					Wr <- weighted.mean(as.vector(Dm[NN2, NN2]), as.vector(Dw), na.rm=T) #
+					return(Wr)  })						#
+				return(rank(c(Wm, rlits))[1]/100)	} )
+mfd.rank
+McA$mfd <- mfd.rank
+plot(mfd ~time, data=McA)
+id <- 1#
+McA <- as.data.frame(l.all$l.timeAbund[[id]])  # time series of spc abundances#
+Dm <- as.matrix(dist(l.all$l.traits[[id]])) ; diag(Dm) <- NA#
+#
+mfd.rank <- apply(McA[, 2:ncol(McA)], 1, function(x) {#
+				Dw <- sapply(1:ncol(Dm), function(y) x)#
+				Dw <- (Dw>0.001)*1 ; diag(Dw) <- NA#
+				Wm <- weighted.mean(as.vector(Dm), as.vector(Dw), na.rm=T) #
+				rlits <- sapply(1:99, function(z) {#
+					NN <- 1:ncol(Dm) ; NN2 <- sample(NN)#
+					Wr <- weighted.mean(as.vector(Dm[NN2, NN2]), as.vector(Dw), na.rm=T) #
+					return(Wr)  })						#
+				return(rank(c(Wm, rlits))[1]/100)	} )#
+McA$mfd <- mfd.rank#
+plot(mfd ~time, data=McA)
+plot(mfd ~time, data=McA, c=c(0,1))
+plot(mfd ~time, data=McA, ylim=c(0,1))
+id <- 2#
+McA <- as.data.frame(l.all$l.timeAbund[[id]])  # time series of spc abundances#
+Dm <- as.matrix(dist(l.all$l.traits[[id]])) ; diag(Dm) <- NA#
+#
+mfd.rank <- apply(McA[, 2:ncol(McA)], 1, function(x) {#
+				Dw <- sapply(1:ncol(Dm), function(y) x)#
+				Dw <- (Dw>0.001)*1 ; diag(Dw) <- NA#
+				Wm <- weighted.mean(as.vector(Dm), as.vector(Dw), na.rm=T) #
+				rlits <- sapply(1:99, function(z) {#
+					NN <- 1:ncol(Dm) ; NN2 <- sample(NN)#
+					Wr <- weighted.mean(as.vector(Dm[NN2, NN2]), as.vector(Dw), na.rm=T) #
+					return(Wr)  })						#
+				return(rank(c(Wm, rlits))[1]/100)	} )#
+McA$mfd <- mfd.rank#
+plot(mfd ~time, data=McA, ylim=c(0,1))
+id <- 3#
+McA <- as.data.frame(l.all$l.timeAbund[[id]])  # time series of spc abundances#
+Dm <- as.matrix(dist(l.all$l.traits[[id]])) ; diag(Dm) <- NA#
+#
+mfd.rank <- apply(McA[, 2:ncol(McA)], 1, function(x) {#
+				Dw <- sapply(1:ncol(Dm), function(y) x)#
+				Dw <- (Dw>0.001)*1 ; diag(Dw) <- NA#
+				Wm <- weighted.mean(as.vector(Dm), as.vector(Dw), na.rm=T) #
+				rlits <- sapply(1:99, function(z) {#
+					NN <- 1:ncol(Dm) ; NN2 <- sample(NN)#
+					Wr <- weighted.mean(as.vector(Dm[NN2, NN2]), as.vector(Dw), na.rm=T) #
+					return(Wr)  })						#
+				return(rank(c(Wm, rlits))[1]/100)	} )#
+McA$mfd <- mfd.rank#
+plot(mfd ~time, data=McA, ylim=c(0,1))
+id <- 4#
+McA <- as.data.frame(l.all$l.timeAbund[[id]])  # time series of spc abundances#
+Dm <- as.matrix(dist(l.all$l.traits[[id]])) ; diag(Dm) <- NA#
+#
+mfd.rank <- apply(McA[, 2:ncol(McA)], 1, function(x) {#
+				Dw <- sapply(1:ncol(Dm), function(y) x)#
+				Dw <- (Dw>0.001)*1 ; diag(Dw) <- NA#
+				Wm <- weighted.mean(as.vector(Dm), as.vector(Dw), na.rm=T) #
+				rlits <- sapply(1:99, function(z) {#
+					NN <- 1:ncol(Dm) ; NN2 <- sample(NN)#
+					Wr <- weighted.mean(as.vector(Dm[NN2, NN2]), as.vector(Dw), na.rm=T) #
+					return(Wr)  })						#
+				return(rank(c(Wm, rlits))[1]/100)	} )#
+McA$mfd <- mfd.rank#
+plot(mfd ~time, data=McA, ylim=c(0,1))
+id <- 5#
+McA <- as.data.frame(l.all$l.timeAbund[[id]])  # time series of spc abundances#
+Dm <- as.matrix(dist(l.all$l.traits[[id]])) ; diag(Dm) <- NA#
+#
+mfd.rank <- apply(McA[, 2:ncol(McA)], 1, function(x) {#
+				Dw <- sapply(1:ncol(Dm), function(y) x)#
+				Dw <- (Dw>0.001)*1 ; diag(Dw) <- NA#
+				Wm <- weighted.mean(as.vector(Dm), as.vector(Dw), na.rm=T) #
+				rlits <- sapply(1:99, function(z) {#
+					NN <- 1:ncol(Dm) ; NN2 <- sample(NN)#
+					Wr <- weighted.mean(as.vector(Dm[NN2, NN2]), as.vector(Dw), na.rm=T) #
+					return(Wr)  })						#
+				return(rank(c(Wm, rlits))[1]/100)	} )#
+McA$mfd <- mfd.rank#
+plot(mfd ~time, data=McA, ylim=c(0,1))
+id <- 6#
+McA <- as.data.frame(l.all$l.timeAbund[[id]])  # time series of spc abundances#
+Dm <- as.matrix(dist(l.all$l.traits[[id]])) ; diag(Dm) <- NA#
+#
+mfd.rank <- apply(McA[, 2:ncol(McA)], 1, function(x) {#
+				Dw <- sapply(1:ncol(Dm), function(y) x)#
+				Dw <- (Dw>0.001)*1 ; diag(Dw) <- NA#
+				Wm <- weighted.mean(as.vector(Dm), as.vector(Dw), na.rm=T) #
+				rlits <- sapply(1:99, function(z) {#
+					NN <- 1:ncol(Dm) ; NN2 <- sample(NN)#
+					Wr <- weighted.mean(as.vector(Dm[NN2, NN2]), as.vector(Dw), na.rm=T) #
+					return(Wr)  })						#
+				return(rank(c(Wm, rlits))[1]/100)	} )#
+McA$mfd <- mfd.rank#
+plot(mfd ~time, data=McA, ylim=c(0,1))
+l.all$l.traits
+id <- 1#
+McA <- as.data.frame(l.all$l.timeAbund[[10]])  # time series of spc abundances#
+Dm <- as.matrix(dist(l.all$l.traits[[id]])) ; diag(Dm) <- NA#
+#
+mfd.rank <- apply(McA[, 2:ncol(McA)], 1, function(x) {#
+				Dw <- sapply(1:ncol(Dm), function(y) x)#
+				Dw <- (Dw>0.001)*1 ; diag(Dw) <- NA#
+				Wm <- weighted.mean(as.vector(Dm), as.vector(Dw), na.rm=T) #
+				rlits <- sapply(1:99, function(z) {#
+					NN <- 1:ncol(Dm) ; NN2 <- sample(NN)#
+					Wr <- weighted.mean(as.vector(Dm[NN2, NN2]), as.vector(Dw), na.rm=T) #
+					return(Wr)  })						#
+				return(rank(c(Wm, rlits))[1]/100)	} )#
+McA$mfd <- mfd.rank#
+plot(mfd ~time, data=McA, ylim=c(0,1))
+id <- 2#
+McA <- as.data.frame(l.all$l.timeAbund[[10]])  # time series of spc abundances#
+Dm <- as.matrix(dist(l.all$l.traits[[id]])) ; diag(Dm) <- NA#
+#
+mfd.rank <- apply(McA[, 2:ncol(McA)], 1, function(x) {#
+				Dw <- sapply(1:ncol(Dm), function(y) x)#
+				Dw <- (Dw>0.001)*1 ; diag(Dw) <- NA#
+				Wm <- weighted.mean(as.vector(Dm), as.vector(Dw), na.rm=T) #
+				rlits <- sapply(1:99, function(z) {#
+					NN <- 1:ncol(Dm) ; NN2 <- sample(NN)#
+					Wr <- weighted.mean(as.vector(Dm[NN2, NN2]), as.vector(Dw), na.rm=T) #
+					return(Wr)  })						#
+				return(rank(c(Wm, rlits))[1]/100)	} )#
+McA$mfd <- mfd.rank#
+plot(mfd ~time, data=McA, ylim=c(0,1))
+id <- 5#
+McA <- as.data.frame(l.all$l.timeAbund[[10]])  # time series of spc abundances#
+Dm <- as.matrix(dist(l.all$l.traits[[id]])) ; diag(Dm) <- NA#
+#
+mfd.rank <- apply(McA[, 2:ncol(McA)], 1, function(x) {#
+				Dw <- sapply(1:ncol(Dm), function(y) x)#
+				Dw <- (Dw>0.001)*1 ; diag(Dw) <- NA#
+				Wm <- weighted.mean(as.vector(Dm), as.vector(Dw), na.rm=T) #
+				rlits <- sapply(1:99, function(z) {#
+					NN <- 1:ncol(Dm) ; NN2 <- sample(NN)#
+					Wr <- weighted.mean(as.vector(Dm[NN2, NN2]), as.vector(Dw), na.rm=T) #
+					return(Wr)  })						#
+				return(rank(c(Wm, rlits))[1]/100)	} )#
+McA$mfd <- mfd.rank#
+plot(mfd ~time, data=McA, ylim=c(0,1))
+dim(McA)
+seq(2001, 4001, 10)
+id <- 5#
+# McA <- as.data.frame(l.all$l.timeAbund[[10]])  # time series of spc abundances#
+McA <- as.data.frame(l.all$l.timeAbund[[10]][seq(2001, 4001, 10),])  # time series of spc abundances#
+Dm <- as.matrix(dist(l.all$l.traits[[id]])) ; diag(Dm) <- NA#
+#
+mfd.rank <- apply(McA[, 2:ncol(McA)], 1, function(x) {#
+				Dw <- sapply(1:ncol(Dm), function(y) x)#
+				Dw <- (Dw>0.001)*1 ; diag(Dw) <- NA#
+				Wm <- weighted.mean(as.vector(Dm), as.vector(Dw), na.rm=T) #
+				rlits <- sapply(1:99, function(z) {#
+					NN <- 1:ncol(Dm) ; NN2 <- sample(NN)#
+					Wr <- weighted.mean(as.vector(Dm[NN2, NN2]), as.vector(Dw), na.rm=T) #
+					return(Wr)  })						#
+				return(rank(c(Wm, rlits))[1]/100)	} )#
+McA$mfd <- mfd.rank#
+plot(mfd ~time, data=McA, ylim=c(0,1))
+id <- 6#
+# McA <- as.data.frame(l.all$l.timeAbund[[10]])  # time series of spc abundances#
+McA <- as.data.frame(l.all$l.timeAbund[[10]][seq(2001, 4001, 10),])  # time series of spc abundances#
+Dm <- as.matrix(dist(l.all$l.traits[[id]])) ; diag(Dm) <- NA#
+#
+mfd.rank <- apply(McA[, 2:ncol(McA)], 1, function(x) {#
+				Dw <- sapply(1:ncol(Dm), function(y) x)#
+				Dw <- (Dw>0.001)*1 ; diag(Dw) <- NA#
+				Wm <- weighted.mean(as.vector(Dm), as.vector(Dw), na.rm=T) #
+				rlits <- sapply(1:99, function(z) {#
+					NN <- 1:ncol(Dm) ; NN2 <- sample(NN)#
+					Wr <- weighted.mean(as.vector(Dm[NN2, NN2]), as.vector(Dw), na.rm=T) #
+					return(Wr)  })						#
+				return(rank(c(Wm, rlits))[1]/100)	} )#
+McA$mfd <- mfd.rank#
+plot(mfd ~time, data=McA, ylim=c(0,1))
+par(mfrow=4, 5)#
+for(id in 1:20){#
+	# McA <- as.data.frame(l.all$l.timeAbund[[10]])  # time series of spc abundances#
+	McA <- as.data.frame(l.all$l.timeAbund[[10]][seq(2001, 4001, 10),])  # time series of spc abundances#
+	Dm <- as.matrix(dist(l.all$l.traits[[id]])) ; diag(Dm) <- NA#
+	mfd.rank <- apply(McA[, 2:ncol(McA)], 1, function(x) {#
+					Dw <- sapply(1:ncol(Dm), function(y) x)#
+					Dw <- (Dw>0.001)*1 ; diag(Dw) <- NA#
+					Wm <- weighted.mean(as.vector(Dm), as.vector(Dw), na.rm=T) #
+					rlits <- sapply(1:99, function(z) {#
+						NN <- 1:ncol(Dm) ; NN2 <- sample(NN)#
+						Wr <- weighted.mean(as.vector(Dm[NN2, NN2]), as.vector(Dw), na.rm=T) #
+						return(Wr)  })						#
+					return(rank(c(Wm, rlits))[1]/100)	} )#
+	McA$mfd <- mfd.rank#
+	plot(mfd ~time, data=McA, ylim=c(0,1), main=id)#
+}
+par(mfrow=c(4,5))#
+for(id in 1:20){#
+	# McA <- as.data.frame(l.all$l.timeAbund[[10]])  # time series of spc abundances#
+	McA <- as.data.frame(l.all$l.timeAbund[[10]][seq(2001, 4001, 10),])  # time series of spc abundances#
+	Dm <- as.matrix(dist(l.all$l.traits[[id]])) ; diag(Dm) <- NA#
+	mfd.rank <- apply(McA[, 2:ncol(McA)], 1, function(x) {#
+					Dw <- sapply(1:ncol(Dm), function(y) x)#
+					Dw <- (Dw>0.001)*1 ; diag(Dw) <- NA#
+					Wm <- weighted.mean(as.vector(Dm), as.vector(Dw), na.rm=T) #
+					rlits <- sapply(1:99, function(z) {#
+						NN <- 1:ncol(Dm) ; NN2 <- sample(NN)#
+						Wr <- weighted.mean(as.vector(Dm[NN2, NN2]), as.vector(Dw), na.rm=T) #
+						return(Wr)  })						#
+					return(rank(c(Wm, rlits))[1]/100)	} )#
+	McA$mfd <- mfd.rank#
+	plot(mfd ~time, data=McA, ylim=c(0,1), main=id)#
+}
+par(mfrow=c(4,5))#
+for(id in 1:20){#
+	# McA <- as.data.frame(l.all$l.timeAbund[[10]])  # time series of spc abundances#
+	McA <- as.data.frame(l.all$l.timeAbund[[8]][seq(2001, 4001, 10),])  # time series of spc abundances#
+	Dm <- as.matrix(dist(l.all$l.traits[[id]])) ; diag(Dm) <- NA#
+	mfd.rank <- apply(McA[, 2:ncol(McA)], 1, function(x) {#
+					Dw <- sapply(1:ncol(Dm), function(y) x)#
+					Dw <- (Dw>0.001)*1 ; diag(Dw) <- NA#
+					Wm <- weighted.mean(as.vector(Dm), as.vector(Dw), na.rm=T) #
+					rlits <- sapply(1:99, function(z) {#
+						NN <- 1:ncol(Dm) ; NN2 <- sample(NN)#
+						Wr <- weighted.mean(as.vector(Dm[NN2, NN2]), as.vector(Dw), na.rm=T) #
+						return(Wr)  })						#
+					return(rank(c(Wm, rlits))[1]/100)	} )#
+	McA$mfd <- mfd.rank#
+	plot(mfd ~time, data=McA, ylim=c(0,1), main=id)#
+}
+for(id in 1:20){#
+	# McA <- as.data.frame(l.all$l.timeAbund[[10]])  # time series of spc abundances#
+	McA <- as.data.frame(l.all$l.timeAbund[[10]][seq(2001, 4001, 10),])  # time series of spc abundances#
+	Dm <- as.matrix(dist(l.all$l.traits[[id]])) ; diag(Dm) <- NA#
+	mfd.rank <- apply(McA[, 2:ncol(McA)], 1, function(x) {#
+					Dw <- sapply(1:ncol(Dm), function(y) x)#
+					Dw <- (Dw>0.001)*1 ; diag(Dw) <- NA#
+					Wm <- weighted.mean(as.vector(Dm), as.vector(Dw), na.rm=T) #
+					rlits <- sapply(1:99, function(z) {#
+						NN <- 1:ncol(Dm) ; NN2 <- sample(NN)#
+						Wr <- weighted.mean(as.vector(Dm[NN2, NN2]), as.vector(Dw), na.rm=T) #
+						return(Wr)  })						#
+					return(rank(c(Wm, rlits))[1]/100)	} )#
+	McA$mfd <- mfd.rank#
+	plot(mfd ~time, data=McA, ylim=c(0,1), main=id)#
+}
+id <- 18
+# McA <- as.data.frame(l.all$l.timeAbund[[10]])  # time series of spc abundances#
+	McA <- as.data.frame(l.all$l.timeAbund[[10]][seq(2001, 4001, 10),])  # time series of spc abundances#
+	Dm <- as.matrix(dist(l.all$l.traits[[id]])) ; diag(Dm) <- NA#
+	mfd.rank <- apply(McA[, 2:ncol(McA)], 1, function(x) {#
+					Dw <- sapply(1:ncol(Dm), function(y) x)#
+					Dw <- (Dw>0.001)*1 ; diag(Dw) <- NA#
+					Wm <- weighted.mean(as.vector(Dm), as.vector(Dw), na.rm=T) #
+					rlits <- sapply(1:99, function(z) {#
+						NN <- 1:ncol(Dm) ; NN2 <- sample(NN)#
+						Wr <- weighted.mean(as.vector(Dm[NN2, NN2]), as.vector(Dw), na.rm=T) #
+						return(Wr)  })						#
+					return(rank(c(Wm, rlits))[1]/100)	} )#
+	McA$mfd <- mfd.rank#
+	plot(mfd ~time, data=McA, ylim=c(0,1), main=id)
+par(mfrow=c(4,5))#
+for(id in 21:40){#
+	# McA <- as.data.frame(l.all$l.timeAbund[[10]])  # time series of spc abundances#
+	McA <- as.data.frame(l.all$l.timeAbund[[10]][seq(2001, 4001, 10),])  # time series of spc abundances#
+	Dm <- as.matrix(dist(l.all$l.traits[[id]])) ; diag(Dm) <- NA#
+	mfd.rank <- apply(McA[, 2:ncol(McA)], 1, function(x) {#
+					Dw <- sapply(1:ncol(Dm), function(y) x)#
+					Dw <- (Dw>0.001)*1 ; diag(Dw) <- NA#
+					Wm <- weighted.mean(as.vector(Dm), as.vector(Dw), na.rm=T) #
+					rlits <- sapply(1:99, function(z) {#
+						NN <- 1:ncol(Dm) ; NN2 <- sample(NN)#
+						Wr <- weighted.mean(as.vector(Dm[NN2, NN2]), as.vector(Dw), na.rm=T) #
+						return(Wr)  })						#
+					return(rank(c(Wm, rlits))[1]/100)	} )#
+	McA$mfd <- mfd.rank#
+	plot(mfd ~time, data=McA, ylim=c(0,1), main=id)#
+}
+par(mfrow=c(4,5))#
+for(id in 41:60){#
+	# McA <- as.data.frame(l.all$l.timeAbund[[10]])  # time series of spc abundances#
+	McA <- as.data.frame(l.all$l.timeAbund[[10]][seq(2001, 4001, 10),])  # time series of spc abundances#
+	Dm <- as.matrix(dist(l.all$l.traits[[id]])) ; diag(Dm) <- NA#
+	mfd.rank <- apply(McA[, 2:ncol(McA)], 1, function(x) {#
+					Dw <- sapply(1:ncol(Dm), function(y) x)#
+					Dw <- (Dw>0.001)*1 ; diag(Dw) <- NA#
+					Wm <- weighted.mean(as.vector(Dm), as.vector(Dw), na.rm=T) #
+					rlits <- sapply(1:99, function(z) {#
+						NN <- 1:ncol(Dm) ; NN2 <- sample(NN)#
+						Wr <- weighted.mean(as.vector(Dm[NN2, NN2]), as.vector(Dw), na.rm=T) #
+						return(Wr)  })						#
+					return(rank(c(Wm, rlits))[1]/100)	} )#
+	McA$mfd <- mfd.rank#
+	plot(mfd ~time, data=McA, ylim=c(0,1), main=id)#
+}
+id <- 41 # 18; 29; 41; 48#
+McA <- as.data.frame(l.all$l.timeAbund[[10]])  # time series of spc abundances#
+Dm <- as.matrix(dist(l.all$l.traits[[id]])) ; diag(Dm) <- NA#
+#
+mfd.rank <- apply(McA[, 2:ncol(McA)], 1, function(x) {#
+				Dw <- sapply(1:ncol(Dm), function(y) x)#
+				Dw <- (Dw>0.001)*1 ; diag(Dw) <- NA#
+				Wm <- weighted.mean(as.vector(Dm), as.vector(Dw), na.rm=T) #
+				rlits <- sapply(1:99, function(z) {#
+					NN <- 1:ncol(Dm) ; NN2 <- sample(NN)#
+					Wr <- weighted.mean(as.vector(Dm[NN2, NN2]), as.vector(Dw), na.rm=T) #
+					return(Wr)  })						#
+				return(rank(c(Wm, rlits))[1]/100)	} )#
+McA$mfd <- mfd.rank#
+plot(mfd ~time, data=McA, ylim=c(0,1))
+plot(mfd ~time, data=McA[2000:4000], ylim=c(0,1))
+plot(mfd ~time, data=McA[2000:4000,], ylim=c(0,1))
+plot(mfd ~time, data=McA[2000:4000,], ylim=c(0,1), pch=21, cex=.5)
+plot(mfd ~time, data=McA[2000:4000,], ylim=c(0,1), pch=19, cex=.5)
+plot(mfd ~time, data=McA[2000:4000,], ylim=c(0,1), pch=19, cex=.5, type="l")
+plot(mfd ~time, data=McA[2000:4000,], ylim=c(0,1), pch=19, cex=.5, type="d")
+plot(mfd ~time, data=McA[2000:4000,], ylim=c(0,1), pch=19, cex=.5, type="l")
+plot(mfd ~time, data=McA[2000:4000,], ylim=c(0,1), pch=19, cex=.5)
+plot(mfd ~time, data=McA[2000:4000,], ylim=c(0,1), type="l")
+plot(mfd ~time, data=McA[2000:4000,], ylim=c(0,1), pch=19, cex=.5)
+plot(mfd ~time, data=McA[2000:4000,], ylim=c(0,1), type="l")
+plot(mfd ~time, data=McA[2000:4000,], ylim=c(0,1), pch=19, cex=.5)
+plot(mfd ~time, data=McA[2000:4000,], ylim=c(0,1), type="l")
+plot(mfd ~time, data=McA[2000:4000,], ylim=c(0,1), pch=19, cex=.5)
+plot(mfd ~time, data=McA[2000:4000,], ylim=c(0,1), type="l")
+plot(mfd ~time, data=McA[2000:4000,], ylim=c(0,1), pch=19, cex=.5)
+par(mfrow=c(1,3))#
+#
+COL <- c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a')#
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1))#
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }#
+#
+plot(mfd ~time, data=McA[2000:4000,], ylim=c(0,1), type="l")#
+plot(mfd ~time, data=McA[2000:4000,], ylim=c(0,1), pch=19, cex=.5)
+par(mfrow=c(1,3))#
+#
+COL <- c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a')#
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1))#
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }#
+#
+plot(mfd ~time, data=McA[2000:4000,], ylim=c(0,1), type="l")#
+plot(mfd ~time, data=McA[2000:4000,], ylim=c(0,1), pch=19, cex=.2)
+par(mfrow=c(1,2))#
+#
+COL <- c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a')#
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1))#
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }#
+#
+plot(mfd ~time, data=McA[2000:4000,], ylim=c(0,1), pch=19, cex=.2)
+plot(tt[,2] ~ tt[,"time"], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1))
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2, lty=sample(2:3)) }
+plot(tt[,2] ~ tt[,"time"], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1))
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], type="l", lwd=2, lty=sample(2:3)) }
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], type="l", lwd=2, col=("grey", "darkgray")) }
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], type="l", lwd=2, col=c("grey", "darkgray")) }
+plot(tt[,2] ~ tt[,"time"], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1))
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], type="l", lwd=2, col=c("grey", "darkgray")) }
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], type="l", lwd=2, col=c("grey", grey(0.8))) }
+plot(tt[,2] ~ tt[,"time"], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1))
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], type="l", lwd=2, col=c("grey", grey(0.9))) }
+plot(tt[,2] ~ tt[,"time"], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1))
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], type="l", lwd=2, col=c("grey", grey(0.1))) }
+0:8 / 8
+grey(0.1)
+grey(0.5)
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], type="l", lwd=2, col=c("grey", "grey", "darkgrey") }
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], type="l", lwd=2, col=sample(grey(c(.5, .8))) }
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], type="l", lwd=2, col=sample(grey(c(.5, .8)))) }
+# The abundance through time#
+COL <- c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a')#
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1))#
+for (i in 2:(ncol(tt)-1)){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }
+COL <- c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a')#
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1))#
+for (i in 2:6){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }
+tt <- l.all$l.timeAbund[[3]]#
+#
+COL <- c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a')#
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1))#
+for (i in 2:6){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }
+for (i in 2:11){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }
+tt <- l.all$l.timeAbund[[3]]#
+#
+COL <- c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a')#
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1))#
+for (i in 2:11){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }
+l.all$Stats
+tt <- l.all$l.timeAbund[[7]]#
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1))#
+for (i in 2:11){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }
+tt <- l.all$l.timeAbund[[12]]#
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1))#
+for (i in 2:11){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }
+tt <- l.all$l.timeAbund[[14]]
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1))#
+for (i in 2:11){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }
+tt <- l.all$l.timeAbund[[15]]
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1))
+for (i in 2:11){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }
+l.all$Stats$id <- 1:55
+l.all$Stats
+l.all$Stats[which(l.all$Stats$rich==5),]
+l.all$Stats[which(l.all$Stats$rich==5),]$id
+for(j in l.all$Stats[which(l.all$Stats$rich==5),]$id)#
+	tt <- l.all$l.timeAbund[[j]]#
+	plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), main=j)#
+	for (i in 2:11){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }#
+}
+par(mfrow=c(2, 4))#
+for(j in l.all$Stats[which(l.all$Stats$rich==5),]$id)#
+	tt <- l.all$l.timeAbund[[j]]#
+	plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), main=j)#
+	for (i in 2:11){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }#
+}
+par(mfrow=c(2, 4))#
+for(j in l.all$Stats[which(l.all$Stats$rich==5),]$id){#
+	tt <- l.all$l.timeAbund[[j]]#
+	plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), main=j)#
+	for (i in 2:11){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }#
+}
+l.all$Stats[which(l.all$Stats$rich==5),]$id
+tt <- l.all$l.timeAbund[[j]]
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), main=j)
+for (i in 2:11){  points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2) }
+for(i in 2:11) points(tt[, i + 1] ~ tt[,"time"], col=COL[i], type="l", lwd=2)
+for(i in 2:11) points(tt[, i] ~ tt[,"time"], col=COL[i], type="l", lwd=2)
+par(mfrow=c(2, 4))#
+for(j in l.all$Stats[which(l.all$Stats$rich==5),]$id){#
+	tt <- l.all$l.timeAbund[[j]]#
+	plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), main=j)#
+	for(i in 2:11) points(tt[, i] ~ tt[,"time"], col=COL[i], type="l", lwd=2)#
+}
+par(mfrow=c(2, 4))#
+for(j in l.all$Stats[which(l.all$Stats$rich==5),]$id){#
+	tt <- l.all$l.timeAbund[[j]]#
+	plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), xlim=c(0,50), main=j)#
+	for(i in 2:11) points(tt[, i] ~ tt[,"time"], col=COL[i], type="l", lwd=2)#
+}
+tt <- l.all$l.timeAbund[[14]]
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), xlim=c(0,50), main=j)
+for(i in 2:11) points(tt[, i] ~ tt[,"time"], col=COL[i], type="l", lwd=2)
+tail(tt)
+tt <- l.all$l.timeAbund[[14]][,c(1:4,6,8)]
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), xlim=c(0,50), main=j)
+for(i in 2:7) points(tt[, i] ~ tt[,"time"], col=COL[i], type="l", lwd=2)
+COL <- c('#66c2a5','#fc8d62','#8da0cb','#e78ac3','#a6d854')
+tt <- l.all$l.timeAbund[[14]][,c(1:4,6,8)]#
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), xlim=c(0,50), main=j)#
+for(i in 2:7) points(tt[, i] ~ tt[,"time"], col=COL[i], type="l", lwd=2)
+COL <- c('#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00')
+tt <- l.all$l.timeAbund[[14]][,c(1:4,6,8)]#
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), xlim=c(0,50), main=j)#
+for(i in 2:7) points(tt[, i] ~ tt[,"time"], col=COL[i], type="l", lwd=2)
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), xlim=c(0,50), main=j)#
+for(i in 3:7) points(tt[, i] ~ tt[,"time"], col=COL[i], type="l", lwd=2)
+head(tt)
+for(i in 3:6) points(tt[, i] ~ tt[,"time"], col=COL[i], type="l", lwd=2)
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), xlim=c(0,50), main=j)
+for(i in 3:6) points(tt[, i] ~ tt[,"time"], col=COL[i], type="l", lwd=2)
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), xlim=c(0,50), main=j)
+l.all$Stats$id <- 1:55#
+par(mfrow=c(2, 4))#
+for(j in l.all$Stats[which(l.all$Stats$rich==5),]$id){#
+	tt <- l.all$l.timeAbund[[j]]#
+	plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), xlim=c(0,50), main=j)#
+	for(i in 2:11) points(tt[, i] ~ tt[,"time"], col=COL[i], type="l", lwd=2)#
+}
+tt <- l.all$l.timeAbund[[14]][,c(1:4,6,8)]
+tt
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), xlim=c(0,50), main=j)
+tt <- l.all$l.timeAbund[[14]][,c(1:4,6,8)]
+tt[,2]
+tt[,"time"]
+plot(tt[,2] ~ tt[,"time"], col=COL[8], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1))
+l.all$Stats
+tt <- l.all$l.timeAbund[[14]]
+tail(tt)
+tt <- l.all$l.timeAbund[[14]][,c(1:4,6,8)]
+tail(tt)
+COL <- c('#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00')#
+tt <- l.all$l.timeAbund[[14]][,c(1:4,6,8)]#
+plot(tt[,2] ~ tt[,"time"], col=COL[1], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1))#
+for(i in 2:6) points(tt[, i] ~ tt[,"time"], col=COL[i], type="l", lwd=2)
+plot(tt[,2] ~ tt[,"time"], col=COL[1], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), xlim=c(0,50))
+for(i in 2:6) points(tt[, i] ~ tt[,"time"], col=COL[i], type="l", lwd=2)
+COL[i]
+COL <- c('#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00')#
+tt <- l.all$l.timeAbund[[14]][,c(1:4,6,8)]#
+plot(tt[,2] ~ tt[,"time"], col=COL[1], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), xlim=c(0,50))#
+for(i in 3:6) points(tt[, i] ~ tt[,"time"], col=COL[i-1], type="l", lwd=2)
+COL <- sample(c('#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00'))#
+tt <- l.all$l.timeAbund[[14]][,c(1:4,6,8)]#
+plot(tt[,2] ~ tt[,"time"], col=COL[1], type="l", lwd=2, xlab="time", ylab="Density of Species", ylim = c(0,1), xlim=c(0,50))#
+for(i in 3:6) points(tt[, i] ~ tt[,"time"], col=COL[i-1], type="l", lwd=2)
+library(picante)#
+library(deSolve) # package for solving ODEs in R#
+# function to integrate differential equations#
+ReplRPS <- function(t, state, CompMat){#
+	n <- nrow(CompMat) 			# nb spc#
+	K <- as.matrix(CompMat)		# comp Matrix#
+	ps <- as.numeric(state)		# abundance of the species#
+	avgGrowth <- t(ps) %*% K %*% ps # will be used later to avoid rounding errors (cf "NOTES" below)#
+	pnew <- rep(0, n)			# outputs#
+  	for(Species in 1:n){			# For each species#
+    		pnew[Species] <- ps[Species] * (( K %*% ps)[Species] - avgGrowth)  #
+  	}#
+  	list(pnew)#
+}#
+###################################################################
+###################################################################
+# Test for 10 species pool and 3 species IT#
+###################################################################
+###################################################################
+#
+# set up the parameters#
+nbSP <- 10  # species pool#
+REP <- 500#
+Ntraits <- 100 # nb of traits
+setwd("~/Dropbox/Travail WSL/4.Small projects/9.PeterAdler/3.Simulations/3.AllesinaModel_models/0.SimulOpinion/Output_Bigram/")
+load(paste("BigRamParam_", nbSP, "spcPool_", Ntraits, "traitSim_", length(itId), "Rep_10Nov16", sep=""))
+load(paste("BigRamParam_", nbSP, "spcPool_", Ntraits, "traitSim_", length(itId), "Rep_10Nov16", sep=""))
+load(paste("BigRamParam_", nbSP, "spcPool_", Ntraits, "traitSim_100Rep_10Nov16", sep=""))
+l.tr <- l.all$l.traits#
+l.Pos <- l.all$l.spcPosition#
+l.mat <- l.all$l.compMat=#
+l.coex <- l.all$l.timeAbund#
+EndSpc <- EndSpc#
+Stats <- Stats#
+itId <- itId
+l.tr <- l.all$l.traits#
+l.Pos <- l.all$l.spcPosition#
+l.mat <- l.all$l.compMat=#
+l.coex <- l.all$l.timeAbund#
+EndSpc <- l.all$EndSpc#
+Stats <- l.all$Stats#
+itId <- l.all$itId
+l.tr <- l.all$l.traits#
+l.Pos <- l.all$l.spcPosition#
+l.mat <- l.all$l.compMat#
+l.coex <- l.all$l.timeAbund#
+EndSpc <- l.all$EndSpc#
+Stats <- l.all$Stats#
+itId <- l.all$itId
+itId
+l.Pos
+itId
+Stats
+l.coex
+names(l.coex)
+head(l.coex[[1]])
+itID
+itId
+head(l.coex[[2]])
+head(l.res[[2]])
+Stats
+lid=2
+l.res <- list()
+l.res <- list()
+# species position#
+	cid <- l.Pos[[lid]]#
+	# Re-order the traits per species and calculate distance matrix#
+	l.dist <- lapply(l.tr, function(x) {T1 <- x[,1] ; names(T1) <- cid[,1] ; T1 <- T1[as.character(1:nbSP)]#
+										T2 <- x[,2] ; names(T2) <- cid[,2] ; T2 <- T2[as.character(1:nbSP)]#
+										T3 <- x[,3] ; names(T3) <- cid[,3] ; T3 <- T3[as.character(1:nbSP)]#
+										return(as.matrix(dist(cbind(T1, T2, T3) )) ) } )#
+	# Extract the community data #
+	cxi <- l.coex[[lid]]#
+	cxi2 <- cxi[seq(3000, 3999, 10),]	#
+	cxi3 <- as.data.frame(apply(cxi2, c(1,2), function(x) round(x,2)))#
+#
+	# calculate the mfd.ses along a large time period#
+	mfd.rep <- sapply(l.dist, function(x) ses.mpd(cxi3[,2:(nbSP+1)], x, "taxa.labels", F, runs=99)[,"mpd.obs.p"])#
+	wmfd.rep <- sapply(l.dist, function(x) ses.mpd(cxi3[,2:(nbSP+1)], x, "taxa.labels", T, runs=99)[,"mpd.obs.p"])#
+	mntd.rep <- sapply(l.dist, function(x) ses.mntd(cxi3[,2:(nbSP+1)], x, "taxa.labels", T, runs=99)[,"mntd.obs.p"])#
+#
+	l.res[[as.character(lid)]] <- list(mfd=mfd.rep, wmfd=wmfd.rep, mntd=mntd.rep)#
+	print(lid)
+library(reshape2)#
+setwd("~/Dropbox/GIT/2016_CapeCom/Data/LaurePrep/")
