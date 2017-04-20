@@ -1,5 +1,5 @@
 Creation:	Laure - 10 Aug 2016
-Last update: 	Laure - 10 Aug 2016
+Last update: 	Laure - 2 Feb 2017
 
 
 ##########################################################################################
@@ -97,13 +97,16 @@ OUTPUTS:
 
 
 # ========================================================
-# ============================  P3.CorrectSpcNames_29July16
+# ============================  P3.CorrectSpcNames_24Jan17
 # ======================================================== (LG)
 
 AIM:
 
 - Correct synonymy issues & assemble duplicated names (typically by summing their abundances per sites)
 - Convert abundance symbols into numbers: "." and "*" and "+" and "NA" —> 0
+
+NOTES: 
+- "Pelargonium undulatum" does not occur on the peninsula but has been recorded in 13 sites. Doug wrote on the 16 Nov 2016: "could be P. elongatum or P. cucullatum, but checking data sheets mostly finds no pelargoniums in places where digital data has? Some weird mistake here, trying to work out out might take some time". Until we find the mistake, P. undulatum remains in the datasheets.
 
 
 INPUTS:
@@ -122,22 +125,25 @@ INPUTS:
 - LaurePrep/subPlotSpc_2014_NbIndiv_21June16
 - LaurePrep/subPlotSpc_2014_PropCover_21June16
 
+- LaurePrep/Synonym_List_LaureProposition_UpdateWithDougComments24Jan17.xls
 
 OUTPUTS:
 
-- LaurePrep/PlotSpc_2002_12July16
-- LaurePrep/PlotSpc_2008_12July16
-- LaurePrep/PlotSpc_2011_12July16
-- LaurePrep/PlotSpc_2014_12July16
+- LaurePrep/PlotSpc_2002_2Fev17
+- LaurePrep/PlotSpc_2008_2Fev17
+- LaurePrep/PlotSpc_2011_2Fev17
+- LaurePrep/PlotSpc_2014_2Fev17
 
-- LaurePrep/subPlotSpc_2002_NbIndiv_12July16
-- LaurePrep/subPlotSpc_2002_PropCover_12July16
-- LaurePrep/subPlotSpc_2008_NbIndiv_12July16
-- LaurePrep/subPlotSpc_2008_PropCover_12July16
-- LaurePrep/subPlotSpc_2011_NbIndiv_12July16
-- LaurePrep/subPlotSpc_2011_PropCover_12July16
-- LaurePrep/subPlotSpc_2014_NbIndiv_12July16
-- LaurePrep/subPlotSpc_2014_PropCover_12July16
+- LaurePrep/subPlotSpc_2002_NbIndiv_2Fev17
+- LaurePrep/subPlotSpc_2002_PropCover_2Fev17
+- LaurePrep/subPlotSpc_2008_NbIndiv_2Fev17
+- LaurePrep/subPlotSpc_2008_PropCover_2Fev17
+- LaurePrep/subPlotSpc_2011_NbIndiv_2Fev17
+- LaurePrep/subPlotSpc_2011_PropCover_2Fev17
+- LaurePrep/subPlotSpc_2014_NbIndiv_2Fev17
+- LaurePrep/subPlotSpc_2014_PropCover_2Fev17
+
+- LaurePrep/All_Trait_Quanti_26Jan17.txt
 
 
 # ========================================================
@@ -154,28 +160,29 @@ AIM:
 INPUTS:
 
 - LaurePrep/CapePeninsulaList_13July16.txt
-- LaurePrep/PlotSpc_2002_12July16
-- LaurePrep/PlotSpc_2008_12July16
-- LaurePrep/PlotSpc_2011_12July16
-- LaurePrep/PlotSpc_2014_12July16
-- LaurePrep/subPlotSpc_2002_NbIndiv_12July16
-- LaurePrep/subPlotSpc_2008_NbIndiv_12July16
-- LaurePrep/subPlotSpc_2011_NbIndiv_12July16
-- LaurePrep/subPlotSpc_2014_NbIndiv_12July16
+- LaurePrep/PlotSpc_2002_2Fev17
+- LaurePrep/PlotSpc_2008_2Fev17
+- LaurePrep/PlotSpc_2011_2Fev17
+- LaurePrep/PlotSpc_2014_2Fev17
+- LaurePrep/subPlotSpc_2002_NbIndiv_2Fev17
+- LaurePrep/subPlotSpc_2008_NbIndiv_2Fev17
+- LaurePrep/subPlotSpc_2011_NbIndiv_2Fev17
+- LaurePrep/subPlotSpc_2014_NbIndiv_2Fev17
 
 - Raw/List_Alien_SAPIA_13July16.txt
 - Raw/List_Alien_CapeCom_13July16.txt
 - Raw/List_Alien_iSPOT_13July16.txt
+- LaurePrep/All_Trait_Quanti_26Jan17.txt
 
 
 OUTPUTS:
 
-- LaurePrep/All_species_list_CapeCom_13July16
+- LaurePrep/All_species_list_CapeCom_2Fev17
 
-- LaurePrep/Exotic_species_list_SA_13July16.txt  		(alien species in all South Africa)
-- LaurePrep/Exotic_species_list_CapeCom_13July16.txt 	(alien species in our communities)
+- LaurePrep/Exotic_species_list_SA_2Fev17.txt  		(alien species in all South Africa)
+- LaurePrep/Exotic_species_list_CapeCom_2Fev17.txt 	(alien species in our communities)
 
-- LaurePrep/Spc_Plot_Year_13July16
+- LaurePrep/Spc_Plot_Year_2Fev17
 
 
 
@@ -229,11 +236,14 @@ OUTPUTS:
 
 
 ##########################################################################################
-############################### Data analysis scripts  (Prefix « A »??)
+############################### Data analysis scripts  (Prefix « A »)
 ##########################################################################################
 
 
 
+# ========================================================
+# ============================  A1.Alien_richness_over_time.R
+# ======================================================== (LG)
 
 
 
